@@ -1,5 +1,7 @@
 # n-festival
-Added JSON data, request by AJA. 
+Added JSON data, AJAX call with the AJA() micro library. 
 
-Works from now on only on server.
-Terminal command: python -m SimpleHTTPServer
+Terminal command for local server: 
+```
+python -m SimpleHTTPServer
+```
