@@ -1,2 +1,5 @@
 # n-festival
-Application for N-Festival
+Added JSON data, request by AJA. 
+
+Works from now on only on server.
+Terminal command: python -m SimpleHTTPServer
