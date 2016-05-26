@@ -3,7 +3,7 @@
 var launcher = (function() {
 
 	var init = function() {
-        allEvents.getData(); // get-data.js
+        featureDetect.storage();
 		sections.init(); // Routes.js
 	}
 
