@@ -1,16 +1,16 @@
 var allEvents = (function () {
 
     var getData = function () {
-        
+
         var xhr = new XMLHttpRequest();
         var url = "data/data.json";
 
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
-                var data = JSON.parse(xhr.responseText);               
-                console.log(data);
+                var data = JSON.parse(xhr.responseText);
                 localStorage.setItem('allEventsData', JSON.stringify(data));
-				var allEvents = localStorage.getItem('allEventsData');
+
+                templating.init();
             }
         };
         xhr.open("GET", url, true);
@@ -19,7 +19,7 @@ var allEvents = (function () {
     }
 
     return {
-        getData
+        getData: getData
     }
 
 })();

@@ -12,7 +12,6 @@ var sections = (function() {
 			    	sections.toggle(this.path);			    			    
 			    },
 			    'showEvents': function() {
-			    	allEvents.getData();
 			    	sections.toggle(this.path);
 			    }
 			});
