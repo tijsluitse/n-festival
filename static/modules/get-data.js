@@ -7,7 +7,9 @@ var allEvents = (function(){
 		  	.method('GET') 	
 		  	.type('json')
 		  	.on('success', function(data){		 
-		  		console.log(data);				
+		  		console.log(data);
+				localStorage.setItem('allEventsData', JSON.stringify(data));
+				var allEvents = localStorage.getItem('allEventsData');
 		  	})
 		.go();
 
