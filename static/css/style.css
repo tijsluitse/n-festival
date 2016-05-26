@@ -1,6 +1,7 @@
 * {
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
 }
 
 .topHeader {
@@ -12,4 +13,18 @@
 }
 .topHeader svg {
 	fill: white;
+}
+
+section {
+	display: none;
+	opacity: 0;
+}
+
+.active {
+	display: block;
+	opacity: 1;
+}
+
+.show {
+	display: inline-block !important;
 }
