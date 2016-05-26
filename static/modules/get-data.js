@@ -7,9 +7,10 @@ var allEvents = (function () {
 
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
-                var response = JSON.parse(xhr.responseText);
-                
-                console.log(response);
+                var data = JSON.parse(xhr.responseText);               
+                console.log(data);
+                localStorage.setItem('allEventsData', JSON.stringify(data));
+				var allEvents = localStorage.getItem('allEventsData');
             }
         };
         xhr.open("GET", url, true);
