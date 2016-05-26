@@ -1,39 +1,41 @@
 var sections = (function() {
 
 		var init = function() {
-				
-			window.location.hash = '#homePage';
-			
 			routie({
+                '*': function(){
+                    sections.toggle(window.location.hash);
+                },
 			    'homePage': function() {	
-			    	sections.toggle(this.path);
+			    	sections.toggle(window.location.hash);
 			    },
 			    'myTimetable': function() {
-			    	sections.toggle(this.path);			    			    
+			    	sections.toggle(window.location.hash);			    	  
 			    },
 			    'showEvents': function() {
-			    	sections.toggle(this.path);
+			    	sections.toggle(window.location.hash);
 			    }
 			});
 		
 		};
 
 		var toggle = function(hashName) {
-
 			var allSections = document.querySelectorAll('section');	
-			var section = document.getElementById(hashName);
 					
 			for (var i = 0; i < allSections.length; i++) {
-				allSections[i].classList.remove('active');
-			};
-				
-			section.classList.toggle('active');
+				allSections[i].classList.add('inactive');
+                
+                if (!hashName) {
+                    allSections[0].classList.remove('inactive');
 
+                } else {
+                    document.querySelector(hashName).classList.remove('inactive');
+                }
+			}		
 		};
 
 	return {
-		init,
-		toggle
+		init: init,
+		toggle: toggle
 	}
 
 })();
