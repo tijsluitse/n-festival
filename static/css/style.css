@@ -46,7 +46,7 @@
 .filterDay {
 	display: flex;
 	align-items: center;
-	
+
 }
 .filterBox {
 	border: 1px solid white;
@@ -152,11 +152,10 @@
 	margin-right: .5em;
 	fill: #808080;
 }
-/*
-section {
+
+.toggleSection {
     display: block;
 }
-bla
 
 .inactive {
     display:none;
@@ -164,4 +163,4 @@ bla
 
 .show {
 	display: inline-block !important;
-}*/
+}
