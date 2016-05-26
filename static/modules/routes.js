@@ -6,6 +6,7 @@ var sections = (function() {
 			
 			routie({
 			    'homePage': function() {	
+			    	geolocation.user();
 			    	sections.toggle(this.path);
 			    },
 			    'myTimetable': function() {
