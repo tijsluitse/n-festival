@@ -17,6 +17,7 @@
 	padding: 1em;
 	position: fixed;
 	width: 100vw;
+	height: 60px;
 }
 .topHeader svg {
 	fill: white;
@@ -154,7 +155,7 @@
 }
 
 .toggleSection {
-    display: block;
+    padding-top: 60px;
 }
 
 .inactive {
