@@ -1,0 +1,29 @@
+{
+  "name": "n-festival",
+  "version": "1.0.0",
+  "description": "Application for N-Festival",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tijsluitse/n-festival.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tijsluitse/n-festival/issues"
+  },
+  "homepage": "https://github.com/tijsluitse/n-festival",
+  "devDependencies": {
+    "browser-sync": "^2.12.8",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-if": "^2.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.5.3",
+    "gulp-useref": "^3.1.0"
+  }
+}
