@@ -1,7 +1,7 @@
 var sections = (function() {
 
 		var init = function() {
-
+				
 			window.location.hash = '#homePage';
 			
 			routie({
@@ -20,9 +20,9 @@ var sections = (function() {
 		};
 
 		var toggle = function(hashName) {
-			
+
+			var allSections = document.querySelectorAll('section');	
 			var section = document.getElementById(hashName);
-			var allSections = document.querySelectorAll('section');
 					
 			for (var i = 0; i < allSections.length; i++) {
 				allSections[i].classList.remove('active');
