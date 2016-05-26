@@ -6,15 +6,16 @@ var sections = (function() {
 			
 			routie({
 			    'homePage': function() {	
-			    	geolocation.user();
+			    	geolocation.user();	
 			    	sections.toggle(this.path);
 			    },
 			    'myTimetable': function() {
 			    	sections.toggle(this.path);			    			    
 			    },
 			    'showEvents': function() {
-			    	allEvents.getData();
+			    	allEvents.getData();			
 			    	sections.toggle(this.path);
+			    	geolocation.map();
 			    }
 			});
 		
@@ -22,7 +23,7 @@ var sections = (function() {
 
 		var toggle = function(hashName) {
 
-			var allSections = document.querySelectorAll('section');	
+			var allSections = document.querySelectorAll('section');				
 			var section = document.getElementById(hashName);
 					
 			for (var i = 0; i < allSections.length; i++) {
