@@ -7,8 +7,8 @@ var gulp            = require('gulp'),
     reload          = browserSync.reload;
 
 gulp.task('jsmin', function() {
-    return gulp.src('./static/js/*.js')
-      .pipe(concat('main.js'))
+    gulp.src('./static/*.js')
+        .pipe(concat('main.js'))
         .pipe(rename({suffix: '.min'}))
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'));
