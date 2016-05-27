@@ -1,0 +1,110 @@
+[
+    {
+        "event": {
+            "theme": "Innovation",
+            "tags": {
+                "tag": "Techniek",
+                "tag": "Mode"
+            }
+        },
+        "header": {
+            "title": "Wearable and Carryable Technology",
+            "image": ""
+        },
+        "info": {
+            "location": "La Bolleur",
+            "address": "Monsterkade 2 1089BX Amsterdam",
+            "date": "08-10-2016",
+            "start-time": "16:30",
+            "end-time": "17:30"
+        },
+        "content": {
+            "summary": "Borre Akkersdijk is oprichter van modelabel BYBORRE en bouwt voort op het concept van modulaire high-tech kleding. In 2009 studeerde hij af aan de Design Academy in Eindhoven. Hij liep stage bij Lidewij Edelkoort en won in 2012 de MINI Young Designer Award. Tijdens de conferentie SXSW vorig jaar presenteerde Borre Akkersdijk een pak met GPS-tracking, een WiFi hotspot en eenmuziekbibliotheek, in samenwerking met TU Delft, 22Tracks, Crisp en Daan Spangenberg. Op Northside 2015 presenteerde hij de BB.Suitwaarover o.a. Wired een artikel wijdde."
+        },
+        "curator": {
+            "name": "Borre Akkersdijk",
+            "image": "",
+            "link": ""
+        },
+        "recommendations": {
+            "recommendation": {
+                "title": "Bombay",
+                "location": "Oepidus Brewing",
+                "date": "08-10-2016",
+                "start-time": "19:00",
+                "end-time": "19:30",
+                "theme": "Music"
+            },
+            "recommendation": {
+                "title": "Radicale Vernieuwers",
+                "location": "Hotel de Goudfazant",
+                "date": "09-10-2016",
+                "start-time": "14:00",
+                "end-time": "15:30",
+                "theme": "Innovation"
+            },
+            "recommendation": {
+                "title": "De Tafel van 1.000",
+                "location": "Hotel de Goudfazant",
+                "date": "09-10-2016",
+                "start-time": "19:00",
+                "end-time": "00:00",
+                "theme": "Food"
+            }
+        }
+    },
+    {
+        "event": {
+            "theme": "Innovation",
+            "tags": {
+                "tag": "Techniek",
+                "tag": "Mode"
+            }
+        },
+        "header": {
+            "title": "Wearable and Carryable Technology",
+            "image": ""
+        },
+        "info": {
+            "location": "La Bolleur",
+            "address": "Monsterkade 2 1089BX Amsterdam",
+            "date": "08-10-2016",
+            "start-time": "16:30",
+            "end-time": "17:30"
+        },
+        "content": {
+            "summary": "Borre Akkersdijk is oprichter van modelabel BYBORRE en bouwt voort op het concept van modulaire high-tech kleding. In 2009 studeerde hij af aan de Design Academy in Eindhoven. Hij liep stage bij Lidewij Edelkoort en won in 2012 de MINI Young Designer Award. Tijdens de conferentie SXSW vorig jaar presenteerde Borre Akkersdijk een pak met GPS-tracking, een WiFi hotspot en eenmuziekbibliotheek, in samenwerking met TU Delft, 22Tracks, Crisp en Daan Spangenberg. Op Northside 2015 presenteerde hij de BB.Suitwaarover o.a. Wired een artikel wijdde."
+        },
+        "curator": {
+            "name": "Borre Akkersdijk",
+            "image": "",
+            "link": ""
+        },
+        "recommendations": {
+            "recommendation": {
+                "title": "Bombay",
+                "location": "Oepidus Brewing",
+                "date": "08-10-2016",
+                "start-time": "19:00",
+                "end-time": "19:30",
+                "theme": "Music"
+            },
+            "recommendation": {
+                "title": "Radicale Vernieuwers",
+                "location": "Hotel de Goudfazant",
+                "date": "09-10-2016",
+                "start-time": "14:00",
+                "end-time": "15:30",
+                "theme": "Innovation"
+            },
+            "recommendation": {
+                "title": "De Tafel van 1.000",
+                "location": "Hotel de Goudfazant",
+                "date": "09-10-2016",
+                "start-time": "19:00",
+                "end-time": "00:00",
+                "theme": "Food"
+            }
+        }
+    }
+]
