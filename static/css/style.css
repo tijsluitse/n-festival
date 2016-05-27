@@ -154,6 +154,37 @@
 	fill: #808080;
 }
 
+/*INFO*/
+
+.informationSection {
+	padding: 1em;
+	line-height: 1.4em;
+}
+.informationSection h1 {
+	font-size: 1.4em;
+	
+}
+.informationSection p {
+	margin-bottom: 1em;
+}
+.informationSection header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1em;
+	border-top: 1px solid grey;
+	padding: 1em 0;
+}
+.dropdownIconRotate {
+	transform: rotate(180deg);
+}
+.minimized {
+	font-size: 0;
+}
+
+
+/*SECTIONS*/
+
 .toggleSection {
     padding-top: 60px;
 }
