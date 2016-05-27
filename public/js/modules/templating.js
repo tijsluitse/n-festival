@@ -1,7 +1,7 @@
 var templating = (function () {
 
     var init = function (hasStorage) {
-        var showEvents = document.getElementById('showEvents').innerHTML
+        var showEvents = document.getElementById('showEvents').innerHTML;
 
         if (hasStorage) {
             var data = JSON.parse(localStorage.getItem('allEventsData'));

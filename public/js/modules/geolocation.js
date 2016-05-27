@@ -30,10 +30,9 @@ var geolocation = (function(){
 
         navigator.geolocation.getCurrentPosition(success, error);
 
-        // setTimeout(function(){
-        //     geolocation.user();
-        //     console.log('retrieving current location');
-        // }, 5000);
+        setTimeout(function(){
+            geolocation.user();
+        }, 5000);
 
     };
 
@@ -84,6 +83,9 @@ var geolocation = (function(){
         var infowindow = new google.maps.InfoWindow({
             content: contentString
         });
+
+        var data = JSON.parse(localStorage.getItem('allEventsData'));
+        console.log(data);
 
         var marker = new google.maps.Marker({
             position: userPosition,
