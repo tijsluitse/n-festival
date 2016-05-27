@@ -7,7 +7,7 @@ var templating = (function () {
             var data = JSON.parse(localStorage.getItem('allEventsData'));
         }
         else{
-            // wat als local storage niet is ondersteund?
+            console.log("There is no localStorage detected.");
         }
 
         document.getElementById('showEvents').innerHTML = Mustache.render(showEvents, {

@@ -6,7 +6,6 @@ var launcher = (function() {
         featureDetect.storage();
         geolocation.user();
         geolocation.map();
-		sections.init(); // Routes.js
 	}
 
 	return {
