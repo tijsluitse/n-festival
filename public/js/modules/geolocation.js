@@ -17,8 +17,6 @@ var geolocation = (function(){
             localStorage.setItem('userCoordinates', JSON.stringify(userCoordinates));
             var userLocation = JSON.parse(localStorage.getItem('userCoordinates'));
 
-            console.log(userLocation);
-
             // output.innerHTML = '<p>Latitude is ' + userLatitude + ' & Longitude is ' + userLongitude + '</p>';
         };
 
@@ -85,25 +83,32 @@ var geolocation = (function(){
         });
 
         var data = JSON.parse(localStorage.getItem('allEventsData'));
-        console.log(data);
 
-        var marker = new google.maps.Marker({
-            position: userPosition,
-            map: map,
-            title: 'First Infowindow!'
-        });
+        var setUserMarker = function() {
+            var marker = new google.maps.Marker({
+                position: userPosition,
+                map: map,
+                title: 'First Infowindow!'
+            });
+
+            marker.addListener('click', function() {
+                infowindow.open(map, marker);
+            });
+
+            map.addListener('center_changed', function() {
+                window.setTimeout(function() {
+                    map.panTo(marker.getPosition());
+                }, 3000);
+            });
+
+            marker.setMap(map);
+        };
         
-        marker.addListener('click', function() {
-            infowindow.open(map, marker);
-        });
+        setUserMarker();
 
-        map.addListener('center_changed', function() {
-            window.setTimeout(function() {
-                map.panTo(marker.getPosition());
-            }, 3000);
-        });
-
-        marker.setMap(map);
+        setTimeout(function(){
+            setUserMarker();
+        }, 5000);
 
     };
 

@@ -17,7 +17,9 @@
         },
         "info": {
             "location": "La Bolleur",
-            "address": "Monsterkade 2 1089BX Amsterdam",
+            "address": "Korte Papaverweg 15 1032KA Amsterdam",
+            "lattitude": null,
+            "longtitude": null,
             "date": "08-10-2016",
             "start-time": "16:30",
             "end-time": "17:30"
@@ -75,7 +77,9 @@
         },
         "info": {
             "location": "Hotel de Goudfazant",
-            "address": "Aambeeldstraat 10 1089BX Amsterdam",
+            "lattitude": null,
+            "longtitude": null,
+            "address": "Aambeeldstraat 10H 1021KB Amsterdam",
             "date": "09-10-2016",
             "start-time": "14:00",
             "end-time": "15:30"
@@ -137,7 +141,9 @@
         },
         "info": {
             "location": "Oepidus Brewing",
-            "address": "Noordhouderskade 5 1081BW Amsterdam",
+            "address": "Gedempt Hamerkanaal 85 1021KP Amsterdam",
+            "lattitude": null,
+            "longtitude": null,
             "date": "09-10-2016",
             "start-time": "14:00",
             "end-time": "17:30"

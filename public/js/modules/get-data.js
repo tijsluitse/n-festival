@@ -9,11 +9,12 @@ var allEvents = (function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var data = JSON.parse(xhr.responseText);
 
+                geocoder.getCoordinates(data);
+
                 if (hasStorage) {
                     localStorage.setItem('allEventsData', JSON.stringify(data));
-                    console.log(data);
                 }
-                else{
+                else {
                     // wat als local storage niet is ondersteund?
                 }
 
