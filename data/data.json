@@ -1,46 +1,110 @@
 [
     {
-            "header": {
-                "title": "Turn JSON into HTML",
-                "image-url": "http://053e44c254414925813d3f8f1212f0b3.objectstore.eu/w3tc/wp-content/uploads/sites/15/2015/11/Amsterdam-Woods-Festival-Report-7.jpg"
-            },
-            "info": {
-                "location": "van Woustraat 74C, 1073LP, Amsterdam",
-                "date": "14-01-2017",
-                "start-time": "20:00",
-                "end-time": "23:00"
-            },
-            "content": {
-                "summary": "Discovery is allowing new things – not imposing them – and telling the story behind it. No cheap thrills, no big shows. You saw it here first, and what’s next?",
-                "link": "http://tijsluitse.com"
-            },
-            "curator": {
-                "name": "Tijs Luitse",
-                "title": "Frontend Designer",
-                "image": "https://pbs.twimg.com/profile_images/588309006797647873/q9p3Tg0x.jpg",
-                "link": "http://facebook.com/tijsluitse"
+        "event": {
+            "theme": "Innovation",
+            "tags": {
+                "tag": "Techniek",
+                "tag": "Mode"
             }
-        }, 
+        },
+        "header": {
+            "title": "Wearable and Carryable Technology",
+            "image": ""
+        },
+        "info": {
+            "location": "La Bolleur",
+            "address": "Monsterkade 2 1089BX Amsterdam",
+            "date": "08-10-2016",
+            "start-time": "16:30",
+            "end-time": "17:30"
+        },
+        "content": {
+            "summary": "Borre Akkersdijk is oprichter van modelabel BYBORRE en bouwt voort op het concept van modulaire high-tech kleding. In 2009 studeerde hij af aan de Design Academy in Eindhoven. Hij liep stage bij Lidewij Edelkoort en won in 2012 de MINI Young Designer Award. Tijdens de conferentie SXSW vorig jaar presenteerde Borre Akkersdijk een pak met GPS-tracking, een WiFi hotspot en eenmuziekbibliotheek, in samenwerking met TU Delft, 22Tracks, Crisp en Daan Spangenberg. Op Northside 2015 presenteerde hij de BB.Suitwaarover o.a. Wired een artikel wijdde."
+        },
+        "curator": {
+            "name": "Borre Akkersdijk",
+            "image": "",
+            "link": ""
+        },
+        "recommendations": {
+            "recommendation": {
+                "title": "Bombay",
+                "location": "Oepidus Brewing",
+                "date": "08-10-2016",
+                "start-time": "19:00",
+                "end-time": "19:30",
+                "theme": "Music"
+            },
+            "recommendation": {
+                "title": "Radicale Vernieuwers",
+                "location": "Hotel de Goudfazant",
+                "date": "09-10-2016",
+                "start-time": "14:00",
+                "end-time": "15:30",
+                "theme": "Innovation"
+            },
+            "recommendation": {
+                "title": "De Tafel van 1.000",
+                "location": "Hotel de Goudfazant",
+                "date": "09-10-2016",
+                "start-time": "19:00",
+                "end-time": "00:00",
+                "theme": "Food"
+            }
+        }
+    },
     {
-            "header": {
-                "title": "Teaching math in a new way",
-                "image-url": "https://www.ikwilbijles.nl/plaatjes/Bijlesvakken%20-%20wiskunde.jpg"
-            },
-            "info": {
-                "location": "Weteringschans 157-2, 1013SE, Amsterdam",
-                "date": "20-09-2016",
-                "start-time": "13:00",
-                "end-time": "16:00"
-            },
-            "content": {
-                "summary": "N-Festival is een nieuw, tweedaags festival met een jaarlijkse uitwisseling van de avant-garde op het gebied van muziek, eten en innovatie uit New York en Amsterdam.",
-                "link": "http://n-festival.com"
-            },
-            "curator": {
-                "name": "Jeroen Luitse",
-                "title": "N-Festival",
-                "image": "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAbPAAAAJGU0MzA2YjFhLTVmNjUtNGZmYi1iNGQ1LTUwY2Y2ZDQ0ZTU4Yw.jpg",
-                "link": "http://tijsluitse.com"
+        "event": {
+            "theme": "Innovation",
+            "tags": {
+                "tag": "Techniek",
+                "tag": "Mode"
             }
-        } 
+        },
+        "header": {
+            "title": "Wearable and Carryable Technology",
+            "image": ""
+        },
+        "info": {
+            "location": "La Bolleur",
+            "address": "Monsterkade 2 1089BX Amsterdam",
+            "date": "08-10-2016",
+            "start-time": "16:30",
+            "end-time": "17:30"
+        },
+        "content": {
+            "summary": "Borre Akkersdijk is oprichter van modelabel BYBORRE en bouwt voort op het concept van modulaire high-tech kleding. In 2009 studeerde hij af aan de Design Academy in Eindhoven. Hij liep stage bij Lidewij Edelkoort en won in 2012 de MINI Young Designer Award. Tijdens de conferentie SXSW vorig jaar presenteerde Borre Akkersdijk een pak met GPS-tracking, een WiFi hotspot en eenmuziekbibliotheek, in samenwerking met TU Delft, 22Tracks, Crisp en Daan Spangenberg. Op Northside 2015 presenteerde hij de BB.Suitwaarover o.a. Wired een artikel wijdde."
+        },
+        "curator": {
+            "name": "Borre Akkersdijk",
+            "image": "",
+            "link": ""
+        },
+        "recommendations": {
+            "recommendation": {
+                "title": "Bombay",
+                "location": "Oepidus Brewing",
+                "date": "08-10-2016",
+                "start-time": "19:00",
+                "end-time": "19:30",
+                "theme": "Music"
+            },
+            "recommendation": {
+                "title": "Radicale Vernieuwers",
+                "location": "Hotel de Goudfazant",
+                "date": "09-10-2016",
+                "start-time": "14:00",
+                "end-time": "15:30",
+                "theme": "Innovation"
+            },
+            "recommendation": {
+                "title": "De Tafel van 1.000",
+                "location": "Hotel de Goudfazant",
+                "date": "09-10-2016",
+                "start-time": "19:00",
+                "end-time": "00:00",
+                "theme": "Food"
+            }
+        }
+    }
 ]
