@@ -11,6 +11,7 @@ var allEvents = (function () {
 
                 if (hasStorage) {
                     localStorage.setItem('allEventsData', JSON.stringify(data));
+                    console.log(data);
                 }
                 else{
                     // wat als local storage niet is ondersteund?
