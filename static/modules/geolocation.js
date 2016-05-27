@@ -87,6 +87,7 @@ var geolocation = (function(){
 
         var marker = new google.maps.Marker({
             position: userPosition,
+            animation: google.maps.Animation.DROP,
             map: map,
             title: 'First Infowindow!'
         });
