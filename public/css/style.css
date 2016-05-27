@@ -1,0 +1,194 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Lato", sans-serif;
+}
+
+/*HOMEPAGE*/
+.homePageHeading {
+	display: none;
+}
+.topHeader {
+	background: black;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1em;
+	position: fixed;
+	width: 100vw;
+	height: 60px;
+}
+.topHeader svg {
+	fill: white;
+}
+
+.locationMap {
+	width: 100vw;
+	height: 10em;
+	background-color: grey;
+}
+.buttonHeart {
+	border: none;
+	background-color: unset;
+	cursor: pointer;
+}
+
+/*FILTER*/
+
+.filterBar {
+	background-color: black;
+	padding: 1em;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	color: white;
+}
+.filterDay {
+	display: flex;
+	align-items: center;
+
+}
+.filterBox {
+	border: 1px solid white;
+	margin-left: 1em;
+	position: relative;
+}
+.filterDay > p {
+	text-transform: uppercase;
+}
+#selectDay {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	border: none;
+	padding: 1em 3em 1em 1em;
+	background-color: black;
+	color: white;
+	font-size: 1em;
+	height: 3em;
+}
+.optionsDays {
+	font-size: 1em;
+}
+.dropdownIcon {
+	fill: white;
+	position: absolute;
+	pointer-events: none;
+	right: .5em;
+	top: 1.4em;
+}
+.filterButton {
+	border: none;
+	padding: 1em;
+	background-color: white;
+	cursor: pointer;
+	font-weight: 700;
+	font-size: 1em;
+	height: 3em;
+}
+
+/*EVENTS*/
+.discoverEvents {
+	padding: 1em;
+}
+.music {
+	border-left: 1em solid #e95454;
+}
+.food {
+	border-left: 1em solid #87c278;
+}
+.innovation {
+	border-left: 1em solid #2e4d9c;
+}
+.discoverEvent {
+	background-color: #EFEFEF;
+	padding: .5em;
+	margin-bottom: 1em;
+}
+.eventTitle {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.eventTitle h2 {
+	font-size: 1.3em;
+}
+.buttonAddToRoute {
+	border: none;
+	background: unset;
+	cursor: pointer;
+}
+.eventHeartIcon {
+	padding: .2em;
+	stroke: black;
+	fill: none;
+}
+.eventAdded {
+	fill: black;
+	stroke: black;
+}
+.eventLocation {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	color: #808080;
+	margin-top: .5em;
+}
+.eventTimeDistance {
+	display: flex;
+	justify-content: space-between;
+	color: #808080;
+	margin-top: .5em;
+}
+.eventTime {
+	display: flex;
+	align-items: center;
+}
+.eventDistance {
+	display: flex;
+	align-items: center;
+}
+.eventIcon {
+	margin-right: .5em;
+	fill: #808080;
+}
+
+/*INFO*/
+
+.informationSection {
+	padding: 1em;
+	line-height: 1.4em;
+}
+.informationSection h1 {
+	font-size: 1.4em;
+	
+}
+.informationSection p {
+	margin-bottom: 1em;
+}
+.informationSection header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1em;
+	border-top: 1px solid grey;
+	padding: 1em 0;
+}
+.dropdownIconRotate {
+	transform: rotate(180deg);
+}
+.minimized {
+	font-size: 0;
+}
+
+
+/*SECTIONS*/
+
+.toggleSection {
+    padding-top: 60px;
+}
+
+.show {
+	display: inline-block !important;
+}
