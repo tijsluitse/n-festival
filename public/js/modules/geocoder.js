@@ -22,7 +22,6 @@ var geocoder = (function(){
 				title: location,
 				address: address
 		    });		   	
-		    console.log("hoi");
 		    geolocation.locations(mapLocations);	 
 		};
 
