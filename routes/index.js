@@ -18,18 +18,16 @@ fs.readFile('./data/data.json', 'utf8', function (err, data) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('home');
+  	res.render('home');
 });
 
 router.get('/showevents', function(req, res, next) {
-    
-    var data = {obj: obj};
-    
+  var data = {obj: obj};
   res.render('showEvents', data);
 });
 
 router.get('/timetable', function(req, res, next) {
-  res.render('timeTable');
+  	res.render('timeTable');
 });
 
 module.exports = router;
