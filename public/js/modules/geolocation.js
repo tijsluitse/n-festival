@@ -13,7 +13,7 @@ var geolocation = (function() {
     };
     
     var map = new google.maps.Map(document.getElementById("locationMap"), mapOptions);
-    var styledMapType = new google.maps.StyledMapType(styles, { name: 'Styled' });
+    var styledMapType = new google.maps.StyledMapType(styles, {name: 'Styled'});
     map.mapTypes.set('Styled', styledMapType);
 
     var getUserPosition = function() {
@@ -29,9 +29,7 @@ var geolocation = (function() {
             var userCoordinates = [userLatitude, userLongitude];            
             localStorage.setItem('userCoordinates', JSON.stringify(userCoordinates));
             var userLocation = JSON.parse(localStorage.getItem('userCoordinates'));
-            
             map.panTo({lat: userLatitude, lng: userLongitude});
-
         };
 
         function error() {
@@ -54,6 +52,17 @@ var geolocation = (function() {
             title: 'First Infowindow!'
         });
 
+        var contentString = 
+            '<div id="content">'+            
+            '<p>' +
+            location.address +
+            '</p>' + 
+            '</div>';
+
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
         marker.setMap(map);
 
         if (!navigator.geolocation){
@@ -65,11 +74,8 @@ var geolocation = (function() {
             var userLatitude  = position.coords.latitude;
             var userLongitude = position.coords.longitude;
             var userCoordinates = [userLatitude, userLongitude];
-
             localStorage.setItem('userCoordinates', JSON.stringify(userCoordinates));
-            
             var userLocation = JSON.parse(localStorage.getItem('userCoordinates'));
-            
             marker.setPosition(new google.maps.LatLng(userLatitude, userLongitude));
         };
 
@@ -95,32 +101,6 @@ var geolocation = (function() {
         var userLocation = JSON.parse(localStorage.getItem('userCoordinates'));
         var userPosition = new google.maps.LatLng(userLocation[0], userLocation[1]);
 
-        var contentString = 
-            '<div id="content">'+
-            '<div id="siteNotice">'+
-            '</div>'+
-            '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
-            '<div id="bodyContent">'+
-            '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-            'sandstone rock formation in the southern part of the '+
-            'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
-            'south west of the nearest large town, Alice Springs; 450&#160;km '+
-            '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
-            'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-            'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-            'Aboriginal people of the area. It has many springs, waterholes, '+
-            'rock caves and ancient paintings. Uluru is listed as a World '+
-            'Heritage Site.</p>'+
-            '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-            'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-            '(last visited June 22, 2009).</p>'+
-            '</div>'+
-            '</div>';
-
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString
-        });
-
     };
 
     var locations = function(locationMarkers){        
@@ -140,7 +120,14 @@ var geolocation = (function() {
                 '</h1>' +
                 '<p>' +
                 location.address +
-                '</p>' + 
+                '</p>' +
+                '<a href="#">' + 
+                'Route beschrijving' + 
+                '</a>' +
+                '   |   ' + 
+                '<a href="#">' + 
+                'Bekijk evenementen' + 
+                '</a>' +
                 '</div>';
 
             var infowindow = new google.maps.InfoWindow({
