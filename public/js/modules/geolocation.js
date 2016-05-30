@@ -136,6 +136,7 @@ var geolocation = (function() {
 
             marker.addListener('click', function() {
                 infowindow.open(map, marker);
+                map.setCenter(marker.getPosition());
             });
 
             marker.setMap(map);

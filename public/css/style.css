@@ -238,6 +238,12 @@
 	font-size: 0;
 }
 
+/*CLASSES*/
+
+.hide {
+	display: none;
+}
+
 /*SECTIONS*/
 
 .show {
