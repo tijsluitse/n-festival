@@ -10,6 +10,7 @@ var allEvents = (function () {
                 var data = JSON.parse(xhr.responseText);
 
                 geocoder.getCoordinates(data);
+                geolocation.getUserPosition();
 
                 if (hasStorage) {
                     localStorage.setItem('allEventsData', JSON.stringify(data));
