@@ -7,7 +7,7 @@ fs.readFile('./data/data.json', 'utf8', function (err, data) {
   if (err) throw err;
   obj = JSON.parse(data);
     
-    console.log(obj.curators[0].curator.name);
+    console.log(obj[0].curators[0].name);
 });
 
   var names = [
