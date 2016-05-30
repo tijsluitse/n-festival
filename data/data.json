@@ -2,10 +2,14 @@
     {
         "event": {
             "theme": "Innovation",
-            "tags": {
-                "tag": "Techniek",
-                "tag": "Mode"
-            }
+            "tags": [
+                {
+                    "tag": "Techniek"
+                },
+                {
+                    "tag": "Mode"
+                }
+            ]
         },
         "header": {
             "title": "Wearable and Carryable Technology",
@@ -21,15 +25,15 @@
         "content": {
             "summary": "Borre Akkersdijk is oprichter van modelabel BYBORRE en bouwt voort op het concept van modulaire high-tech kleding. In 2009 studeerde hij af aan de Design Academy in Eindhoven. Hij liep stage bij Lidewij Edelkoort en won in 2012 de MINI Young Designer Award. Tijdens de conferentie SXSW vorig jaar presenteerde Borre Akkersdijk een pak met GPS-tracking, een WiFi hotspot en eenmuziekbibliotheek, in samenwerking met TU Delft, 22Tracks, Crisp en Daan Spangenberg. Op Northside 2015 presenteerde hij de BB.Suitwaarover o.a. Wired een artikel wijdde."
         },
-        "curators": {
-            "curator": {
+        "curators": [
+            {
                 "name": "Borre Akkersdijk",
                 "image": "",
                 "link": ""
             }
-        },
-        "recommendations": {
-            "recommendation": {
+        ],
+        "recommendations": [
+            {
                 "title": "Bombay",
                 "location": "Oepidus Brewing",
                 "date": "08-10-2016",
@@ -37,7 +41,7 @@
                 "end-time": "19:30",
                 "theme": "Music"
             },
-            "recommendation": {
+            {
                 "title": "Radicale Vernieuwers",
                 "location": "Hotel de Goudfazant",
                 "date": "09-10-2016",
@@ -45,7 +49,7 @@
                 "end-time": "15:30",
                 "theme": "Innovation"
             },
-            "recommendation": {
+            {
                 "title": "De Tafel van 1.000",
                 "location": "Hotel de Goudfazant",
                 "date": "09-10-2016",
@@ -53,15 +57,19 @@
                 "end-time": "00:00",
                 "theme": "Food"
             }
-        }
+        ]
     },
     {
         "event": {
             "theme": "Innovation",
-            "tags": {
-                "tag": "Ondernemen",
-                "tag": "Young-talent"
-            }
+            "tags": [
+                {
+                    "tag": "Ondernemen"
+                },
+                {
+                    "tag": "Young-talent"
+                }
+            ]
         },
         "header": {
             "title": "Radicale Vernieuwers",
@@ -77,20 +85,20 @@
         "content": {
             "summary": "Naast het verkennen van nieuwe thema’s en het ontwikkelen van nieuwe methodes en interventies, adviseert Chris Sigaloff overheden en organisaties over innovatie strategieën, sociale innovatie en beleid. Ook geeft ze presentaties over deze onderwerpen - in Nederland en in het buitenland. Nora van der Linden is binnen Kennisland projectleider van Radicale vernieuwers en de Social Innovation Safari, waarbij de grootste uitdaging is om nieuwe aanpakken te ontwikkelen voor complexe maatschappelijk vraagstukken."
         },
-        "curators": {
-            "curator": {
+        "curators": [
+            {
                 "name": "Chris Sigaloff",
                 "image": "",
                 "link": ""
             },
-            "curator": {
+            {
                 "name": "Nora van der Linden",
                 "image": "",
                 "link": ""
             }
-        },
-        "recommendations": {
-            "recommendation": {
+        ],
+        "recommendations": [
+            {
                 "title": "De Toekomst van Media",
                 "location": "Beamsystems",
                 "date": "08-10-2016",
@@ -98,7 +106,7 @@
                 "end-time": "15:30",
                 "theme": "Innovation"
             },
-            "recommendation": {
+            {
                 "title": "Wijnfestival",
                 "location": "Hotel de Goudfazant",
                 "date": "08-10-2016",
@@ -106,7 +114,7 @@
                 "end-time": "17:00",
                 "theme": "Food"
             },
-            "recommendation": {
+            {
                 "title": "Bird on the Wire",
                 "location": "Chocolatemakers",
                 "date": "09-10-2016",
@@ -114,14 +122,16 @@
                 "end-time": "19:30",
                 "theme": "Music"
             }
-        }
+        ]
     },
     {
         "event": {
             "theme": "Music",
-            "tags": {
-                "tag": "Moonpop"
-            }
+            "tags": [
+                {
+                    "tag": "Moonpop"
+                }
+            ]
         },
         "header": {
             "title": "BLUE CRIME & Friends",
@@ -137,15 +147,15 @@
         "content": {
             "summary": "Red Light Radio put together a dynamic and harmonious mix of top three bands. BLUE CRIME: This experimental four-piece monster was born in an Amsterdam bunker and is ready to take the world by storm. Playing mysterious moon pop, its show is a trip from the disarming to the wrenching. Prepare to be swept off your feet by dreamy yet sinister songs – or by a mosh pit."
         },
-        "curators": {
-            "curator": {
+        "curators": [
+            {
                 "name": "Red Light Radio",
                 "image": "",
                 "link": ""
             }
-        },
-        "recommendations": {
-            "recommendation": {
+        ],
+        "recommendations": [
+            {
                 "title": "Bombay",
                 "location": "Oepidus Brewing",
                 "date": "08-10-2016",
@@ -153,7 +163,7 @@
                 "end-time": "19:30",
                 "theme": "Music"
             },
-            "recommendation": {
+           {
                 "title": "Taste Talks",
                 "location": "Hotel de Goudfazant",
                 "date": "08-10-2016",
@@ -161,7 +171,7 @@
                 "end-time": "15:00",
                 "theme": "Food"
             },
-            "recommendation": {
+            {
                 "title": "Machine Learning",
                 "location": "A'dam Toren",
                 "date": "09-10-2016",
@@ -169,6 +179,6 @@
                 "end-time": "18:00",
                 "theme": "Innovation"
             }
-        }
+        ]
     }
 ]
