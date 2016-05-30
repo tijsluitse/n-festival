@@ -22,16 +22,70 @@
 .topHeader svg {
 	fill: white;
 }
+.subHeader {
+	height: 60px;
+}
 
-.locationMap {
+#locationMap {
 	width: 100vw;
-	height: 10em;
+	height: 30vh;
 	background-color: grey;
 }
-.buttonHeart {
+.headerButton {
 	border: none;
 	background-color: unset;
 	cursor: pointer;
+}
+
+/*MENU*/
+
+#menu {
+	z-index: 10;
+	padding: 1em;
+	animation: menuSlide 500ms cubic-bezier(0.712, 0.0376, 0.392, 1);
+}
+@keyframes menuSlide {
+	0% {
+		transform: translateY(-100vh);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+#menu li {
+	list-style: none;
+	line-height: 3em;
+}
+#menu a {
+	text-decoration: none;
+	color: black;
+	text-transform: uppercase;
+	font-weight: 800;
+	padding: 1em;
+}
+.displayNone {
+	display: none;
+}
+.menuSlide {
+	transform: translateX(0);
+}
+
+/*MENU ICON TO CLOSE ANIMATION*/
+.bar {
+	transform: rotate(0);
+	transition: all 300ms ease-in-out;
+}
+.animateBar1 {
+	transform-origin: center center;
+	transform: translate(4px,23px) rotate(45deg);
+}
+.animateBar2 {
+	transition: 300ms ease-in-out;
+	display: none;	
+}
+.animateBar3 {
+	transform-origin: center center;
+	transform: translate(5px, -18px) rotate(-45deg);
 }
 
 /*FILTER*/
@@ -185,9 +239,7 @@
 
 /*SECTIONS*/
 
-.toggleSection {
-    padding-top: 60px;
-}
+
 
 .show {
 	display: inline-block !important;
