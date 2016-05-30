@@ -10,12 +10,6 @@ fs.readFile('./data/data.json', 'utf8', function (err, data) {
     console.log(obj[0].curators[0].name);
 });
 
-  var names = [
-        {name: 'Lisa'},
-        {name: 'Linda'},
-        {name: 'Tijs'}
-    ];
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
   	res.render('home');

@@ -14,5 +14,5 @@ var templating = (function () {
     return {
         init: init
     }
-    
+
 })();
