@@ -13,7 +13,7 @@
         },
         "header": {
             "title": "Wearable and Carryable Technology",
-            "image": ""
+            "image": "/img/event1_main.jpg"
         },
         "info": {
             "location": "La Bolleur",
@@ -29,7 +29,7 @@
         },
         "curators": {
             "name": "Borre Akkersdijk",
-            "image": "",
+            "image": "/img/event1_curator.jpg",
             "link": ""
         },
         "recommendations": [
@@ -73,7 +73,7 @@
         },
         "header": {
             "title": "Radicale Vernieuwers",
-            "image": ""
+            "image": "/img/event2_main.jpg"
         },
         "info": {
             "location": "Hotel de Goudfazant",
@@ -90,12 +90,12 @@
         "curators": [
             {
                 "name": "Chris Sigaloff",
-                "image": "",
+                "image": "/img/event2_curator1.jpg",
                 "link": ""
             },
             {
                 "name": "Nora van der Linden",
-                "image": "",
+                "image": "/img/event2_curator2.jpg",
                 "link": ""
             }
         ],
@@ -137,7 +137,7 @@
         },
         "header": {
             "title": "BLUE CRIME & Friends",
-            "image": ""
+            "image": "/img/event3_main.jpg"
         },
         "info": {
             "location": "Oepidus Brewing",
