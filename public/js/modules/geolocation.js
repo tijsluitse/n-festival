@@ -7,8 +7,10 @@ var geolocation = (function() {
             mapTypeIds: ['Styled'],
         },
         zoom: 14,
-        disableDefaultUI: true,
-        scrollWheel: false, 
+        scrollwheel: false,
+        navigationControl: false,
+        mapTypeControl: false,
+        scaleControl: false,
         mapTypeId: 'Styled'
     };
     
