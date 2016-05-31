@@ -8,11 +8,10 @@ var templating = (function () {
         else{
             console.log("There is no localStorage detected.");
         }
-
     }
 
     return {
         init: init
     }
-
+    
 })();
