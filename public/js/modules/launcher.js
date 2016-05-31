@@ -3,12 +3,9 @@
 var launcher = (function() {
 
 	var init = function() {
-		ux.menuSlide();
         featureDetect.storage();
-        geolocation.user();
-        geolocation.map();
-		sections.init(); // Routes.js
-
+        geolocation.currentPositionMarker();
+		ux.menuSlide();
 	}
 
 	return {

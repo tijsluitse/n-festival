@@ -50,7 +50,7 @@ var app = express();
 var routes = require('./routes/index');
 
 // use files in public map -> you can use /css/style.css as links
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
