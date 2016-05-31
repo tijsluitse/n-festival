@@ -21,11 +21,11 @@ var ux = (function () {
             e.preventDefault();
         };
         
-        if(list.addEventListener){
-            list.addEventListener('click', popupDetail, false);
+        if(detailTarget.addEventListener){
+            detailTarget.addEventListener('click', popupDetail, false);
         }
         else{
-            list.attachEvent("onclick", popupDetail);
+            detailTarget.attachEvent("onclick", popupDetail);
         }
     };
     
