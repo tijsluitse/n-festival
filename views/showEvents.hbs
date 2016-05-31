@@ -1,9 +1,11 @@
 <section id="showEvents" class="toggleSection">
+   
     <h1>Browse all events</h1> 
-<!--
-    {{#data}}
-    <p>Hi {{curator.name}}</p>
-    {{/data}}
--->
+
+   {{#obj}}
+   {{#curators}}
+   <p>Hi {{name}}</p>
+   {{/curators}}
+   {{/obj}}
 
 </section>
