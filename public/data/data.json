@@ -1,5 +1,6 @@
 [
     {
+        "id": "abcd1",
         "event": {
             "theme": "Innovation",
             "tags": [
@@ -17,7 +18,9 @@
         },
         "info": {
             "location": "La Bolleur",
-            "address": "Monsterkade 2 1089BX Amsterdam",
+            "address": "Korte Papaverweg 15 1032KA Amsterdam",
+            "lattitude": null,
+            "longtitude": null,
             "date": "08-10-2016",
             "start-time": "16:30",
             "end-time": "17:30"
@@ -25,13 +28,11 @@
         "content": {
             "summary": "Borre Akkersdijk is oprichter van modelabel BYBORRE en bouwt voort op het concept van modulaire high-tech kleding. In 2009 studeerde hij af aan de Design Academy in Eindhoven. Hij liep stage bij Lidewij Edelkoort en won in 2012 de MINI Young Designer Award. Tijdens de conferentie SXSW vorig jaar presenteerde Borre Akkersdijk een pak met GPS-tracking, een WiFi hotspot en eenmuziekbibliotheek, in samenwerking met TU Delft, 22Tracks, Crisp en Daan Spangenberg. Op Northside 2015 presenteerde hij de BB.Suitwaarover o.a. Wired een artikel wijdde."
         },
-        "curators": [
-            {
-                "name": "Borre Akkersdijk",
-                "image": "",
-                "link": ""
-            }
-        ],
+        "curators": {
+            "name": "Borre Akkersdijk",
+            "image": "",
+            "link": ""
+        },
         "recommendations": [
             {
                 "title": "Bombay",
@@ -60,6 +61,7 @@
         ]
     },
     {
+       "id": "abcd2",
         "event": {
             "theme": "Innovation",
             "tags": [
@@ -77,7 +79,9 @@
         },
         "info": {
             "location": "Hotel de Goudfazant",
-            "address": "Aambeeldstraat 10 1089BX Amsterdam",
+            "lattitude": null,
+            "longtitude": null,
+            "address": "Aambeeldstraat 10H 1021KB Amsterdam",
             "date": "09-10-2016",
             "start-time": "14:00",
             "end-time": "15:30"
@@ -125,6 +129,7 @@
         ]
     },
     {
+        "id": "abcd3",
         "event": {
             "theme": "Music",
             "tags": [
@@ -139,7 +144,9 @@
         },
         "info": {
             "location": "Oepidus Brewing",
-            "address": "Noordhouderskade 5 1081BW Amsterdam",
+            "address": "Gedempt Hamerkanaal 85 1021KP Amsterdam",
+            "lattitude": null,
+            "longtitude": null,
             "date": "09-10-2016",
             "start-time": "14:00",
             "end-time": "17:30"
@@ -147,13 +154,11 @@
         "content": {
             "summary": "Red Light Radio put together a dynamic and harmonious mix of top three bands. BLUE CRIME: This experimental four-piece monster was born in an Amsterdam bunker and is ready to take the world by storm. Playing mysterious moon pop, its show is a trip from the disarming to the wrenching. Prepare to be swept off your feet by dreamy yet sinister songs – or by a mosh pit."
         },
-        "curators": [
-            {
+        "curators": {
                 "name": "Red Light Radio",
                 "image": "",
                 "link": ""
-            }
-        ],
+        },
         "recommendations": [
             {
                 "title": "Bombay",
@@ -163,7 +168,7 @@
                 "end-time": "19:30",
                 "theme": "Music"
             },
-           {
+            {
                 "title": "Taste Talks",
                 "location": "Hotel de Goudfazant",
                 "date": "08-10-2016",
