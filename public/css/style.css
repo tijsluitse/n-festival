@@ -247,7 +247,32 @@
 }
 
 /*FILTER*/
+.filterToRight {
+	position: fixed;
+	top: 0;
+	transform: translateX(100vw);
+	z-index: 15;
+	background-color: white;
+	width: 90%;
+	height: 100vh;
+	
+}
+.filterToggle {
+	transform: translateX(10vw);
+	box-shadow: 0 0 0 100vmax rgba(0,0,0,.8);
+}
+
 .filter {
+	padding: 1em;
+	transition: all 500ms ease-in-out;
+}
+.filterHeader {
+	display: flex;
+	justify-content: space-between;
+}
+.filterCloseButton {
+	background-color: unset;
+	border: none;
 	padding: 1em;
 }
 

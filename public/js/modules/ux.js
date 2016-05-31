@@ -16,10 +16,14 @@ var ux = (function () {
 
     var filterSlide = function() {
         var filter = document.querySelector('.filter');
-        filter.classList.add('displayNone');
+        filter.classList.add('filterToRight');
 
         var filterButton = document.querySelector('.filterButton').onclick = function() {
-            filter.classList.toggle('displayNone');
+            filter.classList.add('filterToggle');
+        }
+
+        var filterCloseButton = document.querySelector('.filterCloseButton').onclick = function() {
+            filter.classList.remove('filterToggle');
         }
 
     }
