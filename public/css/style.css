@@ -18,6 +18,7 @@
 	position: fixed;
 	width: 100vw;
 	height: 60px;
+	z-index: 10;
 }
 .topHeader svg {
 	fill: white;
@@ -29,8 +30,9 @@
 
 #locationMap {
 	width: 100vw;
-	height: 30vh;
+	height: 50vh;
 	background-color: grey;
+	z-index: 1;
 }
 .headerButton {
 	border: none;
@@ -44,6 +46,11 @@
 	z-index: 10;
 	padding: 1em;
 	animation: menuSlide 500ms cubic-bezier(0.712, 0.0376, 0.392, 1);
+	position: fixed;
+	background-color: white;
+	z-index: 5;
+	width: 100vw;
+	box-shadow: 0 0 0 100vmax rgba(0,0,0,.8);
 }
 @keyframes menuSlide {
 	0% {
@@ -71,7 +78,7 @@
 	transform: translateX(0);
 }
 
-/*MENU ICON TO CLOSE ANIMATION*/
+/*MENU ICON CLOSE ANIMATION*/
 .bar {
 	transform: rotate(0);
 	transition: all 300ms ease-in-out;

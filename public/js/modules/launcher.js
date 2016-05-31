@@ -3,9 +3,10 @@
 var launcher = (function() {
 
 	var init = function() {
+		ux.menuSlide();
         featureDetect.storage();
         geolocation.currentPositionMarker();
-		ux.menuSlide();
+		
 	}
 
 	return {
