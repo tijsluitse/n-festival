@@ -2,8 +2,6 @@ var geocoder = (function(){
 
 	var getCoordinates = function(data){
 
-		console.log("hoi");
-
 		var eventLocations = [];
 		var mapLocations = [];
 
