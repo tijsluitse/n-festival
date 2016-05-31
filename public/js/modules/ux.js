@@ -36,10 +36,10 @@ var ux = (function () {
                         if (xhr.readyState == 4 && xhr.status == 200) {
                             var response = xhr.responseText;
 
-                            var dialog = document.getElementById('dialog');
-                            dialog.innerHTML = response;
+                            var detailInfo = document.getElementById('detailInfo');
+                            detailInfo.innerHTML = response;
 
-                            window.location = '#dialog';
+                            window.location = '#showDetail';
                         }
                     };
                     xhr.open("GET", url, true);
