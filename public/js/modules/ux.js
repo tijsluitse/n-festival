@@ -14,7 +14,23 @@ var ux = (function () {
         }
     };
     
+    var detailPage = function(){
+        var detailTarget = document.querySelector(".discoverEvents");
+        
+        function popupDetail (e){
+            e.preventDefault();
+        };
+        
+        if(list.addEventListener){
+            list.addEventListener('click', popupDetail, false);
+        }
+        else{
+            list.attachEvent("onclick", popupDetail);
+        }
+    };
+    
     return {
-        menuSlide: menuSlide
+        menuSlide: menuSlide,
+        detailPage: detailPage
     }
 })();

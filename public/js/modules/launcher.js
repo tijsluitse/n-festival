@@ -6,6 +6,7 @@ var launcher = (function() {
         featureDetect.storage();
         geolocation.currentPositionMarker();
 		ux.menuSlide();
+        ux.detailPage();
 	}
 
 	return {
