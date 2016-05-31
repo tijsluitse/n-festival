@@ -13,8 +13,19 @@ var ux = (function () {
             document.getElementById("menubar3").classList.toggle("animateBar3");
         }
     };
+
+    var filterSlide = function() {
+        var filter = document.querySelector('.filter');
+        filter.classList.add('displayNone');
+
+        var filterButton = document.querySelector('.filterButton').onclick = function() {
+            filter.classList.toggle('displayNone');
+        }
+
+    }
     
     return {
-        menuSlide: menuSlide
+        menuSlide: menuSlide,
+        filterSlide: filterSlide
     }
 })();
