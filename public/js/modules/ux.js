@@ -4,8 +4,8 @@ var ux = (function () {
 
         var menu = document.getElementById('menu');
         menu.classList.add('displayNone');
-        
-        var menuButton = document.getElementById('menuButton').onclick = function() {
+
+        var menuButton = document.getElementById('menuButton').onclick = function () {
             menu.classList.toggle('displayNone');
 
             document.getElementById("menubar1").classList.toggle("animateBar1");
@@ -13,22 +13,30 @@ var ux = (function () {
             document.getElementById("menubar3").classList.toggle("animateBar3");
         }
     };
-    
-    var detailPage = function(){
+
+    var detailPage = function () {
         var detailTarget = document.querySelector(".discoverEvents");
-        
-        function popupDetail (e){
+
+        function popupDetail(e) {
+
+            if (e.target.nodeName === 'A') {
+                console.log(e.target.href);
+            } else {
+                console.log(e.target.offsetParent.firstElementChild.href);
+            }
+            
+            console.log(e.target);
+            
             e.preventDefault();
         };
-        
-        if(detailTarget.addEventListener){
+
+        if (detailTarget.addEventListener) {
             detailTarget.addEventListener('click', popupDetail, false);
-        }
-        else{
+        } else {
             detailTarget.attachEvent("onclick", popupDetail);
         }
     };
-    
+
     return {
         menuSlide: menuSlide,
         detailPage: detailPage

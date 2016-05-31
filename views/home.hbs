@@ -23,8 +23,9 @@
 
     <ul class="discoverEvents">
         {{#obj}}
-        <a href="/{{id}}" class="eventDetailLink">
+        
         <li class="discoverEvent {{event.theme}}">
+           <a href="/{{id}}" class="eventDetailLink">
             <div class="eventTitle">
                 <h2>{{header.title}}</h2>
                 <button class="buttonAddToRoute">
@@ -68,8 +69,9 @@
                     <p>??</p>
                 </div>
             </div>
+            </a>
         </li>
-        </a>
+        
         {{/obj}}
     </ul>
 </section>
