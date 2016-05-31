@@ -187,6 +187,12 @@
 	border: none;
 	background: unset;
 	cursor: pointer;
+	position: absolute;
+	top: .5em;
+	right: .5em;
+}
+.eventObj{
+	position: relative;
 }
 .eventHeartIcon {
 	padding: .2em;

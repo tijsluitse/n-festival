@@ -1,6 +1,6 @@
 var ux = (function () {
 
-    var menuSlide = function () {
+    var menuSlide = function() {
 
         var menu = document.getElementById('menu');
         menu.classList.add('displayNone');
@@ -8,9 +8,9 @@ var ux = (function () {
         var menuButton = document.getElementById('menuButton').onclick = function () {
             menu.classList.toggle('displayNone');
 
-            document.getElementById("menubar1").classList.toggle("animateBar1");
-            document.getElementById("menubar2").classList.toggle("animateBar2");
-            document.getElementById("menubar3").classList.toggle("animateBar3");
+            document.getElementById('menubar1').classList.toggle('animateBar1');
+            document.getElementById('menubar2').classList.toggle('animateBar2');
+            document.getElementById('menubar3').classList.toggle('animateBar3');
         }
     };
 
@@ -27,18 +27,27 @@ var ux = (function () {
             
             console.log(e.target);
             
+
             e.preventDefault();
         };
 
         if (detailTarget.addEventListener) {
             detailTarget.addEventListener('click', popupDetail, false);
-        } else {
-            detailTarget.attachEvent("onclick", popupDetail);
+        }
+        else{
+            detailTarget.attachEvent('onclick', popupDetail);
+        }
+    };
+
+    var myRoute = function() {
+        var myRouteButton = document.querySelector('.buttonAddToRoute').onclick = function() {
+            var heart = document.querySelector('.eventHeartIcon').classList.toggle('eventAdded');
         }
     };
 
     return {
         menuSlide: menuSlide,
-        detailPage: detailPage
+        detailPage: detailPage,
+        myRoute: myRoute
     }
 })();
