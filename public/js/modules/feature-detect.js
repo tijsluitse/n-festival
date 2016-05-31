@@ -19,7 +19,7 @@ var featureDetect = (function () {
             // wat als local storage niet is ondersteund? server?
         }
         
-         allEvents.getData(hasStorage);
+        allEvents.getData(hasStorage);
     };
 
     return {
