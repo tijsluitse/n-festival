@@ -4,6 +4,7 @@ var router = express.Router();
 // GET data (kan dit in een andere file en data meesturen templates?)
 var fs = require('fs');
 var obj;
+
 fs.readFile('./public/data/data.json', 'utf8', function (err, data) {
     if (err) throw err;
     obj = JSON.parse(data);

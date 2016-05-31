@@ -27,13 +27,17 @@ var geocoder = (function(){
 				address: address
 		    });		
 
-		    localStorage.setItem('mapLocations', JSON.stringify(mapLocations));  	
-		    geolocation.locations(mapLocations);	 
+		    if (mapLocations.length == data.length) {
+		    	localStorage.setItem('mapLocations', JSON.stringify(mapLocations));  	
+		    	geolocation.locations(mapLocations);
+		    	distance.userToLocation(data);
+		    }; 		  
 		};
 
-		function getLatitudeLongitude(callback, address, location, a) {		  
+		function getLatitudeLongitude(callback, address, location, a) {		  		
 		    address = address || 'Buiksloterweg 47B1, 1031CE Amsterdam'; // Default address		   
 		    geocoder = new google.maps.Geocoder();		    
+		    
 		    if (geocoder) {
 		        geocoder.geocode({
 		            'address': address
