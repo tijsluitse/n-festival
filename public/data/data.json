@@ -1,5 +1,6 @@
 [
     {
+        "id": "abcd1",
         "event": {
             "theme": "Innovation",
             "tags": [
@@ -60,6 +61,7 @@
         ]
     },
     {
+       "id": "abcd2",
         "event": {
             "theme": "Innovation",
             "tags": [
@@ -127,6 +129,7 @@
         ]
     },
     {
+        "id": "abcd3",
         "event": {
             "theme": "Music",
             "tags": [
