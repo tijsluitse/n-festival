@@ -40,7 +40,7 @@ var ux = (function () {
     };
 
     return {
-        noJsReset; noJsReset,
+        noJsReset: noJsReset,
         launcher: launcher,
         menuSlide: menuSlide,
         fullScreenMap: fullScreenMap
