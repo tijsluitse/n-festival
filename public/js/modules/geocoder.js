@@ -28,14 +28,15 @@ var geocoder = (function(){
 		    });		
 
 		    if (mapLocations.length == data.length) {
-		    	localStorage.setItem('mapLocations', JSON.stringify(mapLocations));  	
+		    	localStorage.setItem('mapLocations', JSON.stringify(mapLocations)); 
+		    	localStorage.setItem('allEventsData', JSON.stringify(data)); 	
 		    	geolocation.locations(mapLocations);
 		    	distance.userToLocation(data);
 		    }; 		  
 		};
 
 		function getLatitudeLongitude(callback, address, location, a) {		  		
-		    address = address || 'Buiksloterweg 47B1, 1031CE Amsterdam'; // Default address		   
+		    address = address || 'Buiksloterweg 47B1, 1031CE Amsterdam';
 		    geocoder = new google.maps.Geocoder();		    
 		    
 		    if (geocoder) {

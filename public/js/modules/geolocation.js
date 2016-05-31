@@ -70,7 +70,7 @@ var geolocation = (function() {
         if (!navigator.geolocation){
             alert('Geolocation is not supported by your browser');
             return;
-        }
+        }        
 
         function success(position) {
             var userLatitude  = position.coords.latitude;
@@ -79,6 +79,7 @@ var geolocation = (function() {
             localStorage.setItem('userCoordinates', JSON.stringify(userCoordinates));
             var userLocation = JSON.parse(localStorage.getItem('userCoordinates'));
             marker.setPosition(new google.maps.LatLng(userLatitude, userLongitude));
+            // distance.userToLocation();
         };
 
         function error() {
