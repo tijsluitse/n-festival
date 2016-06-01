@@ -7,6 +7,7 @@ var ux = (function () {
         ux.fullScreenMap();
         ux.detailPage();
         ux.myRoute();
+        ux.filterSlide();
 
     };
 
@@ -29,6 +30,20 @@ var ux = (function () {
         }
 
     };
+
+    var filterSlide = function() {
+        var filter = document.querySelector('.filter');
+        filter.classList.add('filterToRight');
+
+        var filterButton = document.querySelector('.filterButton').onclick = function() {
+            filter.classList.add('filterToggle');
+        }
+
+        var filterCloseButton = document.querySelector('.filterCloseButton').onclick = function() {
+            filter.classList.remove('filterToggle');
+        }
+
+    }
     
     var fullScreenMap = function() {
 
@@ -92,11 +107,14 @@ var ux = (function () {
     };
         
     return {
+
         launcher: launcher,
         noJsReset: noJsReset,
         menuSlide: menuSlide,
         fullScreenMap: fullScreenMap,
         detailPage: detailPage,
-        myRoute: myRoute
+        myRoute: myRoute,
+        filterSlide: filterSlide
+
     }
 })();

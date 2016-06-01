@@ -261,6 +261,87 @@ li svg{
 	font-size: 0;
 }
 
+/*FILTER*/
+.filterToRight {
+	position: fixed;
+	top: 0;
+	transform: translateX(100vw);
+	z-index: 15;
+	background-color: white;
+	width: 90%;
+	height: 100vh;
+}
+.filterToggle {
+	transform: translateX(10vw);
+	box-shadow: 0 0 0 100vmax rgba(0,0,0,.8);
+	transition: all 500ms ease-in-out;
+}
+
+.filter {
+	padding: 1em;
+	
+}
+.filterHeader {
+	display: flex;
+	justify-content: space-between;
+}
+.filterCloseButton {
+	background-color: unset;
+	border: none;
+	padding: 1em;
+}
+
+#filterForm fieldset{
+	border: none;
+	margin: 1em 0;
+}
+#filterForm label {
+	text-transform: uppercase;
+	font-size: .8em;
+	font-weight: 400;
+}
+[type="range"] {
+	width: 100%;
+}
+.output {
+	font-size: 1.5em;
+}
+.label {
+	display: flex;
+	align-items: center;
+	margin: 2em 0 1em 0;
+}
+.label label {
+	width: 5em;
+}
+.checkbox {
+	font-weight: 100;
+	font-size: 1.2em;
+	background-color: #EFEFEF;
+	margin-bottom: 1em;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-right: .5em;
+	cursor: pointer;
+}
+
+.checkbox label {
+	padding: .5em;
+	width: 100%;
+}
+.filterCategories h3 {
+	margin: 1em 0;
+}
+#filterButton {
+	border: none;
+	background-color: black;
+	color: white;
+	padding: 1em;
+	font-size: 1.3em;
+	text-transform: uppercase;
+}
+
 /*CLASSES*/
 
 .hide {
