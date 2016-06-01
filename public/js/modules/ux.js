@@ -19,10 +19,10 @@ var ux = (function () {
     var menuSlide = function () {
 
         var menu = document.getElementById('menu');
-        menu.classList.add('displayNone');
+        menu.classList.add('hide');
 
         var menuButton = document.getElementById('menuButton').onclick = function () {
-            menu.classList.toggle('displayNone');
+            menu.classList.toggle('hide');
 
             document.getElementById('menubar1').classList.toggle('animateBar1');
             document.getElementById('menubar2').classList.toggle('animateBar2');
