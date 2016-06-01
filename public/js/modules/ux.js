@@ -9,7 +9,7 @@ var ux = (function () {
     };
 
     var noJsReset = function() {
-        var locationMap = document.getElementById('locationMap');
+        var locationMap = document.getElementById('locationMap');  
         locationMap.classList.remove('hide');
     };
 
