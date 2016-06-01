@@ -1,9 +1,9 @@
 var ux = (function () {
 
-    var launcher = function() {
+    var launcher = function () {
 
-        ux.noJsReset();
         ux.menuSlide();
+        ux.noJsReset();
         ux.fullScreenMap();
         ux.detailPage();
         ux.myRoute();
@@ -11,8 +11,8 @@ var ux = (function () {
 
     };
 
-    var noJsReset = function() {
-        var locationMap = document.getElementById('locationMap');  
+    var noJsReset = function () {
+        var locationMap = document.getElementById('locationMap');
         locationMap.classList.remove('hide');
     };
 
@@ -31,21 +31,21 @@ var ux = (function () {
 
     };
 
-    var filterSlide = function() {
+    var filterSlide = function () {
         var filter = document.querySelector('.filter');
         filter.classList.add('filterToRight');
 
-        var filterButton = document.querySelector('.filterButton').onclick = function() {
+        var filterButton = document.querySelector('.filterButton').onclick = function () {
             filter.classList.add('filterToggle');
         }
 
-        var filterCloseButton = document.querySelector('.filterCloseButton').onclick = function() {
+        var filterCloseButton = document.querySelector('.filterCloseButton').onclick = function () {
             filter.classList.remove('filterToggle');
         }
 
     }
-    
-    var fullScreenMap = function() {
+
+    var fullScreenMap = function () {
 
         // var fullMap = document.getElementById('showFullMap');
         // var locationMap = document.getElementById('locationMap');
@@ -105,12 +105,11 @@ var ux = (function () {
             var heart = document.querySelector('.eventHeartIcon').classList.toggle('eventAdded');
         }
     };
-        
-    return {
 
+    return {
+        menuSlide: menuSlide,
         launcher: launcher,
         noJsReset: noJsReset,
-        menuSlide: menuSlide,
         fullScreenMap: fullScreenMap,
         detailPage: detailPage,
         myRoute: myRoute,
