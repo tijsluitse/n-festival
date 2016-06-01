@@ -1,6 +1,6 @@
 [
     {
-        "event": {
+        "event": {            
             "theme": "Innovation",
             "tags": [
                 {
@@ -16,10 +16,12 @@
             "image": "/img/event1_main.jpg"
         },
         "info": {
+            "datatype": "0",
             "location": "La Bolleur",
             "address": "Korte Papaverweg 15 1032KA Amsterdam",
             "lattitude": null,
             "longtitude": null,
+            "distance": null,
             "date": "08-10-2016",
             "start-time": "16:30",
             "end-time": "17:30"
@@ -76,9 +78,11 @@
             "image": "/img/event2_main.jpg"
         },
         "info": {
+            "datatype": "1",
             "location": "Hotel de Goudfazant",
             "lattitude": null,
             "longtitude": null,
+            "distance": null,
             "address": "Aambeeldstraat 10H 1021KB Amsterdam",
             "date": "09-10-2016",
             "start-time": "14:00",
@@ -140,10 +144,12 @@
             "image": "/img/event3_main.jpg"
         },
         "info": {
+            "datatype": "2",
             "location": "Oepidus Brewing",
             "address": "Gedempt Hamerkanaal 85 1021KP Amsterdam",
             "lattitude": null,
             "longtitude": null,
+            "distance": null,
             "date": "09-10-2016",
             "start-time": "14:00",
             "end-time": "17:30"

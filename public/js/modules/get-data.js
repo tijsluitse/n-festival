@@ -8,7 +8,7 @@ var allEvents = (function () {
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var data = JSON.parse(xhr.responseText);
-
+                
                 geocoder.getCoordinates(data);
                 geolocation.getUserPosition();
 
@@ -20,6 +20,7 @@ var allEvents = (function () {
                 }
 
                 templating.init(hasStorage);
+                
             }
         };
         xhr.open("GET", url, true);

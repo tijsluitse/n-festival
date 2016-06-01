@@ -4,6 +4,7 @@ var router = express.Router();
 // GET data (kan dit in een andere file en data meesturen templates?)
 var fs = require('fs');
 var obj;
+
 fs.readFile('./public/data/data.json', 'utf8', function (err, data) {
     if (err) throw err;
     obj = JSON.parse(data);
@@ -38,6 +39,13 @@ router.get('/timetable', function (req, res, next) {
 });
 
 router.get('/:id', function (req, res, next) {
+    
+    if (req.query.js != undefined) {
+        var js = false;
+    } else {
+        var js = 'layout';
+    }
+    
     var data = {obj: obj};
 
     function findId(data, idToLookFor) {
@@ -51,8 +59,11 @@ router.get('/:id', function (req, res, next) {
     }
 
     var item = findId(data, req.params.id);
-
-    res.render('detailEvents', item);
+    
+    res.render('detailEvents', {
+        item: item,
+        layout: js
+    });
 });
 
 module.exports = router;

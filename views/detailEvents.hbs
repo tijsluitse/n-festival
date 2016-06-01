@@ -1,7 +1,32 @@
 <section class="toggleSection">
 
-   <h1>{{header.title}}</h1>
-    <p>{{event.theme}}</p>
-    <p>{{info.location}}</p>
-    
+    <article class="detailPage">
+
+        <img src="{{item.header.image}}">
+        <h1>{{item.header.title}}</h1>
+        {{#item}}
+        {{#curators}}
+        <h2><img src="{{image}}">{{name}}</h2>
+        {{/curators}}
+        {{/item}}
+        
+        <p>{{item.info.date}}</p>
+        <p>{{item.info.location}}
+        <a href="">met link naar het adres/map? {{item.info.address}}</a></p>
+        <p>{{item.event.theme}}</p>
+        <p>Tags: 
+           {{#item}}
+           {{#event}}
+           {{#tags}}
+           {{tag}}
+           {{/tags}}
+           {{/event}}
+           {{/item}}
+            </p>
+        
+        <p>{{item.content.summary}}</p>
+        
+         
+    </article>
+
 </section>
