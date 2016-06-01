@@ -1,7 +1,6 @@
 [
     {
-        "id": "abcd1",
-        "event": {
+        "event": {            
             "theme": "Innovation",
             "tags": [
                 {
@@ -14,13 +13,15 @@
         },
         "header": {
             "title": "Wearable and Carryable Technology",
-            "image": ""
+            "image": "/img/event1_main.jpg"
         },
         "info": {
+            "datatype": "0",
             "location": "La Bolleur",
             "address": "Korte Papaverweg 15 1032KA Amsterdam",
             "lattitude": null,
             "longtitude": null,
+            "distance": null,
             "date": "08-10-2016",
             "start-time": "16:30",
             "end-time": "17:30"
@@ -30,7 +31,7 @@
         },
         "curators": {
             "name": "Borre Akkersdijk",
-            "image": "",
+            "image": "/img/event1_curator.jpg",
             "link": ""
         },
         "recommendations": [
@@ -61,7 +62,6 @@
         ]
     },
     {
-       "id": "abcd2",
         "event": {
             "theme": "Innovation",
             "tags": [
@@ -75,12 +75,14 @@
         },
         "header": {
             "title": "Radicale Vernieuwers",
-            "image": ""
+            "image": "/img/event2_main.jpg"
         },
         "info": {
+            "datatype": "1",
             "location": "Hotel de Goudfazant",
             "lattitude": null,
             "longtitude": null,
+            "distance": null,
             "address": "Aambeeldstraat 10H 1021KB Amsterdam",
             "date": "09-10-2016",
             "start-time": "14:00",
@@ -92,12 +94,12 @@
         "curators": [
             {
                 "name": "Chris Sigaloff",
-                "image": "",
+                "image": "/img/event2_curator1.jpg",
                 "link": ""
             },
             {
                 "name": "Nora van der Linden",
-                "image": "",
+                "image": "/img/event2_curator2.jpg",
                 "link": ""
             }
         ],
@@ -129,7 +131,6 @@
         ]
     },
     {
-        "id": "abcd3",
         "event": {
             "theme": "Music",
             "tags": [
@@ -140,13 +141,15 @@
         },
         "header": {
             "title": "BLUE CRIME & Friends",
-            "image": ""
+            "image": "/img/event3_main.jpg"
         },
         "info": {
+            "datatype": "2",
             "location": "Oepidus Brewing",
             "address": "Gedempt Hamerkanaal 85 1021KP Amsterdam",
             "lattitude": null,
             "longtitude": null,
+            "distance": null,
             "date": "09-10-2016",
             "start-time": "14:00",
             "end-time": "17:30"

@@ -20,6 +20,7 @@ var allEvents = (function () {
                 }
 
                 templating.init(hasStorage);
+                
             }
         };
         xhr.open("GET", url, true);
