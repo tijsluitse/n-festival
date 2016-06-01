@@ -11,6 +11,8 @@
             <p>Day</p>
             <div class="filterBox">
                 <select name="selectDay" id="selectDay">
+                   <option value="bothDays" class="optionsDays">Both Days
+                    </option>
                     <option value="dayOne" class="optionsDays">1 | 08/10/16
                     </option>
                     <option value="dayTwo" class="optionsDays">2 | 09/10/16</option>
@@ -27,7 +29,7 @@
     <section class="filter">
         <div class="filterHeader">
             <h2>Filter</h2>
-            <button class="filterCloseButton">x</button class="filterCloseButton">
+            <button class="filterCloseButton">x</button>
         </div>
         <form action="" onsubmit="return false" id="filterForm">
 
@@ -104,7 +106,7 @@
                                     </g>
                                 </g>
                             </svg>
-                            <p>{{info.start-time}} - {{info.end-time}}</p>
+                            <p>{{info.date}} | {{info.start-time}} - {{info.end-time}}</p>
                         </div>
                         <div class="eventDistance">
                             <svg class="eventDistanceIcon eventIcon" width="40" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.2 11.6">
