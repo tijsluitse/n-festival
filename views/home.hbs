@@ -4,8 +4,9 @@
 
     <h1 class="homePageHeading">Welcome to N-Festival</h1> 
     <button id="showFullMap">Explore Map</button>
-    <div id="output"></div>
-    <div id="locationMap" class="hide"></div>
+    <div id="locationMapHolder" style="height:50vh;position:relative;overflow:hidden;">
+        <div id="locationMap" class="hide"></div>
+    </div>
     <article class="filterBar">
         <div class="filterDay">
             <p>Day</p>
@@ -79,7 +80,7 @@
 
     <ul class="discoverEvents">
         {{#obj}}
-        <div class="eventObj">
+        <div class="eventObj" id="{{info.date}}">
             <a href="/{{id}}" class="eventDetailLink">
                 <li class="discoverEvent {{event.theme}}">
                     <div class="eventTitle">
