@@ -4,9 +4,9 @@ var launcher = (function() {
 
 	var init = function() {
 
+        ux.launcher();
         featureDetect.storage();
         geolocation.currentPositionMarker();
-        ux.launcher();
 	}
 
 	return {
