@@ -7,7 +7,6 @@ var launcher = (function() {
         featureDetect.storage();
         geolocation.currentPositionMarker();
         ux.launcher();
-
 	}
 
 	return {
