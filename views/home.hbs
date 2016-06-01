@@ -12,10 +12,8 @@
             <p>Day</p>
             <div class="filterBox">
                 <select name="selectDay" id="selectDay">
-                   <option value="bothDays" class="optionsDays">Both Days
-                    </option>
-                    <option value="dayOne" class="optionsDays">1 | 08/10/16
-                    </option>
+                    <option value="bothDays" class="optionsDays">BOTH DAYS</option>
+                    <option value="dayOne" class="optionsDays">1 | 08/10/16</option>
                     <option value="dayTwo" class="optionsDays">2 | 09/10/16</option>
                 </select>
                 <svg width="15" class="dropdownIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10.8 6.1">
@@ -27,58 +25,8 @@
         </div>
         <button class="filterButton">Filter</button>
     </article>
-    <section class="filter">
-        <div class="filterHeader">
-            <h2>Filter</h2>
-            <button class="filterCloseButton">x</button>
-        </div>
-        <form action="" onsubmit="return false" id="filterForm">
-            <fieldset oninput="levelFrom.value = inputFrom.valueAsNumber">
-                <div class="label">
-                    <label for="from">From</label>
-                    <div class="output">
-                        <output for="from" name="levelFrom">10</output>:00 uur
-                    </div>
-                </div>
-                <input name="inputFrom" id="from" type="range" min="10" max="24" value="0"> 
-                
-            </fieldset>
 
-            <fieldset oninput="levelTill.value = inputTill.valueAsNumber">
-                <div class="label">
-                    <label for="till">Till</label>
-                    <div class="output">
-                        <output for="till" name="levelTill">24</output>:00 uur
-                    </div>
-                </div>
-                <input name="inputTill" id="till" type="range" min="10" max="24" value="24">
-                
-            </fieldset>
-
-            <fieldset class="filterCategories">
-                <h3>Select categories</h3>
-                <div class="Music checkbox">
-                    <label for="music">Music</label>
-                    <input type="checkbox" value="Music" id="music">
-                    
-                </div>
-                <div class="Innovation checkbox">
-                    <label for="innovation">Innovation</label>
-                    <input type="checkbox" value="Innovation" id="innovation">
-                    
-                </div>
-                <div class="Food checkbox">
-                    <label for="food">Food</label>
-                    <input type="checkbox" value="Food" id="food">
-                </div>
-            </fieldset>
-
-            <button id="filterButton" type="submit" form="form1" value="Submit">Save changes</button>
-       </form>
-        
-    </section>
-
-    <ul class="discoverEvents">
+    <ul id="eventsList" class="discoverEvents">
         {{#obj}}
         <div class="eventObj" id="{{info.date}}">
             <a href="/{{id}}" class="eventDetailLink">
@@ -106,7 +54,7 @@
                                     </g>
                                 </g>
                             </svg>
-                            <p>{{info.date}} | {{info.start-time}} - {{info.end-time}}</p>
+                            <p><span id="eventDate">{{info.date}}</span> | {{info.start-time}} - {{info.end-time}}</p>
                         </div>
                         <div class="eventDistance">
                             <svg class="eventDistanceIcon eventIcon" width="40" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.2 11.6">
@@ -135,4 +83,48 @@
         </div>
     {{/obj}}
     </ul>
+    
+    <section class="filter">
+        <div class="filterHeader">
+            <h2>Filter</h2>
+            <button class="filterCloseButton">x</button>
+        </div>
+        <form action="" onsubmit="return false" id="filterForm">
+            <fieldset oninput="levelFrom.value = inputFrom.valueAsNumber">
+                <div class="label">
+                    <label for="from">From</label>
+                    <div class="output">
+                        <output for="from" name="levelFrom">10</output>:00 uur
+                    </div>
+                </div>
+                <input name="inputFrom" id="from" type="range" min="10" max="24" value="0">  
+            </fieldset>
+            <fieldset oninput="levelTill.value = inputTill.valueAsNumber">
+                <div class="label">
+                    <label for="till">Till</label>
+                    <div class="output">
+                        <output for="till" name="levelTill">24</output>:00 uur
+                    </div>
+                </div>
+                <input name="inputTill" id="till" type="range" min="10" max="24" value="24"> 
+            </fieldset>
+            <fieldset class="filterCategories">
+                <h3>Select categories</h3>
+                <div class="Music checkbox">
+                    <label for="music">Music</label>
+                    <input type="checkbox" value="Music" id="music">
+                </div>
+                <div class="Innovation checkbox">
+                    <label for="innovation">Innovation</label>
+                    <input type="checkbox" value="Innovation" id="innovation">
+                </div>
+                <div class="Food checkbox">
+                    <label for="food">Food</label>
+                    <input type="checkbox" value="Food" id="food">
+                </div>
+            </fieldset>
+            <button id="filterButton" type="submit" form="form1" value="Submit">Save changes</button>
+       </form>  
+    </section>
+
 </section>

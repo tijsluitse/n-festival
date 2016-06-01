@@ -100,9 +100,9 @@ var ux = (function () {
     };
 
     var myRoute = function () {
-        var myRouteButton = document.querySelector('.buttonAddToRoute').onclick = function () {
-            var heart = document.querySelector('.eventHeartIcon').classList.toggle('eventAdded');
-        }
+        // var myRouteButton = document.querySelector('.buttonAddToRoute').onclick = function () {
+        //     var heart = document.querySelector('.eventHeartIcon').classList.toggle('eventAdded');
+        // }
     };
 
     return {

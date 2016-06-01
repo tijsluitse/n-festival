@@ -9,6 +9,7 @@ var allEvents = (function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var data = JSON.parse(xhr.responseText);
                 
+                filter.byDay(data);
                 geocoder.getCoordinates(data);
                 geolocation.getUserPosition();
 
