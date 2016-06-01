@@ -151,6 +151,10 @@
 }
 
 /*EVENTS*/
+.eventDetailLink{
+    text-decoration: none;
+}
+
 .discoverEvents {
 	padding: 1em;
 }
@@ -171,6 +175,7 @@
 	list-style: none;
 }
 .eventTitle {
+    color: #000;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -182,6 +187,12 @@
 	border: none;
 	background: unset;
 	cursor: pointer;
+	position: absolute;
+	top: .5em;
+	right: .5em;
+}
+.eventObj{
+	position: relative;
 }
 .eventHeartIcon {
 	padding: .2em;
@@ -216,6 +227,10 @@
 .eventIcon {
 	margin-right: .5em;
 	fill: #808080;
+}
+
+li svg{
+    pointer-events: none;
 }
 
 /*INFO*/
@@ -260,4 +275,35 @@
 
 .show {
 	display: inline-block !important;
+}
+
+/* DETAIL PAGE */
+
+.detailPage{
+    margin:1em;
+}
+
+.detailPage img{
+    width:100%;
+}
+
+/* DETAIL POPUP */
+
+#showDetail{
+    z-index: 1000;
+    width: 90vw;
+/*    min-height: 100vmax;*/
+    /* height: 100vmax; */
+    background-color: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+    box-shadow: 0 0 0 50vmax rgba(0, 0, 0, .8);
+    display: none;
+    padding: 1em;
+    /* overflow-y: scroll; */
+}
+
+#showDetail:target{
+    display:block;
 }

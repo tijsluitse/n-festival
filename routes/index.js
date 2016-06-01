@@ -39,6 +39,13 @@ router.get('/timetable', function (req, res, next) {
 });
 
 router.get('/:id', function (req, res, next) {
+    
+    if (req.query.js != undefined) {
+        var js = false;
+    } else {
+        var js = 'layout';
+    }
+    
     var data = {obj: obj};
 
     function findId(data, idToLookFor) {
@@ -52,8 +59,11 @@ router.get('/:id', function (req, res, next) {
     }
 
     var item = findId(data, req.params.id);
-
-    res.render('detailEvents', item);
+    
+    res.render('detailEvents', {
+        item: item,
+        layout: js
+    });
 });
 
 module.exports = router;
