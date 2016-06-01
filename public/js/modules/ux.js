@@ -50,8 +50,7 @@ var ux = (function () {
         // var fullMap = document.getElementById('showFullMap');
         // var locationMap = document.getElementById('locationMap');
 
-        // fullMap.onclick = function() {
-        //     locationMap.classList.toggle('fullscreen');
+        // fullMap.onclick = function() {            
         // };
 
     };
