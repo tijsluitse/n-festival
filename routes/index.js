@@ -23,8 +23,6 @@ router.get('/', function (req, res, next) {
         obj: obj
     };
 
-    console.log(data);
-
     res.render('home', data);
 });
 

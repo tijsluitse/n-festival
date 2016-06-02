@@ -84,7 +84,7 @@ var ux = (function () {
                             var detailInfo = document.getElementById('detailInfo');
                             detailInfo.innerHTML = response;
 
-                            window.location = '#showDetail';
+//                            window.location = '#showDetail';
                         }
                     };
                     xhr.open("GET", url, true);
@@ -92,6 +92,22 @@ var ux = (function () {
 
                 }
                 e.preventDefault();
+                
+            var detail = document.querySelector('.detailContainer'),
+                detailExit = document.querySelector('.detailExit');
+            detail.classList.add('detailToggle');
+            detailExit.classList.add('detailToggle');
+        
+            
+            detailExit.onclick = function(){
+                detail.classList.remove('detailToggle');
+                detailExit.classList.remove('detailToggle');
+            };
+                
+                document.querySelector('.closeDetailButton').onclick = function(){
+                detail.classList.remove('detailToggle');
+                detailExit.classList.remove('detailToggle');
+            };
             }
 
         };
