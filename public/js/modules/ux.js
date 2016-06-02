@@ -20,6 +20,7 @@ var ux = (function () {
 
         var menu = document.getElementById('menu');
         menu.classList.add('hide');
+        menu.classList.add('menuSlide');
 
         var menuButton = document.getElementById('menuButton').onclick = function () {
             menu.classList.toggle('hide');
@@ -40,6 +41,9 @@ var ux = (function () {
         }
 
         var filterCloseButton = document.querySelector('.filterCloseButton').onclick = function () {
+            filter.classList.remove('filterToggle');
+        }
+        var filterCloseButtonBar = document.querySelector('.exitBlock').onclick = function () {
             filter.classList.remove('filterToggle');
         }
 
@@ -80,7 +84,7 @@ var ux = (function () {
                             var detailInfo = document.getElementById('detailInfo');
                             detailInfo.innerHTML = response;
 
-                            window.location = '#showDetail';
+//                            window.location = '#showDetail';
                         }
                     };
                     xhr.open("GET", url, true);
@@ -88,6 +92,22 @@ var ux = (function () {
 
                 }
                 e.preventDefault();
+                
+            var detail = document.querySelector('.detailContainer'),
+                detailExit = document.querySelector('.detailExit');
+            detail.classList.add('detailToggle');
+            detailExit.classList.add('detailToggle');
+        
+            
+            detailExit.onclick = function(){
+                detail.classList.remove('detailToggle');
+                detailExit.classList.remove('detailToggle');
+            };
+                
+                document.querySelector('.closeDetailButton').onclick = function(){
+                detail.classList.remove('detailToggle');
+                detailExit.classList.remove('detailToggle');
+            };
             }
 
         };
@@ -100,9 +120,9 @@ var ux = (function () {
     };
 
     var myRoute = function () {
-        var myRouteButton = document.querySelector('.buttonAddToRoute').onclick = function () {
-            var heart = document.querySelector('.eventHeartIcon').classList.toggle('eventAdded');
-        }
+        // var myRouteButton = document.querySelector('.buttonAddToRoute').onclick = function () {
+        //     var heart = document.querySelector('.eventHeartIcon').classList.toggle('eventAdded');
+        // }
     };
 
     return {
