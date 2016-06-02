@@ -115,6 +115,10 @@ var geolocation = (function() {
                 map: map,
                 title: 'First Infowindow!'
             });
+            
+            var link = '<a href="/' + location.title + '">';
+            
+            console.log(link);
 
             var contentString = 
                 '<div id="content">'+            
@@ -124,7 +128,7 @@ var geolocation = (function() {
                 '<p>' +
                 location.address +
                 '</p>' +
-                '<a href="#">' + 
+                link + 
                 'Route beschrijving' + 
                 '</a>' +
                 '   |   ' + 

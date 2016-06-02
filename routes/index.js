@@ -38,7 +38,7 @@ router.get('/timetable', function (req, res, next) {
     res.render('timeTable');
 });
 
-router.get('/:id', function (req, res, next) {
+router.get('/detail/:id', function (req, res, next) {
     
     if (req.query.js != undefined) {
         var js = false;
