@@ -424,26 +424,54 @@ li svg{
     width:50px;
 }
 
-.detailInfoMusic{
-    color: #e95454;
+.detailPage figure{
+    position:relative;
 }
 
-.detailInfoFood{
-    color: #87c278;
+.tagMusic{
+    background-color: #e95454;
 }
 
-.detailInfoInnovation{
-    color: #2e4d9c;
+.tagFood{
+    background-color: #87c278;
+}
+
+.tagInnovation{
+    background-color: #2e4d9c;  
+}
+
+.tagMusic,
+.tagFood,
+.tagInnovation{
+    width:auto;
+    padding:0.5em;
+    position:absolute;
+    display:inline-block;
+    right:0.5em;
+    bottom:0.5em;
+    border-radius:0.5em;
+}
+
+.tagMusic p,
+.tagFood p,
+.tagInnovation p{
+    display: inline-block;
+    width:auto;
+    padding:0.5em;
+    color: #FFF;
+    font-size:0.8em;
 }
 
 /* DETAIL POPUP */
 
+/*
 #showDetail{
     z-index: 1000;
     width:100vw;
     margin:0;
     padding:0;
 }
+*/
 
 .detailContainer{
     transition: all 500ms ease-in-out;
@@ -475,4 +503,11 @@ li svg{
 
 .detailExit.detailToggle{
     display:block;
+}
+
+.closeDetailButton{
+    background-color: unset;
+	border: none;
+	padding: 1em;
+    cursor:pointer;
 }
