@@ -13,8 +13,8 @@
             <div class="filterBox">
                 <select name="selectDay" id="selectDay">
                     <option value="bothDays" class="optionsDays">BOTH DAYS</option>
-                    <option value="dayOne" class="optionsDays">1 | 08/10/16</option>
-                    <option value="dayTwo" class="optionsDays">2 | 09/10/16</option>
+                    <option value="08-10-2016" class="optionsDays">1 | 08-10-16</option>
+                    <option value="09-10-2016" class="optionsDays">2 | 09-10-16</option>
                 </select>
                 <svg width="15" class="dropdownIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10.8 6.1">
                     <g id="XMLID_90_">
@@ -28,7 +28,7 @@
 
     <ul id="eventsList" class="discoverEvents">
         {{#obj}}
-        <div class="eventObj" id="{{info.date}}">
+        <div class="eventObj date" data-date="{{info.date}}">
             <a href="/{{id}}" class="eventDetailLink">
                 <li class="discoverEvent {{event.theme}}">
                     <div class="eventTitle">
@@ -59,7 +59,7 @@
                                     </g>
                                 </g>
                             </svg>
-                            <p><span id="eventDate">{{info.date}}</span> | {{info.start-time}} - {{info.end-time}}</p>
+                            <p>{{info.start-time}} - {{info.end-time}}</p>
                         </div>
                         
                         

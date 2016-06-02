@@ -170,6 +170,7 @@
 .Innovation {
 	border-left: 1em solid #2e4d9c;
 }
+
 .discoverEvent {
 	background-color: #EFEFEF;
 	padding: .5em;
@@ -373,12 +374,41 @@ li svg{
 
 /* DETAIL PAGE */
 
-.detailPage{
+.detailPage,
+.recommendations{
     margin:1em;
 }
 
 .detailPage img{
     width:100%;
+}
+
+.detailPage p{
+    padding-bottom:1em;
+}
+
+.detailPage h1{
+    font-size:2em;
+}
+
+.detailPage h2{
+    font-size:1.5em;
+}
+
+.detailPage .curatorImg{
+    width:50px;
+}
+
+.detailInfoMusic{
+    color: #e95454;
+}
+
+.detailInfoFood{
+    color: #87c278;
+}
+
+.detailInfoInnovation{
+    color: #2e4d9c;
 }
 
 /* DETAIL POPUP */
@@ -399,5 +429,5 @@ li svg{
 }
 
 #showDetail:target{
-    display:block;
+    display: block;
 }
