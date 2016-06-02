@@ -425,7 +425,15 @@ li svg{
 }
 
 .detailPage .curatorImg{
-    width:50px;
+    width:2em;
+    border-radius:3em;
+     margin-right:1em;
+}
+
+.curator{
+    line-height:2em;
+    vertical-align:middle;
+    
 }
 
 .detailPage figure{
@@ -467,15 +475,6 @@ li svg{
 }
 
 /* DETAIL POPUP */
-
-/*
-#showDetail{
-    z-index: 1000;
-    width:100vw;
-    margin:0;
-    padding:0;
-}
-*/
 
 .detailContainer{
     transition: all 500ms ease-in-out;
