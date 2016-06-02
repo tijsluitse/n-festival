@@ -1,22 +1,22 @@
 var filter = (function(){
 
-	var allEvents = document.querySelectorAll('.eventObj');	
+	var allEvents = document.querySelectorAll('.eventObj');
+
+	resetEvents.onclick = function() {
+		for (a = 0; a < allEvents.length; a++) {
+			allEvents[a].classList.remove('hide');
+		}
+	}
 
 	var timeSelect = function() {
 
 		var currentEvents = document.getElementById('currentEvents');
 		var resetEvents = document.getElementById('resetEvents');
 
-		resetEvents.onclick = function() {
-			for (a = 0; a < allEvents.length; a++) {
-				allEvents[a].classList.remove('hide');
-			}
-		}
-
 		currentEvents.onclick = function() {
 			var today = new Date();
 			var time = today.getHours() + '.' + today.getMinutes();
-			time = "14:01";
+			time = "12:01";
 			var dd = today.getDate();
 			var mm = today.getMonth() + 1;
 			var yyyy = today.getFullYear();
@@ -27,7 +27,7 @@ var filter = (function(){
 			    mm = '0' + mm;
 			}; 
 			today = mm + '-' + dd + '-' + yyyy;
-			today = "08-10-2016";
+			today = "09-10-2016";
 
 			for(a = 0; a < allEvents.length; a ++) {				
 				var eventStartTime = allEvents[a].dataset.start;				

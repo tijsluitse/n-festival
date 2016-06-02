@@ -115,9 +115,6 @@ var geolocation = (function() {
                 map: map,
                 title: 'First Infowindow!'
             });
-            
-            var locationStringTitle = location.title.toLowerCase();  
-            locationStringTitle = locationStringTitle.replace(/\s/g, "");
 
             var contentString = 
                 '<div id="content">'+            
@@ -131,9 +128,9 @@ var geolocation = (function() {
                 'Route beschrijving' + 
                 '</a>' +
                 '   |   ' + 
-                '<button id="' + locationStringTitle + '" class="locationView">' + 
+                '<a href="#">' + 
                 'Bekijk evenementen' + 
-                '</button>' +
+                '</a>' +
                 '</div>';
 
             var infowindow = new google.maps.InfoWindow({

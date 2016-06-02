@@ -344,7 +344,8 @@ li svg{
 	padding: .5em;
 	width: 100%;
 }
-.filterCategories h3 {
+
+fieldset h3 {
 	margin: 1em 0;
 }
 #filterButton {
