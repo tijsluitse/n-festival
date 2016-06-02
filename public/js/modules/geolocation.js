@@ -116,9 +116,9 @@ var geolocation = (function() {
                 title: 'First Infowindow!'
             });
             
-            var link = '<a href="/' + location.title + '">';
+            var locationLink = location.title.replace(/ /g, "-");
             
-            console.log(link);
+            var link = '<a href="/location/' + locationLink + '">';
 
             var contentString = 
                 '<div id="content">'+            
@@ -128,11 +128,11 @@ var geolocation = (function() {
                 '<p>' +
                 location.address +
                 '</p>' +
-                link + 
+                '<a href="#">' + 
                 'Route beschrijving' + 
                 '</a>' +
                 '   |   ' + 
-                '<a href="#">' + 
+                link + 
                 'Bekijk evenementen' + 
                 '</a>' +
                 '</div>';
