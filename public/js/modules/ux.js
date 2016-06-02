@@ -20,6 +20,7 @@ var ux = (function () {
 
         var menu = document.getElementById('menu');
         menu.classList.add('hide');
+        menu.classList.add('menuSlide');
 
         var menuButton = document.getElementById('menuButton').onclick = function () {
             menu.classList.toggle('hide');
@@ -40,6 +41,9 @@ var ux = (function () {
         }
 
         var filterCloseButton = document.querySelector('.filterCloseButton').onclick = function () {
+            filter.classList.remove('filterToggle');
+        }
+        var filterCloseButtonBar = document.querySelector('.exitBlock').onclick = function () {
             filter.classList.remove('filterToggle');
         }
 

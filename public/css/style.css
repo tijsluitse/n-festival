@@ -45,11 +45,13 @@
 #menu {
 	z-index: 10;
 	padding: 1em;
-	animation: menuSlide 500ms cubic-bezier(0.712, 0.0376, 0.392, 1);
-	position: fixed;
 	background-color: white;
 	z-index: 5;
-	width: 100vw;
+	width: 100vw;	
+}
+.menuSlide {
+	animation: menuSlide 500ms cubic-bezier(0.712, 0.0376, 0.392, 1);
+	position: fixed;
 	box-shadow: 0 0 0 100vmax rgba(0,0,0,.8);
 }
 @keyframes menuSlide {
@@ -265,7 +267,7 @@ li svg{
 .filterToRight {
 	position: fixed;
 	top: 0;
-	transform: translateX(100vw);
+	transform: translateX(110vw);
 	z-index: 15;
 	background-color: white;
 	width: 90%;
@@ -276,6 +278,16 @@ li svg{
 	box-shadow: 0 0 0 100vmax rgba(0,0,0,.8);
 	transition: all 500ms ease-in-out;
 }
+.exitBlock {
+	position: fixed;
+	background-color: unset;
+	width: 10vw;
+	height: 100vh;
+	left: 0;
+	top: 0;
+	margin-left: -10vw;
+	border: none;
+}
 
 .filter {
 	padding: 1em;
@@ -284,6 +296,7 @@ li svg{
 .filterHeader {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 }
 .filterCloseButton {
 	background-color: unset;
