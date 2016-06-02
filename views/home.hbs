@@ -8,7 +8,7 @@
         <div id="locationMap" class="hide"></div>
     </div>
     <article class="filterBar">
-        <div class="filterDay">
+       {{!--  <div class="filterDay">
             <p>Day</p>
             <div class="filterBox">
                 <select name="selectDay" id="selectDay">
@@ -22,13 +22,15 @@
                     </g>
                 </svg>
             </div>
-        </div>
+        </div> --}}
+        <button id="currentEvents">Current Events</button>
+        <button id="resetEvents">Reset</button>
         <button class="filterButton">Filter</button>
     </article>
 
     <ul id="eventsList" class="discoverEvents">
         {{#obj}}
-        <div class="eventObj date" data-date="{{info.date}}">
+        <div class="eventObj date" data-date="{{info.date}}" data-theme="{{event.theme}}" data-start="{{info.start-time}}" data-end="{{info.end-time}}">
             <a href="/{{id}}" class="eventDetailLink">
                 <li class="discoverEvent {{event.theme}}">
                     <div class="eventTitle">
@@ -59,7 +61,7 @@
                                     </g>
                                 </g>
                             </svg>
-                            <p>{{info.start-time}} - {{info.end-time}}</p>
+                            <p><span class="fromTime">{{info.start-time}}</span> - <span class="tillTime">{{info.end-time}}</span></p>
                         </div>
                         
                         
@@ -100,7 +102,18 @@
             </button>
         </div>
         <form action="" onsubmit="return false" id="filterForm">
-            <fieldset oninput="levelFrom.value = inputFrom.valueAsNumber">
+            <fieldset class="filterDays">
+                <h3>Select Day</h3>
+                <div class="dayOne checkbox">
+                    <label for="dayOne">1 | 08-10-16</label>
+                    <input type="checkbox" value="08-10-2016" id="dayOne" name="dayOneSelect" class="optionsDays">
+                </div>
+                <div class="dayTwo checkbox">
+                    <label for="dayTwo">2 | 09-10-16</label>
+                    <input type="checkbox" value="09-10-2016" id="dayTwo" name="dayTwoSelect" class="optionsDays">
+                </div>
+            </fieldset>
+            {{!-- <fieldset oninput="levelFrom.value = inputFrom.valueAsNumber">
                 <div class="label">
                     <label for="from">From</label>
                     <div class="output">
@@ -117,20 +130,20 @@
                     </div>
                 </div>
                 <input name="inputTill" id="till" type="range" min="10" max="24" value="24"> 
-            </fieldset>
+            </fieldset> --}}
             <fieldset class="filterCategories">
                 <h3>Select categories</h3>
-                <div class="Music checkbox">
+                <div class="music checkbox">
                     <label for="music">Music</label>
-                    <input type="checkbox" value="Music" id="music">
+                    <input type="checkbox" value="Music" name="musicSelect" id="music" class="themeSelect">
                 </div>
-                <div class="Innovation checkbox">
+                <div class="innovation checkbox">
                     <label for="innovation">Innovation</label>
-                    <input type="checkbox" value="Innovation" id="innovation">
+                    <input type="checkbox" value="Innovation" name="innovationSelect" id="innovation" class="themeSelect">
                 </div>
-                <div class="Food checkbox">
+                <div class="food checkbox">
                     <label for="food">Food</label>
-                    <input type="checkbox" value="Food" id="food">
+                    <input type="checkbox" value="Food" name="foodSelect" id="food" class="themeSelect">
                 </div>
             </fieldset>
             <button id="filterButton" type="submit" form="form1" value="Submit">Save changes</button>

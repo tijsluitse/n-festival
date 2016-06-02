@@ -1,7 +1,7 @@
 [
     {
         "event": {            
-            "theme": "Innovation",
+            "theme": "innovation",
             "tags": [
                 {
                     "tag": "Techniek"
@@ -63,7 +63,7 @@
     },
     {
         "event": {
-            "theme": "Innovation",
+            "theme": "innovation",
             "tags": [
                 {
                     "tag": "Ondernemen"
@@ -132,7 +132,7 @@
     },
     {
         "event": {
-            "theme": "Music",
+            "theme": "music",
             "tags": [
                 {
                     "tag": "Moonpop"
