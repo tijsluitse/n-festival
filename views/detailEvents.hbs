@@ -3,7 +3,16 @@
     <article>
 
         <section class="detailPage">
-            <img src="{{item.header.image}}">
+            <figure>
+                <img class="{{item.event.theme}}" src="{{item.header.image}}">
+
+                <section class="tag{{item.event.theme}}">
+                    {{#item}} {{#event}} {{#tags}}
+                    <p>{{tag}}</p>
+                    {{/tags}} {{/event}} {{/item}}
+                </section>
+            </figure>
+
             <h1>{{item.header.title}}</h1>
 
             <!--        <button class="buttonAddToRoute">-->
@@ -21,10 +30,8 @@
             <p>{{item.info.date}}</p>
             <p>{{item.info.location}}
                 <a href="">
-<!--                met link naar het adres/map?-->
-                 {{item.info.address}}</a></p>
-            <h2 class="detailInfo{{item.event.theme}}">{{item.event.theme}}</h2>
-            <p>Tags: {{#item}} {{#event}} {{#tags}} {{tag}} {{/tags}} {{/event}} {{/item}}
+                    <!--                met link naar het adres/map?-->
+                    {{item.info.address}}</a>
             </p>
 
             <p>{{item.content.summary}}</p>
