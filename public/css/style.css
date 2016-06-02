@@ -29,11 +29,15 @@
 }
 
 #locationMap {
+	background-image: url('../img/amsterdamNoord.png');
+	background-size: cover;
+	background-position: center;
 	width: 100vw;
 	height: 50vh;
-	background-color: grey;
 	z-index: 1;
+	color: black;
 }
+
 .headerButton {
 	border: none;
 	background-color: unset;
