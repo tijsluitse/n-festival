@@ -403,25 +403,26 @@ li svg{
 
 /* DETAIL PAGE */
 
-.detailPage,
+/*.detailPage,
 .recommendations{
     margin:1em;
-}
+}*/
 
 .detailPage img{
     width:100%;
 }
 
-.detailPage p{
-    padding-bottom:1em;
+/*.detailPage p{
+    color: grey;
 }
-
+*/
 .detailPage h1{
-    font-size:2em;
+    font-size:1.2em;
+    margin: 0 1em .5em 0;
 }
 
 .detailPage h2{
-    font-size:1.5em;
+    font-size:1em;
 }
 
 .detailPage .curatorImg{
@@ -432,15 +433,32 @@ li svg{
 
 .curator{
     line-height:2em;
-    vertical-align:middle;
-    
+    vertical-align:middle;  
+}
+.curators {
+	display: flex;
+	align-items: center;
+	background-color: #efefef;
+	margin-top: .5em;
+	padding: .5em;
+}
+.detailDate {
+	display: flex;
+	align-items: flex-start;
+	margin: 1em 0;
+}
+.detailLocation {
+	font-weight: 900;
 }
 
 .detailPage figure{
     position:relative;
 }
+.detailContent {
+	line-height: 1.5em;
+}
 
-.tagMusic{
+/*.tagMusic{
     background-color: #e95454;
 }
 
@@ -450,29 +468,26 @@ li svg{
 
 .tagInnovation{
     background-color: #2e4d9c;  
-}
+}*/
 
-.tagMusic,
-.tagFood,
-.tagInnovation{
+.tag{
     width:auto;
     padding:0.5em;
     position:absolute;
     display:inline-block;
-    right:0.5em;
-    bottom:0.5em;
-    border-radius:0.5em;
+    right: .1em;
+    bottom: .1em;   
 }
 
-.tagMusic p,
-.tagFood p,
-.tagInnovation p{
+.tag p{
+	background-color: black;
     display: inline-block;
     width:auto;
     padding:0.5em;
     color: #FFF;
     font-size:0.8em;
 }
+
 
 /* DETAIL POPUP */
 
@@ -511,6 +526,7 @@ li svg{
 .closeDetailButton{
     background-color: unset;
 	border: none;
-	padding: 1em;
+	/*padding: 1em;*/
     cursor:pointer;
+    float: right;
 }
