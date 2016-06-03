@@ -52,6 +52,8 @@ var geolocation = (function() {
 
         var marker = new google.maps.Marker({
             map: map,
+            icon: '/img/marker.gif',
+            optimized: false,
             title: 'First Infowindow!'
         });
 
