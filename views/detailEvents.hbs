@@ -3,31 +3,73 @@
     <article>
 
         <section class="detailPage">
-            <img src="{{item.header.image}}">
-            <h1>{{item.header.title}}</h1>
 
-            <!--        <button class="buttonAddToRoute">-->
+        <h1>{{item.header.title}}</h1>
+            <figure>
+                <img class="{{item.event.theme}}" src="{{item.header.image}}">
+
+                <section class="tag">
+                    {{#item}} {{#event}} {{#tags}}
+                    <p>{{tag}}</p>
+                    {{/tags}} {{/event}} {{/item}}
+                </section>
+            </figure>
+
+            
+            
+            {{#item}} {{#curators}}
+                <div class="curators">
+                     
+                    <img class="curatorImg" src="{{image}}">
+                    <h2 class="curator">{{name}}</h2>
+                </div>
+            {{/curators}} {{/item}}
+            
+            <div class="detailDate">
+                <svg class="eventDateIcon eventIcon" width="15" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.8 16.1">
+                    <path d="M2.7 2.3v.6c0 1 .7 1.5 1.7 1.4.8-.1 1.1-.8 1.1-1.3v-.7h3.8V3c0 .4.1.8.5 1 .5.3 1.1.4 1.6.1.5-.2.7-.7.7-1.2v-.6h1.8c.6 0 .9.4.9 1v11.8c0 .3-.1.5-.2.7-.2.2-.3.3-.6.3H1c-.6 0-1-.4-1-1V3.3c0-.6.4-1 1-1H2.7zm-1.2 3v9.3h11.8V5.3H1.5z" />
+                    <path d="M11.3 1.8v1.1c0 .5-.4.8-.8.7-.3-.1-.5-.3-.5-.6V.8c0-.4.3-.7.6-.7.4 0 .6.3.6.7.2.2.1.6.1 1zM4.8 1.8v1.1c0 .4-.4.7-.8.7-.3 0-.5-.3-.5-.6V.8c0-.5.3-.8.6-.8s.6.3.6.7c.1.3.1.7.1 1.1zM7.4 12.6h-.6c-.3 0-.5-.2-.5-.5v-1.3c0-.3.2-.5.5-.5h1.3c.3 0 .5.2.5.5V12c0 .3-.2.5-.5.5-.2.1-.5.1-.7.1zM7.4 7.1H8c.3 0 .5.2.5.5v1.2c0 .3-.2.5-.5.5H6.7c-.3 0-.5-.2-.5-.5V7.5c0-.3.2-.5.5-.5H7c.2.1.3.1.4.1zM4.1 7.1h.7c.3 0 .5.2.5.5V9c0 .3-.2.5-.5.5H3.5c-.3-.2-.5-.4-.5-.6V7.5c0-.3.2-.4.5-.5.2.1.4.1.6.1zM10.7 12.6H10c-.3 0-.5-.2-.5-.5v-1.3c0-.3.2-.5.5-.5h1.3c.3 0 .5.2.5.5v1.4c0 .3-.2.4-.5.4h-.6zM10.7 7.1h.6c.3 0 .5.2.5.5v1.3c0 .3-.2.5-.5.5H10c-.3 0-.5-.2-.5-.5V7.6c0-.3.2-.5.5-.5h.7zM4.2 10.3h.6c.3 0 .5.2.5.5v1.3c0 .3-.2.4-.5.4H3.5c-.3 0-.5-.2-.5-.5v-1.3c0-.3.2-.5.5-.5h.3c.2.1.3.1.4.1z" />
+                </svg>
+                <p>{{item.info.date}}</p>
+            </div>
+
+            <div class="detailDate">
+                <svg class="eventTimeIcon eventIcon" width="15" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
+                    <g id="XMLID_89_">
+                        <g id="XMLID_156_">
+                            <g id="XMLID_159_">
+                                <path id="XMLID_160_" class="st0" d="M6 12c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6zM6 1.1C3.3 1.1 1.1 3.3 1.1 6s2.2 4.9 4.9 4.9 4.9-2.2 4.9-4.9S8.7 1.1 6 1.1z" />
+                            </g>
+                            <g id="XMLID_157_">
+                                <path id="XMLID_158_" class="st0" d="M7.4 8.7c-.1 0-.1 0-.2-.1L5.5 6.9s-.1-.1-.1-.2v-4c0-.2.1-.3.3-.3.2.1.3.2.3.4v3.9l1.6 1.6c.1.1.1.3 0 .4h-.2z" />
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+                <p>{{item.info.start-time}} - {{item.info.end-time}}</p>
+            </div>
+            <div class="detailDate">
+                <svg class="eventLocationIcon eventIcon" width="15" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12.7 17">
+                    <path id="XMLID_528_" class="st0" d="M6.4 0C2.8 0 0 2.8 0 6.4S6.4 17 6.4 17s6.4-7.2 6.4-10.7S9.9 0 6.4 0zm0 9c-1.6 0-3-1.3-3-3 0-1.6 1.3-3 3-3 1.6 0 3 1.3 3 3-.1 1.6-1.4 3-3 3z" />
+                </svg>
+                <p>
+                    <span class="detailLocation">{{item.info.location}}</span><br />
+                    <a href="">
+                        <!--                met link naar het adres/map?-->
+                        {{item.info.address}}</a>
+                </p>
+            </div>
+            
+            
+
+            <p class="detailContent">{{item.content.summary}}</p>
+            
             <button>
                 <svg class="eventHeartIcon" width="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 10.6">
                     <path id="XMLID_150_" class="st0" d="M6 1.7C6.9.3 8.6.1 9.7.6c1.4.6 2.1 2 1.9 3.5-.3 1.8-1.4 3.1-2.8 4.3-.7.6-1.6 1.2-2.5 1.8-.1.1-.4.1-.5 0-1.8-1-3.4-2.2-4.6-4C.5 5.1.2 4 .5 2.7.8 1.4 1.7.6 3 .4 4.2.1 5.3.5 6 1.7z" />
                 </svg>
             </button>
-
             <button>Share FB TWITTER BLABLA</button>
-
-            {{#item}} {{#curators}}
-            <h2><img class="curatorImg" src="{{image}}">{{name}}</h2> {{/curators}} {{/item}}
-
-            <p>{{item.info.date}}</p>
-            <p>{{item.info.location}}
-                <a href="">
-<!--                met link naar het adres/map?-->
-                 {{item.info.address}}</a></p>
-            <h2 class="detailInfo{{item.event.theme}}">{{item.event.theme}}</h2>
-            <p>Tags: {{#item}} {{#event}} {{#tags}} {{tag}} {{/tags}} {{/event}} {{/item}}
-            </p>
-
-            <p>{{item.content.summary}}</p>
         </section>
 
         <section class="recommendations">

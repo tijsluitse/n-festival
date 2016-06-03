@@ -29,11 +29,15 @@
 }
 
 #locationMap {
+	background-image: url('../img/amsterdamNoord.png');
+	background-size: cover;
+	background-position: center;
 	width: 100vw;
 	height: 50vh;
-	background-color: grey;
 	z-index: 1;
+	color: black;
 }
+
 .headerButton {
 	border: none;
 	background-color: unset;
@@ -161,13 +165,13 @@
 	padding: 1em;
 }
 
-.Music {
+.music {
 	border-left: 1em solid #e95454;
 }
-.Food {
+.food {
 	border-left: 1em solid #87c278;
 }
-.Innovation {
+.innovation {
 	border-left: 1em solid #2e4d9c;
 }
 
@@ -369,7 +373,8 @@ li svg{
 	padding: .5em;
 	width: 100%;
 }
-.filterCategories h3 {
+
+fieldset h3 {
 	margin: 1em 0;
 }
 #filterButton {
@@ -399,51 +404,93 @@ li svg{
 
 /* DETAIL PAGE */
 
-.detailPage,
+/*.detailPage,
 .recommendations{
     margin:1em;
-}
+}*/
 
 .detailPage img{
     width:100%;
 }
 
-.detailPage p{
-    padding-bottom:1em;
+/*.detailPage p{
+    color: grey;
 }
-
+*/
 .detailPage h1{
-    font-size:2em;
+    font-size:1.2em;
+    margin: 0 1em .5em 0;
 }
 
 .detailPage h2{
-    font-size:1.5em;
+    font-size:1em;
 }
 
 .detailPage .curatorImg{
-    width:50px;
+    width:2em;
+    border-radius:3em;
+     margin-right:1em;
 }
 
-.detailInfoMusic{
-    color: #e95454;
+.curator{
+    line-height:2em;
+    vertical-align:middle;  
+}
+.curators {
+	display: flex;
+	align-items: center;
+	background-color: #efefef;
+	margin-top: .5em;
+	padding: .5em;
+}
+.detailDate {
+	display: flex;
+	align-items: flex-start;
+	margin: 1em 0;
+}
+.detailLocation {
+	font-weight: 900;
 }
 
-.detailInfoFood{
-    color: #87c278;
+.detailPage figure{
+    position:relative;
+}
+.detailContent {
+	line-height: 1.5em;
 }
 
-.detailInfoInnovation{
-    color: #2e4d9c;
+/*.tagMusic{
+    background-color: #e95454;
 }
+
+.tagFood{
+    background-color: #87c278;
+}
+
+.tagInnovation{
+    background-color: #2e4d9c;  
+}*/
+
+.tag{
+    width:auto;
+    padding:0.5em;
+    position:absolute;
+    display:inline-block;
+    right: .1em;
+    bottom: .1em;   
+}
+
+.tag p{
+	background-color: black;
+    display: inline-block;
+    width:auto;
+    padding:0.5em;
+    color: #FFF;
+    font-size:0.8em;
+}
+
 
 /* DETAIL POPUP */
-
-#showDetail{
-    z-index: 1000;
-    width:100vw;
-    margin:0;
-    padding:0;
-}
 
 .detailContainer{
     transition: all 500ms ease-in-out;
@@ -475,4 +522,12 @@ li svg{
 
 .detailExit.detailToggle{
     display:block;
+}
+
+.closeDetailButton{
+    background-color: unset;
+	border: none;
+	/*padding: 1em;*/
+    cursor:pointer;
+    float: right;
 }
