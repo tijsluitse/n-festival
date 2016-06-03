@@ -8,13 +8,13 @@ var obj;
 fs.readFile('./public/data/data.json', 'utf8', function (err, data) {
     if (err) throw err;
     obj = JSON.parse(data);
-    
-     for (var i = 0; i < obj.length; i++) {
-         var id = "id",
-             value = i
-         
-         obj[i][id] = value;
-     }
+
+    for (var i = 0; i < obj.length; i++) {
+        var id = "id",
+            value = i
+
+        obj[i][id] = value;
+    }
 });
 
 /* GET home page. */
@@ -22,8 +22,6 @@ router.get('/', function (req, res, next) {
     var data = {
         obj: obj
     };
-
-    console.log(data);
 
     res.render('home', data);
 });
@@ -40,19 +38,21 @@ router.get('/timetable', function (req, res, next) {
     res.render('timeTable');
 });
 
-router.get('/:id', function (req, res, next) {
-    
+router.get('/detail/:id', function (req, res, next) {
+
     if (req.query.js != undefined) {
         var js = false;
     } else {
         var js = 'layout';
     }
-    
-    var data = {obj: obj};
+
+    var data = {
+        obj: obj
+    };
 
     function findId(data, idToLookFor) {
         var obj = data.obj;
-        
+
         for (var i = 0; i < obj.length; i++) {
             if (obj[i].id == idToLookFor) {
                 return (obj[i]);
@@ -61,10 +61,36 @@ router.get('/:id', function (req, res, next) {
     }
 
     var item = findId(data, req.params.id);
-    
+
     res.render('detailEvents', {
         item: item,
         layout: js
+    });
+});
+
+router.get('/location/:place', function (req, res, next) {
+    var data = {
+        obj: obj
+    };
+
+    var location = req.params.place.replace(/-/g, " ");
+
+    var eventArr = [];
+
+    function findId(data, idToLookFor) {
+        var obj = data.obj;
+
+        obj.forEach(function (item) {
+            if (item.info.location == idToLookFor) {
+                eventArr.push(item);
+            }
+        });
+    };
+
+    findId(data, location);
+
+    res.render('locationList', {
+        obj: eventArr
     });
 });
 

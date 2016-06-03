@@ -29,11 +29,15 @@
 }
 
 #locationMap {
+	background-image: url('../img/amsterdamNoord.png');
+	background-size: cover;
+	background-position: center;
 	width: 100vw;
 	height: 50vh;
-	background-color: grey;
 	z-index: 1;
+	color: black;
 }
+
 .headerButton {
 	border: none;
 	background-color: unset;
@@ -236,6 +240,31 @@ li svg{
     pointer-events: none;
 }
 
+/*DISTANCE LOADER*/
+
+.kmLoad1 {
+	animation: kmLoad infinite ease-in-out 1s ;
+}
+.kmLoad2 {
+	animation: kmLoad infinite ease-in-out 1s;
+	animation-delay: 300ms;
+}
+.kmLoad3 {
+	animation: kmLoad infinite ease-in-out 1s;
+	animation-delay: 600ms;
+}
+@keyframes kmLoad {
+	0% {
+		opacity: 0;
+	}
+	66% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
 /*INFO*/
 
 .informationSection {
@@ -375,60 +404,130 @@ fieldset h3 {
 
 /* DETAIL PAGE */
 
-.detailPage,
+/*.detailPage,
 .recommendations{
     margin:1em;
-}
+}*/
 
 .detailPage img{
     width:100%;
 }
 
-.detailPage p{
-    padding-bottom:1em;
+/*.detailPage p{
+    color: grey;
 }
-
+*/
 .detailPage h1{
-    font-size:2em;
+    font-size:1.2em;
+    margin: 0 1em .5em 0;
 }
 
 .detailPage h2{
-    font-size:1.5em;
+    font-size:1em;
 }
 
 .detailPage .curatorImg{
-    width:50px;
+    width:2em;
+    border-radius:3em;
+     margin-right:1em;
 }
 
-.detailInfoMusic{
-    color: #e95454;
+.curator{
+    line-height:2em;
+    vertical-align:middle;  
+}
+.curators {
+	display: flex;
+	align-items: center;
+	background-color: #efefef;
+	margin-top: .5em;
+	padding: .5em;
+}
+.detailDate {
+	display: flex;
+	align-items: flex-start;
+	margin: 1em 0;
+}
+.detailLocation {
+	font-weight: 900;
 }
 
-.detailInfoFood{
-    color: #87c278;
+.detailPage figure{
+    position:relative;
+}
+.detailContent {
+	line-height: 1.5em;
 }
 
-.detailInfoInnovation{
-    color: #2e4d9c;
+/*.tagMusic{
+    background-color: #e95454;
 }
+
+.tagFood{
+    background-color: #87c278;
+}
+
+.tagInnovation{
+    background-color: #2e4d9c;  
+}*/
+
+.tag{
+    width:auto;
+    padding:0.5em;
+    position:absolute;
+    display:inline-block;
+    right: .1em;
+    bottom: .1em;   
+}
+
+.tag p{
+	background-color: black;
+    display: inline-block;
+    width:auto;
+    padding:0.5em;
+    color: #FFF;
+    font-size:0.8em;
+}
+
 
 /* DETAIL POPUP */
 
-#showDetail{
-    z-index: 1000;
+.detailContainer{
+    transition: all 500ms ease-in-out;
+    transform: translateX(110vw);
     width: 90vw;
-/*    min-height: 100vmax;*/
-    /* height: 100vmax; */
+    z-index: 1000;
+    padding: 1em;
     background-color: white;
     position: absolute;
     top: 0;
     right: 0;
-    box-shadow: 0 0 0 50vmax rgba(0, 0, 0, .8);
-    display: none;
-    padding: 1em;
-    /* overflow-y: scroll; */
 }
 
-#showDetail:target{
-    display: block;
+.detailContainer.detailToggle{
+    transform: translateX(0vw);
+    box-shadow: 0 0 0 50vmax rgba(0, 0, 0, .8);
+}
+
+.detailExit{
+    display:none;
+    position: fixed;
+    z-index: 1000;
+    background-color: unset;
+    width: 10vw;
+    height: 100vh;
+    border: none;
+    top: 0;
+}
+
+.detailExit.detailToggle{
+    display:block;
+}
+
+.closeDetailButton{
+    background-color: unset;
+	border: none;
+	/*padding: 1em;*/
+    cursor:pointer;
+    float: right;
 }

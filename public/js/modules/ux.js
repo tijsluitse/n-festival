@@ -83,8 +83,8 @@ var ux = (function () {
 
                             var detailInfo = document.getElementById('detailInfo');
                             detailInfo.innerHTML = response;
-
-                            window.location = '#showDetail';
+                            
+                            ux.detailSlide();
                         }
                     };
                     xhr.open("GET", url, true);
@@ -92,6 +92,7 @@ var ux = (function () {
 
                 }
                 e.preventDefault();
+
             }
 
         };
@@ -101,6 +102,33 @@ var ux = (function () {
         } else {
             detailTarget.attachEvent('onclick', getURL);
         }
+    };
+
+    var detailSlide = function () {
+        var detail = document.querySelector('.detailContainer'),
+            detailExit = document.querySelector('.detailExit'),
+            showDetail = document.getElementById('showDetail');
+
+
+        showDetail.classList.remove('hide');
+
+        setTimeout(function () {
+            detail.classList.add('detailToggle');
+            detailExit.classList.add('detailToggle');
+        }, 20);
+
+        detailExit.onclick = function () {
+            detail.classList.remove('detailToggle');
+            detailExit.classList.remove('detailToggle');
+            showDetail.classList.add('hide');
+        };
+
+        document.querySelector('.closeDetailButton').onclick = function () {
+            detail.classList.remove('detailToggle');
+            detailExit.classList.remove('detailToggle');
+            showDetail.classList.add('hide');
+
+        };
     };
 
     var myRoute = function () {
@@ -115,8 +143,9 @@ var ux = (function () {
         noJsReset: noJsReset,
         fullScreenMap: fullScreenMap,
         detailPage: detailPage,
+        detailSlide: detailSlide,
         myRoute: myRoute,
         filterSlide: filterSlide
     }
-    
+
 })();
