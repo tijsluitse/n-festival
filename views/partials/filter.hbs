@@ -1,0 +1,47 @@
+<section class="filter">
+        <button class="exitBlock"></button>
+        <div class="filterHeader">
+            <h2>Filter</h2>
+            <button class="filterCloseButton">
+                <svg id="closeFilterSvg" width="15" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.8 14.7">
+                    <g id="XMLID_401_">
+                        <g id="XMLID_399_">
+                            <path id="XMLID_68_" class="st0" d="M1.148.018l13.577 13.576-1.132 1.13L.017 1.15z" />
+                        </g>
+                        <g id="XMLID_402_">
+                            <path id="XMLID_67_" class="st0" d="M13.664-.053l1.13 1.13L1.22 14.656.087 13.523z" />
+                        </g>
+                    </g>
+                </svg>
+            </button>
+        </div>
+        <form action="" onsubmit="return false" id="filterForm">
+            <fieldset class="filterDays">
+                <h3>Select Day</h3>
+                <div class="dayOne checkbox">
+                    <label for="dayOne">1 | 08-10-16</label>
+                    <input type="checkbox" value="08-10-2016" id="dayOne" name="dayOneSelect" class="optionsDays">
+                </div>
+                <div class="dayTwo checkbox">
+                    <label for="dayTwo">2 | 09-10-16</label>
+                    <input type="checkbox" value="09-10-2016" id="dayTwo" name="dayTwoSelect" class="optionsDays">
+                </div>
+            </fieldset>
+            <fieldset class="filterCategories">
+                <h3>Select categories</h3>
+                <div class="music checkbox">
+                    <label for="music">Music</label>
+                    <input type="checkbox" value="Music" name="musicSelect" id="music" class="themeSelect">
+                </div>
+                <div class="innovation checkbox">
+                    <label for="innovation">Innovation</label>
+                    <input type="checkbox" value="Innovation" name="innovationSelect" id="innovation" class="themeSelect">
+                </div>
+                <div class="food checkbox">
+                    <label for="food">Food</label>
+                    <input type="checkbox" value="Food" name="foodSelect" id="food" class="themeSelect">
+                </div>
+            </fieldset>
+            <button id="filterButton" type="submit" form="form1" value="Submit">Save changes</button>
+        </form>
+    </section>
