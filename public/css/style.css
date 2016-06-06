@@ -458,18 +458,29 @@ fieldset h3 {
 .detailContent {
 	line-height: 1.5em;
 }
-
-/*.tagMusic{
-    background-color: #e95454;
+.shareList {
+	display: flex;
+	list-style: none;
+	margin: 1em 0;
 }
-
-.tagFood{
-    background-color: #87c278;
+.shareSocialMedia {
+	padding: 1em;
+	display: flex;
+	align-items: center;
 }
+.socialMediaIcon {
+	fill: white;
 
-.tagInnovation{
-    background-color: #2e4d9c;  
-}*/
+}
+.facebookIcon {
+	background-color: #3b5998;	
+}
+.twitterIcon {
+	background-color: #55acee;
+}
+.whatsAppIcon {
+	background-color: #43d854;
+}
 
 .tag{
     width:auto;
