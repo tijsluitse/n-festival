@@ -23,8 +23,8 @@
             "longtitude": null,
             "distance": null,
             "date": "08-10-2016",
-            "start-time": "16:30",
-            "end-time": "17:30"
+            "starttime": "16:30",
+            "endtime": "17:30"
         },
         "content": {
             "summary": "Borre Akkersdijk is oprichter van modelabel BYBORRE en bouwt voort op het concept van modulaire high-tech kleding. In 2009 studeerde hij af aan de Design Academy in Eindhoven. Hij liep stage bij Lidewij Edelkoort en won in 2012 de MINI Young Designer Award. Tijdens de conferentie SXSW vorig jaar presenteerde Borre Akkersdijk een pak met GPS-tracking, een WiFi hotspot en eenmuziekbibliotheek, in samenwerking met TU Delft, 22Tracks, Crisp en Daan Spangenberg. Op Northside 2015 presenteerde hij de BB.Suitwaarover o.a. Wired een artikel wijdde."
@@ -39,24 +39,24 @@
                 "title": "Bombay",
                 "location": "Oepidus Brewing",
                 "date": "08-10-2016",
-                "start-time": "19:00",
-                "end-time": "19:30",
+                "starttime": "19:00",
+                "endtime": "19:30",
                 "theme": "Music"
             },
             {
                 "title": "Radicale Vernieuwers",
                 "location": "Hotel de Goudfazant",
                 "date": "09-10-2016",
-                "start-time": "14:00",
-                "end-time": "15:30",
+                "starttime": "14:00",
+                "endtime": "15:30",
                 "theme": "Innovation"
             },
             {
                 "title": "De Tafel van 1.000",
                 "location": "Hotel de Goudfazant",
                 "date": "09-10-2016",
-                "start-time": "19:00",
-                "end-time": "00:00",
+                "starttime": "19:00",
+                "endtime": "00:00",
                 "theme": "Food"
             }
         ]
@@ -85,8 +85,8 @@
             "distance": null,
             "address": "Aambeeldstraat 10H 1021KB Amsterdam",
             "date": "09-10-2016",
-            "start-time": "14:00",
-            "end-time": "15:30"
+            "starttime": "14:00",
+            "endtime": "15:30"
         },
         "content": {
             "summary": "Naast het verkennen van nieuwe thema’s en het ontwikkelen van nieuwe methodes en interventies, adviseert Chris Sigaloff overheden en organisaties over innovatie strategieën, sociale innovatie en beleid. Ook geeft ze presentaties over deze onderwerpen - in Nederland en in het buitenland. Nora van der Linden is binnen Kennisland projectleider van Radicale vernieuwers en de Social Innovation Safari, waarbij de grootste uitdaging is om nieuwe aanpakken te ontwikkelen voor complexe maatschappelijk vraagstukken."
@@ -108,24 +108,24 @@
                 "title": "De Toekomst van Media",
                 "location": "Beamsystems",
                 "date": "08-10-2016",
-                "start-time": "14:00",
-                "end-time": "15:30",
+                "starttime": "14:00",
+                "endtime": "15:30",
                 "theme": "Innovation"
             },
             {
                 "title": "Wijnfestival",
                 "location": "Hotel de Goudfazant",
                 "date": "08-10-2016",
-                "start-time": "15:00",
-                "end-time": "17:00",
+                "starttime": "15:00",
+                "endtime": "17:00",
                 "theme": "Food"
             },
             {
                 "title": "Bird on the Wire",
                 "location": "Chocolatemakers",
                 "date": "09-10-2016",
-                "start-time": "19:00",
-                "end-time": "19:30",
+                "starttime": "19:00",
+                "endtime": "19:30",
                 "theme": "Music"
             }
         ]
@@ -151,8 +151,8 @@
             "longtitude": null,
             "distance": null,
             "date": "09-10-2016",
-            "start-time": "14:00",
-            "end-time": "17:30"
+            "starttime": "14:00",
+            "endtime": "17:30"
         },
         "content": {
             "summary": "Red Light Radio put together a dynamic and harmonious mix of top three bands. BLUE CRIME: This experimental four-piece monster was born in an Amsterdam bunker and is ready to take the world by storm. Playing mysterious moon pop, its show is a trip from the disarming to the wrenching. Prepare to be swept off your feet by dreamy yet sinister songs – or by a mosh pit."
@@ -167,24 +167,24 @@
                 "title": "Bombay",
                 "location": "Oepidus Brewing",
                 "date": "08-10-2016",
-                "start-time": "19:00",
-                "end-time": "19:30",
+                "starttime": "19:00",
+                "endtime": "19:30",
                 "theme": "Music"
             },
             {
                 "title": "Taste Talks",
                 "location": "Hotel de Goudfazant",
                 "date": "08-10-2016",
-                "start-time": "12:00",
-                "end-time": "15:00",
+                "starttime": "12:00",
+                "endtime": "15:00",
                 "theme": "Food"
             },
             {
                 "title": "Machine Learning",
                 "location": "A'dam Toren",
                 "date": "09-10-2016",
-                "start-time": "17:00",
-                "end-time": "18:00",
+                "starttime": "17:00",
+                "endtime": "18:00",
                 "theme": "Innovation"
             }
         ]
