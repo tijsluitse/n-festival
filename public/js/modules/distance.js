@@ -6,15 +6,16 @@ var distance = (function(data){
 			var allDistances = [];
 
 			for (var i = 0; i < data.length; i++) {
+                var id = data[i].info.datatype;
 				var uLat = userLocation[0];
 				var uLng = userLocation[1];
 				var lat = data[i].info.lattitude;
 				var lng = data[i].info.longtitude;
 				var unit = "K";
-				distance(uLat, uLng, lat, lng, unit, i);
+				distance(id, uLat, uLng, lat, lng, unit, i);
 			};
 
-			function distance(lat1, lon1, lat2, lon2, unit, i) {
+			function distance(id, lat1, lon1, lat2, lon2, unit, i) {
 				var radlat1 = Math.PI * lat1/180
 				var radlat2 = Math.PI * lat2/180
 				var theta = lon1-lon2
@@ -27,8 +28,11 @@ var distance = (function(data){
 				if (unit=="N") {dist = dist * 0.8684}
 				
 				var result = dist.toFixed(2);
-				data[i].info.distance = result; 
-				var eventDistId = 'eventDist' + i;
+				data[i].info.distance = result;
+                
+				var eventDistId = 'eventDist' + id;
+                
+                
 				document.getElementById(eventDistId).innerHTML = result + 'km';
 				
 				allDistances.push({
@@ -46,15 +50,16 @@ var distance = (function(data){
 			var allDistances = [];
 
 			for (var i = 0; i < data.length; i++) {
+                var id = data[i].info.datatype;
 				var uLat = userLocation[0];
 				var uLng = userLocation[1];
 				var lat = data[i].info.lattitude;
 				var lng = data[i].info.longtitude;
 				var unit = "K";
-				distance(uLat, uLng, lat, lng, unit, i);
+				distance(id, uLat, uLng, lat, lng, unit, i);
 			};
 
-			function distance(lat1, lon1, lat2, lon2, unit, i) {
+			function distance(id, lat1, lon1, lat2, lon2, unit, i) {
 				var radlat1 = Math.PI * lat1/180
 				var radlat2 = Math.PI * lat2/180
 				var theta = lon1-lon2
@@ -68,7 +73,8 @@ var distance = (function(data){
 				
 				var result = dist.toFixed(2);
 				data[i].info.distance = result; 
-				var eventDistId = 'eventDist' + i;
+				var eventDistId = 'eventDist' + id;
+                
 				document.getElementById(eventDistId).innerHTML = result + 'km';
 				
 				allDistances.push({

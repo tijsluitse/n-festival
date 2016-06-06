@@ -19,11 +19,45 @@ fs.readFile('./public/data/data.json', 'utf8', function (err, data) {
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
+
     var data = {
         obj: obj
     };
 
-    res.render('home', data);
+//    var eventArrHome = [];
+//
+//    var now = new Date(),
+//        day1 = new Date('October 8, 2016 23:59:59');
+//
+//    function findDay(data, day) {
+//        var obj = data.obj;
+//
+//        obj.forEach(function (item) {
+//            if (item.info.date == day) {
+//                eventArrHome.push(item);
+//            }
+//        });
+//    };
+//
+//    if (now < day1) {
+//        findDay(data, '08-10-2016');
+//
+//        res.render('homeDay1', {
+//            obj: eventArrHome
+//        });
+//
+//    } else {
+//        findDay(data, '09-10-2016');
+//
+//        res.render('homeDay2', {
+//            obj: eventArrHome
+//        });
+//    }
+    
+    res.render('home', {
+            obj: obj
+            });
+
 });
 
 router.get('/showevents', function (req, res, next) {
