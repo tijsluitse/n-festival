@@ -54,9 +54,7 @@
                 </svg>
                 <p>
                     <span class="detailLocation">{{item.info.location}}</span><br />
-                    <a href="">
-                        <!--                met link naar het adres/map?-->
-                        {{item.info.address}}</a>
+                    <a href="http://maps.google.com/maps?saddr=Current%20Location&daddr={{item.info.address}}">{{item.info.address}}</a>
                 </p>
             </div>
             
@@ -109,7 +107,7 @@
                                     </g>
                                 </g>
                             </svg>
-                            <p>{{start-time}} - {{end-time}}</p>
+                            <p>{{starttime}} - {{endtime}}</p>
 
                         </div>
 

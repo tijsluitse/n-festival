@@ -6,7 +6,7 @@ var distance = (function(data){
 			var allDistances = [];
 
 			for (var i = 0; i < data.length; i++) {
-                var id = data[i].info.datatype;
+				var id = data[i].info.datatype;
 				var uLat = userLocation[0];
 				var uLng = userLocation[1];
 				var lat = data[i].info.lattitude;
@@ -24,16 +24,20 @@ var distance = (function(data){
 				dist = Math.acos(dist)
 				dist = dist * 180/Math.PI
 				dist = dist * 60 * 1.1515
-				if (unit=="K") {dist = dist * 1.609344}
-				if (unit=="N") {dist = dist * 0.8684}
+				if (unit == "K") {dist = dist * 1.609344}
+				if (unit == "N") {dist = dist * 0.8684}
 				
 				var result = dist.toFixed(2);
-				data[i].info.distance = result;
-                
+				data[i].info.distance = result; 
+
+				var bikeTime = 4 * result;
+				bikeTime = bikeTime.toFixed(0);							
+
 				var eventDistId = 'eventDist' + id;
-                
-                
-				document.getElementById(eventDistId).innerHTML = result + 'km';
+				document.getElementById(eventDistId).innerHTML = result + ' km';
+
+				var bikeDistId = 'bikeDist' + id;
+				document.getElementById(bikeDistId).innerHTML = bikeTime + 'min ';
 				
 				allDistances.push({
 					distance: result
@@ -50,7 +54,7 @@ var distance = (function(data){
 			var allDistances = [];
 
 			for (var i = 0; i < data.length; i++) {
-                var id = data[i].info.datatype;
+				var id = data[i].info.datatype;
 				var uLat = userLocation[0];
 				var uLng = userLocation[1];
 				var lat = data[i].info.lattitude;
@@ -68,14 +72,21 @@ var distance = (function(data){
 				dist = Math.acos(dist)
 				dist = dist * 180/Math.PI
 				dist = dist * 60 * 1.1515
-				if (unit=="K") {dist = dist * 1.609344}
-				if (unit=="N") {dist = dist * 0.8684}
+				if (unit == "K") {dist = dist * 1.609344}
+				if (unit == "N") {dist = dist * 0.8684}
 				
 				var result = dist.toFixed(2);
 				data[i].info.distance = result; 
+
+
+				var bikeTime = 4 * result;
+				bikeTime = bikeTime.toFixed(0);							
+
 				var eventDistId = 'eventDist' + id;
-                
-				document.getElementById(eventDistId).innerHTML = result + 'km';
+				document.getElementById(eventDistId).innerHTML = result + ' km';
+
+				var bikeDistId = 'bikeDist' + id;
+				document.getElementById(bikeDistId).innerHTML = bikeTime + 'min ';
 				
 				allDistances.push({
 					distance: result

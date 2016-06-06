@@ -11,10 +11,19 @@ fs.readFile('./public/data/data.json', 'utf8', function (err, data) {
 
     for (var i = 0; i < obj.length; i++) {
         var id = "id",
-            value = i
-
+            value = i;
         obj[i][id] = value;
     }
+
+    // sort by name
+    var dataByName = obj.slice(0);
+    dataByName.sort(function(a,b) {
+        var x = a.header.title.toLowerCase();
+        var y = b.header.title.toLowerCase();
+        return x < y ? -1 : x > y ? 1 : 0;
+    });
+
+    obj = dataByName;
 });
 
 /* GET home page. */

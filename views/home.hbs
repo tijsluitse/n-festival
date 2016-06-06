@@ -7,7 +7,7 @@
 
     <ul id="eventsList" class="discoverEvents">
         {{#obj}}
-        <div class="eventObj date" data-date="{{info.date}}" data-theme="{{event.theme}}" data-start="{{info.start-time}}" data-end="{{info.end-time}}">
+        <div class="eventObj date" data-date="{{info.date}}" data-theme="{{event.theme}}" data-start="{{info.starttime}}" data-end="{{info.endtime}}">
             <a href="/detail/{{id}}" class="eventDetailLink">
                 <li class="discoverEvent {{event.theme}}">
                     <div class="eventTitle">
@@ -41,7 +41,7 @@
                                     </g>
                                 </g>
                             </svg>
-                            <p><span class="fromTime">{{info.start-time}}</span> - <span class="tillTime">{{info.end-time}}</span></p>
+                            <p><span class="fromTime">{{info.starttime}}</span> - <span class="tillTime">{{info.endtime}}</span></p>
                         </div>
 
 
@@ -55,6 +55,9 @@
                                     </g>
                                 </g>
                             </svg>
+                            <div id="distanceCalc">
+                                <p id="bikeDist{{info.datatype}}"><span class="kmLoad1">.</span><span class="kmLoad2">.</span><span class="kmLoad3">.</span>min</p>
+                            </div><br />
                             <div id="distanceCalc">
                                 <p id="eventDist{{info.datatype}}"><span class="kmLoad1">.</span><span class="kmLoad2">.</span><span class="kmLoad3">.</span>km</p>
                             </div>
