@@ -3,7 +3,6 @@ var ux = (function () {
     var launcher = function () {
 
         ux.menuSlide();
-        ux.noJsReset();
         ux.fullScreenMap();
         ux.detailPage();
         ux.myRoute();

@@ -1,4 +1,5 @@
 <!doctype html>
+<html>
 
 <head>
     <title>N-FESTIVAL</title>
@@ -15,7 +16,7 @@
     <header class="topHeader">
 
         <button class="headerButton" id="menuButton">
-            <svg class="menuIcon"  width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56.3 71.9">
+            <svg class="menuIcon" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56.3 71.9">
                 <g id="menuBars">
                     <g id="XMLID_34_">
                         <path id="menubar1" class="bar" d="M0 10.2h56.3v8.6H0z" />
@@ -52,29 +53,28 @@
     <nav id="menu">
         <ul>
             <li><a href="/">Discover</a></li>
-            <li><a href="/timetable">My Route</a></li>
-            <li><a href="/showEvents">Program</a></li>
-            <li><a href="">About N-festival</a></li>
-            <li><a href="">Settings</a></li>
+            <li><a href="/myroute">My Route</a></li>
+            <li><a href="/programpage">Program</a></li>
+            <li><a href="/location">Venues</a></li>
+            <li><a href="/about">About N-festival</a></li>
+            <li><a href="/settings">Settings</a></li>
         </ul>
     </nav>
 
-    <main>
-        {{{body}}}
-    </main>
+    {{{body}}}
 
-</body>
-
-	<!-- Modules -->
-	<script src="/js/modules/get-data.js"></script>
-<!--    <script src="/js/modules/filter.js"></script>-->
+    <!-- Modules -->
+    <script src="/js/modules/get-data.js"></script>
+    <!--    <script src="/js/modules/filter.js"></script>-->
     <script src="/js/modules/distance.js"></script>
     <script src="/js/modules/geocoder.js"></script>
-	<script src="/js/modules/geolocation.js"></script>
-	<script src="/js/modules/feature-detect.js"></script>
+    <script src="/js/modules/geolocation.js"></script>
+    <script src="/js/modules/feature-detect.js"></script>
     <script src="/js/modules/ux.js"></script>
 
-	<!-- Launcher -->
-	<script src="/js/modules/launcher.js"></script>
+    <!-- Launcher -->
+    <script src="/js/modules/launcher.js"></script>
+
+</body>
 
 </html>
