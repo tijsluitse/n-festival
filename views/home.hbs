@@ -1,14 +1,12 @@
 {{> popupDetail}}
 
 <section id="homePage" class="toggleSection">
-    {{> map}} 
-    
     {{> filterBar}}
 
     <ul id="eventsList" class="discoverEvents">
         {{#obj}}
         <div class="eventObj">
-            <a href="/detail/{{id}}" class="eventDetailLink">
+            <a href="/detail/{{info.nameUrl}}" class="eventDetailLink">
                 <li class="discoverEvent {{event.theme}}">  
                     <!-- <img class="{{event.theme}}" src="{{header.image}}" alt="Event image" meta property="og:image"> -->
                     <div class="eventTitle">
