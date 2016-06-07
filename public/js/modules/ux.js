@@ -7,7 +7,7 @@ var ux = (function () {
         ux.fullScreenMap();
         ux.detailPage();
         ux.myRoute();
-        ux.filterSlide();
+//        ux.filterSlide();
 
     };
 
@@ -32,22 +32,22 @@ var ux = (function () {
 
     };
 
-    var filterSlide = function () {
-        var filter = document.querySelector('.filter');
-        filter.classList.add('filterToRight');
-
-        var filterButton = document.querySelector('.filterButton').onclick = function () {
-            filter.classList.add('filterToggle');
-        }
-
-        var filterCloseButton = document.querySelector('.filterCloseButton').onclick = function () {
-            filter.classList.remove('filterToggle');
-        }
-        var filterCloseButtonBar = document.querySelector('.exitBlock').onclick = function () {
-            filter.classList.remove('filterToggle');
-        }
-
-    }
+//    var filterSlide = function () {
+//        var filter = document.querySelector('.filter');
+//        filter.classList.add('filterToRight');
+//
+//        var filterButton = document.querySelector('.filterButton').onclick = function () {
+//            filter.classList.add('filterToggle');
+//        }
+//
+//        var filterCloseButton = document.querySelector('.filterCloseButton').onclick = function () {
+//            filter.classList.remove('filterToggle');
+//        }
+//        var filterCloseButtonBar = document.querySelector('.exitBlock').onclick = function () {
+//            filter.classList.remove('filterToggle');
+//        }
+//
+//    }
 
     var fullScreenMap = function () {
 
@@ -144,8 +144,8 @@ var ux = (function () {
         fullScreenMap: fullScreenMap,
         detailPage: detailPage,
         detailSlide: detailSlide,
-        myRoute: myRoute,
-        filterSlide: filterSlide
+        myRoute: myRoute
+//        filterSlide: filterSlide
     }
 
 })();

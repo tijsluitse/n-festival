@@ -41,8 +41,6 @@ var allEvents = (function () {
                 else {
                     // wat als local storage niet is ondersteund?
                 }
-
-                templating.init(hasStorage);
                 
             }
         };
