@@ -14,10 +14,10 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 1em;
+	/*padding: 1em;*/
 	position: fixed;
 	width: 100vw;
-	height: 60px;
+	height: 50px;
 	z-index: 10;
 }
 .topHeader svg {
@@ -26,6 +26,18 @@
 
 .subHeader {
 	height: 60px;
+}
+.myRoute {
+	height: 0;
+	width: 0;
+	background-color: white;
+	border-top: 25px solid white;
+	border-bottom: 25px solid black;
+	border-left: 25px solid black;
+	border-right: 25px solid white;
+}
+.menuIcon{
+	margin: 1em;
 }
 
 #locationMap {
@@ -103,29 +115,88 @@
 }
 
 /*FILTER*/
-
+.filterBar button {
+	background-color: unset;
+	border: none;
+}
 .filterBar {
-	background-color: black;
-	padding: 1em;
+	background-color: #282828;
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	color: white;
+	flex-wrap: wrap;
 }
-.filterDay {
+.filterBar a {
+	text-decoration: none;
+	color: white;
+	font-size: 1.3em;
+	text-transform: uppercase;
+}
+
+.dayFilter{
+	width: 50%;
+	text-align: center;
+	text-transform: uppercase;
+	cursor: pointer;
+	border-bottom: 5px solid #F7EC72;
+	opacity: .2;
+}
+
+#dayOneFilter:hover {
+	opacity: 1;
+}
+
+#dayTwoFilter:hover {
+	opacity: 1;
+}
+
+.themeFilter {
+	width: calc(100% / 3);
+	display: flex;
+	justify-content: center;
+	padding: 1em;
+	font-weight: lighter;
+	cursor: pointer;
+}
+.themeFilter button {
+	color: white;
+	text-transform: uppercase;
+	font-size: .8em;
+}
+.innovationFilter {
+	border-bottom: 5px solid #2D4C9B;
+	opacity: .2;
+}
+.innovationFilter:hover {
+	opacity: 1;
+}
+.musicFilter {
+	border-bottom: 5px solid #E95454;
+	opacity: .2;
+}
+.musicFilter:hover {
+	opacity: 1
+}
+.foodFilter {
+	border-bottom: 5px solid #86C178;
+	opacity: .2;
+}
+.foodFilter:hover {
+	opacity: 1;
+}
+.filterActive {
+	opacity: 1;
+}
+/*.filterDay {
 	display: flex;
 	align-items: center;
 
-}
-.filterBox {
+}*/
+/*.filterBox {
 	border: 1px solid white;
 	margin-left: 1em;
 	position: relative;
 }
-.filterDay > p {
-	text-transform: uppercase;
-}
-#selectDay {
+*/
+/*#selectDay {
 	appearance: none;
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -135,7 +206,7 @@
 	color: white;
 	font-size: 1em;
 	height: 3em;
-}
+}*/
 .optionsDays {
 	font-size: 1em;
 }
@@ -160,25 +231,30 @@
 .eventDetailLink{
     text-decoration: none;
 }
-
-.discoverEvents {
-	padding: 1em;
+.eventImg {
+	background-color: grey;
+	height: 100%;
+	width: 2em;
 }
+
 
 .music {
-	border-left: 1em solid #e95454;
+	border-left: 10px solid #e95454;
 }
 .food {
-	border-left: 1em solid #87c278;
+	border-left: 10px solid #87c278;
 }
 .innovation {
-	border-left: 1em solid #2e4d9c;
+	border-left: 10px solid #2e4d9c;
+}
+.discoverEvents {
+	margin-top: .8em;
 }
 
 .discoverEvent {
 	background-color: #EFEFEF;
 	padding: .5em;
-	margin-bottom: 1em;
+	margin-bottom: 3px;
 	list-style: none;
 }
 .eventTitle {
