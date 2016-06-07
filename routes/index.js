@@ -18,16 +18,6 @@ fs.readFile('./public/data/data.json', 'utf8', function (err, data) {
         obj[i].info[nameUrl] = nameValue;
         obj[i].info[locationUrl] = locationValue;
     }
-
-    // sort by name
-    var dataByName = obj.slice(0);
-    dataByName.sort(function (a, b) {
-        var x = a.header.title.toLowerCase();
-        var y = b.header.title.toLowerCase();
-        return x < y ? -1 : x > y ? 1 : 0;
-    });
-
-    obj = dataByName;
 });
 
 // helper function to match data with day,name,location etc.
@@ -113,8 +103,18 @@ router.get('/showevents', function (req, res, next) {
     var data = {
         obj: obj
     };
+    
+    // sort by name
+    var dataByName = data.obj.slice(0);
+    dataByName.sort(function (a, b) {
+        var x = a.header.title.toLowerCase();
+        var y = b.header.title.toLowerCase();
+        return x < y ? -1 : x > y ? 1 : 0;
+    });
 
-    res.render('showEvents', data);
+    res.render('showEvents', {
+        obj: dataByName
+    });
 });
 
 // get timetable page
