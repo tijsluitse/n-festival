@@ -154,7 +154,7 @@
 	justify-content: center;
 	padding: 1em;
 	font-weight: lighter;
-	/*cursor: pointer;*/
+	cursor: pointer;
 }
 .themeFilter button {
 	color: white;
