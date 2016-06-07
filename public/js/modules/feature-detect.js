@@ -1,4 +1,9 @@
 var featureDetect = (function () {
+    
+    var launcher = function(){
+        featureDetect.storage();
+        featureDetect.ifMap();
+    };
 
     var storage = function () {
         // Feature detect + local reference bron: https://mathiasbynens.be/notes/localstorage-pattern
@@ -19,10 +24,25 @@ var featureDetect = (function () {
             // wat als local storage niet is ondersteund? server?
         }
         
-         allEvents.getData(hasStorage);
+        if (document.getElementById('locationMapHolder')!=null){
+            allEvents.getData(hasStorage);
+        }
+    };
+     
+    var ifMap = function(){
+        // Check if location map is on page, if this is the case run the following code
+        if (document.getElementById('locationMapHolder')!=null){
+            
+            ux.noJsReset();
+            geolocation.currentPositionMarker();
+            
+            console.log('aanwezig');
+        }
     };
 
     return {
-        storage: storage
+        launcher: launcher,
+        storage: storage,
+        ifMap: ifMap
     }
 })();

@@ -2,11 +2,10 @@
 
 var launcher = (function() {
 
-	var init = function() {		
+	var init = function() {
 		ux.menuSlide();
+        featureDetect.launcher();
         ux.launcher();
-        featureDetect.storage();
-        geolocation.currentPositionMarker();
 	}
 
 	return {

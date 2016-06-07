@@ -99,7 +99,7 @@ router.get('/day2', function (req, res, next) {
 });
 
 // get events page
-router.get('/showevents', function (req, res, next) {
+router.get('/programpage', function (req, res, next) {
     var data = {
         obj: obj
     };
@@ -112,14 +112,14 @@ router.get('/showevents', function (req, res, next) {
         return x < y ? -1 : x > y ? 1 : 0;
     });
 
-    res.render('showEvents', {
+    res.render('programPage', {
         obj: dataByName
     });
 });
 
 // get timetable page
-router.get('/timetable', function (req, res, next) {
-    res.render('timeTable');
+router.get('/myroute', function (req, res, next) {
+    res.render('myRoute');
 });
 
 
@@ -143,6 +143,16 @@ router.get('/detail/:name', function (req, res, next) {
     });
 });
 
+router.get('/location', function(req, res, next){
+    var data = {
+        obj: obj
+    };
+    
+    res.render('locationList', {
+        obj: data
+    });
+});
+
 router.get('/location/:place', function (req, res, next) {
     var data = {
         obj: obj
@@ -150,9 +160,17 @@ router.get('/location/:place', function (req, res, next) {
 
     var locationArr = findObject(data, ['info', 'locationUrl'], req.params.place);
 
-    res.render('locationList', {
+    res.render('locationDetail', {
         obj: locationArr
     });
+});
+
+router.get('/about', function(req, res, next){
+    res.render('about');
+});
+
+router.get('/settings', function(req, res, next){
+    res.render('settings');
 });
 
 module.exports = router;
