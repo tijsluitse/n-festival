@@ -63,14 +63,14 @@ router.get('/', function (req, res, next) {
     if (now < day1) {
         var array = findObject(data, ['info', 'date'], '08-10-2016');
 
-        res.render('homeDay1', {
+        res.render('home', {
             obj: array
         });
 
     } else {
         var array = findObject(data, ['info', 'date'], '09-10-2016');
 
-        res.render('homeDay2', {
+        res.render('home', {
             obj: array
         });
     }
@@ -85,7 +85,7 @@ router.get('/day1', function (req, res, next) {
 
     var array = findObject(data, ['info', 'date'], '08-10-2016');
 
-    res.render('homeDay1', {
+    res.render('home', {
         obj: array
     });
 
@@ -99,7 +99,7 @@ router.get('/day2', function (req, res, next) {
 
     var array = findObject(data, ['info', 'date'], '09-10-2016');
 
-    res.render('homeDay2', {
+    res.render('home', {
         obj: array
     });
 });
