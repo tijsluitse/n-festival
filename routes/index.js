@@ -10,9 +10,13 @@ fs.readFile('./public/data/data.json', 'utf8', function (err, data) {
     obj = JSON.parse(data);
 
     for (var i = 0; i < obj.length; i++) {
-        var id = "id",
-            value = i;
-        obj[i][id] = value;
+        var nameUrl = 'nameUrl',
+            locationUrl = 'locationUrl',
+            nameValue = obj[i].header.title.replace(/ /g, "-"),
+            locationValue = obj[i].info.location.replace(/ /g, "-");
+        
+        obj[i].info[nameUrl] = nameValue;
+        obj[i].info[locationUrl] = locationValue;
     }
 
     // sort by name
@@ -55,7 +59,7 @@ router.get('/', function (req, res, next) {
     var data = {
         obj: obj
     };
-
+    
     var now = new Date(),
         day1 = new Date('October 8, 2016 23:59:59');
 
@@ -119,7 +123,7 @@ router.get('/timetable', function (req, res, next) {
 });
 
 
-router.get('/detail/:id', function (req, res, next) {
+router.get('/detail/:name', function (req, res, next) {
 
     if (req.query.js != undefined) {
         var js = false;
@@ -131,17 +135,7 @@ router.get('/detail/:id', function (req, res, next) {
         obj: obj
     };
 
-    function findId(data, idToLookFor) {
-        var obj = data.obj;
-
-        for (var i = 0; i < obj.length; i++) {
-            if (obj[i].id == idToLookFor) {
-                return (obj[i]);
-            }
-        }
-    }
-
-    var item = findId(data, req.params.id);
+    var item = findObject(data, ['info', 'nameUrl'], req.params.name);
 
     res.render('detailEvents', {
         item: item,
@@ -154,24 +148,10 @@ router.get('/location/:place', function (req, res, next) {
         obj: obj
     };
 
-    var location = req.params.place.replace(/-/g, " ");
-
-    var eventArr = [];
-
-    function findId(data, idToLookFor) {
-        var obj = data.obj;
-
-        obj.forEach(function (item) {
-            if (item.info.location == idToLookFor) {
-                eventArr.push(item);
-            }
-        });
-    };
-
-    findId(data, location);
+    var locationArr = findObject(data, ['info', 'locationUrl'], req.params.place);
 
     res.render('locationList', {
-        obj: eventArr
+        obj: locationArr
     });
 });
 
