@@ -9,17 +9,6 @@ nfest.ux = (function () {
     var uxLauncher = function () {
         // directly launch ux modules for every page
         nfest.ux.menuSlide();
-        
-    
-//        nfest.helpers.storageCheck(function(hasStorage){
-//            if (hasStorage){
-//                console.log('hastorage');
-//            }
-//            else{
-//                console.log('nope');
-//            }
-//        });
-        
     }
 
     var menuSlide = function () {

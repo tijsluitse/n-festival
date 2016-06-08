@@ -53,25 +53,25 @@ var geolocation = (function() {
 
     var watchPosition = function() {
 
-        var marker = new google.maps.Marker({
-            map: map,
-            icon: '/img/marker.gif',
-            optimized: false,
-            title: 'First Infowindow!'
-        });
-
-        var contentString = 
-            '<div id="content">'+            
-            '<p>' +
-            location.address +
-            '</p>' + 
-            '</div>';
-
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString
-        });
-
-        marker.setMap(map);
+//        var marker = new google.maps.Marker({
+//            map: map,
+//            icon: '/img/marker.gif',
+//            optimized: false,
+//            title: 'First Infowindow!'
+//        });
+//
+//        var contentString = 
+//            '<div id="content">'+            
+//            '<p>' +
+//            location.address +
+//            '</p>' + 
+//            '</div>';
+//
+//        var infowindow = new google.maps.InfoWindow({
+//            content: contentString
+//        });
+//
+//        marker.setMap(map);
 
         if (!navigator.geolocation){
             alert('Geolocation is not supported by your browser');
@@ -79,82 +79,77 @@ var geolocation = (function() {
         }            
 
         function success(position) {
-            var userLatitude  = position.coords.latitude;
-            var userLongitude = position.coords.longitude;
-            var userCoordinates = [userLatitude, userLongitude];
-            localStorage.setItem('userCoordinates', JSON.stringify(userCoordinates));
-            var userLocation = JSON.parse(localStorage.getItem('userCoordinates'));
+//            var userLatitude  = position.coords.latitude;
+//            var userLongitude = position.coords.longitude;
+//            var userCoordinates = [userLatitude, userLongitude];
+//            localStorage.setItem('userCoordinates', JSON.stringify(userCoordinates));
+//            var userLocation = JSON.parse(localStorage.getItem('userCoordinates'));
             marker.setPosition(new google.maps.LatLng(userLatitude, userLongitude)); 
             map.setCenter(marker.getPosition());                 
         };
 
-        function error() {
-            alert('Unable to retrieve your location.');
-            if (JSON.parse(localStorage.getItem('userCoordinates'))!== null) {
+//        function error() {
+//            alert('Unable to retrieve your location.');
+//            if (JSON.parse(localStorage.getItem('userCoordinates'))!== null) {
+//
+//            } else {
+//                alert('Unable to retrieve your location.')
+//            }
+//        };
 
-            } else {
-                alert('Unable to retrieve your location.')
-            }
-        };
-
-        var options = {
-            enableHighAccuracy: true
-        }
-
-        navigator.geolocation.watchPosition(success, error, options);
+//        var options = {
+//            enableHighAccuracy: true
+//        }
+//
+//        navigator.geolocation.watchPosition(success, error, options);
 
     };
 
-//    var currentPositionMarker = function() {    
-//
-//        var userLocation = JSON.parse(localStorage.getItem('userCoordinates'));
-//        var userPosition = new google.maps.LatLng(userLocation[0], userLocation[1]);
-//
-//    };
+    
 
     var locations = function(locationMarkers){        
 
-        locationMarkers.forEach(function (location) {
-
-            var marker = new google.maps.Marker({
-                position: {lat: location.lat, lng: location.lng},
-                map: map,
-                title: 'First Infowindow!'
-            });
-            
-            var locationLink = location.title.replace(/ /g, "-");
-            
-            var link = '<a href="/location/' + locationLink + '">';
-
-            var contentString = 
-                '<div id="content">'+            
-                '<h1>' +
-                location.title +
-                '</h1>' +
-                '<p>' +
-                location.address +
-                '</p>' +
-                '<a href="#">' + 
-                'Route beschrijving' + 
-                '</a>' +
-                '   |   ' + 
-                link + 
-                'Bekijk evenementen' + 
-                '</a>' +
-                '</div>';
-
-            var infowindow = new google.maps.InfoWindow({
-                content: contentString
-            });
-
-            marker.addListener('click', function() {
-                infowindow.open(map, marker);
-                map.setCenter(marker.getPosition());
-            });
-
-            marker.setMap(map);
-
-        });
+//        locationMarkers.forEach(function (location) {
+//
+//            var marker = new google.maps.Marker({
+//                position: {lat: location.lat, lng: location.lng},
+//                map: map,
+//                title: 'First Infowindow!'
+//            });
+//            
+//            var locationLink = location.title.replace(/ /g, "-");
+//            
+//            var link = '<a href="/location/' + locationLink + '">';
+//
+//            var contentString = 
+//                '<div id="content">'+            
+//                '<h1>' +
+//                location.title +
+//                '</h1>' +
+//                '<p>' +
+//                location.address +
+//                '</p>' +
+//                '<a href="#">' + 
+//                'Route beschrijving' + 
+//                '</a>' +
+//                '   |   ' + 
+//                link + 
+//                'Bekijk evenementen' + 
+//                '</a>' +
+//                '</div>';
+//
+//            var infowindow = new google.maps.InfoWindow({
+//                content: contentString
+//            });
+//
+//            marker.addListener('click', function() {
+//                infowindow.open(map, marker);
+//                map.setCenter(marker.getPosition());
+//            });
+//
+//            marker.setMap(map);
+//
+//        });
 
     };
 

@@ -16,12 +16,13 @@ nfest.map = (function () {
             scaleControl: false,
             mapTypeId: 'Styled'
         };
-        
+
         var map = new google.maps.Map(document.getElementById("locationMap"), mapOptions);
 
         nfest.map.jsActivate(map);
         nfest.map.mapStyle(map);
         nfest.map.getLocation(map);
+        nfest.map.venueMarkers(map);
     }
 
     var jsActivate = function (map) {
@@ -172,7 +173,7 @@ nfest.map = (function () {
                                 lat: userLatitude,
                                 lng: userLongitude
                             });
-                            
+
                             nfest.map.setMarker(map, userLatitude, userLongitude);
                         };
 
@@ -191,7 +192,7 @@ nfest.map = (function () {
                             lat: userCoordinates[0],
                             lng: userCoordinates[1]
                         });
-                        
+
                         nfest.map.setMarker(map, userCoordinates[0], userCoordinates[1]);
                     }
 
@@ -201,12 +202,12 @@ nfest.map = (function () {
                     function success(position) {
                         var userLatitude = position.coords.latitude;
                         var userLongitude = position.coords.longitude;
-                        
+
                         map.panTo({
-                                lat: userLatitude,
-                                lng: userLongitude
-                            });
-                        
+                            lat: userLatitude,
+                            lng: userLongitude
+                        });
+
                         nfest.map.setMarker(map, userLatitude, userLongitude);
                     };
 
@@ -254,12 +255,66 @@ nfest.map = (function () {
         map.setCenter(marker.getPosition());
     }
 
+    var venueMarkers = function (map) {
+
+        nfest.helpers.getVenueLocations(function (mapLocations, data) {
+            var locationMarkers = mapLocations;
+            
+            locationMarkers.forEach(function (location) {
+
+                var marker = new google.maps.Marker({
+                    position: {
+                        lat: location.lat,
+                        lng: location.lng
+                    },
+                    map: map,
+                    title: 'First Infowindow!'
+                });
+
+                var locationLink = location.title.replace(/ /g, "-");
+
+                var link = '<a href="/location/' + locationLink + '">';
+
+                var contentString =
+                    '<div id="content">' +
+                    '<h1>' +
+                    location.title +
+                    '</h1>' +
+                    '<p>' +
+                    location.address +
+                    '</p>' +
+                    '<a href="#">' +
+                    'Route beschrijving' +
+                    '</a>' +
+                    '   |   ' +
+                    link +
+                    'Bekijk evenementen' +
+                    '</a>' +
+                    '</div>';
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+
+                marker.addListener('click', function () {
+                    infowindow.open(map, marker);
+                    map.setCenter(marker.getPosition());
+                });
+
+                marker.setMap(map);
+
+            });
+        });
+
+    }
+
     return {
         mapLauncher: mapLauncher,
         jsActivate: jsActivate,
         mapStyle: mapStyle,
         getLocation: getLocation,
-        setMarker: setMarker
+        setMarker: setMarker,
+        venueMarkers: venueMarkers
     }
 
 })();
