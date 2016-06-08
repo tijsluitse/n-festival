@@ -3,9 +3,9 @@
 var launcher = (function() {
 
 	var init = function() {
-		ux.menuSlide();
+//		ux.menuSlide();
         featureDetect.launcher();
-        ux.launcher();
+//        ux.launcher();
 	}
 
 	return {

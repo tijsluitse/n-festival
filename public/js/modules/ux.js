@@ -2,7 +2,7 @@ var ux = (function () {
 
     var launcher = function () {
 
-        ux.menuSlide();
+//        ux.menuSlide();
         ux.fullScreenMap();
         ux.detailPage();
         ux.myRoute();
@@ -15,21 +15,21 @@ var ux = (function () {
         locationMap.classList.remove('hide');
     };
 
-    var menuSlide = function () {
-
-        var menu = document.getElementById('menu');
-        menu.classList.add('hide');
-        menu.classList.add('menuSlide');
-
-        var menuButton = document.getElementById('menuButton').onclick = function () {
-            menu.classList.toggle('hide');
-
-            document.getElementById('menubar1').classList.toggle('animateBar1');
-            document.getElementById('menubar2').classList.toggle('animateBar2');
-            document.getElementById('menubar3').classList.toggle('animateBar3');
-        }
-
-    };
+//    var menuSlide = function () {
+//
+//        var menu = document.getElementById('menu');
+//        menu.classList.add('hide');
+//        menu.classList.add('menuSlide');
+//
+//        var menuButton = document.getElementById('menuButton').onclick = function () {
+//            menu.classList.toggle('hide');
+//
+//            document.getElementById('menubar1').classList.toggle('animateBar1');
+//            document.getElementById('menubar2').classList.toggle('animateBar2');
+//            document.getElementById('menubar3').classList.toggle('animateBar3');
+//        }
+//
+//    };
 
 //    var filterSlide = function () {
 //        var filter = document.querySelector('.filter');
@@ -103,32 +103,32 @@ var ux = (function () {
         }
     };
 
-    var detailSlide = function () {
-        var detail = document.querySelector('.detailContainer'),
-            detailExit = document.querySelector('.detailExit'),
-            showDetail = document.getElementById('showDetail');
-
-
-        showDetail.classList.remove('hide');
-
-        setTimeout(function () {
-            detail.classList.add('detailToggle');
-            detailExit.classList.add('detailToggle');
-        }, 20);
-
-        detailExit.onclick = function () {
-            detail.classList.remove('detailToggle');
-            detailExit.classList.remove('detailToggle');
-            showDetail.classList.add('hide');
-        };
-
-        document.querySelector('.closeDetailButton').onclick = function () {
-            detail.classList.remove('detailToggle');
-            detailExit.classList.remove('detailToggle');
-            showDetail.classList.add('hide');
-
-        };
-    };
+//    var detailSlide = function () {
+//        var detail = document.querySelector('.detailContainer'),
+//            detailExit = document.querySelector('.detailExit'),
+//            showDetail = document.getElementById('showDetail');
+//
+//
+//        showDetail.classList.remove('hide');
+//
+//        setTimeout(function () {
+//            detail.classList.add('detailToggle');
+//            detailExit.classList.add('detailToggle');
+//        }, 20);
+//
+//        detailExit.onclick = function () {
+//            detail.classList.remove('detailToggle');
+//            detailExit.classList.remove('detailToggle');
+//            showDetail.classList.add('hide');
+//        };
+//
+//        document.querySelector('.closeDetailButton').onclick = function () {
+//            detail.classList.remove('detailToggle');
+//            detailExit.classList.remove('detailToggle');
+//            showDetail.classList.add('hide');
+//
+//        };
+//    };
 
     var myRoute = function () {
         // var myRouteButton = document.querySelector('.buttonAddToRoute').onclick = function () {
@@ -137,12 +137,12 @@ var ux = (function () {
     };
 
     return {
-        menuSlide: menuSlide,
+//        menuSlide: menuSlide,
         launcher: launcher,
         noJsReset: noJsReset,
         fullScreenMap: fullScreenMap,
         detailPage: detailPage,
-        detailSlide: detailSlide,
+//        detailSlide: detailSlide,
         myRoute: myRoute
 //        filterSlide: filterSlide
     }
