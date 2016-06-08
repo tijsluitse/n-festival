@@ -7,7 +7,7 @@
         {{#obj}}
         <div class="eventObj">
             <a href="/detail/{{info.nameUrl}}" class="eventDetailLink">
-                <li class="discoverEvent {{event.theme}}">  
+                <li class="discoverEvent {{event.theme}}">
                     <!-- <img class="{{event.theme}}" src="{{header.image}}" alt="Event image" meta property="og:image"> -->
                     <div class="eventTitle">
                         <h2>{{header.title}}</h2>
@@ -48,7 +48,8 @@
                             </svg>
                             <div id="distanceCalc">
                                 <p id="bikeDist{{info.datatype}}"><span class="kmLoad1">.</span><span class="kmLoad2">.</span><span class="kmLoad3">.</span>min</p>
-                            </div><br />
+                            </div>
+                            <br />
                             <div>
                                 <p id="eventDist{{info.datatype}}"><span class="kmLoad1">.</span><span class="kmLoad2">.</span><span class="kmLoad3">.</span>km</p>
                             </div>
@@ -68,3 +69,8 @@
     </ul>
 
 </section>
+
+<script src="/js/nfestHelpers.js"></script>
+<script src="/js/nfestUx.js"></script>
+<script src="/js/nfestLocation.js"></script>
+<script src="/js/nfestDetailEvent.js"></script>
