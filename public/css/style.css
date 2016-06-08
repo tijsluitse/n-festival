@@ -5,7 +5,7 @@
 	font-family: "Lato", sans-serif;
 }
 
-/*HOMEPAGE*/
+/*HEADER*/
 .homePageHeading {
 	display: none;
 }
@@ -25,7 +25,7 @@
 }
 
 .subHeader {
-	height: 60px;
+	height: 50px;
 }
 .myRoute {
 	height: 0;
@@ -35,11 +35,31 @@
 	border-bottom: 25px solid black;
 	border-left: 25px solid black;
 	border-right: 25px solid white;
+	text-decoration: none;
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 .menuIcon{
 	margin: 1em;
 }
+.headerButton {
+	border: none;
+	background-color: unset;
+	cursor: pointer;
+}
+.myRouteCounter {
+	background-color: #ED1414;
+	border-radius: 1.5em;
+	min-width: 1.5em;
+	height: 1.5em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 
+/*MAP*/
 #locationMap {
 	background-image: url('../img/amsterdamNoord.png');
 	background-size: cover;
@@ -50,11 +70,7 @@
 	color: black;
 }
 
-.headerButton {
-	border: none;
-	background-color: unset;
-	cursor: pointer;
-}
+
 
 /*MENU*/
 
@@ -114,7 +130,7 @@
 	transform: translate(5px, -18px) rotate(-45deg);
 }
 
-/*FILTER*/
+/*FILTER BAR*/
 .filterBar button {
 	background-color: unset;
 	border: none;
@@ -207,7 +223,7 @@
 	font-size: 1em;
 	height: 3em;
 }*/
-.optionsDays {
+/*.optionsDays {
 	font-size: 1em;
 }
 .dropdownIcon {
@@ -225,18 +241,18 @@
 	font-weight: 700;
 	font-size: 1em;
 	height: 3em;
-}
+}*/
 
 /*EVENTS*/
 .eventDetailLink{
     text-decoration: none;
 }
 .eventImg {
-	background-color: grey;
-	height: 100%;
-	width: 2em;
+	height: 6em;
+	min-width: 6em;
+	background-size: cover;
+	background-position: center center;
 }
-
 
 .music {
 	border-left: 10px solid #e95454;
@@ -249,13 +265,22 @@
 }
 .discoverEvents {
 	margin-top: .8em;
+	
 }
 
 .discoverEvent {
 	background-color: #EFEFEF;
-	padding: .5em;
+	/*padding: .5em;*/
 	margin-bottom: 3px;
 	list-style: none;
+	display: flex;
+}
+.eventInformation {
+	margin: .5em;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 100%;
 }
 .eventTitle {
     color: #000;
@@ -264,20 +289,40 @@
 	align-items: center;
 }
 .eventTitle h2 {
-	font-size: 1.3em;
+	font-size: 1em;
+	padding-right: 2em;
 }
 .buttonAddToRoute {
-	border: none;
-	background: unset;
 	cursor: pointer;
 	position: absolute;
-	top: .5em;
-	right: .5em;
+	top: 0;
+	right: 0;
+	background-color: white;
+	border-top: 25px solid white;
+	border-bottom: 25px solid #EFEFEF;
+	border-left: 25px solid #EFEFEF;
+	border-right: 25px solid white;
 }
-.eventObj{
+.addedToRoute {
+	border-top: 25px solid black;
+	border-right: 25px solid black;
+
+}
+.addedToRoute svg {
+	fill: white;
+	transform: rotate(0);
+}
+.addToRouteSvg {
+	transform: rotate(45deg);
+	right: -1.5em;
+	top: -1.5em;
+	position: absolute;
+}
+.eventObj {
 	position: relative;
 }
-.eventHeartIcon {
+
+/*.eventHeartIcon {
 	padding: .2em;
 	stroke: black;
 	fill: none;
@@ -285,19 +330,20 @@
 .eventAdded {
 	fill: black;
 	stroke: black;
-}
+}*/
 .eventLocation {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
 	color: #808080;
 	margin-top: .5em;
+	font-size: .8em;
 }
 .eventTimeDistance {
 	display: flex;
 	justify-content: space-between;
 	color: #808080;
-	margin-top: .5em;
+	font-size: .8em;
 }
 .eventTime {
 	display: flex;
@@ -306,10 +352,14 @@
 .eventDistance {
 	display: flex;
 	align-items: center;
+
 }
 .eventIcon {
 	margin-right: .5em;
 	fill: #808080;
+}
+.eventDistanceIcon {
+	margin-left: 1em;
 }
 
 li svg{
