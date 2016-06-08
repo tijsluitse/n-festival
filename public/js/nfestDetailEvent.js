@@ -9,7 +9,7 @@ nfest.detailEvents = (function () {
 
         nfest.helpers.onclick(detailTarget, function (e) {
 
-            if (e.target.nodeName !== 'UL' && e.target.classList[0] !== 'eventHeartIcon' && e.target.classList[0] !== 'st0') {
+            if (e.target.nodeName !== 'UL' && e.target.classList[0] !== 'buttonAddToRoute' && e.target.classList[0] !== 'st0' && e.target.classList[0] !== 'addToRouteSvg') {
 
                 if (e.target.nodeName === 'A') {
                     popupDetail(e.target.href);
