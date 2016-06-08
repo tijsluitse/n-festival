@@ -1,3 +1,43 @@
+var currentPositionMarker = function () {
+
+    var userLocation = JSON.parse(localStorage.getItem('userCoordinates'));
+    var userPosition = new google.maps.LatLng(userLocation[0], userLocation[1]);
+
+};
+
+
+uit watchPosition:
+
+marker.setPosition(new google.maps.LatLng(userLatitude, userLongitude));
+map.setCenter(marker.getPosition());
+
+
+//		var themeSelect = function() {
+//			var themes = document.querySelectorAll('.themeSelect');
+//			for(a = 0; a < themes.length; a++) {
+//				if (themes[a].checked == true){
+//					var id = themes[a].id;
+//					console.log(id);
+//					for (i = 0; i < allEvents.length; i++) {
+//				    	var theme = allEvents[i].dataset.theme;				    	
+//				    	if (theme == id) {
+//				    		allEvents[i].classList.remove('hide');
+//				    	}
+//				    };
+//				} else {
+//					var id = themes[a].id;					
+//					for (i = 0; i < allEvents.length; i++) {
+//				    	var theme = allEvents[i].dataset.theme;				    	
+//				    	if (theme == id) {
+//				    		allEvents[i].classList.add('hide');
+//				    	}
+//				    };
+//				}
+//			}
+//		};
+
+
+
 var distance = (function(data){
 
 	var userToLocation = function(data) {
