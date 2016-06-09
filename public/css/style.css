@@ -143,7 +143,7 @@
 .filterBar a {
 	text-decoration: none;
 	color: white;
-	font-size: 1.3em;
+	font-size: 1em;
 	text-transform: uppercase;
 }
 
@@ -154,16 +154,14 @@
 	cursor: pointer;
 	border-bottom: 5px solid #F7EC72;
 	opacity: .2;
+	padding: 1em;
 }
-
-#dayOneFilter:hover {
+.dayFilter:hover {
 	opacity: 1;
 }
-
-#dayTwoFilter:hover {
+.filterActive {
 	opacity: 1;
 }
-
 .themeFilter {
 	width: calc(100% / 3);
 	display: flex;
@@ -171,36 +169,31 @@
 	padding: 1em;
 	font-weight: lighter;
 	cursor: pointer;
+	/*opacity: .2;*/
 }
 .themeFilter button {
 	color: white;
 	text-transform: uppercase;
 	font-size: .8em;
 }
-.innovationFilter {
+#innovationFilter {
 	border-bottom: 5px solid #2D4C9B;
-	opacity: .2;
 }
-.innovationFilter:hover {
-	opacity: 1;
-}
-.musicFilter {
+#musicFilter {
 	border-bottom: 5px solid #E95454;
-	opacity: .2;
 }
-.musicFilter:hover {
-	opacity: 1
-}
-.foodFilter {
+#foodFilter {
 	border-bottom: 5px solid #86C178;
+}
+
+.filterDisable {
 	opacity: .2;
 }
-.foodFilter:hover {
-	opacity: 1;
+.themeFilterBox{
+	width: 100%;
 }
-.filterActive {
-	opacity: 1;
-}
+
+
 /*.filterDay {
 	display: flex;
 	align-items: center;
@@ -276,7 +269,7 @@
 	display: flex;
 }
 .eventInformation {
-	margin: .5em;
+	margin: .3em .5em;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -294,6 +287,7 @@
 }
 .buttonAddToRoute {
 	cursor: pointer;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -310,9 +304,11 @@
 }
 .addedToRoute svg {
 	fill: white;
-	transform: rotate(0);
+	transform: rotate(-90deg);
 }
+
 .addToRouteSvg {
+	transition: 0.3s transform cubic-bezier(0.712, 0.0376, 0.392, 1);;
 	transform: rotate(45deg);
 	right: -1.5em;
 	top: -1.5em;
@@ -337,13 +333,13 @@
 	align-items: center;
 	color: #808080;
 	margin-top: .5em;
-	font-size: .8em;
+	font-size: .9em;
 }
 .eventTimeDistance {
 	display: flex;
 	justify-content: space-between;
 	color: #808080;
-	font-size: .8em;
+	font-size: .9em;
 }
 .eventTime {
 	display: flex;
@@ -352,7 +348,7 @@
 .eventDistance {
 	display: flex;
 	align-items: center;
-
+	margin-bottom: .3em;
 }
 .eventIcon {
 	margin-right: .5em;
@@ -529,23 +525,27 @@ fieldset h3 {
 }
 
 /* DETAIL PAGE */
-
-/*.detailPage,
-.recommendations{
-    margin:1em;
-}*/
+.detailEventPage {
+	animation: slideToTop 500ms cubic-bezier(0.712, 0.0376, 0.392, 1);
+}
+@keyframes slideToTop {
+	0% {
+		transform: translateY(100vh);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
 
 .detailPage img{
     width:100%;
 }
-
-/*.detailPage p{
-    color: grey;
+.eventInfo {
+	margin: 1em;
 }
-*/
 .detailPage h1{
-    font-size:1.2em;
-    margin: 0 1em .5em 0;
+    font-size: 1em;
+    margin: 1em;
 }
 
 .detailPage h2{
@@ -574,20 +574,47 @@ fieldset h3 {
 	align-items: flex-start;
 	margin: 1em 0;
 }
+.detailDate a {
+	color: black;
+	text-decoration: none;
+}
 .detailLocation {
 	font-weight: 900;
 }
-
+.planRouteButton {
+	text-transform: uppercase;
+	background-color: white;
+	border: 2px solid black;
+	padding: 1em;
+	width: 9em;
+	margin: 2em auto;
+	font-size: 1em;
+	font-weight: bold;
+	text-decoration: none;
+	color: black;
+	text-align: center;
+	display: block;
+}
+.planRouteButton:hover {
+	background-color: black;
+	color: white;
+}
 .detailPage figure{
     position:relative;
 }
 .detailContent {
 	line-height: 1.5em;
 }
+.shareSection h3 {
+	text-align: center;
+}
 .shareList {
 	display: flex;
 	list-style: none;
-	margin: 1em 0;
+	justify-content: center;
+}
+.shareList li {
+	margin: .5em;
 }
 .shareSocialMedia {
 	padding: 1em;
@@ -624,6 +651,10 @@ fieldset h3 {
     padding:0.5em;
     color: #FFF;
     font-size:0.8em;
+}
+.recommendations h3 {
+	text-align: center;
+	margin-top: 2em;
 }
 
 
@@ -671,7 +702,4 @@ fieldset h3 {
 
 /* dit kan weg hieronder */
 
-.dayFilter{
-    padding:0.5em;
-    font-size:1.5em;
-}
+
