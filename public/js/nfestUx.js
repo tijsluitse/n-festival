@@ -52,7 +52,9 @@ nfest.ux = (function () {
             detailExit.classList.remove('detailToggle');
             showDetail.classList.add('hide');
         });
-    }
+    };
+
+
 
     return {
         uxLauncher: uxLauncher,
