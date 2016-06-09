@@ -6,6 +6,11 @@ var nfest = nfest || {};
 
 nfest.helpers = (function () {
 
+    // from: http://stackoverflow.com/questions/5898656/test-if-an-element-contains-a-class
+    var hasClass = function (element, cls) {
+        return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+    }
+
     var onclick = function (target, cb) {
         if (target.addEventListener) {
             target.addEventListener('click', cb, false);
@@ -46,14 +51,14 @@ nfest.helpers = (function () {
 
         cb(hasStorage);
     }
-    
+
     var getVenueLocations = function (cb) {
 
         nfest.helpers.getData("data/data.json", function (response) {
             var data = JSON.parse(response),
                 mapLocations = [],
                 eventCoordinates = [];
-            
+
 
             for (var a = 0; a < data.length; a++) {
                 var location = data[a].info.location;
@@ -99,6 +104,7 @@ nfest.helpers = (function () {
     }
 
     return {
+        hasClass: hasClass,
         onclick: onclick,
         getData: getData,
         storageCheck: storageCheck,
