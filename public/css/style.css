@@ -159,13 +159,9 @@
 .dayFilter:hover {
 	opacity: 1;
 }
-
 .filterActive {
 	opacity: 1;
 }
-
-
-
 .themeFilter {
 	width: calc(100% / 3);
 	display: flex;
@@ -173,33 +169,31 @@
 	padding: 1em;
 	font-weight: lighter;
 	cursor: pointer;
+	/*opacity: .2;*/
 }
 .themeFilter button {
 	color: white;
 	text-transform: uppercase;
 	font-size: .8em;
 }
-.innovationFilter {
+#innovationFilter {
 	border-bottom: 5px solid #2D4C9B;
-	opacity: .2;
 }
-.innovationFilter:hover {
-	opacity: 1;
-}
-.musicFilter {
+#musicFilter {
 	border-bottom: 5px solid #E95454;
-	opacity: .2;
 }
-.musicFilter:hover {
-	opacity: 1
-}
-.foodFilter {
+#foodFilter {
 	border-bottom: 5px solid #86C178;
+}
+/*#innovationFilter:hover,
+#musicFilter:hover,
+#foodFilter:hover {
+	opacity: 1;
+}*/
+.filterDisable {
 	opacity: .2;
 }
-.foodFilter:hover {
-	opacity: 1;
-}
+
 
 /*.filterDay {
 	display: flex;
