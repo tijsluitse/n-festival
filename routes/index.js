@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-// GET data (kan dit in een andere file en data meesturen templates?)
+// GET data 
 var fs = require('fs');
 var obj;
 
@@ -10,35 +10,127 @@ fs.readFile('./public/data/data.json', 'utf8', function (err, data) {
     obj = JSON.parse(data);
 
     for (var i = 0; i < obj.length; i++) {
-        var id = "id",
-            value = i
-
-        obj[i][id] = value;
+        var nameUrl = 'nameUrl',
+            locationUrl = 'locationUrl',
+            nameValue = obj[i].header.title.replace(/ /g, "-"),
+            locationValue = obj[i].info.location.replace(/ /g, "-"),
+            recom = obj[i].recommendations;
+        
+        for (var a = 0; a < recom.length; a++){
+            var recomValue = recom[a].title.replace(/ /g, "-");
+            
+            recom[a][nameUrl] = recomValue;
+        }
+            
+        obj[i].info[nameUrl] = nameValue;
+        obj[i].info[locationUrl] = locationValue;
     }
 });
 
-/* GET home page. */
+// helper function to match data with day,name,location etc.
+function findObject(data, arrayOfProps, objectToLookFor) {
+    var obj = data.obj;
+
+    var eventArray = [];
+
+    obj.forEach(function (item) {
+        var x = item;
+
+        // get the right item from json data (with some help from Casper)
+        arrayOfProps.forEach(function (prob) {
+            x = x[prob];
+        });
+
+        if (x == objectToLookFor) {
+            eventArray.push(item);
+        }
+    });
+
+    return eventArray;
+};
+
+
+// Get home page
 router.get('/', function (req, res, next) {
+
+    var data = {
+        obj: obj
+    };
+    
+    var now = new Date(),
+        day1 = new Date('October 8, 2016 23:59:59');
+
+// show events day 1 if it's before day one, otherwise show events day 2
+    if (now < day1) {
+        var array = findObject(data, ['info', 'date'], '08-10-2016');
+
+        res.render('home', {
+            obj: array
+        });
+
+    } else {
+        var array = findObject(data, ['info', 'date'], '09-10-2016');
+
+        res.render('home', {
+            obj: array
+        });
+    }
+
+});
+
+// get day 1
+router.get('/day1', function (req, res, next) {
+    var data = {
+        obj: obj
+    }
+
+    var array = findObject(data, ['info', 'date'], '08-10-2016');
+
+    res.render('home', {
+        obj: array
+    });
+
+});
+
+// get day 2
+router.get('/day2', function (req, res, next) {
     var data = {
         obj: obj
     };
 
-    res.render('home', data);
+    var array = findObject(data, ['info', 'date'], '09-10-2016');
+
+    res.render('home', {
+        obj: array
+    });
 });
 
-router.get('/showevents', function (req, res, next) {
+// get events page
+router.get('/programpage', function (req, res, next) {
     var data = {
         obj: obj
     };
+    
+    // sort by name
+    var dataByName = data.obj.slice(0);
+    dataByName.sort(function (a, b) {
+        var x = a.header.title.toLowerCase();
+        var y = b.header.title.toLowerCase();
+        return x < y ? -1 : x > y ? 1 : 0;
+    });
 
-    res.render('showEvents', data);
+    res.render('programPage', {
+        obj: dataByName
+    });
 });
 
-router.get('/timetable', function (req, res, next) {
-    res.render('timeTable');
+// get timetable page
+router.get('/myroute', function (req, res, next) {
+    res.render('myRoute');
 });
 
-router.get('/detail/:id', function (req, res, next) {
+
+router.get('/detail/:name', function (req, res, next) {
 
     if (req.query.js != undefined) {
         var js = false;
@@ -50,21 +142,21 @@ router.get('/detail/:id', function (req, res, next) {
         obj: obj
     };
 
-    function findId(data, idToLookFor) {
-        var obj = data.obj;
-
-        for (var i = 0; i < obj.length; i++) {
-            if (obj[i].id == idToLookFor) {
-                return (obj[i]);
-            }
-        }
-    }
-
-    var item = findId(data, req.params.id);
+    var item = findObject(data, ['info', 'nameUrl'], req.params.name);
 
     res.render('detailEvents', {
         item: item,
         layout: js
+    });
+});
+
+router.get('/location', function(req, res, next){
+    var data = {
+        obj: obj
+    };
+    
+    res.render('locationList', {
+        obj: data
     });
 });
 
@@ -73,25 +165,19 @@ router.get('/location/:place', function (req, res, next) {
         obj: obj
     };
 
-    var location = req.params.place.replace(/-/g, " ");
+    var locationArr = findObject(data, ['info', 'locationUrl'], req.params.place);
 
-    var eventArr = [];
-
-    function findId(data, idToLookFor) {
-        var obj = data.obj;
-
-        obj.forEach(function (item) {
-            if (item.info.location == idToLookFor) {
-                eventArr.push(item);
-            }
-        });
-    };
-
-    findId(data, location);
-
-    res.render('locationList', {
-        obj: eventArr
+    res.render('locationDetail', {
+        obj: locationArr
     });
+});
+
+router.get('/about', function(req, res, next){
+    res.render('about');
+});
+
+router.get('/settings', function(req, res, next){
+    res.render('settings');
 });
 
 module.exports = router;
