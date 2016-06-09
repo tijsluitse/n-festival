@@ -185,13 +185,12 @@
 #foodFilter {
 	border-bottom: 5px solid #86C178;
 }
-/*#innovationFilter:hover,
-#musicFilter:hover,
-#foodFilter:hover {
-	opacity: 1;
-}*/
+
 .filterDisable {
 	opacity: .2;
+}
+.themeFilterBox{
+	width: 100%;
 }
 
 
@@ -526,23 +525,27 @@ fieldset h3 {
 }
 
 /* DETAIL PAGE */
-
-/*.detailPage,
-.recommendations{
-    margin:1em;
-}*/
+.detailEventPage {
+	animation: slideToTop 500ms cubic-bezier(0.712, 0.0376, 0.392, 1);
+}
+@keyframes slideToTop {
+	0% {
+		transform: translateY(100vh);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
 
 .detailPage img{
     width:100%;
 }
-
-/*.detailPage p{
-    color: grey;
+.eventInfo {
+	margin: 1em;
 }
-*/
 .detailPage h1{
-    font-size:1.2em;
-    margin: 0 1em .5em 0;
+    font-size: 1em;
+    margin: 1em;
 }
 
 .detailPage h2{
@@ -571,20 +574,47 @@ fieldset h3 {
 	align-items: flex-start;
 	margin: 1em 0;
 }
+.detailDate a {
+	color: black;
+	text-decoration: none;
+}
 .detailLocation {
 	font-weight: 900;
 }
-
+.planRouteButton {
+	text-transform: uppercase;
+	background-color: white;
+	border: 2px solid black;
+	padding: 1em;
+	width: 9em;
+	margin: 2em auto;
+	font-size: 1em;
+	font-weight: bold;
+	text-decoration: none;
+	color: black;
+	text-align: center;
+	display: block;
+}
+.planRouteButton:hover {
+	background-color: black;
+	color: white;
+}
 .detailPage figure{
     position:relative;
 }
 .detailContent {
 	line-height: 1.5em;
 }
+.shareSection h3 {
+	text-align: center;
+}
 .shareList {
 	display: flex;
 	list-style: none;
-	margin: 1em 0;
+	justify-content: center;
+}
+.shareList li {
+	margin: .5em;
 }
 .shareSocialMedia {
 	padding: 1em;
@@ -621,6 +651,10 @@ fieldset h3 {
     padding:0.5em;
     color: #FFF;
     font-size:0.8em;
+}
+.recommendations h3 {
+	text-align: center;
+	margin-top: 2em;
 }
 
 
