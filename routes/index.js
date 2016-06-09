@@ -13,8 +13,15 @@ fs.readFile('./public/data/data.json', 'utf8', function (err, data) {
         var nameUrl = 'nameUrl',
             locationUrl = 'locationUrl',
             nameValue = obj[i].header.title.replace(/ /g, "-"),
-            locationValue = obj[i].info.location.replace(/ /g, "-");
+            locationValue = obj[i].info.location.replace(/ /g, "-"),
+            recom = obj[i].recommendations;
         
+        for (var a = 0; a < recom.length; a++){
+            var recomValue = recom[a].title.replace(/ /g, "-");
+            
+            recom[a][nameUrl] = recomValue;
+        }
+            
         obj[i].info[nameUrl] = nameValue;
         obj[i].info[locationUrl] = locationValue;
     }

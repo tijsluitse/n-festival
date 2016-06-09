@@ -27,37 +27,37 @@ nfest.ux = (function () {
 
     };
     
-    var detailSlide = function () {
-        // get elements from popupDetail partial
-        var detail = document.querySelector('.detailContainer'),
-            detailExit = document.querySelector('.detailExit'),
-            showDetail = document.getElementById('showDetail'),
-            closeButton = document.querySelector('.closeDetailButton');
-
-        showDetail.classList.remove('hide');
-
-        setTimeout(function () {
-            detail.classList.add('detailToggle');
-            detailExit.classList.add('detailToggle');
-        }, 20);
-        
-        nfest.helpers.onclick(detailExit, function(){
-            detail.classList.remove('detailToggle');
-            detailExit.classList.remove('detailToggle');
-            showDetail.classList.add('hide');
-        });
-        
-        nfest.helpers.onclick(closeButton, function(){
-            detail.classList.remove('detailToggle');
-            detailExit.classList.remove('detailToggle');
-            showDetail.classList.add('hide');
-        });
-    }
+//    var detailSlide = function () {
+//        // get elements from popupDetail partial
+//        var detail = document.querySelector('.detailContainer'),
+//            detailExit = document.querySelector('.detailExit'),
+//            showDetail = document.getElementById('showDetail'),
+//            closeButton = document.querySelector('.closeDetailButton');
+//
+//        showDetail.classList.remove('hide');
+//
+//        setTimeout(function () {
+//            detail.classList.add('detailToggle');
+//            detailExit.classList.add('detailToggle');
+//        }, 20);
+//        
+//        nfest.helpers.onclick(detailExit, function(){
+//            detail.classList.remove('detailToggle');
+//            detailExit.classList.remove('detailToggle');
+//            showDetail.classList.add('hide');
+//        });
+//        
+//        nfest.helpers.onclick(closeButton, function(){
+//            detail.classList.remove('detailToggle');
+//            detailExit.classList.remove('detailToggle');
+//            showDetail.classList.add('hide');
+//        });
+//    }
 
     return {
         uxLauncher: uxLauncher,
-        menuSlide: menuSlide,
-        detailSlide: detailSlide
+        menuSlide: menuSlide
+//        detailSlide: detailSlide
     }
 
 })();
