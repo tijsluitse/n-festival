@@ -5,6 +5,7 @@ var nfest = nfest || {};
 nfest.location = (function () {
 
     var locationLauncher = function () {
+        document.getElementById('locationViewFilter').classList.remove('hide');
         nfest.location.getUserLocation();
         nfest.location.watchLocation();
         nfest.location.eventDistance();
