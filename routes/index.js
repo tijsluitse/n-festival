@@ -1,33 +1,5 @@
 var express = require('express');
 var router = express.Router();
-
-// GET data 
-var fs = require('fs');
-var obj;
-
-fs.readFile('./public/data/data.json', 'utf8', function (err, data) {
-    if (err) throw err;
-    obj = JSON.parse(data);
-
-    for (var i = 0; i < obj.length; i++) {
-        var nameUrl = 'nameUrl',
-            locationUrl = 'locationUrl',
-            nameValue = obj[i].header.title.replace(/ /g, "-"),
-            locationValue = obj[i].info.location.replace(/ /g, "-"),
-            recom = obj[i].recommendations;
-
-        for (var a = 0; a < recom.length; a++) {
-            var recomValue = recom[a].title.replace(/ /g, "-");
-
-            recom[a][nameUrl] = recomValue;
-        }
-
-        obj[i].info[nameUrl] = nameValue;
-        obj[i].info[locationUrl] = locationValue;
-    }
-});
-
-
 var http = require('http');
 
 var apiData;
@@ -61,22 +33,8 @@ http.get({
             event.acf[date] = day;
             event.acf[startconvert] = starttime;
             event.acf[endconvert] = endtime;
-            
-
-
-
-            //                
-            //                var month = starttime.getDate();
-            //                var day = starttime.getUTCDay();
-            //                console.log(day + '-' + month);
         });
 
-    });
-});
-
-router.get('/test', function (req, res, next) {
-    res.render('test', {
-        apiData: apiData
     });
 });
 
@@ -107,27 +65,26 @@ function findObject(data, arrayOfProps, objectToLookFor) {
 
 // Get home page
 router.get('/', function (req, res, next) {
-
     var data = {
-        obj: obj
+        obj: apiData
     };
-
+    
     var now = new Date(),
         day1 = new Date('October 8, 2016 23:59:59');
 
     // show events day 1 if it's before day one, otherwise show events day 2
     if (now < day1) {
-        var array = findObject(data, ['info', 'date'], '08-10-2016');
+        var array = findObject(data, ['acf', 'date'], '08-10-2016');
 
         res.render('home', {
-            obj: array
+            apiData: array
         });
 
     } else {
-        var array = findObject(data, ['info', 'date'], '09-10-2016');
+        var array = findObject(data, ['acf', 'date'], '09-10-2016');
 
         res.render('home', {
-            obj: array
+            apiData: array
         });
     }
 
@@ -136,13 +93,13 @@ router.get('/', function (req, res, next) {
 // get day 1
 router.get('/day1', function (req, res, next) {
     var data = {
-        obj: obj
-    }
+        obj: apiData
+    };
 
-    var array = findObject(data, ['info', 'date'], '08-10-2016');
+   var array = findObject(data, ['acf', 'date'], '08-10-2016');
 
     res.render('home', {
-        obj: array
+        apiData: array
     });
 
 });
@@ -150,32 +107,32 @@ router.get('/day1', function (req, res, next) {
 // get day 2
 router.get('/day2', function (req, res, next) {
     var data = {
-        obj: obj
+        obj: apiData
     };
 
-    var array = findObject(data, ['info', 'date'], '09-10-2016');
+    var array = findObject(data, ['acf', 'date'], '09-10-2016');
 
     res.render('home', {
-        obj: array
+        apiData: array
     });
 });
 
 // get events page
 router.get('/programpage', function (req, res, next) {
     var data = {
-        obj: obj
+        obj: apiData
     };
 
     // sort by name
     var dataByName = data.obj.slice(0);
     dataByName.sort(function (a, b) {
-        var x = a.header.title.toLowerCase();
-        var y = b.header.title.toLowerCase();
+        var x = a.slug.toLowerCase();
+        var y = b.slug.toLowerCase();
         return x < y ? -1 : x > y ? 1 : 0;
     });
 
     res.render('programPage', {
-        obj: dataByName
+        apiData: dataByName
     });
 });
 
@@ -186,53 +143,38 @@ router.get('/myroute', function (req, res, next) {
 
 
 router.get('/detail/:name', function (req, res, next) {
-
-    if (req.query.js != undefined) {
-        var js = false;
-    } else {
-        var js = 'layout';
-    }
-
     var data = {
-        obj: obj
+        obj: apiData
     };
 
-    var item = findObject(data, ['info', 'nameUrl'], req.params.name);
+    var item = findObject(data, ['slug'], req.params.name);
+    
+    console.log(item);
 
     res.render('detailEvents', {
-        item: item,
-        layout: js
+        item: item
     });
 });
 
 router.get('/location', function (req, res, next) {
-    var data = {
-        obj: obj
-    };
 
-    res.render('locationList', {
-        obj: data
-    });
+    res.render('locationList');
 });
 
 router.get('/location/:place', function (req, res, next) {
     var data = {
-        obj: obj
+        obj: apiData
     };
 
-    var locationArr = findObject(data, ['info', 'locationUrl'], req.params.place);
+    var locationArr = findObject(data, ['acf', 'venue', 'post_name'], req.params.place);
 
     res.render('locationDetail', {
-        obj: locationArr
+        apiData: locationArr
     });
 });
 
 router.get('/about', function (req, res, next) {
     res.render('about');
-});
-
-router.get('/settings', function (req, res, next) {
-    res.render('settings');
 });
 
 module.exports = router;
