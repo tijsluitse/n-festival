@@ -53,7 +53,7 @@ nfest.location = (function () {
         }
     }
     
-    return{
+    return {
         getUserLocation: getUserLocation
     }
 
