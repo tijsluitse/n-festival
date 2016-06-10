@@ -21,7 +21,8 @@ nfest.map = (function () {
 
         nfest.map.jsActivate(map);
         nfest.map.mapStyle(map);
-        nfest.map.getLocation(map);
+        nfest.map.getLocation(map); 
+        nfest.map.watchLocation(map);               
         nfest.map.venueMarkers(map);
     }
 
@@ -161,20 +162,25 @@ nfest.map = (function () {
             nfest.helpers.storageCheck(function (hasStorage) {
                 if (hasStorage) {
                     if (localStorage.getItem("userCoordinates") === null) {
-                        navigator.geolocation.getCurrentPosition(success, error);
+                        navigator.geolocation.getCurrentPosition(success, error);                              
 
                         function success(position) {
                             var userLatitude = position.coords.latitude;
                             var userLongitude = position.coords.longitude;
-                            var userCoordinates = [userLatitude, userLongitude];
-                            localStorage.setItem('userCoordinates', JSON.stringify(userCoordinates));
+                            var userCoordinates = [userLatitude, userLongitude];                
+                            localStorage.setItem('userCoordinates', userCoordinates);
+                            
+                            var userCoordinates = localStorage.getItem('userCoordinates');
+                            var userC = userCoordinates.split(",");                            
+                            var userLat = parseFloat(userC[0]);
+                            var userLng = parseFloat(userC[1]);
 
                             map.panTo({
-                                lat: userLatitude,
-                                lng: userLongitude
+                                lat: userLat,
+                                lng: userLng
                             });
 
-                            nfest.map.setMarker(map, userLatitude, userLongitude);
+                            nfest.map.setMarker(map, userLat, userLng);
                         };
 
                         function error() {
@@ -183,21 +189,25 @@ nfest.map = (function () {
                             // set map on Amsterdam Noord
                             var latLng = new google.maps.LatLng(52.391286, 4.917583);
                             map.panTo(latLng);
-                        };
+                        };     
 
-                    } else {
-                        var userCoordinates = JSON.parse(localStorage.getItem('userCoordinates'));
+                    } else {                    
+                        var userCoordinates = localStorage.getItem('userCoordinates');
+                        var userC = userCoordinates.split(",");                            
+                        var userLat = parseFloat(userC[0]);
+                        var userLng = parseFloat(userC[1]);
 
                         map.panTo({
-                            lat: userCoordinates[0],
-                            lng: userCoordinates[1]
+                            lat: userLat,
+                            lng: userLng
                         });
 
-                        nfest.map.setMarker(map, userCoordinates[0], userCoordinates[1]);
+                        var userPosition = new google.maps.LatLng(userLat, userLng);
+                        nfest.map.setMarker(map, userLat, userLng);                                               
                     }
 
                 } else {
-                    navigator.geolocation.getCurrentPosition(success, error);
+                    navigator.geolocation.getCurrentPosition(success, error);                        
 
                     function success(position) {
                         var userLatitude = position.coords.latitude;
@@ -208,6 +218,7 @@ nfest.map = (function () {
                             lng: userLongitude
                         });
 
+                        var userPosition = new google.maps.LatLng(userLat, userLng);
                         nfest.map.setMarker(map, userLatitude, userLongitude);
                     };
 
@@ -218,6 +229,7 @@ nfest.map = (function () {
                         var latLng = new google.maps.LatLng(52.391286, 4.917583);
                         map.panTo(latLng);
                     };
+
                 }
             });
 
@@ -253,6 +265,41 @@ nfest.map = (function () {
         marker.setMap(map);
         marker.setPosition(new google.maps.LatLng(userLat, userLong));
         map.setCenter(marker.getPosition());
+    }
+
+    var watchLocation = function(map) {
+
+        if(navigator.geolocation) {
+            function success(position) {
+                var userLatitude = position.coords.latitude;
+                var userLongitude = position.coords.longitude;
+                var userCoordinates = [userLatitude, userLongitude];                
+                localStorage.setItem('userCoordinates', userCoordinates);
+                var userCoordinates = localStorage.getItem('userCoordinates');
+                var userC = userCoordinates.split(",");                            
+                var userLat = parseFloat(userC[0]);
+                var userLng = parseFloat(userC[1]);
+
+                map.panTo({
+                    lat: userLat,
+                    lng: userLng
+                });
+
+                nfest.map.setMarker(map, userLat, userLng);              
+            };
+
+            function error() {
+                alert('Unable to retrieve your location.');
+            };
+
+            var options = {
+                enableHighAccuracy: true
+            }
+
+            navigator.geolocation.watchPosition(success, error, options);
+        } else {
+            console.log('Geolocation is turned off or not supported, we cant calculate your location.');
+        }
     }
 
     var venueMarkers = function (map) {
@@ -311,8 +358,9 @@ nfest.map = (function () {
     return {
         mapLauncher: mapLauncher,
         jsActivate: jsActivate,
-        mapStyle: mapStyle,
+        mapStyle: mapStyle,    
         getLocation: getLocation,
+        watchLocation: watchLocation,
         setMarker: setMarker,
         venueMarkers: venueMarkers
     }

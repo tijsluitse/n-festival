@@ -564,22 +564,6 @@ fieldset h3 {
 	text-transform: uppercase;
 }
 
-/*CLASSES*/
-
-.hide {
-	display: none;
-}
-
-.fullscreen {
-	height: 100vh !important;
-}
-
-/*SECTIONS*/
-
-.show {
-	display: inline-block !important;
-}
-
 /* DETAIL PAGE */
 .detailEventPage {
 	animation: slideToTop 500ms cubic-bezier(0.712, 0.0376, 0.392, 1);
@@ -763,6 +747,30 @@ fieldset h3 {
     float: right;
 }
 
-/* dit kan weg hieronder */
+#locationViewFilter {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
 
+#locationViewFilter > a {
+	width: 50%;
+	text-align: center;
+	padding: 1em 0;
+}
 
+/*CLASSES*/
+
+.hide {
+	display: none !important;
+}
+
+.fullscreen {
+	height: 100vh !important;
+}
+
+/*SECTIONS*/
+
+.show {
+	display: inline-block !important;
+}

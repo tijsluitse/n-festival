@@ -27,7 +27,6 @@ nfest.helpers = (function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
 
                 var response = xhr.responseText;
-
                 cb(response);
 
             }
@@ -58,7 +57,6 @@ nfest.helpers = (function () {
             var data = JSON.parse(response),
                 mapLocations = [],
                 eventCoordinates = [];
-
 
             for (var a = 0; a < data.length; a++) {
                 var location = data[a].info.location;

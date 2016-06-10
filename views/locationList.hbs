@@ -1,7 +1,11 @@
-<section>
-    <h1>Lijst met locaties A/Z - Kaart</h1> {{> map}}
+<section id="locationViewFilter" class="hide">
+	<a href="/location" id="listView">Lijst</a>
+	<a href="/locationMapView" id="mapView">Kaart</a>
 </section>
 
+<section>
+	{{> eventList}}
+</section>
 
 <script src="/js/nfestHelpers.js"></script>
 <script src="/js/nfestUx.js"></script>
