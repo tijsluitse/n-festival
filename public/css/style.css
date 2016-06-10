@@ -181,40 +181,43 @@
 
 /*FILTER BAR*/
 .filterBar button {
-	/*background-color: unset;*/
 	border: none;
 }
 .filterBar {
-	/*background-color: #282828;*/
 	display: flex;
 	flex-wrap: wrap;
+	position: fixed;
+	width: 100vw;
 }
-.filterBar a {
-	/*text-decoration: none;
-	color: white;
-	font-size: 1em;
-	text-transform: uppercase;*/
+.filterSpaceBar {
+	height: 6.25em;
 }
-
 .dayFilter{
 	text-decoration: none;
-	color: black;
-	font-size: 1em;
+	color: white;
+	font-size: .8em;
 	text-transform: uppercase;
 	width: 50%;
 	text-align: center;
 	text-transform: uppercase;
 	cursor: pointer;
-	background-color: white;
+	background-color: black;
 	/*border-bottom: 5px solid #F7EC72;*/
 	/*opacity: .2;*/
-	padding: 1.4em;
+	padding: 1.2em 0;
 	border-top: white solid 1px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.dayFilter h2 {
+	font-size: 1.8em;
+	margin-right: .5em;
 }
 .dayFilter:hover,
 .filterActive {
-	background-color: black;
-	color: white;
+	background-color: white;
+	color: black;
 }
 .themeFilter {
 	width: calc(100% / 3);
@@ -229,13 +232,13 @@
 }
 
 .innovationButton {
-	background-color: #2D4C9B;
+	background-color: #009ba0;
 }
 .musicButton {
-	background-color: #E95454;
+	background-color: #f33f26;
 }
 .foodButton {
-	background-color: #86C178;
+	background-color: #fdae3a;
 }
 
 .filterDisable {
@@ -298,28 +301,28 @@
 	background-size: cover;
 	background-position: center center;
 }
-
+.imgOverlay {
+	height: 6em;
+	width: 6em;
+	position: absolute;
+	left: 0;
+}
 .music {
-	border-left: 10px solid #e95454;
+	background-color: rgba(243,63,38,.8);
 }
 .food {
-	border-left: 10px solid #87c278;
+	background-color: rgba(253,174,58,.8);
 }
 .innovation {
-	border-left: 10px solid #2e4d9c;
+	background-color: rgba(0,155,160,.8);
 }
-.discoverEvents {
-	margin-top: .8em;
-	
-}
-
 .discoverEvent {
-	background-color: #EFEFEF;
-	/*padding: .5em;*/
-	margin-bottom: 3px;
+	background-color: #ffffff;
+	border-bottom: 1px solid black;
 	list-style: none;
 	display: flex;
 }
+
 .eventInformation {
 	margin: .3em .5em;
 	display: flex;
@@ -344,15 +347,23 @@
 	top: 0;
 	right: 0;
 	background-color: white;
-	border-top: 25px solid white;
-	border-bottom: 25px solid #EFEFEF;
-	border-left: 25px solid #EFEFEF;
-	border-right: 25px solid white;
+	border: 25px solid #ffffff;
+}
+.buttonAddinnovation {
+	border-bottom: 25px solid #009ba0;
+	border-left: 25px solid #009ba0;
+}
+.buttonAddmusic {
+	border-bottom: 25px solid #f33f26;
+	border-left: 25px solid #f33f26;
+}
+.buttonAddfood {
+	border-bottom: 25px solid #fdae3a;
+	border-left: 25px solid #fdae3a;
 }
 .addedToRoute {
 	border-top: 25px solid black;
 	border-right: 25px solid black;
-
 }
 .addedToRoute svg {
 	fill: white;
@@ -369,28 +380,21 @@
 .eventObj {
 	position: relative;
 }
-
-/*.eventHeartIcon {
-	padding: .2em;
-	stroke: black;
-	fill: none;
+.discoverEvents {
+	border-top: 1px solid black;
 }
-.eventAdded {
-	fill: black;
-	stroke: black;
-}*/
 .eventLocation {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
-	color: #808080;
+	color: black;
 	margin-top: .5em;
 	font-size: .9em;
 }
 .eventTimeDistance {
 	display: flex;
 	justify-content: space-between;
-	color: #808080;
+	color: black;
 	font-size: .9em;
 }
 .eventTime {
@@ -404,7 +408,7 @@
 }
 .eventIcon {
 	margin-right: .5em;
-	fill: #808080;
+	fill: black;
 }
 .eventDistanceIcon {
 	margin-left: 1em;
@@ -588,7 +592,9 @@ fieldset h3 {
 		transform: translateY(0);
 	}
 }
-
+.detailPage {
+	border-top: 1px solid white;
+}
 .detailPage img{
     width:100%;
 }
@@ -596,8 +602,8 @@ fieldset h3 {
 	margin: 1em;
 }
 .detailPage h1{
-    font-size: 1em;
-    margin: 1em;
+    font-size: 1.5em;
+    padding-top: 1em;
 }
 
 .detailPage h2{
@@ -607,7 +613,7 @@ fieldset h3 {
 .detailPage .curatorImg{
     width:2em;
     border-radius:3em;
-     margin-right:1em;
+    margin-right:1em;
 }
 
 .curator{
@@ -618,7 +624,7 @@ fieldset h3 {
 	display: flex;
 	align-items: center;
 	background-color: #efefef;
-	margin-top: .5em;
+	margin: 1.5em 0;
 	padding: .5em;
 }
 .detailDate {
@@ -687,14 +693,14 @@ fieldset h3 {
 	background-color: #43d854;
 }
 
-.tag{
+/*.tag{
     width:auto;
     padding:0.5em;
     position:absolute;
     display:inline-block;
     right: .1em;
     bottom: .1em;   
-}
+}*/
 
 .tag p{
 	background-color: black;
@@ -704,9 +710,14 @@ fieldset h3 {
     color: #FFF;
     font-size:0.8em;
 }
-.recommendations h3 {
-	text-align: center;
-	margin-top: 2em;
+.reloadRecommendations {
+	background-color: unset;
+	border: none;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin: 5em 0 2em 0;
+	cursor: pointer;
 }
 
 

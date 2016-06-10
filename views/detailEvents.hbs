@@ -5,33 +5,35 @@
         <section class="detailPage">
 
             {{#item}}
-            <h1>{{header.title}}</h1>
+            
             <figure>
-                <img class="{{event.theme}}" src="{{header.image}}" alt="Event image" meta property="og:image">
+                <img src="{{header.image}}" alt="Event image" meta property="og:image">
 
-                <section class="tag">
-                    {{#event}} {{#tags}}
-                    <p>{{tag}}</p>
-                    {{/tags}} {{/event}}
-                </section>
-                <button id="{{info.nameUrl}}" class="buttonAddToRoute">
+                
+                <button id="{{info.nameUrl}}" class="buttonAdd{{event.theme}} buttonAddToRoute" >
 
                     <svg class="addToRouteSvg" width="15" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.8 14.7"><g id="XMLID_401_"><g id="XMLID_399_"><path id="XMLID_68_" class="st0" d="M1.148.018l13.577 13.576-1.132 1.13L.017 1.15z"></path></g><g id="XMLID_402_"><path id="XMLID_67_" class="st0" d="M13.664-.053l1.13 1.13L1.22 14.656.087 13.523z"></path></g></g></svg>
 
                 </button>
             </figure>
 
-
-
-            {{#curators}}
-            <div class="curators">
-
-                <img class="curatorImg" src="{{image}}" alt="Curator image">
-                <h2 class="curator">{{name}}</h2>
-            </div>
-            {{/curators}}
+            
 
             <article class="eventInfo">
+                <section class="tag">
+                    {{#event}} {{#tags}}
+                    <p>{{tag}}</p>
+                    {{/tags}} {{/event}}
+                </section>
+                <h1>{{header.title}}</h1>
+
+                {{#curators}}
+                <div class="curators">
+
+                    <img class="curatorImg" src="{{image}}" alt="Curator image">
+                    <h2 class="curator">{{name}}</h2>
+                </div>
+                {{/curators}}
                 <div class="detailDate">
                     <svg class="eventDateIcon eventIcon" width="15" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.8 16.1">
                         <path d="M2.7 2.3v.6c0 1 .7 1.5 1.7 1.4.8-.1 1.1-.8 1.1-1.3v-.7h3.8V3c0 .4.1.8.5 1 .5.3 1.1.4 1.6.1.5-.2.7-.7.7-1.2v-.6h1.8c.6 0 .9.4.9 1v11.8c0 .3-.1.5-.2.7-.2.2-.3.3-.6.3H1c-.6 0-1-.4-1-1V3.3c0-.6.4-1 1-1H2.7zm-1.2 3v9.3h11.8V5.3H1.5z" />
@@ -73,10 +75,8 @@
 
         
 
-            <section class="shareSection">
-                <header>
-                    <h3>Share</h3>
-                </header>
+            <article class="shareSection">
+                
                 <ul class="shareList">
                     <li>
                         <a href="http://www.facebook.com/sharer.php?u=http://nfest.lisaklein.nl/detail/{{info.nameUrl}}&t={{header.title}}" target="black" class="shareSocialMedia facebookIcon">
@@ -102,14 +102,15 @@
                     </li>
                 </ul>
 
-            </section>
+            </article>
 
 
         </section>
 
-        <section class="recommendations">
-            <h3>Aanbevelingen</h3>
-            <!--        links-->
+        <article class="recommendations">
+            <button class="reloadRecommendations">
+                <svg  width="40" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.7 16.9"><path d="M0 9h2.2c-.1 2 .6 3.6 2.2 4.8 1.1.7 2.2 1 3.5.8 2.7-.4 4.4-2.7 4.4-5.1 0-2.8-2.3-4.8-4.5-5v2.2c-1.5-1.1-3-2.2-4.5-3.4 1.5-1.1 3-2.2 4.5-3.4v2.2c0 .1 0 .1.1.1.9.1 1.7.3 2.4.6.5.3 1.1.6 1.5.9.4.3.8.7 1.2 1.2.4.5.7 1 .9 1.5.3.6.5 1.2.6 1.9.1.6.1 1.3 0 1.9-.1.9-.3 1.7-.7 2.5-.4.9-1 1.6-1.8 2.3-.6.5-1.3 1-2.1 1.3-1.2.4-2.4.6-3.6.4-.9-.1-1.7-.4-2.5-.8-.7-.4-1.3-.8-1.8-1.4C1.3 13.9.7 13 .4 12c-.3-.9-.5-1.9-.4-3 0 .1 0 .1 0 0z"/></svg>
+            </button>
             <ul class="discoverEvents">
                 {{#recommendations}}
                 <div class="eventObj">
@@ -162,18 +163,7 @@
                                             <div id="distanceCalc">
                                                 <p id="bikeDist{{info.datatype}}"><span class="kmLoad1">.</span><span class="kmLoad2">.</span><span class="kmLoad3">.</span>min</p>
                                             </div>
-                                            <!-- <svg class="eventDistanceIcon eventIcon" width="22" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.2 11.6">
-                                        <g id="XMLID_112_">
-                                            <path id="XMLID_97_" class="st0" d="M2.9 0C1.4 0 .1 1.2.1 2.7s2.7 4.6 2.7 4.6 2.7-3.1 2.7-4.6S4.4 0 2.9 0zm0 3.8c-.7 0-1.3-.6-1.3-1.3s.6-1.3 1.3-1.3 1.3.6 1.3 1.3-.6 1.3-1.3 1.3z" />
-                                            <path id="XMLID_129_" class="st0" d="M16.5 4.3c-1.5 0-2.7 1.2-2.7 2.7 0 1.5 2.7 4.6 2.7 4.6s2.7-3.1 2.7-4.6c0-1.5-1.2-2.7-2.7-2.7zm0 3.8c-.7 0-1.3-.6-1.3-1.3 0-.7.6-1.3 1.3-1.3s1.3.6 1.3 1.3c-.1.8-.6 1.3-1.3 1.3z" />
-                                            <g id="XMLID_113_">
-                                                <path id="XMLID_114_" class="st0" d="M16.6 11.5h-.2l.1-.4h.2l-.1.4zm-1.2-.2l-.9-.3.1-.4c.3.1.5.2.8.2v.5zm-1.7-.6c-.3-.1-.5-.3-.8-.5l.2-.4c.2.2.5.3.7.4l-.1.5zm-1.5-1.1l-.6-.6.4-.3.6.6-.4.3zm-1.1-1.4s0-.1-.1-.1c-.1-.2-.3-.4-.4-.5l.4-.4c.2.2.3.4.5.6V8l-.4.2zm-8.2-.9L2.6 7s.3-.2.8-.5l.2.4c-.5.2-.7.4-.7.4zM10 7c-.2-.2-.5-.3-.7-.5l.2-.4c.3.1.5.3.8.5L10 7zm-5.6-.5l-.2-.4.9-.3.1.4c-.3.1-.6.2-.8.3zm4.1-.3C8.3 6.1 8 6 7.7 6l.1-.4c.3 0 .6.1.9.2l-.2.4zM6 6l-.1-.4c.3-.1.6-.1.9-.1v.4c-.2.1-.5.1-.8.1z" />
-                                            </g>
-                                        </g>
-                                    </svg>
-                                    <div>
-                                        <p id="eventDist{{info.datatype}}"><span class="kmLoad1">.</span><span class="kmLoad2">.</span><span class="kmLoad3">.</span>km</p>
-                                    </div> -->
+                                            
                                         </div>
 
                                     </div>
@@ -202,13 +192,12 @@
                 {{/recommendations}}
             </ul>
             {{/item}}
-        </section>
+        </article>
 
     </article>
 
 </section>
 
-<!--<script src="/js/nfestDetailEvent.js"></script>-->
 <script src="/js/nfestHelpers.js"></script>
 <script src="/js/nfestUx.js"></script>
 <script src="/js/nfestAddToRoute.js"></script>
