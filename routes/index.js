@@ -15,17 +15,72 @@ fs.readFile('./public/data/data.json', 'utf8', function (err, data) {
             nameValue = obj[i].header.title.replace(/ /g, "-"),
             locationValue = obj[i].info.location.replace(/ /g, "-"),
             recom = obj[i].recommendations;
-        
-        for (var a = 0; a < recom.length; a++){
+
+        for (var a = 0; a < recom.length; a++) {
             var recomValue = recom[a].title.replace(/ /g, "-");
-            
+
             recom[a][nameUrl] = recomValue;
         }
-            
+
         obj[i].info[nameUrl] = nameValue;
         obj[i].info[locationUrl] = locationValue;
     }
 });
+
+
+var http = require('http');
+
+var apiData;
+
+http.get({
+    host: 'n-festival.werk.vanjim.nl',
+    path: '/wp-json/wp/v2/events'
+}, function (response) {
+    // Continuously update stream with data
+    var body = '';
+    response.on('data', function (d) {
+        body += d;
+    });
+    response.on('end', function () {
+
+        // Data reception is done, do whatever with it!
+        apiData = JSON.parse(body);
+
+        apiData.forEach(function (event) {
+            var startArray = event.acf.start_time.split(' '),
+                endArray = event.acf.end_time.split(' ');
+
+            var day = startArray[0],
+                starttime = startArray[1],
+                endtime = endArray[1];
+            
+            var date = 'date',
+                startconvert = 'starttime_converted',
+                endconvert = 'endtime_converted';
+            
+            event.acf[date] = day;
+            event.acf[startconvert] = starttime;
+            event.acf[endconvert] = endtime;
+            
+
+
+
+            //                
+            //                var month = starttime.getDate();
+            //                var day = starttime.getUTCDay();
+            //                console.log(day + '-' + month);
+        });
+
+    });
+});
+
+router.get('/test', function (req, res, next) {
+    res.render('test', {
+        apiData: apiData
+    });
+});
+
+
 
 // helper function to match data with day,name,location etc.
 function findObject(data, arrayOfProps, objectToLookFor) {
@@ -56,11 +111,11 @@ router.get('/', function (req, res, next) {
     var data = {
         obj: obj
     };
-    
+
     var now = new Date(),
         day1 = new Date('October 8, 2016 23:59:59');
 
-// show events day 1 if it's before day one, otherwise show events day 2
+    // show events day 1 if it's before day one, otherwise show events day 2
     if (now < day1) {
         var array = findObject(data, ['info', 'date'], '08-10-2016');
 
@@ -110,7 +165,7 @@ router.get('/programpage', function (req, res, next) {
     var data = {
         obj: obj
     };
-    
+
     // sort by name
     var dataByName = data.obj.slice(0);
     dataByName.sort(function (a, b) {
@@ -150,11 +205,11 @@ router.get('/detail/:name', function (req, res, next) {
     });
 });
 
-router.get('/location', function(req, res, next){
+router.get('/location', function (req, res, next) {
     var data = {
         obj: obj
     };
-    
+
     res.render('locationList', {
         obj: data
     });
@@ -172,11 +227,11 @@ router.get('/location/:place', function (req, res, next) {
     });
 });
 
-router.get('/about', function(req, res, next){
+router.get('/about', function (req, res, next) {
     res.render('about');
 });
 
-router.get('/settings', function(req, res, next){
+router.get('/settings', function (req, res, next) {
     res.render('settings');
 });
 
