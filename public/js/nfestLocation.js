@@ -4,6 +4,12 @@ var nfest = nfest || {};
 
 nfest.location = (function () {
 
+    var locationLauncher = function () {
+        nfest.location.getUserLocation();
+        nfest.location.watchLocation();
+        nfest.location.eventDistance();
+    };
+
     var getUserLocation = function () {
         // check if geolocation is supported
         if (navigator.geolocation) {
@@ -70,6 +76,30 @@ nfest.location = (function () {
         }
     }
 
+    var watchLocation = function(map) {
+
+        if(navigator.geolocation) {
+            function success(position) {
+                var userLatitude = position.coords.latitude;
+                var userLongitude = position.coords.longitude;
+                var userCoordinates = [userLatitude, userLongitude];                
+                localStorage.setItem('userCoordinates', userCoordinates);      
+            };
+
+            function error() {
+                alert('Unable to retrieve your location.');
+            };
+
+            var options = {
+                enableHighAccuracy: true
+            }
+
+            navigator.geolocation.watchPosition(success, error, options);
+        } else {
+            console.log('Geolocation is turned off or not supported, we cant calculate your location.');
+        }
+    }
+
     var eventDistance = function(data) {
         
         var data = JSON.parse(localStorage.getItem('allEventsData'));
@@ -111,12 +141,8 @@ nfest.location = (function () {
                 var bikeTime = 4 * result;
                 bikeTime = bikeTime.toFixed(0);                         
 
-                // var eventDistId = 'eventDist' + id;
-                // document.getElementById(eventDistId).innerHTML = result + ' km';
-
                 var bikeDistId = 'bikeDist' + id;
                 document.getElementById(bikeDistId).innerHTML = bikeTime + 'min ';
-                console.log("nu");
                 
                 allDistances.push({
                     distance: result
@@ -137,11 +163,12 @@ nfest.location = (function () {
     }
     
     return {
+        locationLauncher: locationLauncher,
         getUserLocation: getUserLocation,
+        watchLocation: watchLocation,
         eventDistance: eventDistance
     }
 
 })();
 
-nfest.location.getUserLocation();
-nfest.location.eventDistance();
+nfest.location.locationLauncher();

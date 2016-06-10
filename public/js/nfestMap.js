@@ -267,6 +267,41 @@ nfest.map = (function () {
         map.setCenter(marker.getPosition());
     }
 
+    var watchLocation = function(map) {
+
+        if(navigator.geolocation) {
+            function success(position) {
+                var userLatitude = position.coords.latitude;
+                var userLongitude = position.coords.longitude;
+                var userCoordinates = [userLatitude, userLongitude];                
+                localStorage.setItem('userCoordinates', userCoordinates);
+                var userCoordinates = localStorage.getItem('userCoordinates');
+                var userC = userCoordinates.split(",");                            
+                var userLat = parseFloat(userC[0]);
+                var userLng = parseFloat(userC[1]);
+
+                map.panTo({
+                    lat: userLat,
+                    lng: userLng
+                });
+
+                nfest.map.setMarker(map, userLat, userLng);              
+            };
+
+            function error() {
+                alert('Unable to retrieve your location.');
+            };
+
+            var options = {
+                enableHighAccuracy: true
+            }
+
+            navigator.geolocation.watchPosition(success, error, options);
+        } else {
+            console.log('Geolocation is turned off or not supported, we cant calculate your location.');
+        }
+    }
+
     var venueMarkers = function (map) {
 
         nfest.helpers.getVenueLocations(function (mapLocations, data) {
