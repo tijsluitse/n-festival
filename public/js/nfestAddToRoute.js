@@ -10,12 +10,22 @@ nfest.addToRoute = (function () {
         for (var i = add.length - 1; i >= 0; i--) {
             add[i].onclick = function (evt) {
                 evt.currentTarget.classList.toggle("addedToRoute");
+                addToMyTimetable(this);
             }
         }
     }
+
+    var addToMyTimetable = function(clickedObject) {
+        if (nfest.helpers.hasClass(clickedObject, 'buttonAddToRoute')) {
+            console.log("toegevoegd");
+        } else {
+            console.log("weg");
+        }
+    }
     
-    return{
-        buttonToggle: buttonToggle
+    return {        
+        buttonToggle: buttonToggle,
+        addToMyTimetable: addToMyTimetable
     }
 
 })();
