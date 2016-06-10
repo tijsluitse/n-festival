@@ -21,7 +21,8 @@ nfest.map = (function () {
 
         nfest.map.jsActivate(map);
         nfest.map.mapStyle(map);
-        nfest.map.getLocation(map);                
+        nfest.map.getLocation(map); 
+        nfest.map.watchLocation(map);               
         nfest.map.venueMarkers(map);
     }
 
@@ -158,39 +159,6 @@ nfest.map = (function () {
         // check if geolocation is supported
         if (navigator.geolocation) {
 
-            function success(position) {
-                var userLatitude = position.coords.latitude;
-                var userLongitude = position.coords.longitude;
-                var userCoordinates = [userLatitude, userLongitude];                
-                localStorage.setItem('userCoordinates', userCoordinates);
-                var userCoordinates = localStorage.getItem('userCoordinates');
-
-                var userC = userCoordinates.split(",");                            
-                var userLat = parseFloat(userC[0]);
-                var userLng = parseFloat(userC[1]);
-                
-                map.panTo({
-                    lat: userLat,
-                    lng: userLng
-                });
-
-                nfest.map.setMarker(map, userLat, userLng);
-            };
-
-            function error() {
-                console.log('Unable to get your position.');
-
-                // set map on Amsterdam Noord
-                var latLng = new google.maps.LatLng(52.391286, 4.917583);
-                map.panTo(latLng);
-            };  
-
-            var options = {
-                enableHighAccuracy: true
-            }
-
-            navigator.geolocation.watchPosition(success, error, options);
-
             nfest.helpers.storageCheck(function (hasStorage) {
                 if (hasStorage) {
                     if (localStorage.getItem("userCoordinates") === null) {
@@ -201,8 +169,8 @@ nfest.map = (function () {
                             var userLongitude = position.coords.longitude;
                             var userCoordinates = [userLatitude, userLongitude];                
                             localStorage.setItem('userCoordinates', userCoordinates);
+                            
                             var userCoordinates = localStorage.getItem('userCoordinates');
-
                             var userC = userCoordinates.split(",");                            
                             var userLat = parseFloat(userC[0]);
                             var userLng = parseFloat(userC[1]);
@@ -225,7 +193,6 @@ nfest.map = (function () {
 
                     } else {                    
                         var userCoordinates = localStorage.getItem('userCoordinates');
-
                         var userC = userCoordinates.split(",");                            
                         var userLat = parseFloat(userC[0]);
                         var userLng = parseFloat(userC[1]);
@@ -235,7 +202,8 @@ nfest.map = (function () {
                             lng: userLng
                         });
 
-                        nfest.map.setMarker(map, userLat, userLng);
+                        var userPosition = new google.maps.LatLng(userLat, userLng);
+                        nfest.map.setMarker(map, userLat, userLng);                                               
                     }
 
                 } else {
@@ -250,6 +218,7 @@ nfest.map = (function () {
                             lng: userLongitude
                         });
 
+                        var userPosition = new google.maps.LatLng(userLat, userLng);
                         nfest.map.setMarker(map, userLatitude, userLongitude);
                     };
 
@@ -356,6 +325,7 @@ nfest.map = (function () {
         jsActivate: jsActivate,
         mapStyle: mapStyle,    
         getLocation: getLocation,
+        watchLocation: watchLocation,
         setMarker: setMarker,
         venueMarkers: venueMarkers
     }
