@@ -159,7 +159,33 @@ router.get('/detail/:name', function (req, res, next) {
 router.get('/location', function (req, res, next) {
 
     res.render('locationList');
+//router.get('/location', function(req, res, next){
+//    var data = {
+//        obj: obj
+//    };
+//
+//    // sort by name
+//    var dataByName = data.obj.slice(0);
+//    dataByName.sort(function (a, b) {
+//        var x = a.header.title.toLowerCase();
+//        var y = b.header.title.toLowerCase();
+//        return x < y ? -1 : x > y ? 1 : 0;
+//    });
+//    
+//    res.render('locationList', {
+//        obj: dataByName
+//    });
 });
+
+router.get('/locationMapView', function(req, res, next){
+    var data = {
+        obj: obj
+    };
+
+    res.render('locationMapView', {
+        obj: obj
+    });
+})
 
 router.get('/location/:place', function (req, res, next) {
     var data = {
