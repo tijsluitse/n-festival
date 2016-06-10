@@ -2,7 +2,10 @@ var express = require('express');
 var router = express.Router();
 var http = require('http');
 
-var apiData;
+var apiData,
+    vanueData;
+
+// data requests
 
 http.get({
     host: 'n-festival.werk.vanjim.nl',
@@ -25,15 +28,31 @@ http.get({
             var day = startArray[0],
                 starttime = startArray[1],
                 endtime = endArray[1];
-            
+
             var date = 'date',
                 startconvert = 'starttime_converted',
                 endconvert = 'endtime_converted';
-            
+
             event.acf[date] = day;
             event.acf[startconvert] = starttime;
             event.acf[endconvert] = endtime;
         });
+
+    });
+});
+
+http.get({
+    host: 'n-festival.werk.vanjim.nl',
+    path: '/wp-json/wp/v2/venues'
+}, function (response) {
+    // Continuously update stream with data
+    var body = '';
+    response.on('data', function (d) {
+        body += d;
+    });
+    response.on('end', function () {
+        venueData = JSON.parse(body);
+        console.log(venueData);
 
     });
 });
@@ -68,7 +87,7 @@ router.get('/', function (req, res, next) {
     var data = {
         obj: apiData
     };
-    
+
     var now = new Date(),
         day1 = new Date('October 8, 2016 23:59:59');
 
@@ -96,7 +115,7 @@ router.get('/day1', function (req, res, next) {
         obj: apiData
     };
 
-   var array = findObject(data, ['acf', 'date'], '08-10-2016');
+    var array = findObject(data, ['acf', 'date'], '08-10-2016');
 
     res.render('home', {
         apiData: array
@@ -148,7 +167,7 @@ router.get('/detail/:name', function (req, res, next) {
     };
 
     var item = findObject(data, ['slug'], req.params.name);
-    
+
     console.log(item);
 
     res.render('detailEvents', {
@@ -159,25 +178,25 @@ router.get('/detail/:name', function (req, res, next) {
 router.get('/location', function (req, res, next) {
 
     res.render('locationList');
-//router.get('/location', function(req, res, next){
-//    var data = {
-//        obj: obj
-//    };
-//
-//    // sort by name
-//    var dataByName = data.obj.slice(0);
-//    dataByName.sort(function (a, b) {
-//        var x = a.header.title.toLowerCase();
-//        var y = b.header.title.toLowerCase();
-//        return x < y ? -1 : x > y ? 1 : 0;
-//    });
-//    
-//    res.render('locationList', {
-//        obj: dataByName
-//    });
+    //router.get('/location', function(req, res, next){
+    //    var data = {
+    //        obj: obj
+    //    };
+    //
+    //    // sort by name
+    //    var dataByName = data.obj.slice(0);
+    //    dataByName.sort(function (a, b) {
+    //        var x = a.header.title.toLowerCase();
+    //        var y = b.header.title.toLowerCase();
+    //        return x < y ? -1 : x > y ? 1 : 0;
+    //    });
+    //    
+    //    res.render('locationList', {
+    //        obj: dataByName
+    //    });
 });
 
-router.get('/locationMapView', function(req, res, next){
+router.get('/locationMapView', function (req, res, next) {
     var data = {
         obj: obj
     };
