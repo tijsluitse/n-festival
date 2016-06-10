@@ -4,6 +4,8 @@ var nfest = nfest || {};
 
 nfest.addToRoute = (function () {
 
+    var allSavedEvents = [];
+
     var buttonToggle = function () {
         var add = document.querySelectorAll(".buttonAddToRoute");
 
@@ -16,11 +18,15 @@ nfest.addToRoute = (function () {
     }
 
     var addToMyTimetable = function(clickedObject) {
-        if (nfest.helpers.hasClass(clickedObject, 'buttonAddToRoute')) {
-            console.log("toegevoegd");
-        } else {
-            console.log("weg");
-        }
+        // check of het de class toegevoegd heeft of niet
+        // if (nfest.helpers.hasClass(clickedObject, 'buttonAddToRoute')) {
+        //     console.log("toegevoegd");
+        // } else {
+        //     console.log("weg");
+        // }
+        var clickedObject = clickedObject;
+        
+
     }
     
     return {        
