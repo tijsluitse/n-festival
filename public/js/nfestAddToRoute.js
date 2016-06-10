@@ -18,15 +18,10 @@ nfest.addToRoute = (function () {
     }
 
     var addToMyTimetable = function(clickedObject) {
-        // check of het de class toegevoegd heeft of niet
-        // if (nfest.helpers.hasClass(clickedObject, 'buttonAddToRoute')) {
-        //     console.log("toegevoegd");
-        // } else {
-        //     console.log("weg");
-        // }
-        var clickedObject = clickedObject;
-        
-
+        var oldItems = JSON.parse(localStorage.getItem('myRouteEvents')) || [];
+        var newItem = clickedObject.id;
+        oldItems.push(newItem);
+        localStorage.setItem('myRouteEvents', JSON.stringify(oldItems));
     }
     
     return {        
