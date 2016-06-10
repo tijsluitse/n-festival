@@ -1,10 +1,59 @@
+
+/*FONT*/
+@font-face {
+    font-family: grotesqueBlack;
+    src: url(/font/basis_grotesque_black.otf);
+}
+@font-face {
+    font-family: grotesqueBlackItalic;
+    src: url(/font/basis_grotesque_black_italic.otf);
+}
+@font-face {
+    font-family: grotesqueBold;
+    src: url(/font/basis_grotesque_bold.otf);
+}
+@font-face {
+    font-family: grotesqueBoldItalic;
+    src: url(/font/basis_grotesque_bold_italic.otf);
+}
+@font-face {
+    font-family: grotesqueLight;
+    src: url(/font/basis_grotesque_light.otf);
+}
+@font-face {
+    font-family: grotesqueLightItalic;
+    src: url(/font/basis_grotesque_light_italic.otf);
+}
+@font-face {
+    font-family: grotesqueMedium;
+    src: url(/font/basis_grotesque_medium.otf);
+}
+@font-face {
+    font-family: grotesqueMediumItalic;
+    src: url(/font/basis_grotesque_medium_italic.otf);
+}
+@font-face {
+    font-family: grotesqueOffWhite;
+    src: url(/font/basis_grotesque_off_white.otf);
+}
+@font-face {
+    font-family: grotesqueOffWhiteItalic;
+    src: url(/font/basis_grotesque_off_white_italic.otf);
+}
+@font-face {
+    font-family: grotesqueRegular;
+    src: url(/font/basis_grotesque_regular.otf);
+}
+@font-face {
+    font-family: grotesqueRegularItalic;
+    src: url(/font/basis_grotesque_regular_italic.otf);
+}
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: "Lato", sans-serif;
+	font-family: 'grotesqueMedium', sans-serif;
 }
-
 /*HEADER*/
 .homePageHeading {
 	display: none;
@@ -132,35 +181,40 @@
 
 /*FILTER BAR*/
 .filterBar button {
-	background-color: unset;
+	/*background-color: unset;*/
 	border: none;
 }
 .filterBar {
-	background-color: #282828;
+	/*background-color: #282828;*/
 	display: flex;
 	flex-wrap: wrap;
 }
 .filterBar a {
-	text-decoration: none;
+	/*text-decoration: none;
 	color: white;
 	font-size: 1em;
-	text-transform: uppercase;
+	text-transform: uppercase;*/
 }
 
 .dayFilter{
+	text-decoration: none;
+	color: black;
+	font-size: 1em;
+	text-transform: uppercase;
 	width: 50%;
 	text-align: center;
 	text-transform: uppercase;
 	cursor: pointer;
-	border-bottom: 5px solid #F7EC72;
-	opacity: .2;
-	padding: 1em;
+	background-color: white;
+	/*border-bottom: 5px solid #F7EC72;*/
+	/*opacity: .2;*/
+	padding: 1.4em;
+	border-top: white solid 1px;
 }
-.dayFilter:hover {
-	opacity: 1;
-}
+.dayFilter:hover,
 .filterActive {
-	opacity: 1;
+	background-color: black;
+	color: white;
 }
 .themeFilter {
 	width: calc(100% / 3);
@@ -169,25 +223,23 @@
 	padding: 1em;
 	font-weight: lighter;
 	cursor: pointer;
-	/*opacity: .2;*/
-}
-.themeFilter button {
 	color: white;
 	text-transform: uppercase;
 	font-size: .8em;
 }
-#innovationFilter {
-	border-bottom: 5px solid #2D4C9B;
+
+.innovationButton {
+	background-color: #2D4C9B;
 }
-#musicFilter {
-	border-bottom: 5px solid #E95454;
+.musicButton {
+	background-color: #E95454;
 }
-#foodFilter {
-	border-bottom: 5px solid #86C178;
+.foodButton {
+	background-color: #86C178;
 }
 
 .filterDisable {
-	opacity: .2;
+	background-color: black;
 }
 .themeFilterBox{
 	width: 100%;
