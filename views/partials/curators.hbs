@@ -1,0 +1,22 @@
+<ul id="eventsList" class="discoverEvents">
+    {{#curators}}
+
+    <div class="eventObj">
+        <a href="/curator/{{slug}}" class="eventDetailLink">
+
+            <li class="discoverEvent">  
+
+                <div class="eventImg" style="background-image: url('{{acf.avatar.sizes.medium}}');">
+                </div>
+             
+                <div class="eventInformation">
+                    <div class="eventTitle">
+                        <h2>{{{title.rendered}}}</h2>
+                    </div>
+                </div>
+                
+            </li>
+        </a>
+    </div>
+    {{/curators}}
+</ul>

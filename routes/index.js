@@ -22,7 +22,6 @@ http.get({
     });
     response.on('end', function () {
         venueData = JSON.parse(body);
-        //        console.log(venueData);
 
     });
 });
@@ -101,11 +100,11 @@ http.get({
             event.acf[date] = day;
             event.acf[startconvert] = starttime;
             event.acf[endconvert] = endtime;
-            
-            
+
+
             // add address
             var venueName = event.acf.venue.post_name;
-            
+
             for (var i = 0; i < venueData.length; i++) {
                 var venueSlug = venueData[i].slug,
                     venueAddress = venueData[i].acf.address,
@@ -115,56 +114,53 @@ http.get({
                     event.acf.venue[address] = venueAddress;
                 }
             }
-            
+
             // add category names to events
-            event.categories.forEach(function(category){
-                
-                for(var i = 0; i < categories.length; i++){
+            event.categories.forEach(function (category) {
+
+                for (var i = 0; i < categories.length; i++) {
                     var id = categories[i].id,
                         name = categories[i].name,
                         categoryName = 'categoryName';
-                    
-                    if (id === category){
+
+                    if (id === category) {
                         event[categoryName] = name;
                     }
-                }  
+                }
             });
-            
+
             // add tags to events
             var tagArray = [],
                 tagNames = 'tagNames';
-            
-            event.tags.forEach(function(tag){
-                for(var i = 0; i < tags.length; i++){
+
+            event.tags.forEach(function (tag) {
+                for (var i = 0; i < tags.length; i++) {
                     var id = tags[i].id,
                         name = tags[i].name;
-                    
-                    if (id === tag){
-                       tagArray.push(name);   
-                    }
-                }   
-            });
-            
-            event[tagNames] = tagArray;
-            
-            // add curator photo to data
-            event.acf.curator.forEach(function(curator){
-                var curId = curator.ID,
-                    curatorPhoto = 'curator_photo';
-                
-                for(var i = 0; i < curators.length; i++){
-                    var id = curators[i].id,
-                        photo  = curators[i].acf.avatar.sizes.thumbnail;
-                    
-                    if (id === curId){
-                       curator[curatorPhoto] = photo;   
+
+                    if (id === tag) {
+                        tagArray.push(name);
                     }
                 }
-                
             });
-            
-            
-            
+
+            event[tagNames] = tagArray;
+
+            // add curator photo to data
+            event.acf.curator.forEach(function (curator) {
+                var curId = curator.ID,
+                    curatorPhoto = 'curator_photo';
+
+                for (var i = 0; i < curators.length; i++) {
+                    var id = curators[i].id,
+                        photo = curators[i].acf.avatar.sizes.thumbnail;
+
+                    if (id === curId) {
+                        curator[curatorPhoto] = photo;
+                    }
+                }
+
+            });
         });
 
     });
@@ -197,7 +193,7 @@ router.get('/', function (req, res, next) {
     res.render('menu');
 });
 
-router.get('/program', function(req, res, next){
+router.get('/program', function (req, res, next) {
     var data = {
         obj: apiData
     };
@@ -305,6 +301,62 @@ router.get('/location/:place', function (req, res, next) {
     res.render('locationDetail', {
         apiData: locationArr,
         venueDetail: venueDetail
+    });
+});
+
+router.get('/curator', function (req, res, next) {
+    var data = {
+        obj: curators
+    };
+
+    var dataByName = data.obj.slice(0);
+    dataByName.sort(function (a, b) {
+        var x = a.slug.toLowerCase();
+        var y = b.slug.toLowerCase();
+        return x < y ? -1 : x > y ? 1 : 0;
+    });
+
+
+    res.render('curatorList', {
+        curators: dataByName
+    });
+});
+
+router.get('/curator/:name', function (req, res, next) {
+    var data = {
+        obj: apiData
+    };
+
+    var curatorsdata = {
+        obj: curators
+    };
+
+    function getCuratorList(data, objectToLookFor) {
+        var obj = data.obj,
+            x;
+
+        var eventArray = [];
+
+        obj.forEach(function (item) {
+            item.acf.curator.forEach(function (curator) {
+                x = curator.post_name;
+
+                if (x == objectToLookFor) {
+                    eventArray.push(item);
+                }
+            });
+        });
+
+        return eventArray;
+    };
+
+    var curatorDetail = findObject(curatorsdata, ['slug'], req.params.name);
+
+    var curatorArr = getCuratorList(data, req.params.name);
+
+    res.render('curatorDetail', {
+        apiData: curatorArr,
+        curatorDetail: curatorDetail
     });
 });
 

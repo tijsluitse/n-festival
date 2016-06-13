@@ -78,7 +78,6 @@ nfest.helpers = (function () {
                 };
             }
         });
-
     }
 
     return {
