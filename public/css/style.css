@@ -98,7 +98,7 @@
 	background-color: unset;
 	cursor: pointer;
 }
-.myRouteCounter {
+#myRouteCounter {
 	background-color: #ED1414;
 	border-radius: 1.5em;
 	min-width: 1.5em;

@@ -138,7 +138,21 @@ router.get('/programpage', function (req, res, next) {
 
 // get timetable page
 router.get('/myroute', function (req, res, next) {
-    res.render('myRoute');
+    var data = {
+        obj: apiData
+    };
+
+    // sort by name
+    var dataByName = data.obj.slice(0);
+    dataByName.sort(function (a, b) {
+        var x = a.slug.toLowerCase();
+        var y = b.slug.toLowerCase();
+        return x < y ? -1 : x > y ? 1 : 0;
+    });
+
+    res.render('myRoute', {
+        apiData: dataByName
+    });
 });
 
 

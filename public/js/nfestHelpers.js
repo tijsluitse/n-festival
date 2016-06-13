@@ -17,7 +17,7 @@ nfest.helpers = (function () {
         } else {
             target.attachEvent('onclick', cb);
         }
-    }
+    }    
 
     var getData = function (url, cb) {
 
@@ -33,6 +33,25 @@ nfest.helpers = (function () {
         };
         xhr.open("GET", url, true);
         xhr.send();
+    }
+
+    var elementCount = function() {
+        var myRouteElements = JSON.parse(localStorage.getItem('myRouteEvents')),
+            counter = document.getElementById('myRouteCounter');
+            
+        if (localStorage.getItem("myRouteEvents") === null) {
+            counter.classList.add('hide');
+        } else {
+            counter.innerHTML = myRouteElements.length;
+        }
+    }
+
+    var addedToMyRoute = function() {
+        var myRouteElements = JSON.parse(localStorage.getItem('myRouteEvents'));
+        for (var i = 0; i < myRouteElements.length; i++) {
+            var string = '#' + myRouteElements[i] + ' > .buttonAddToRoute';
+            document.querySelector(string).classList.add('addedToRoute');
+        }
     }
 
     var storageCheck = function (cb) {
@@ -54,9 +73,11 @@ nfest.helpers = (function () {
     var getVenueLocations = function (cb) {
 
         nfest.helpers.getData("data/data.json", function (response) {
-            var data = JSON.parse(response),
+            var data = JSON.parse(response),        
                 mapLocations = [],
                 eventCoordinates = [];
+
+            localStorage.setItem('allEventsData', JSON.stringify(data));
 
             for (var a = 0; a < data.length; a++) {
                 var location = data[a].info.location;
@@ -105,8 +126,13 @@ nfest.helpers = (function () {
         hasClass: hasClass,
         onclick: onclick,
         getData: getData,
+        elementCount: elementCount,
+        addedToMyRoute: addedToMyRoute,
         storageCheck: storageCheck,
         getVenueLocations: getVenueLocations
     }
 
 })();
+
+nfest.helpers.elementCount();
+nfest.helpers.addedToMyRoute();
