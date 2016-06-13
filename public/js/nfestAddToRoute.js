@@ -48,6 +48,7 @@ nfest.addToRoute = (function () {
     var removeFromTimetable = function(clickedObject) {
         var myRouteElements = JSON.parse(localStorage.getItem('myRouteEvents')),
             counter = document.getElementById('myRouteCounter'),
+            document.getElementById(removeItem).classList.add('hide');  
             removeItem = clickedObject.id,
             i = myRouteElements.indexOf(removeItem);      
             document.getElementById(removeItem).classList.add('hide');  

@@ -72,52 +72,32 @@ nfest.helpers = (function () {
 
     var getVenueLocations = function (cb) {
 
-        nfest.helpers.getData("data/data.json", function (response) {
-            var data = JSON.parse(response),        
-                mapLocations = [],
-                eventCoordinates = [];
+        nfest.helpers.getData("http://n-festival.werk.vanjim.nl/wp-json/wp/v2/venues", function (response) {
+            
+            var data = JSON.parse(response),
+                mapLocations = [];
 
             localStorage.setItem('allEventsData', JSON.stringify(data));
 
             for (var a = 0; a < data.length; a++) {
-                var location = data[a].info.location;
-                var address = data[a].info.address
-                getLatitudeLongitude(showResult, address, location, a);
-            }
-
-            function getLatitudeLongitude(callback, address, location, a) {
-                address = address || 'Buiksloterweg 47B1, 1031CE Amsterdam';
-                geocoder = new google.maps.Geocoder();
-
-                if (geocoder) {
-                    geocoder.geocode({
-                        'address': address
-                    }, function (results, status) {
-                        if (status == google.maps.GeocoderStatus.OK) {
-                            callback(results[0], address, location, a);
-                        }
-                    });
-                }
-            };
-
-            function showResult(result, address, location, a) {
-                var locationLng = result.geometry.location.lng();
-                var locationLat = result.geometry.location.lat();
-
-                data[a].info.longtitude = locationLng;
-                data[a].info.lattitude = locationLat;
-
+                var locationLng = data[a].acf.location.lng,
+                    locationLat = data[a].acf.location.lat,
+                    link = data[a].slug,
+                    title = data[a].title.rendered,
+                    address = data[a].acf.address;
+                
                 mapLocations.push({
                     lng: locationLng,
                     lat: locationLat,
-                    title: location,
-                    address: address
+                    title: title,
+                    address: address,
+                    link: link
                 });
-
-                if (mapLocations.length == data.length) {
+                
+                 if (mapLocations.length == data.length) {
                     cb(mapLocations, data);
                 };
-            };
+            }
         });
 
     }

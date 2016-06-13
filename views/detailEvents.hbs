@@ -9,13 +9,14 @@
         <figure>
             <img src="{{header.image}}" alt="Event image" meta property="og:image">
 
-            <button id="{{slug}}" class="buttonAdd{{event.theme}} buttonAddToRoute">
+            <button id="{{slug}}" class="buttonAdd{{categoryName}} buttonAddToRoute">
 
                 <svg class="addToRouteSvg" width="15" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.8 14.7">
                     <g id="XMLID_401_">
                         <g id="XMLID_399_">
                             <path id="XMLID_68_" class="st0" d="M1.148.018l13.577 13.576-1.132 1.13L.017 1.15z"></path>
                         </g>
+
                         <g id="XMLID_402_">
                             <path id="XMLID_67_" class="st0" d="M13.664-.053l1.13 1.13L1.22 14.656.087 13.523z"></path>
                         </g>
@@ -30,15 +31,17 @@
 
         <article class="eventInfo">
             <section class="tag">
-                <p>tag</p>
+                {{#tagNames}}
+                <p>{{this}}</p>
+                {{/tagNames}}
             </section>
             <h1>{{{title.rendered}}}</h1> {{#acf}} {{#curator}}
-            <div class="curators">
-
-
-                <img class="curatorImg" src="{{image}}" alt="Curator image">
-                <h2 class="curator">{{post_title}}</h2>
-            </div>
+            <a class="curatorLink" href="/curator/{{post_name}}">
+                <div class="curators">
+                    <img class="curatorImg" src="{{curator_photo}}" alt="Curator image">
+                    <h2 class="curator">{{post_title}}</h2>
+                </div>
+            </a>
             {{/curator}} {{/acf}}
             <div class="detailDate">
                 <svg class="eventDateIcon eventIcon" width="15" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.8 16.1">
@@ -70,10 +73,10 @@
                 <p>
                     <span class="detailLocation">{{acf.venue.post_title}}</span>
                     <br />
-                    <a href="http://maps.google.com/maps?saddr=Current%20Location&daddr={{info.address}}">{{info.address}}</a>
+                    <a href="http://maps.google.com/maps?saddr=Current%20Location&daddr={{acf.venue.post_address}}">{{acf.venue.post_address}}</a>
                 </p>
             </div>
-            <a href="http://maps.google.com/maps?saddr=Current%20Location&daddr={{info.address}}" class="planRouteButton" target="blank">Plan route</a>
+            <a href="http://maps.google.com/maps?saddr=Current%20Location&daddr={{acf.venue.post_address}}" class="planRouteButton" target="blank">Plan route</a>
 
             <p class="detailContent">{{{content.rendered}}}</p>
 

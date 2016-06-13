@@ -19,7 +19,7 @@ nfest.filter = (function () {
             eventList = document.querySelectorAll('.eventObj');
 
         nfest.helpers.onclick(innovationButton, function () {
-            var themeSelected = 'innovation';
+            var themeSelected = 'Innovation';
 
             if (nfest.helpers.hasClass(innovationButton, 'filterDisable')) {
 
@@ -42,7 +42,7 @@ nfest.filter = (function () {
         });
 
         nfest.helpers.onclick(musicButton, function () {
-            var themeSelected = 'music';
+            var themeSelected = 'Music';
 
             if (nfest.helpers.hasClass(musicButton, 'filterDisable')) {
                 for (i = 0; i < eventList.length; i++) {
@@ -64,7 +64,7 @@ nfest.filter = (function () {
         });
 
         nfest.helpers.onclick(foodButton, function () {
-            var themeSelected = 'food';
+            var themeSelected = 'Food';
 
             if (nfest.helpers.hasClass(foodButton, 'filterDisable')) {
                 for (i = 0; i < eventList.length; i++) {
