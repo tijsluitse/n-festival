@@ -3,15 +3,15 @@
     
     
     
-    <div class="eventObj" data-theme="hierkomtEventtheme">
+    <div class="eventObj" data-theme="{{categoryName}}">
         <a href="/detail/{{slug}}" class="eventDetailLink">
 
-            <li class="discoverEvent hierkomtEventtheme">  
+            <li class="discoverEvent {{categoryName}}">  
 
             
                 <div class="eventImg" style="background-image: url('{{header.image}}');">
                 </div>
-                <div class="{{event.theme}} imgOverlay"></div>
+                <div class="{{categoryName}} imgOverlay"></div>
                 
                 <div class="eventInformation">
                     <div class="eventTitle">

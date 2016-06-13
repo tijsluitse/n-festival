@@ -354,13 +354,13 @@
 	position: absolute;
 	left: 0;
 }
-.music {
+.Music {
 	background-color: rgba(243,63,38,.8);
 }
-.food {
+.Food {
 	background-color: rgba(253,174,58,.8);
 }
-.innovation {
+.Innovation {
 	background-color: rgba(0,155,160,.8);
 }
 .discoverEvent {
@@ -396,15 +396,15 @@
 	background-color: white;
 	border: 25px solid #ffffff;
 }
-.buttonAddinnovation {
+.buttonAddInnovation {
 	border-bottom: 25px solid #009ba0;
 	border-left: 25px solid #009ba0;
 }
-.buttonAddmusic {
+.buttonAddMusic {
 	border-bottom: 25px solid #f33f26;
 	border-left: 25px solid #f33f26;
 }
-.buttonAddfood {
+.buttonAddFood {
 	border-bottom: 25px solid #fdae3a;
 	border-left: 25px solid #fdae3a;
 }

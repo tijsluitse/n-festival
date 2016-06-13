@@ -3,7 +3,8 @@ var router = express.Router();
 var http = require('http');
 
 var apiData,
-    venueData;
+    venueData,
+    categories;
 
 // data requests
 
@@ -27,7 +28,7 @@ http.get({
 // theme data
 http.get({
     host: 'n-festival.werk.vanjim.nl',
-    path: '/wp-json/wp/v2/venues'
+    path: '/wp-json/wp/v2/categories'
 }, function (response) {
     // Continuously update stream with data
     var body = '';
@@ -35,9 +36,7 @@ http.get({
         body += d;
     });
     response.on('end', function () {
-        venueData = JSON.parse(body);
-        //        console.log(venueData);
-
+        categories = JSON.parse(body);
     });
 });
 
@@ -51,8 +50,6 @@ http.get({
         body += d;
     });
     response.on('end', function () {
-
-        // Data reception is done, do whatever with it!
         apiData = JSON.parse(body);
 
         apiData.forEach(function (event) {
@@ -85,6 +82,23 @@ http.get({
                     event.acf.venue[address] = venueAddress;
                 }
             }
+            
+            // add category names to events
+            event.categories.forEach(function(category){
+                
+                for(var i = 0; i < categories.length; i++){
+                    var id = categories[i].id,
+                        name = categories[i].name,
+                        categoryName = 'categoryName';
+                    
+                    if (id === category){
+                        event[categoryName] = name;
+                    }
+                }  
+            });
+            
+            
+            
         });
 
     });
