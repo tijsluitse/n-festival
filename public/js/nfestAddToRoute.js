@@ -10,26 +10,30 @@ nfest.addToRoute = (function () {
         var add = document.querySelectorAll(".buttonAddToRoute");
 
         for (var i = add.length - 1; i >= 0; i--) {
+
             add[i].onclick = function (evt) {
                 evt.currentTarget.classList.toggle("addedToRoute");
+                document.querySelector(".myRouteCounter").classList.toggle("myRouteAdded");
+
                 addToMyTimetable(this);
+
             }
         }
-    }
 
-    var addToMyTimetable = function(clickedObject) {
-        // check of het de class toegevoegd heeft of niet
-        // if (nfest.helpers.hasClass(clickedObject, 'buttonAddToRoute')) {
-        //     console.log("toegevoegd");
-        // } else {
-        //     console.log("weg");
+        // add.onclick = function() {
+        //     document.querySelector(".myRouteCounter").classList.add("myRouteAdded");
+        //     console.log('click')
         // }
-        var clickedObject = clickedObject;
-        
-
     }
-    
-    return {        
+
+        var addToMyTimetable = function (clickedObject) {
+            var oldItems = JSON.parse(localStorage.getItem('myRouteEvents')) || [];
+            var newItem = clickedObject.id;
+            oldItems.push(newItem);
+            localStorage.setItem('myRouteEvents', JSON.stringify(oldItems));
+        }
+
+    return {
         buttonToggle: buttonToggle,
         addToMyTimetable: addToMyTimetable
     }
