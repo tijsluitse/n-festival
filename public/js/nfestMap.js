@@ -306,19 +306,19 @@ nfest.map = (function () {
 
         nfest.helpers.getVenueLocations(function (mapLocations, data) {
             var locationMarkers = mapLocations;
-            
+
             locationMarkers.forEach(function (location) {
 
                 var marker = new google.maps.Marker({
                     position: {
-                        lat: location.lat,
-                        lng: location.lng
+                        lat: parseFloat(location.lat),
+                        lng: parseFloat(location.lng)
                     },
                     map: map,
                     title: 'First Infowindow!'
                 });
 
-                var locationLink = location.title.replace(/ /g, "-");
+                var locationLink = location.link;
 
                 var link = '<a href="/location/' + locationLink + '">';
 

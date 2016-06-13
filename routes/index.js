@@ -52,7 +52,7 @@ http.get({
     });
     response.on('end', function () {
         venueData = JSON.parse(body);
-        console.log(venueData);
+//        console.log(venueData);
 
     });
 });
@@ -80,7 +80,6 @@ function findObject(data, arrayOfProps, objectToLookFor) {
 
     return eventArray;
 };
-
 
 // Get home page
 router.get('/', function (req, res, next) {
@@ -176,34 +175,25 @@ router.get('/detail/:name', function (req, res, next) {
 });
 
 router.get('/location', function (req, res, next) {
+     var data = {
+        obj: venueData
+    };
+ 
+    var dataByName = data.obj.slice(0);
+    dataByName.sort(function (a, b) {
+        var x = a.slug.toLowerCase();
+        var y = b.slug.toLowerCase();
+        return x < y ? -1 : x > y ? 1 : 0;
+    });
+    
 
-    res.render('locationList');
-    //router.get('/location', function(req, res, next){
-    //    var data = {
-    //        obj: obj
-    //    };
-    //
-    //    // sort by name
-    //    var dataByName = data.obj.slice(0);
-    //    dataByName.sort(function (a, b) {
-    //        var x = a.header.title.toLowerCase();
-    //        var y = b.header.title.toLowerCase();
-    //        return x < y ? -1 : x > y ? 1 : 0;
-    //    });
-    //    
-    //    res.render('locationList', {
-    //        obj: dataByName
-    //    });
+    res.render('locationList', {
+        venueData: dataByName
+    });
 });
 
 router.get('/locationMapView', function (req, res, next) {
-    var data = {
-        obj: obj
-    };
-
-    res.render('locationMapView', {
-        obj: obj
-    });
+    res.render('locationMapView');
 })
 
 router.get('/location/:place', function (req, res, next) {
