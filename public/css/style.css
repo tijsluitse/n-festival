@@ -658,6 +658,12 @@ fieldset h3 {
 	margin: 1.5em 0;
 	padding: .5em;
 }
+
+.curatorLink{
+    text-decoration: none;
+    color:#000;
+}
+
 .detailDate {
 	display: flex;
 	align-items: flex-start;

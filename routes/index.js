@@ -4,7 +4,9 @@ var http = require('http');
 
 var apiData,
     venueData,
-    categories;
+    categories,
+    tags,
+    curators;
 
 // data requests
 
@@ -40,6 +42,37 @@ http.get({
     });
 });
 
+// tags data 
+http.get({
+    host: 'n-festival.werk.vanjim.nl',
+    path: '/wp-json/wp/v2/tags'
+}, function (response) {
+    // Continuously update stream with data
+    var body = '';
+    response.on('data', function (d) {
+        body += d;
+    });
+    response.on('end', function () {
+        tags = JSON.parse(body);
+    });
+});
+
+// curator data 
+http.get({
+    host: 'n-festival.werk.vanjim.nl',
+    path: '/wp-json/wp/v2/curators'
+}, function (response) {
+    // Continuously update stream with data
+    var body = '';
+    response.on('data', function (d) {
+        body += d;
+    });
+    response.on('end', function () {
+        curators = JSON.parse(body);
+    });
+});
+
+// event data
 http.get({
     host: 'n-festival.werk.vanjim.nl',
     path: '/wp-json/wp/v2/events'
@@ -95,6 +128,39 @@ http.get({
                         event[categoryName] = name;
                     }
                 }  
+            });
+            
+            // add tags to events
+            var tagArray = [],
+                tagNames = 'tagNames';
+            
+            event.tags.forEach(function(tag){
+                for(var i = 0; i < tags.length; i++){
+                    var id = tags[i].id,
+                        name = tags[i].name;
+                    
+                    if (id === tag){
+                       tagArray.push(name);   
+                    }
+                }   
+            });
+            
+            event[tagNames] = tagArray;
+            
+            // add curator photo to data
+            event.acf.curator.forEach(function(curator){
+                var curId = curator.ID,
+                    curatorPhoto = 'curator_photo';
+                
+                for(var i = 0; i < curators.length; i++){
+                    var id = curators[i].id,
+                        photo  = curators[i].acf.avatar.sizes.thumbnail;
+                    
+                    if (id === curId){
+                       curator[curatorPhoto] = photo;   
+                    }
+                }
+                
             });
             
             
@@ -195,8 +261,6 @@ router.get('/detail/:name', function (req, res, next) {
     };
 
     var item = findObject(data, ['slug'], req.params.name);
-
-    console.log(item);
 
     res.render('detailEvents', {
         item: item

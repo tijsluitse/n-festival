@@ -31,15 +31,17 @@
 
         <article class="eventInfo">
             <section class="tag">
-                <p>tag</p>
+                {{#tagNames}}
+                <p>{{this}}</p>
+                {{/tagNames}}
             </section>
             <h1>{{{title.rendered}}}</h1> {{#acf}} {{#curator}}
-            <div class="curators">
-
-
-                <img class="curatorImg" src="{{image}}" alt="Curator image">
-                <h2 class="curator">{{post_title}}</h2>
-            </div>
+            <a class="curatorLink" href="/curator/{{post_name}}">
+                <div class="curators">
+                    <img class="curatorImg" src="{{curator_photo}}" alt="Curator image">
+                    <h2 class="curator">{{post_title}}</h2>
+                </div>
+            </a>
             {{/curator}} {{/acf}}
             <div class="detailDate">
                 <svg class="eventDateIcon eventIcon" width="15" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.8 16.1">
