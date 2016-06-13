@@ -38,7 +38,9 @@ http.get({
     });
 });
 
-
+router.get('/menu', function(req, res, next){
+    res.render('menu');
+});
 
 // helper function to match data with day,name,location etc.
 function findObject(data, arrayOfProps, objectToLookFor) {
