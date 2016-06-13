@@ -241,6 +241,9 @@
 	width: 100vw;
 	z-index: 10;
 }
+.filterBar.locations {
+	position: inherit;
+}
 .filterSpaceBar {
 	height: 6.25em;
 }
@@ -822,6 +825,8 @@ fieldset h3 {
 	height: 95%;
 	height: 85vh;
 }
+
+
 
 /*CLASSES*/
 

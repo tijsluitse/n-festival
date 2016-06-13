@@ -1,7 +1,12 @@
-<section id="locationViewFilter">
+{{!-- <section id="locationViewFilter">
 	<a href="/location" id="listView">Lijst</a>
 	<a href="/locationMapView" id="mapView">Kaart</a>
-</section>
+</section> --}}
+
+<article class="filterBar locations"> 
+    <a href="/location" id="dayOneFilter" class="dayFilter filterActive"><h2>Lijst</h2></a>
+    <a href="/locationMapView" id="dayTwoFilter" class="dayFilter"><h2>Kaart</h2></a>         
+</article>
 
 <section id="mapViewFilter">
 	{{> locations}}
@@ -10,4 +15,5 @@
 <script src="/js/nfestHelpers.js"></script>
 <script src="/js/nfestUx.js"></script>
 <script src="/js/nfestLocation.js"></script>
+<script src="/js/nfestAddToRoute.js"></script>
 <script src="/js/nfestMap.js"></script>

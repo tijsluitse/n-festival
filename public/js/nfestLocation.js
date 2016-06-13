@@ -106,30 +106,45 @@ nfest.location = (function () {
         nfest.helpers.getData("http://n-festival.werk.vanjim.nl/wp-json/wp/v2/venues", function (response) {
             var data = JSON.parse(response);
             calculateDist(data);
-        });
+            setInterval(function(){
+                calculateDist(data);
+            }, 10000);
+        });    
         
         var calculateDist = function(data) {
             
-            var userCoordinates = localStorage.getItem('userCoordinates');
-            var userC = userCoordinates.split(",");                            
-            var userLat = parseFloat(userC[0]);
-            var userLng = parseFloat(userC[1]);
+            var userCoordinates = localStorage.getItem('userCoordinates'),
+                userC = userCoordinates.split(","),    
+                eventList = document.querySelectorAll('.eventObj');                      
+                userLat = parseFloat(userC[0]),
+                userLng = parseFloat(userC[1]),
+                allDistances = [];
+ 
 
-            var allDistances = [];
+            eventList.forEach(function(event){
 
-            console.log(data);
+                var location = event.dataset.location;
+                
 
             for (var i = 0; i < data.length; i++) {
-                var id = [i];
+                var id = data[i].slug;
                 var uLat = userLat;
                 var uLng = userLng;
-                var lat = data[i].info.lattitude;
-                var lng = data[i].info.longtitude;
-                var unit = "K";
-                distance(id, uLat, uLng, lat, lng, unit, i);
-            };
+                var lat = data[i].acf.location.lat;
+                var lng = data[i].acf.location.lng;
 
-            function distance(id, lat1, lon1, lat2, lon2, unit, i) {
+                if (location === id) {
+                    console.log(location, id)
+                    distance(id, uLat, uLng, lat, lng, event);
+                }
+
+            }
+
+            });
+
+
+            function distance(id, lat1, lon1, lat2, lon2, event) {
+                var unit = "K";
                 var radlat1 = Math.PI * lat1/180
                 var radlat2 = Math.PI * lat2/180
                 var theta = lon1-lon2
@@ -141,30 +156,31 @@ nfest.location = (function () {
                 if (unit == "K") {dist = dist * 1.609344}
                 if (unit == "N") {dist = dist * 0.8684}
                 
-                var result = dist.toFixed(2);
-                data[i].info.distance = result; 
-
-                var bikeTime = 4 * result;
+                var result = dist.toFixed(2),
+                    bikeTime = 4 * result;
+                
                 bikeTime = bikeTime.toFixed(0);                         
 
-                var bikeDistId = 'bikeDist' + id;
-                document.getElementById(bikeDistId).innerHTML = bikeTime + 'min ';
-                
                 allDistances.push({
                     distance: result
-                });     
+                });  
 
-                if (data.length == allDistances.length) {
-                    localStorage.setItem('allEventsData', JSON.stringify(data));    
-                };
+                console.log(bikeTime);
+                // var string = 'div[data-location="' + id + '"] .bikeDist';
+                // console.log(string);
+
+                var string = '.bikeDist';
+
+                event.querySelector(string).innerHTML = bikeTime + ' min';
+                
+                // for (var i = 0; i < bikeDists.length; i++) {
+                //     // var string = 
+                //     console.log(bikeDists[i]);
+                //     // document.querySelector(string).innerHTML = bikeTime;
+                // }
+
             }
         }
-
-        // calculateDist(data);
-
-        setInterval(function(){
-            calculateDist(data);
-        }, 5000);
 
     }
     
