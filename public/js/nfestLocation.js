@@ -103,9 +103,12 @@ nfest.location = (function () {
 
     var eventDistance = function(data) {
         
-        var data = JSON.parse(localStorage.getItem('allEventsData'));
+        nfest.helpers.getData("http://n-festival.werk.vanjim.nl/wp-json/wp/v2/venues", function (response) {
+            var data = JSON.parse(response);
+            calculateDist(data);
+        });
         
-        var calculateDist = function() {
+        var calculateDist = function(data) {
             
             var userCoordinates = localStorage.getItem('userCoordinates');
             var userC = userCoordinates.split(",");                            
@@ -114,8 +117,10 @@ nfest.location = (function () {
 
             var allDistances = [];
 
+            console.log(data);
+
             for (var i = 0; i < data.length; i++) {
-                var id = data[i].info.datatype;
+                var id = [i];
                 var uLat = userLat;
                 var uLng = userLng;
                 var lat = data[i].info.lattitude;
@@ -155,7 +160,7 @@ nfest.location = (function () {
             }
         }
 
-        calculateDist(data);
+        // calculateDist(data);
 
         setInterval(function(){
             calculateDist(data);
