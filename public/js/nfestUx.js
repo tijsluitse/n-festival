@@ -8,23 +8,37 @@ nfest.ux = (function () {
 
     var uxLauncher = function () {
         // directly launch ux modules for every page
-        nfest.ux.menuSlide();
-    }
+        // nfest.ux.menuSlide();
+        nfest.ux.backButton();
 
-    var menuSlide = function () {
-        var menu = document.getElementById('menu'),
-            menuButton = document.getElementById('menuButton');
+    };
 
-        menu.classList.add('hide');
-        menu.classList.add('menuSlide');
+    // var menuSlide = function () {
+    //     var menu = document.getElementById('menu'),
+    //         menuButton = document.getElementById('menuButton');
 
-        nfest.helpers.onclick(menuButton, function () {
-            menu.classList.toggle('hide');
-            document.getElementById('menubar1').classList.toggle('animateBar1');
-            document.getElementById('menubar2').classList.toggle('animateBar2');
-            document.getElementById('menubar3').classList.toggle('animateBar3');
-        });
+    //     menu.classList.add('hide');
+    //     menu.classList.add('menuSlide');
 
+    //     nfest.helpers.onclick(menuButton, function () {
+    //         menu.classList.toggle('hide');
+    //         document.getElementById('menubar1').classList.toggle('animateBar1');
+    //         document.getElementById('menubar2').classList.toggle('animateBar2');
+    //         document.getElementById('menubar3').classList.toggle('animateBar3');
+    //     });
+
+    // };
+
+    var backButton = function () {
+        var eventUrl = window.location.pathname;
+        eventUrl = eventUrl.split('/');
+        var eventName = eventUrl[2];
+        if (window.location.pathname == "/detail/" + eventName) {
+            document.querySelector(".menuIcon").classList.add("hide");
+            document.querySelector(".backIcon").classList.remove("hide");
+            // window.history.back();
+        }
+        console.log('back')
     };
     
 //    var detailSlide = function () {
@@ -56,7 +70,8 @@ nfest.ux = (function () {
 
     return {
         uxLauncher: uxLauncher,
-        menuSlide: menuSlide
+        // menuSlide: menuSlide,
+        backButton: backButton
 //        detailSlide: detailSlide
     }
 

@@ -99,7 +99,6 @@ nfest.helpers = (function () {
                 };
             }
         });
-
     }
 
     return {

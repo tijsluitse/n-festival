@@ -63,7 +63,6 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	/*padding: 1em;*/
 	position: fixed;
 	width: 100vw;
 	height: 50px;
@@ -105,6 +104,9 @@
 	}
 }
 .menuIcon{
+	margin: 1em;
+}
+.backIcon {
 	margin: 1em;
 }
 .headerButton {
@@ -162,7 +164,7 @@
 }
 #menu li {
 	list-style: none;
-	height: 25%;
+	height: 20%;
 }
 #menu li:nth-child(1){
 	background-color: rgba(0,0,0,.90);
@@ -176,6 +178,12 @@
 #menu li:nth-child(4){
 	background-color: rgba(0,0,0,.81);
 }
+#menu li:nth-child(5){
+	background-color: rgba(0,0,0,.78);
+}
+/*#menu li {
+	background-image: linear-gradient(to bottom, #262626, #000000 100%);
+}*/
 #menu li:hover {
 	background-color: black;
 }
@@ -818,7 +826,7 @@ fieldset h3 {
 /*CLASSES*/
 
 .hide {
-	display: none !important;
+	display: none;
 }
 
 .fullscreen {
