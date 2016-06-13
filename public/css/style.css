@@ -63,7 +63,6 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	/*padding: 1em;*/
 	position: fixed;
 	width: 100vw;
 	height: 50px;
@@ -105,6 +104,9 @@
 	}
 }
 .menuIcon{
+	margin: 1em;
+}
+.backIcon {
 	margin: 1em;
 }
 .headerButton {
@@ -807,7 +809,7 @@ fieldset h3 {
 /*CLASSES*/
 
 .hide {
-	display: none !important;
+	display: none;
 }
 
 .fullscreen {
