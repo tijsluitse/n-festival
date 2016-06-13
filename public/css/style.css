@@ -164,7 +164,7 @@
 }
 #menu li {
 	list-style: none;
-	height: 25%;
+	height: 20%;
 }
 #menu li:nth-child(1){
 	background-color: rgba(0,0,0,.90);
@@ -178,6 +178,12 @@
 #menu li:nth-child(4){
 	background-color: rgba(0,0,0,.81);
 }
+#menu li:nth-child(5){
+	background-color: rgba(0,0,0,.78);
+}
+/*#menu li {
+	background-image: linear-gradient(to bottom, #262626, #000000 100%);
+}*/
 #menu li:hover {
 	background-color: black;
 }
