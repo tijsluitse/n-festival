@@ -56,6 +56,7 @@ http.get({
     });
 });
 
+
 http.get({
     host: 'n-festival.werk.vanjim.nl',
     path: '/wp-json/wp/v2/venues'
@@ -70,6 +71,11 @@ http.get({
         //        console.log(venueData);
 
     });
+});
+
+
+router.get('/menu', function(req, res, next){
+    res.render('menu');
 });
 
 
