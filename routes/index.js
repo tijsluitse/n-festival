@@ -7,6 +7,40 @@ var apiData,
 
 // data requests
 
+// venue data
+http.get({
+    host: 'n-festival.werk.vanjim.nl',
+    path: '/wp-json/wp/v2/venues'
+}, function (response) {
+    // Continuously update stream with data
+    var body = '';
+    response.on('data', function (d) {
+        body += d;
+    });
+    response.on('end', function () {
+        venueData = JSON.parse(body);
+        //        console.log(venueData);
+
+    });
+});
+
+// theme data
+http.get({
+    host: 'n-festival.werk.vanjim.nl',
+    path: '/wp-json/wp/v2/venues'
+}, function (response) {
+    // Continuously update stream with data
+    var body = '';
+    response.on('data', function (d) {
+        body += d;
+    });
+    response.on('end', function () {
+        venueData = JSON.parse(body);
+        //        console.log(venueData);
+
+    });
+});
+
 http.get({
     host: 'n-festival.werk.vanjim.nl',
     path: '/wp-json/wp/v2/events'
@@ -52,22 +86,6 @@ http.get({
                 }
             }
         });
-
-    });
-});
-
-http.get({
-    host: 'n-festival.werk.vanjim.nl',
-    path: '/wp-json/wp/v2/venues'
-}, function (response) {
-    // Continuously update stream with data
-    var body = '';
-    response.on('data', function (d) {
-        body += d;
-    });
-    response.on('end', function () {
-        venueData = JSON.parse(body);
-        //        console.log(venueData);
 
     });
 });
