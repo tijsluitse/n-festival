@@ -124,24 +124,19 @@ nfest.location = (function () {
             eventList.forEach(function(event){
 
                 var location = event.dataset.location;
-                
-
-            for (var i = 0; i < data.length; i++) {
-                var id = data[i].slug;
-                var uLat = userLat;
-                var uLng = userLng;
-                var lat = data[i].acf.location.lat;
-                var lng = data[i].acf.location.lng;
-
-                if (location === id) {
-                    console.log(location, id)
-                    distance(id, uLat, uLng, lat, lng, event);
+                for (var i = 0; i < data.length; i++) {
+                    var id = data[i].slug;
+                    var uLat = userLat;
+                    var uLng = userLng;
+                    var lat = data[i].acf.location.lat;
+                    var lng = data[i].acf.location.lng;
+                    if (location === id) {
+                        console.log(location, id)
+                        distance(id, uLat, uLng, lat, lng, event);
+                    }
                 }
 
-            }
-
             });
-
 
             function distance(id, lat1, lon1, lat2, lon2, event) {
                 var unit = "K";
@@ -157,27 +152,15 @@ nfest.location = (function () {
                 if (unit == "N") {dist = dist * 0.8684}
                 
                 var result = dist.toFixed(2),
-                    bikeTime = 4 * result;
-                
-                bikeTime = bikeTime.toFixed(0);                         
+                    bikeTime = 4 * result,
+                    string = '.bikeDist';        
+                    bikeTime = bikeTime.toFixed(0);                         
 
                 allDistances.push({
                     distance: result
                 });  
 
-                console.log(bikeTime);
-                // var string = 'div[data-location="' + id + '"] .bikeDist';
-                // console.log(string);
-
-                var string = '.bikeDist';
-
                 event.querySelector(string).innerHTML = bikeTime + ' min';
-                
-                // for (var i = 0; i < bikeDists.length; i++) {
-                //     // var string = 
-                //     console.log(bikeDists[i]);
-                //     // document.querySelector(string).innerHTML = bikeTime;
-                // }
 
             }
         }
