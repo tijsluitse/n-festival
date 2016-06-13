@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var http = require('http');
+var moment = require('moment');
 
 var apiData,
     venueData,
@@ -95,11 +96,20 @@ http.get({
 
             var date = 'date',
                 startconvert = 'starttime_converted',
-                endconvert = 'endtime_converted';
+                endconvert = 'endtime_converted',
+                convertedDateStart = 'startDate_converted';
+
+            var dayStart = event.acf.start_time.split('-');
+            var dd = dayStart[0],
+                mm = dayStart[1],
+                yy = dayStart[2];
+
+            var dateTime = mm + '/' + dd + '/' + yy;
 
             event.acf[date] = day;
             event.acf[startconvert] = starttime;
             event.acf[endconvert] = endtime;
+            event[convertedDateStart] = dateTime;
 
 
             // add address
@@ -161,8 +171,13 @@ http.get({
                 }
 
             });
-        });
 
+        });
+        
+        // sort data on starttime
+        apiData.sort(function (a, b) {
+            return new Date(a.startDate_converted).getTime() - new Date(b.startDate_converted).getTime()
+        });
     });
 });
 
