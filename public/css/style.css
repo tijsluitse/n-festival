@@ -111,6 +111,7 @@
 	border: none;
 	background-color: unset;
 	cursor: pointer;
+	width: 50px;
 }
 .myRouteCounter {
 	background-color: #ED1414;
@@ -139,10 +140,9 @@
 
 #menu {
 	z-index: 10;
-	padding: 1em;
 	background-color: white;
 	z-index: 5;
-	width: 100vw;	
+	width: 100vw;
 }
 .menuSlide {
 	animation: menuSlide 500ms cubic-bezier(0.712, 0.0376, 0.392, 1);
@@ -157,16 +157,45 @@
 		transform: translateY(0);
 	}
 }
+#menu ul {
+	height: calc(100vh - 50px);
+}
 #menu li {
 	list-style: none;
-	line-height: 3em;
+	height: 25%;
+}
+#menu li:nth-child(1){
+	background-color: rgba(0,0,0,.90);
+}
+#menu li:nth-child(2){
+	background-color: rgba(0,0,0,.87);
+}
+#menu li:nth-child(3){
+	background-color: rgba(0,0,0,.84);
+}
+#menu li:nth-child(4){
+	background-color: rgba(0,0,0,.81);
+}
+#menu li:hover {
+	background-color: black;
 }
 #menu a {
 	text-decoration: none;
-	color: black;
+	color: white;
 	text-transform: uppercase;
+	letter-spacing: .3em;
 	font-weight: 800;
-	padding: 1em;
+	display: block;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#newsFeed {
+	background-color: #efefef;
+	height: 8em;
+
 }
 .displayNone {
 	display: none;
