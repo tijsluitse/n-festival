@@ -3,7 +3,7 @@ var router = express.Router();
 var http = require('http');
 
 var apiData,
-    vanueData;
+    venueData;
 
 // data requests
 
@@ -22,6 +22,7 @@ http.get({
         apiData = JSON.parse(body);
 
         apiData.forEach(function (event) {
+            // edit start / end times
             var startArray = event.acf.start_time.split(' '),
                 endArray = event.acf.end_time.split(' ');
 
@@ -36,6 +37,20 @@ http.get({
             event.acf[date] = day;
             event.acf[startconvert] = starttime;
             event.acf[endconvert] = endtime;
+            
+            
+            // add address
+            var venueName = event.acf.venue.post_name;
+            
+            for (var i = 0; i < venueData.length; i++) {
+                var venueSlug = venueData[i].slug,
+                    venueAddress = venueData[i].acf.address,
+                    address = 'post_address';
+
+                if (venueName === venueSlug) {
+                    event.acf.venue[address] = venueAddress;
+                }
+            }
         });
 
     });
@@ -52,11 +67,10 @@ http.get({
     });
     response.on('end', function () {
         venueData = JSON.parse(body);
-//        console.log(venueData);
+        //        console.log(venueData);
 
     });
 });
-
 
 
 // helper function to match data with day,name,location etc.
@@ -175,17 +189,17 @@ router.get('/detail/:name', function (req, res, next) {
 });
 
 router.get('/location', function (req, res, next) {
-     var data = {
+    var data = {
         obj: venueData
     };
- 
+
     var dataByName = data.obj.slice(0);
     dataByName.sort(function (a, b) {
         var x = a.slug.toLowerCase();
         var y = b.slug.toLowerCase();
         return x < y ? -1 : x > y ? 1 : 0;
     });
-    
+
 
     res.render('locationList', {
         venueData: dataByName
@@ -201,10 +215,17 @@ router.get('/location/:place', function (req, res, next) {
         obj: apiData
     };
 
+    var venues = {
+        obj: venueData
+    }
+
+    var venueDetail = findObject(venues, ['slug'], req.params.place);
+
     var locationArr = findObject(data, ['acf', 'venue', 'post_name'], req.params.place);
 
     res.render('locationDetail', {
-        apiData: locationArr
+        apiData: locationArr,
+        venueDetail: venueDetail
     });
 });
 

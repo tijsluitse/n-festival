@@ -71,10 +71,10 @@
                 <p>
                     <span class="detailLocation">{{acf.venue.post_title}}</span>
                     <br />
-                    <a href="http://maps.google.com/maps?saddr=Current%20Location&daddr={{info.address}}">{{info.address}}</a>
+                    <a href="http://maps.google.com/maps?saddr=Current%20Location&daddr={{acf.venue.post_address}}">{{acf.venue.post_address}}</a>
                 </p>
             </div>
-            <a href="http://maps.google.com/maps?saddr=Current%20Location&daddr={{info.address}}" class="planRouteButton" target="blank">Plan route</a>
+            <a href="http://maps.google.com/maps?saddr=Current%20Location&daddr={{acf.venue.post_address}}" class="planRouteButton" target="blank">Plan route</a>
 
             <p class="detailContent">{{{content.rendered}}}</p>
 
