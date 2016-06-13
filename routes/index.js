@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var http = require('http');
-var moment = require('moment');
 
 var apiData,
     venueData,
