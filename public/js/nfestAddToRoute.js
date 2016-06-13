@@ -4,6 +4,8 @@ var nfest = nfest || {};
 
 nfest.addToRoute = (function () {
 
+    var allSavedEvents = [];
+
     var buttonToggle = function () {
         var add = document.querySelectorAll(".buttonAddToRoute");
 
@@ -11,8 +13,10 @@ nfest.addToRoute = (function () {
 
             add[i].onclick = function (evt) {
                 evt.currentTarget.classList.toggle("addedToRoute");
-
                 document.querySelector(".myRouteCounter").classList.toggle("myRouteAdded");
+
+                addToMyTimetable(this);
+
             }
         }
 
@@ -22,9 +26,16 @@ nfest.addToRoute = (function () {
         // }
     }
 
-    
-    return{
-        buttonToggle: buttonToggle
+        var addToMyTimetable = function (clickedObject) {
+            var oldItems = JSON.parse(localStorage.getItem('myRouteEvents')) || [];
+            var newItem = clickedObject.id;
+            oldItems.push(newItem);
+            localStorage.setItem('myRouteEvents', JSON.stringify(oldItems));
+        }
+
+    return {
+        buttonToggle: buttonToggle,
+        addToMyTimetable: addToMyTimetable
     }
 
 })();

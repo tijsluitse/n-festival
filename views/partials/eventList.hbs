@@ -1,10 +1,11 @@
 <ul id="eventsList" class="discoverEvents">
-    {{#obj}}
+    {{#apiData}}
     
-    <div class="eventObj" data-theme="{{event.theme}}">
-        <a href="/detail/{{info.nameUrl}}" class="eventDetailLink">
+    <div class="eventObj" data-theme="hierkomtEventtheme">
+        <a href="/detail/{{slug}}" class="eventDetailLink">
 
-            <li class="discoverEvent ">  
+            <li class="discoverEvent hierkomtEventtheme">  
+
             
                 <div class="eventImg" style="background-image: url('{{header.image}}');">
                 </div>
@@ -12,14 +13,14 @@
                 
                 <div class="eventInformation">
                     <div class="eventTitle">
-                        <h2>{{header.title}}</h2>
+                        <h2>{{{title.rendered}}}</h2>
                     </div>
                     <div class="eventSpecifications">
                         <div class="eventLocation">
                             <svg class="eventLocationIcon eventIcon" width="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12.7 17">
                                 <path id="XMLID_528_" class="st0" d="M6.4 0C2.8 0 0 2.8 0 6.4S6.4 17 6.4 17s6.4-7.2 6.4-10.7S9.9 0 6.4 0zm0 9c-1.6 0-3-1.3-3-3 0-1.6 1.3-3 3-3 1.6 0 3 1.3 3 3-.1 1.6-1.4 3-3 3z" />
                             </svg>
-                            <p>{{info.location}}</p>
+                            <p>{{acf.venue.post_title}}</p>
                         </div>
                         <div class="eventTimeDistance">
                             <div class="eventTime">
@@ -35,7 +36,7 @@
                                         </g>
                                     </g>
                                 </svg>
-                                <p>{{info.starttime}} - {{info.endtime}}</p>
+                                <p>{{acf.starttime_converted}} - {{acf.endtime_converted}}</p>
                             </div>
 
 
@@ -68,12 +69,12 @@
             </li>
         </a>
 
-        <button id="{{info.nameUrl}}" class="buttonAddToRoute">
+        <button id="{{slug}}" class="buttonAddToRoute">
 
             <svg class="addToRouteSvg" width="15" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.8 14.7"><g id="XMLID_401_"><g id="XMLID_399_"><path id="XMLID_68_" class="st0" d="M1.148.018l13.577 13.576-1.132 1.13L.017 1.15z"></path></g><g id="XMLID_402_"><path id="XMLID_67_" class="st0" d="M13.664-.053l1.13 1.13L1.22 14.656.087 13.523z"></path></g></g></svg>
 
         </button>
         
     </div>
-    {{/obj}}
+    {{/apiData}}
 </ul>
