@@ -90,11 +90,6 @@ http.get({
     });
 });
 
-router.get('/menu', function(req, res, next){
-    res.render('menu');
-});
-
-
 // helper function to match data with day,name,location etc.
 function findObject(data, arrayOfProps, objectToLookFor) {
     var obj = data.obj;
@@ -119,6 +114,10 @@ function findObject(data, arrayOfProps, objectToLookFor) {
 
 // Get home page
 router.get('/', function (req, res, next) {
+    res.render('menu');
+});
+
+router.get('/program', function(req, res, next){
     var data = {
         obj: apiData
     };
@@ -141,7 +140,6 @@ router.get('/', function (req, res, next) {
             apiData: array
         });
     }
-
 });
 
 // get day 1
@@ -168,25 +166,6 @@ router.get('/day2', function (req, res, next) {
 
     res.render('home', {
         apiData: array
-    });
-});
-
-// get events page
-router.get('/programpage', function (req, res, next) {
-    var data = {
-        obj: apiData
-    };
-
-    // sort by name
-    var dataByName = data.obj.slice(0);
-    dataByName.sort(function (a, b) {
-        var x = a.slug.toLowerCase();
-        var y = b.slug.toLowerCase();
-        return x < y ? -1 : x > y ? 1 : 0;
-    });
-
-    res.render('programPage', {
-        apiData: dataByName
     });
 });
 
