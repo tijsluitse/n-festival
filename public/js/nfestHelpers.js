@@ -47,11 +47,13 @@ nfest.helpers = (function () {
     }
 
     var addedToMyRoute = function() {
-        var myRouteElements = JSON.parse(localStorage.getItem('myRouteEvents'));
-        for (var i = 0; i < myRouteElements.length; i++) {
-            var string = '#' + myRouteElements[i] + ' > .buttonAddToRoute';
-            document.querySelector(string).classList.add('addedToRoute');
-        }
+        if (!document.getElementById('mapViewFilter')) {
+            var myRouteElements = JSON.parse(localStorage.getItem('myRouteEvents'));
+            for (var i = 0; i < myRouteElements.length; i++) {
+                var string = '#' + myRouteElements[i] + ' > .buttonAddToRoute';
+                document.querySelector(string).classList.add('addedToRoute');
+            }
+        } 
     }
 
     var storageCheck = function (cb) {
