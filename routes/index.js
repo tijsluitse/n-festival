@@ -3,8 +3,8 @@ var router = express.Router();
 var http = require('http');
 
 var apiData,
-    venueData,
     categories,
+    venueData,
     tags,
     curators;
 
@@ -214,6 +214,10 @@ function findObject(data, arrayOfProps, objectToLookFor) {
 // Get home page
 router.get('/', function (req, res, next) {
     res.render('menu');
+});
+
+router.get('/data', function (req, res, next) {
+    res.json(venueData);
 });
 
 router.get('/program', function (req, res, next) {
