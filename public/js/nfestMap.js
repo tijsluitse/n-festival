@@ -369,7 +369,7 @@ nfest.map = (function () {
 
                 var locationLink = location.link;
 
-                var link = '<a href="/location/" ' + locationLink + '" class="popupButton">';
+                var link = '<a href="/location/' + locationLink + '" class="popupButton">';
                 var routeLink = '<a href="https://maps.google.com?saddr=Current+Location&daddr=' + location.lat + ',' + location.lng + '" class="popupButton buttonRoute">';
 
                 var contentString =
