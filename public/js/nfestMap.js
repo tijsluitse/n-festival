@@ -317,9 +317,7 @@ nfest.map = (function () {
                 google.maps.event.addListener(marker, 'click', function () {
                     infowindow.setContent(contentString);
                     infowindow.open(map, marker);
-                });
-
-                console.log("watch");
+                });                
 
                 // nfest.map.setMarker(map, userLat, userLng);              
 
