@@ -198,7 +198,7 @@ nfest.map = (function () {
                             userC = userCoordinates.split(","),                            
                             userLat = parseFloat(userC[0]),
                             userLng = parseFloat(userC[1]);
-                            console.log("hoi2");
+                            // console.log("hoi2");
 
                         // map.panTo({
                         //     lat: userLat,
@@ -328,7 +328,7 @@ nfest.map = (function () {
             };
 
             function error() {
-                alert('Unable to retrieve your location.');
+                // alert('Unable to retrieve your location.');
             };
 
             var options = {
@@ -343,12 +343,25 @@ nfest.map = (function () {
 
     var venueMarkers = function (map) {
 
-        nfest.helpers.getVenueLocations(function (mapLocations, data) {
-            var allLocationMarkers = maplocations,
-                infowindow = new google.maps.InfoWindow();
+        // nfest.helpers.getVenueLocations(function (mapLocations, data) {
+        //     var myRouteElements = JSON.parse(localStorage.getItem('myRouteEvents')),
+        //         infowindow = new google.maps.InfoWindow();
+
+        //         if (myRouteElements.length == 0) {
+        //             console.log("No Items in array");
+        //         } else { // items in local storage
+        //             var items = document.querySelectorAll('.eventObj.myRouteEvents'); 
 
 
-        });
+        //             for (var i = 0; i < items.length; i++) {
+        //                 var location = items[i].dataset.location;
+        //                 // console.log(location);
+        //                 // console.log(mapLocations[i].link);
+        //             }      
+
+        //         }
+
+        // });
 
         nfest.helpers.getVenueLocations(function (mapLocations, data) {
             var locationMarkers = mapLocations,

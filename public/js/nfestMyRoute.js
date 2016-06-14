@@ -21,6 +21,7 @@ nfest.myRoute = (function() {
 		}
 		for (i = 0; i < myRouteElements.length; i++) {	
 			document.getElementById(myRouteElements[i]).classList.remove('hide');
+			document.getElementById(myRouteElements[i]).classList.add('myRouteEvents');
 		}
 	}
 
