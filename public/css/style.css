@@ -246,10 +246,13 @@
 	z-index: 10;
 }
 .filterBar.locations {
-	position: inherit;
+	position: fixed;
 }
 .filterSpaceBar {
 	height: 6.25em;
+}
+.LocationFilterSpaceBar {
+	height: 60px;
 }
 .dayFilter{
 	text-decoration: none;
@@ -400,13 +403,12 @@
 }
 .eventTitle h2 {
 	font-size: 1em;
-	padding-right: 2em;
+	padding-right: 2.5em;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	-webkit-line-clamp: 2;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
-	z-index: 5;
 }
 .buttonAddToRoute {
 	cursor: pointer;
@@ -454,13 +456,11 @@
 .eventLocation {
 	display: flex;
 	justify-content: flex-start;
-	align-items: center;
+	align-items: flex-start;
 	color: black;
 	font-size: .9em;
 }
-.eventSpecifications {
-	z-index: 5;
-}
+
 .eventTimeDistance {
 	display: flex;
 	justify-content: space-between;
@@ -705,6 +705,15 @@ fieldset h3 {
 .curatorLink {
     text-decoration: none;
     color:#000;
+}
+.curatorsHeader {
+	background-color: black;
+	text-transform: uppercase;
+	color: white;
+	font-size: .8em;
+	padding: 1em;
+	letter-spacing: .2em;
+	font-family: 'grotesqueLight', sans-serif;
 }
 
 .detailDate {
