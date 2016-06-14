@@ -249,7 +249,7 @@ nfest.map = (function () {
     var setMarker = function (map, userLat, userLong) {
         var marker = new google.maps.Marker({
             map: map,
-            icon: '/img/marker.gif',
+            icon: '/img/marker.png',
             optimized: false,
             title: 'First Infowindow!'
         });
@@ -298,7 +298,7 @@ nfest.map = (function () {
 
                 var marker = new google.maps.Marker({
                     map: map,
-                    icon: '/img/marker.gif',
+                    icon: '/img/marker.png',
                     optimized: false,
                     title: 'First Infowindow!'
                 });
@@ -342,6 +342,13 @@ nfest.map = (function () {
     }
 
     var venueMarkers = function (map) {
+
+        nfest.helpers.getVenueLocations(function (mapLocations, data) {
+            var allLocationMarkers = maplocations,
+                infowindow = new google.maps.InfoWindow();
+
+
+        });
 
         nfest.helpers.getVenueLocations(function (mapLocations, data) {
             var locationMarkers = mapLocations,
