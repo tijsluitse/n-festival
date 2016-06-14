@@ -278,7 +278,6 @@ router.get('/myroute', function (req, res, next) {
     });
 });
 
-
 router.get('/detail/:name', function (req, res, next) {
     var data = {
         obj: apiData
