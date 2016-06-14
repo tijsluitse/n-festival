@@ -11,6 +11,13 @@ nfest.addToRoute = (function () {
 
         for (var i = add.length - 1; i >= 0; i--) {
             add[i].onclick = function (evt) {
+
+                var myRouteCounter = document.getElementById("myRouteCounter");
+                myRouteCounter.classList.add("myRouteAdded");
+                myRouteCounter.addEventListener("animationend", function() {
+                    myRouteCounter.classList.remove("myRouteAdded"); 
+                });                
+                
                 evt.currentTarget.classList.toggle("addedToRoute");
                 if (nfest.helpers.hasClass(this, 'addedToRoute')) {
                     addToMyTimetable(this);
@@ -19,6 +26,13 @@ nfest.addToRoute = (function () {
                 }
             }
         }
+
+        // var addAnimation = document.querySelectorAll(".buttonAddToRoute").onclick = function() {
+        //     document.querySelector(".myRoute").classList.add("myRouteAdded");
+        //     console.log('click')
+        
+        // }
+        
     }
 
     var addToMyTimetable = function(clickedObject) {

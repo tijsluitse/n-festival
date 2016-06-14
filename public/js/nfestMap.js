@@ -362,7 +362,8 @@ nfest.map = (function () {
 
                 var locationLink = location.link;
 
-                var link = '<a href="/location/' + locationLink + '">';
+                var link = '<a href="/location/" ' + locationLink + '" class="popupButton">';
+                var routeLink = '<a href="https://maps.google.com?saddr=Current+Location&daddr=' + location.lat + ',' + location.lng + '" class="popupButton buttonRoute">';
 
                 var contentString =
                     '<div id="content">' +
@@ -372,13 +373,14 @@ nfest.map = (function () {
                     '<p>' +
                     location.address +
                     '</p>' +
-                    '<a href="#">' +
-                    'Route beschrijving' +
+                    '<div class="popupButtons ">' +
+                    routeLink +
+                    'Route' +
                     '</a>' +
-                    '   |   ' +
                     link +
-                    'Bekijk evenementen' +
+                    'Evenementen' +
                     '</a>' +
+                    '</div>' +
                     '</div>';
 
                 google.maps.event.addListener(marker, 'click', function () {
