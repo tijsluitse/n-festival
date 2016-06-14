@@ -23,8 +23,8 @@ nfest.location = (function () {
                         function success(position) {
                             var userLatitude = position.coords.latitude;
                             var userLongitude = position.coords.longitude;
-                            var userCoordinates = [userLatitude, userLongitude];                
-                            localStorage.setItem('userCoordinates', userCoordinates);         
+                            var userCoordinates = [userLatitude, userLongitude];
+                            localStorage.setItem('userCoordinates', userCoordinates);
                         };
 
                         function error() {
@@ -32,19 +32,19 @@ nfest.location = (function () {
                             // we kunnen hier misschien de afstanden uitzetten? Hide op min fietsen enzo
                         };
 
-                    } else {    
-                         navigator.geolocation.getCurrentPosition(success, error);
+                    } else {
+                        navigator.geolocation.getCurrentPosition(success, error);
 
                         function success(position) {
                             var userLatitude = position.coords.latitude;
                             var userLongitude = position.coords.longitude;
-                            var userCoordinates = [userLatitude, userLongitude];                
-                            localStorage.setItem('userCoordinates', userCoordinates); 
+                            var userCoordinates = [userLatitude, userLongitude];
+                            localStorage.setItem('userCoordinates', userCoordinates);
                             var userCoordinates = localStorage.getItem('userCoordinates');
-                            var userC = userCoordinates.split(",");                            
+                            var userC = userCoordinates.split(",");
                             var userLat = parseFloat(userC[0]);
                             var userLng = parseFloat(userC[1]);
-                            var userCoordinates = [userLat, userLng];        
+                            var userCoordinates = [userLat, userLng];
                         };
 
                         function error() {
@@ -77,14 +77,14 @@ nfest.location = (function () {
         }
     }
 
-    var watchLocation = function(map) {
+    var watchLocation = function (map) {
 
-        if(navigator.geolocation) {
+        if (navigator.geolocation) {
             function success(position) {
                 var userLatitude = position.coords.latitude;
                 var userLongitude = position.coords.longitude;
-                var userCoordinates = [userLatitude, userLongitude];                
-                localStorage.setItem('userCoordinates', userCoordinates);      
+                var userCoordinates = [userLatitude, userLongitude];
+                localStorage.setItem('userCoordinates', userCoordinates);
             };
 
             function error() {
@@ -101,29 +101,28 @@ nfest.location = (function () {
         }
     }
 
-    var eventDistance = function(data) {
-        
+    var eventDistance = function (data) {
+
         nfest.helpers.getData("http://n-festival.werk.vanjim.nl/wp-json/wp/v2/venues", function (response) {
             var data = JSON.parse(response);
             calculateDist(data);
-            setInterval(function(){
+            setInterval(function () {
                 calculateDist(data);
             }, 10000);
-        });    
-        
-        var calculateDist = function(data) {
-            
+        });
+
+        var calculateDist = function (data) {
+
             var userCoordinates = localStorage.getItem('userCoordinates'),
-                userC = userCoordinates.split(","),    
-                eventList = document.querySelectorAll('.eventObj');                      
+                userC = userCoordinates.split(","),
+                eventList = document.querySelectorAll('.eventObj');
                 userLat = parseFloat(userC[0]),
                 userLng = parseFloat(userC[1]),
                 allDistances = [];
- 
 
-            eventList.forEach(function(event){
-
+            Array.prototype.forEach.call(eventList, function (event) {
                 var location = event.dataset.location;
+
                 for (var i = 0; i < data.length; i++) {
                     var id = data[i].slug;
                     var uLat = userLat;
@@ -131,7 +130,6 @@ nfest.location = (function () {
                     var lat = data[i].acf.location.lat;
                     var lng = data[i].acf.location.lng;
                     if (location === id) {
-                        console.log(location, id)
                         distance(id, uLat, uLng, lat, lng, event);
                     }
                 }
@@ -140,25 +138,29 @@ nfest.location = (function () {
 
             function distance(id, lat1, lon1, lat2, lon2, event) {
                 var unit = "K";
-                var radlat1 = Math.PI * lat1/180
-                var radlat2 = Math.PI * lat2/180
-                var theta = lon1-lon2
-                var radtheta = Math.PI * theta/180
+                var radlat1 = Math.PI * lat1 / 180
+                var radlat2 = Math.PI * lat2 / 180
+                var theta = lon1 - lon2
+                var radtheta = Math.PI * theta / 180
                 var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
                 dist = Math.acos(dist)
-                dist = dist * 180/Math.PI
+                dist = dist * 180 / Math.PI
                 dist = dist * 60 * 1.1515
-                if (unit == "K") {dist = dist * 1.609344}
-                if (unit == "N") {dist = dist * 0.8684}
-                
+                if (unit == "K") {
+                    dist = dist * 1.609344
+                }
+                if (unit == "N") {
+                    dist = dist * 0.8684
+                }
+
                 var result = dist.toFixed(2),
                     bikeTime = 4 * result,
-                    string = '.bikeDist';        
-                    bikeTime = bikeTime.toFixed(0);                         
+                    string = '.bikeDist';
+                bikeTime = bikeTime.toFixed(0);
 
                 allDistances.push({
                     distance: result
-                });  
+                });
 
                 event.querySelector(string).innerHTML = bikeTime + ' min';
 
@@ -166,7 +168,7 @@ nfest.location = (function () {
         }
 
     }
-    
+
     return {
         locationLauncher: locationLauncher,
         getUserLocation: getUserLocation,

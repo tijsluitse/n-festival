@@ -22,9 +22,8 @@ nfest.addToRoute = (function () {
     }
 
     var addToMyTimetable = function(clickedObject) {
- 
-        var oldItems = JSON.parse(localStorage.getItem('myRouteEvents')) || [];
-        var newItem = clickedObject.id;
+        var oldItems = JSON.parse(localStorage.getItem('myRouteEvents')) || [],
+            newItem = clickedObject.id;
 
         function checkAvailability(arr, val) {
             return arr.some(function(arrVal) {
@@ -32,8 +31,7 @@ nfest.addToRoute = (function () {
             });
         } 
 
-        if (checkAvailability(oldItems, newItem)) {
-            
+        if (checkAvailability(oldItems, newItem)) {    
         } else {
             oldItems.push(newItem);
             localStorage.setItem('myRouteEvents', JSON.stringify(oldItems));
@@ -41,8 +39,7 @@ nfest.addToRoute = (function () {
 
         var myRouteElements = JSON.parse(localStorage.getItem('myRouteEvents')),
             counter = document.getElementById('myRouteCounter');
-        counter.innerHTML = myRouteElements.length;
-
+            counter.innerHTML = myRouteElements.length;
     }
 
     var removeFromTimetable = function(clickedObject) {
