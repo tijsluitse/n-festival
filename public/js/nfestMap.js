@@ -168,12 +168,12 @@ nfest.map = (function () {
                             var userLatitude = position.coords.latitude;
                             var userLongitude = position.coords.longitude;
                             var userCoordinates = [userLatitude, userLongitude];                
-                            localStorage.setItem('userCoordinates', userCoordinates);
+                            // localStorage.setItem('userCoordinates', userCoordinates);
                             
-                            var userCoordinates = localStorage.getItem('userCoordinates');
-                            var userC = userCoordinates.split(",");                            
-                            var userLat = parseFloat(userC[0]);
-                            var userLng = parseFloat(userC[1]);
+                            // var userCoordinates = localStorage.getItem('userCoordinates');
+                            // var userC = userCoordinates.split(",");                            
+                            // var userLat = parseFloat(userC[0]);
+                            // var userLng = parseFloat(userC[1]);
 
                             map.panTo({
                                 lat: userLat,
@@ -218,7 +218,7 @@ nfest.map = (function () {
                             lng: userLongitude
                         });
 
-                        var userPosition = new google.maps.LatLng(userLat, userLng);
+                        var userPosition = new google.maps.LatLng(userLatitude, userLongitude);
                         nfest.map.setMarker(map, userLatitude, userLongitude);
                     };
 
@@ -254,7 +254,7 @@ nfest.map = (function () {
         var contentString =
             '<div id="content">' +
             '<p>' +
-            location.address +
+            'Uw eigen locatie'
             '</p>' +
             '</div>';
 
@@ -262,9 +262,14 @@ nfest.map = (function () {
             content: contentString
         });
 
+        marker.addListener('click', function () {
+            infowindow.open(map, marker);
+            map.setCenter(marker.getPosition());
+        });
+
         marker.setMap(map);
         marker.setPosition(new google.maps.LatLng(userLat, userLong));
-        map.setCenter(marker.getPosition());
+        // map.setCenter(marker.getPosition());
     }
 
     var watchLocation = function(map) {
@@ -315,6 +320,8 @@ nfest.map = (function () {
                         lng: parseFloat(location.lng)
                     },
                     map: map,
+                    icon: '/img/location.png',
+                    optimized: true, 
                     title: 'First Infowindow!'
                 });
 

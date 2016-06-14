@@ -116,7 +116,7 @@ nfest.location = (function () {
             var userCoordinates = localStorage.getItem('userCoordinates'),
                 userC = userCoordinates.split(","),
                 eventList = document.querySelectorAll('.eventObj');
-            userLat = parseFloat(userC[0]),
+                userLat = parseFloat(userC[0]),
                 userLng = parseFloat(userC[1]),
                 allDistances = [];
 
