@@ -355,7 +355,7 @@ nfest.map = (function () {
                         lng: parseFloat(location.lng)
                     },
                     map: map,
-                    icon: '/img/location.svg',
+                    icon: '/img/location.png',
                     optimized: true,
                     title: 'First Infowindow!'
                 });
