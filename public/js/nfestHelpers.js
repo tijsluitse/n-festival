@@ -47,13 +47,40 @@ nfest.helpers = (function () {
     }
 
     var addedToMyRoute = function() {
-        if (!document.getElementById('mapViewFilter')) {
-            var myRouteElements = JSON.parse(localStorage.getItem('myRouteEvents'));
-            for (var i = 0; i < myRouteElements.length; i++) {
-                var string = '#' + myRouteElements[i] + ' > .buttonAddToRoute';
-                document.querySelector(string).classList.add('addedToRoute');
-            }
-        } 
+        if (document.querySelector('.detailPage > .eventInfo')) {            
+            var myRouteElements = JSON.parse(localStorage.getItem('myRouteEvents')),
+                allEvents = document.querySelectorAll('.eventInfo');   
+
+            function checkAvailability(arr, val) {                    
+                return arr.some(function(arrVal) {
+                    return val === arrVal;
+                });
+            } 
+
+            if (checkAvailability(myRouteElements, allEvents[0].id)) { 
+                var string = '#' + allEvents[0].id + '.buttonAddToRoute';                                    
+                document.querySelector(string).classList.add('addedToRoute');   
+            }             
+        }  
+
+        if (document.querySelector('body > section#homePage') || document.querySelector('section.curatorDetail') || document.querySelector('body.myTimetable') || document.querySelector('section.locationDetail')) {            
+            var myRouteElements = JSON.parse(localStorage.getItem('myRouteEvents')),
+                allEvents = document.querySelectorAll('.eventObj');            
+            
+            for (var i = 0; i < allEvents.length; i++) {
+                function checkAvailability(arr, val) {                    
+                    return arr.some(function(arrVal) {
+                        return val === arrVal;
+                    });
+                } 
+
+                if (checkAvailability(myRouteElements, allEvents[i].id)) { 
+                    var string = '#' + allEvents[i].id + ' .buttonAddToRoute';      
+                    console.log(string);              
+                    document.querySelector(string).classList.add('addedToRoute');   
+                }
+            }        
+        }
     }
 
     var storageCheck = function (cb) {

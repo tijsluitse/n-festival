@@ -847,3 +847,15 @@ fieldset h3 {
 .show {
 	display: inline-block !important;
 }
+
+.eventInside{
+    position:relative;
+}
+
+.timeToEvent{
+    padding:0.5em;
+    font-size:0.8em;
+    background-color: #F1F1F1;
+    color:#909090;
+    text-align: center;
+}

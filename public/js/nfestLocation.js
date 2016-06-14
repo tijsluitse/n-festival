@@ -88,7 +88,7 @@ nfest.location = (function () {
             };
 
             function error() {
-                alert('Unable to retrieve your location.');
+//                alert('Unable to retrieve your location.');
             };
 
             var options = {
