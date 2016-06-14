@@ -109,6 +109,10 @@
 .backIcon {
 	margin: 1em;
 }
+.backButton {
+	background-color: unset;
+	border: none;
+}
 .headerButton {
 	border: none;
 	background-color: unset;
@@ -634,9 +638,9 @@ fieldset h3 {
 		transform: translateY(0);
 	}
 }
-.detailPage {
+/*.detailPage {
 	border-top: 1px solid white;
-}
+}*/
 .detailPage img{
     width:100%;
 }

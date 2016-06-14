@@ -32,13 +32,20 @@ nfest.ux = (function () {
     var backButton = function () {
         var eventUrl = window.location.pathname;
         eventUrl = eventUrl.split('/');
-        var eventName = eventUrl[2];
-        if (window.location.pathname == "/detail/" + eventName) {
+        var page = eventUrl[1];
+        var detailPage = eventUrl[2];
+        if (window.location.pathname == "/" + page + "/" + detailPage) {
             document.querySelector(".menuIcon").classList.add("hide");
-            document.querySelector(".backIcon").classList.remove("hide");
-            // window.history.back();
+            var backButton = document.querySelector(".backButton");
+            backButton.classList.remove("hide");
+            backButton.onclick = function(){
+                window.history.back();
+            }
         }
-        console.log('back')
+        if (window.location.pathname == "/") {
+            document.querySelector(".menuIcon").classList.add("hide");
+
+        }
     };
     
 //    var detailSlide = function () {
