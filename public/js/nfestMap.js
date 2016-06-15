@@ -445,7 +445,7 @@ nfest.map = (function () {
         mapStyle: mapStyle,
         updatePosition: updatePosition,
         watchLocation: watchLocation,
-        venueMarkersMyRoute: venueMarkerMyRoute,
+        venueMarkersMyRoute: venueMarkersMyRoute,
         venueMarkersAllLocations: venueMarkersAllLocations
     }
 
