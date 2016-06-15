@@ -19,9 +19,13 @@ nfest.ux = (function () {
             allAddToRouteButtons = document.querySelectorAll('.addToRouteMail'),
             locationsFilter = document.getElementById('filterHolder');
 
-            myRouteButton.classList.remove('hidden');
-            locationsFilter.classList.remove('hide');
-            
+            if (myRouteButton) {
+                myRouteButton.classList.remove('hidden');
+            }
+            if (locationsFilter) {
+                locationsFilter.classList.remove('hide');
+            }
+
             allDistances.forEach(function(distance){
                 distance.classList.remove('hidden');
             })

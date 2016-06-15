@@ -13,6 +13,7 @@ nfest.map = (function () {
             scrollwheel: false,
             navigationControl: false,
             mapTypeControl: false,
+            disableDefaultUI: true,
             scaleControl: false,
             mapTypeId: 'Styled'
         };
