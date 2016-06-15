@@ -1,7 +1,5 @@
-# n-festival
-Added JSON data, AJAX call with the AJA() micro library. 
+## N-Festival App
 
-Terminal command for local server: 
-```
-python -m SimpleHTTPServer
-```
+Live: http://37.139.25.160
+
+To use the code: Download files and run nodemon app.js in your terminal
