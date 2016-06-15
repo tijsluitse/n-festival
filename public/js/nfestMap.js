@@ -174,13 +174,7 @@ nfest.map = (function () {
                             var userCoordinates = localStorage.getItem('userCoordinates'),
                                 userC = userCoordinates.split(","),                            
                                 userLat = parseFloat(userC[0]),
-                                userLng = parseFloat(userC[1]);
-
-                            // map.panTo({
-                            //     lat: userLat,
-                            //     lng: userLng
-                            // });
-                            console.log("hoi");
+                                userLng = parseFloat(userC[1]);                           
 
                             nfest.map.setMarker(map, userLat, userLng);
                         };
@@ -197,15 +191,9 @@ nfest.map = (function () {
                         var userCoordinates = localStorage.getItem('userCoordinates'),
                             userC = userCoordinates.split(","),                            
                             userLat = parseFloat(userC[0]),
-                            userLng = parseFloat(userC[1]);
-                            // console.log("hoi2");
-
-                        // map.panTo({
-                        //     lat: userLat,
-                        //     lng: userLng
-                        // });
-
-                        var userPosition = new google.maps.LatLng(userLat, userLng);
+                            userLng = parseFloat(userC[1]),
+                            userPosition = new google.maps.LatLng(userLat, userLng);
+                        
                         nfest.map.setMarker(map, userLat, userLng);                                               
                     }
 
@@ -214,34 +202,23 @@ nfest.map = (function () {
 
                     function success(position) {
                         var userLatitude = position.coords.latitude,
-                            userLongitude = position.coords.longitude;
+                            userLongitude = position.coords.longitude,
+                            userPosition = new google.maps.LatLng(userLat, userLng);
 
-                        // map.panTo({
-                        //     lat: userLatitude,
-                        //     lng: userLongitude
-                        // });
-
-                        var userPosition = new google.maps.LatLng(userLat, userLng);
                         nfest.map.setMarker(map, userLatitude, userLongitude);
                     };
 
                     function error() {
-                        console.log('Unable to get your position.');
-
-                        // set map on Amsterdam Noord
-                        var latLng = new google.maps.LatLng(52.391286, 4.917583);
+                        console.log('Unable to get your position.');                        
+                        var latLng = new google.maps.LatLng(52.391286, 4.917583); // set map on Amsterdam Noord                    
                         map.panTo(latLng);
                     };
-
                 }
             });
 
-
         } else {
-            console.log('Geolocation is turned off or not supported, we cant calculate your location.');
-
-            // set map on Amsterdam Noord
-            var latLng = new google.maps.LatLng(52.391286, 4.917583);
+            console.log('Geolocation is turned off or not supported, we cant calculate your location.');            
+            var latLng = new google.maps.LatLng(52.391286, 4.917583); // set map on Amsterdam Noord
             map.panTo(latLng);
         }
     }
@@ -275,6 +252,31 @@ nfest.map = (function () {
         map.setCenter(marker.getPosition());
     }
 
+    var updatePosition = function(marker) {
+
+        function success(position) {
+
+            // Get lat, lng from position
+            var lat = position.coords.latitude,
+                lng = position.coords.longitude,
+                coords = [lat, lng];
+
+            // Update the marker with new lat and lng
+            marker.setPosition(new google.maps.LatLng(lat, lng));    
+
+        };
+
+        function error() {
+            console.log('Unable to retrieve your location.');
+        };
+
+        var options = {
+            enableHighAccuracy: true
+        }
+
+        navigator.watchPosition(succes, error, options);
+    }
+
     var watchLocation = function(map) {
 
         if(navigator.geolocation) {
@@ -290,11 +292,6 @@ nfest.map = (function () {
                     userC = userCoordinates.split(","),                           
                     userLat = parseFloat(userC[0]),
                     userLng = parseFloat(userC[1]);
-
-                // map.panTo({
-                //     lat: userLat,
-                //     lng: userLng
-                // });
 
                 var marker = new google.maps.Marker({
                     map: map,
@@ -320,10 +317,10 @@ nfest.map = (function () {
                 });                
 
                 // nfest.map.setMarker(map, userLat, userLng);              
-
                 marker.setMap(map);
                 marker.setPosition(new google.maps.LatLng(userLat, userLng));
                 // map.setCenter(marker.getPosition());
+                watchLocation(marker);
 
             };
 
@@ -335,7 +332,7 @@ nfest.map = (function () {
                 enableHighAccuracy: true
             }
 
-            navigator.geolocation.watchPosition(success, error, options);
+            navigator.geolocation.getCurrentPosition(success, error, options);
         } else {
             console.log('Geolocation is turned off or not supported, we cant calculate your location.');
         }
@@ -420,6 +417,7 @@ nfest.map = (function () {
         jsActivate: jsActivate,
         mapStyle: mapStyle,    
         getLocation: getLocation,
+        updatePosition: updatePosition,
         watchLocation: watchLocation,
         setMarker: setMarker,
         venueMarkers: venueMarkers

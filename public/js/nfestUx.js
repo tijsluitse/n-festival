@@ -15,9 +15,12 @@ nfest.ux = (function () {
 
     var resetJs = function() {
         var myRouteButton = document.querySelector('.topHeader .myRoute'),
-            allDistances = document.querySelectorAll('.eventDistance');
-            allAddToRouteButtons = document.querySelectorAll('.addToRouteMail');
+            allDistances = document.querySelectorAll('.eventDistance'),
+            allAddToRouteButtons = document.querySelectorAll('.addToRouteMail'),
+            locationsFilter = document.getElementById('filterHolder');
+
             myRouteButton.classList.remove('hidden');
+            locationsFilter.classList.remove('hide');
             
             allDistances.forEach(function(distance){
                 distance.classList.remove('hidden');
