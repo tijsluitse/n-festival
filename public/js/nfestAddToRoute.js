@@ -13,17 +13,18 @@ nfest.addToRoute = (function () {
             add[i].onclick = function (evt) {
 
                 var myRouteCounter = document.getElementById("myRouteCounter");
-                myRouteCounter.classList.add("myRouteAdded");
-                myRouteCounter.addEventListener("animationend", function() {
+                    myRouteCounter.classList.add("myRouteAdded");
+                    myRouteCounter.addEventListener("animationend", function() {
                     myRouteCounter.classList.remove("myRouteAdded"); 
                 });                
                 
                 evt.currentTarget.classList.toggle("addedToRoute");
                 if (nfest.helpers.hasClass(this, 'addedToRoute')) {
                     addToMyTimetable(this);
-                } else {
+                } else {                    
                     removeFromTimetable(this);
                 }
+
             }
         }
     }
