@@ -896,8 +896,16 @@ fieldset h3 {
 	display: none;
 }
 
+.hidden {
+	visibility: hidden;
+}
+
 .fullscreen {
 	height: 100vh !important;
+}
+
+.noClick {
+	pointer-events: none;
 }
 
 /*SECTIONS*/

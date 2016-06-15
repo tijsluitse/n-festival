@@ -6,7 +6,8 @@ nfest.myRoute = (function() {
 	var myRouteElements = JSON.parse(localStorage.getItem('myRouteEvents')),
 		allElements = document.querySelectorAll(".eventObj"),
 		infoText = document.getElementById("infoText"),
-		body = document.querySelector('body');
+		body = document.querySelector('body'),
+		myTimetableList = document.getElementById('myTimetableList');
 		body.classList.add('myTimetable');
 
 	if (myRouteElements.length == 0) {
@@ -16,6 +17,7 @@ nfest.myRoute = (function() {
     }
 
 	var showElements = function() {
+		myTimetableList.classList.remove('hide');
 		for (a = 0; a < allElements.length; a++) {
 			allElements[a].classList.add('hide');
 		}

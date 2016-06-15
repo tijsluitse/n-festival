@@ -10,6 +10,21 @@ nfest.ux = (function () {
         // directly launch ux modules for every page
         // nfest.ux.menuSlide();
         nfest.ux.backButton();
+        nfest.ux.resetJs();
+    };
+
+    var resetJs = function() {
+        var myRouteButton = document.querySelector('.topHeader .myRoute'),
+            allDistances = document.querySelectorAll('.eventDistance');
+            allAddToRouteButtons = document.querySelectorAll('.addToRouteMail');
+            myRouteButton.classList.remove('hidden');
+            
+            allDistances.forEach(function(distance){
+                distance.classList.remove('hidden');
+            })
+            allAddToRouteButtons.forEach(function(button) {
+                button.removeAttribute('href');
+            })
 
     };
 
@@ -78,6 +93,7 @@ nfest.ux = (function () {
     return {
         uxLauncher: uxLauncher,
         // menuSlide: menuSlide,
+        resetJs: resetJs,
         backButton: backButton
 //        detailSlide: detailSlide
     }

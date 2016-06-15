@@ -16,7 +16,6 @@
 
                 <li class="discoverEvent {{categoryName}}">
 
-
                     <div class="eventImg" style="background-image: url('{{acf.picture.sizes.medium}}');">
                     </div>
                     <div class="{{categoryName}} imgOverlay"></div>
@@ -51,7 +50,7 @@
 
 
 
-                                <div class="eventDistance">
+                                <div class="eventDistance hidden">
 
                                     <svg width="22" class="bicycleIcon eventIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.9 9.5">
                                         <g id="eX8eV3.tif_1_">
@@ -87,21 +86,20 @@
 
                 </li>
             </a>
-
-            <button id="{{slug}}" class="buttonAddToRoute">
-
-                <svg class="addToRouteSvg" width="15" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.8 14.7">
-                    <g id="XMLID_401_">
-                        <g id="XMLID_399_">
-                            <path id="XMLID_68_" class="st0" d="M1.148.018l13.577 13.576-1.132 1.13L.017 1.15z"></path>
+            <a class="addToRouteMail" href="mailto:?subject={{{title.rendered}}}%20Event - NFESTIVAL&body=Title:%20{{{title.rendered}}}%0ATheme:%20{{categoryName}}%0AStart:%20{{startDate_converted}}%0AEnd:%20{{endDate_converted}}%0A%0ASee you at the NFESTIVAL! For more information check https://www.nfestival.nl/">
+                <button id="{{slug}}" class="buttonAddToRoute">
+                    <svg class="addToRouteSvg" width="15" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.8 14.7">
+                        <g id="XMLID_401_">
+                            <g id="XMLID_399_">
+                                <path id="XMLID_68_" class="st0" d="M1.148.018l13.577 13.576-1.132 1.13L.017 1.15z"></path>
+                            </g>
+                            <g id="XMLID_402_">
+                                <path id="XMLID_67_" class="st0" d="M13.664-.053l1.13 1.13L1.22 14.656.087 13.523z"></path>
+                            </g>
                         </g>
-                        <g id="XMLID_402_">
-                            <path id="XMLID_67_" class="st0" d="M13.664-.053l1.13 1.13L1.22 14.656.087 13.523z"></path>
-                        </g>
-                    </g>
-                </svg>
-
-            </button>
+                    </svg>
+                </button>
+            </a>
         </div>
 
     </div>
