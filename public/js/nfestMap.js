@@ -254,6 +254,8 @@ nfest.map = (function () {
 
     var updatePosition = function(marker) {
 
+        console.log(marker);
+
         function success(position) {
 
             // Get lat, lng from position
@@ -274,7 +276,7 @@ nfest.map = (function () {
             enableHighAccuracy: true
         }
 
-        navigator.watchPosition(succes, error, options);
+        navigator.geolocation.watchPosition(success, error, options);
     }
 
     var watchLocation = function(map) {
@@ -320,7 +322,7 @@ nfest.map = (function () {
                 marker.setMap(map);
                 marker.setPosition(new google.maps.LatLng(userLat, userLng));
                 // map.setCenter(marker.getPosition());
-                watchLocation(marker);
+                updatePosition(marker);
 
             };
 
