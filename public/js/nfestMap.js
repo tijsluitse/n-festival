@@ -309,13 +309,14 @@ nfest.map = (function () {
 
     var venueMarkers = function (map) {
 
-        var all = document.querySelectorAll('.addedToRoute');
-
-        all.forEach(function(venue){
+        var all = document.querySelectorAll('.addedToRoute');      
+        
+        Array.prototype.forEach.call(all, function (venue) {
             venue.addEventListener('click', function(){                
                 location.reload();
             });
         });
+        
 
         nfest.helpers.getVenueLocations(function (mapLocations, data) {
             var myRouteElements = JSON.parse(localStorage.getItem('myRouteEvents')),
