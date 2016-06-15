@@ -5,16 +5,58 @@ var nfest = nfest || {};
 nfest.location = (function () {
 
     var locationLauncher = function () {
-        // document.getElementById('locationViewFilter').classList.remove('hide');
         nfest.location.getUserLocation();
         nfest.location.watchLocation();
-        nfest.location.eventDistance();
+
+        if (window.location.pathname == '/program' || '/day1' || '/day2' || '/location' || '/myroute') {
+            nfest.location.eventDistance();
+        }
+
     };
 
     var getUserLocation = function () {
+
+        var removeBikeDist = function () {
+            if (window.location.pathname == '/program' || '/day1' || '/day2' || '/location' || '/myroute') {
+                var bikeDist = document.querySelectorAll('.bikeDist');
+
+                bikeDist.classList.add('hide');
+            }
+        }
+
+        var showGeoPopUp = function () {
+
+            nfest.helpers.storageCheck(function (hasStorage) {
+                var popUp = document.querySelector('.geolocationAlert'),
+                    sub = document.querySelector('.subAlert');
+
+                popUp.innerHTML += 'We kunnen je positie niet bepalen doordat je GPS uitstaat of niet goed werkt, zet deze aan voor optimaal gebruik.';
+
+                var closeButton = popUp.querySelector('button');
+
+                if (hasStorage) {
+                    if (localStorage.getItem('geoPopup') === null) {
+                        popUp.classList.remove('hide');
+                        sub.classList.remove('hide');
+
+                        nfest.helpers.onclick(closeButton, function () {
+                            popUp.classList.add('hide');
+                            sub.classList.add('hide');
+
+                            localStorage.setItem('geoPopup', 'closed');
+                        });
+                    }
+                } else {
+                    popUp.classList.remove('hide');
+                    sub.classList.remove('hide');
+                    closeButton.classList.add('hide');
+                }
+
+            });
+        }
+
         // check if geolocation is supported
         if (navigator.geolocation) {
-
             nfest.helpers.storageCheck(function (hasStorage) {
                 if (hasStorage) {
                     if (localStorage.getItem("userCoordinates") === null) {
@@ -28,31 +70,11 @@ nfest.location = (function () {
                         };
 
                         function error() {
-                            alert('Unable to get your position.');
-                            // we kunnen hier misschien de afstanden uitzetten? Hide op min fietsen enzo
+                            showGeoPopUp();
+                            removeBikeDist();
                         };
 
-                    } else {
-                        navigator.geolocation.getCurrentPosition(success, error);
-
-                        function success(position) {
-                            var userLatitude = position.coords.latitude;
-                            var userLongitude = position.coords.longitude;
-                            var userCoordinates = [userLatitude, userLongitude];
-                            localStorage.setItem('userCoordinates', userCoordinates);
-                            var userCoordinates = localStorage.getItem('userCoordinates');
-                            var userC = userCoordinates.split(",");
-                            var userLat = parseFloat(userC[0]);
-                            var userLng = parseFloat(userC[1]);
-                            var userCoordinates = [userLat, userLng];
-                        };
-
-                        function error() {
-                            alert('Unable to get your position.');
-                            // we kunnen hier misschien de afstanden uitzetten? Hide op min fietsen enzo
-                        };
-                    }
-
+                    } 
                 } else {
                     navigator.geolocation.getCurrentPosition(success, error);
 
@@ -63,17 +85,15 @@ nfest.location = (function () {
                     };
 
                     function error() {
-                        alert('Unable to get your position.');
-                        // we kunnen hier misschien de afstanden uitzetten? Hide op min fietsen enzo
+                        showGeoPopUp();
+                        removeBikeDist();
                     };
                 }
             });
 
-
         } else {
-            alert('Geolocation is turned off or not supported, we cant calculate your location.');
-
-            // we kunnen hier misschien de afstanden uitzetten? Hide op min fietsen enzo
+            showGeoPopUp();
+            removeBikeDist();
         }
     }
 
@@ -87,9 +107,7 @@ nfest.location = (function () {
                 localStorage.setItem('userCoordinates', userCoordinates);
             };
 
-            function error() {
-//                alert('Unable to retrieve your location.');
-            };
+            function error() {};
 
             var options = {
                 enableHighAccuracy: true
@@ -116,7 +134,7 @@ nfest.location = (function () {
             var userCoordinates = localStorage.getItem('userCoordinates'),
                 userC = userCoordinates.split(","),
                 eventList = document.querySelectorAll('.eventObj');
-                userLat = parseFloat(userC[0]),
+            userLat = parseFloat(userC[0]),
                 userLng = parseFloat(userC[1]),
                 allDistances = [];
 
@@ -154,7 +172,7 @@ nfest.location = (function () {
                 }
 
                 var result = dist.toFixed(2),
-                    bikeTime = 4 * result,
+                    bikeTime = 6 * result,
                     string = '.bikeDist';
                 bikeTime = bikeTime.toFixed(0);
 

@@ -75,8 +75,7 @@ nfest.helpers = (function () {
                 } 
 
                 if (checkAvailability(myRouteElements, allEvents[i].id)) { 
-                    var string = '#' + allEvents[i].id + ' .buttonAddToRoute';      
-                    console.log(string);              
+                    var string = '#' + allEvents[i].id + ' .buttonAddToRoute';                   
                     document.querySelector(string).classList.add('addedToRoute');   
                 }
             }        

@@ -26,13 +26,6 @@ nfest.addToRoute = (function () {
                 }
             }
         }
-
-        // var addAnimation = document.querySelectorAll(".buttonAddToRoute").onclick = function() {
-        //     document.querySelector(".myRoute").classList.add("myRouteAdded");
-        //     console.log('click')
-        
-        // }
-        
     }
 
     var addToMyTimetable = function(clickedObject) {

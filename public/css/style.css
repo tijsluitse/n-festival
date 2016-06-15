@@ -1210,8 +1210,16 @@ fieldset h3 {
 	display: none;
 }
 
+.hidden {
+	visibility: hidden;
+}
+
 .fullscreen {
 	height: 100vh !important;
+}
+
+.noClick {
+	pointer-events: none;
 }
 
 /*SECTIONS*/
@@ -1233,5 +1241,35 @@ fieldset h3 {
     text-align: center;
     font-family: "grotesqueRegular";
     letter-spacing: .1em;
+}
+
+.gm-style-cc { 
+	display: none; 
+
+/* Geolocation alert */
+.geolocationAlert{
+    position: fixed;
+    width:100vw;
+    z-index:10;
+    height: 60px;
+    background-color: #F1F1F1;
+    color: #909090;
+    font-size: 0.8em;
+    padding: 1em;
+    padding-right: 2em;
+}
+
+.geolocationAlert button{
+    position: absolute;
+    top:0.2em;
+    right: 0.8em;
+    font-size: 1.5em;
+    border: none;
+    background-color: inherit;
+    color: inherit;
+}
+
+.subAlert {
+	height: 60px;
 }
 
