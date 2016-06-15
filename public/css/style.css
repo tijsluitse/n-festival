@@ -246,10 +246,13 @@
 	z-index: 10;
 }
 .filterBar.locations {
-	position: inherit;
+	position: fixed;
 }
 .filterSpaceBar {
 	height: 6.25em;
+}
+.LocationFilterSpaceBar {
+	height: 60px;
 }
 .dayFilter{
 	text-decoration: none;
@@ -380,7 +383,7 @@
 }
 .discoverEvent {
 	background-color: #ffffff;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid #dbdbdb;
 	list-style: none;
 	display: flex;
 }
@@ -400,7 +403,12 @@
 }
 .eventTitle h2 {
 	font-size: 1em;
-	padding-right: 2em;
+	padding-right: 2.5em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 2;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
 }
 .buttonAddToRoute {
 	cursor: pointer;
@@ -443,16 +451,16 @@
 	position: relative;
 }
 .discoverEvents {
-	border-top: 1px solid black;
+	border-top: 1px solid #dbdbdb;
 }
 .eventLocation {
 	display: flex;
 	justify-content: flex-start;
-	align-items: center;
+	align-items: flex-start;
 	color: black;
-	margin-top: .5em;
 	font-size: .9em;
 }
+
 .eventTimeDistance {
 	display: flex;
 	justify-content: space-between;
@@ -646,6 +654,7 @@ fieldset h3 {
 }
 .eventInfo {
 	margin: 1em;
+	line-height: 1.5em;
 }
 .detailPage h1{
     font-size: 1.5em;
@@ -661,7 +670,20 @@ fieldset h3 {
     border-radius:3em;
     margin-right:1em;
 }
+/*DETAIL PAGE  */
+.detailPageInfo {
+	margin: 1em;
+	line-height: 1.5em;
+}
+.detailPageInfo h1 {
+	margin-bottom: 1em;
+}
+.detailPageInfo h2 {
+	margin-top: 4em;
+	font-size: 1.2em;
+}
 
+/*CURATOR*/
 .curator{
     line-height:2em;
     vertical-align:middle;  
@@ -673,10 +695,25 @@ fieldset h3 {
 	margin: 1.5em 0;
 	padding: .5em;
 }
-
-.curatorLink{
+.curatorImg {
+	min-width: 3.5em;
+	height: 3.5em;
+}
+.curatorName {
+	justify-content: center;
+}
+.curatorLink {
     text-decoration: none;
     color:#000;
+}
+.curatorsHeader {
+	background-color: black;
+	text-transform: uppercase;
+	color: white;
+	font-size: .8em;
+	padding: 1em;
+	letter-spacing: .2em;
+	font-family: 'grotesqueLight', sans-serif;
 }
 
 .detailDate {
@@ -712,9 +749,7 @@ fieldset h3 {
 .detailPage figure{
     position:relative;
 }
-.detailContent {
-	line-height: 1.5em;
-}
+
 .shareSection h3 {
 	text-align: center;
 }
@@ -830,7 +865,30 @@ fieldset h3 {
 	height: 85vh;
 }
 
-
+/*LOCATION*/
+.locationDistance {
+	display: flex;
+	justify-content: flex-end;
+}
+/*MAP*/
+.popupButtons {
+	display: flex;
+	margin: 2em 0 .3em 0;
+}
+.popupButton {
+	border: 2px solid black;
+	padding: 1em;
+	color: black;
+	font-weight: bold;
+	text-decoration: none;
+	text-transform: uppercase; 
+}
+.buttonRoute {
+	margin-right: 1em;
+}
+#content h1 {
+	margin-bottom: .5em;
+}
 
 /*CLASSES*/
 
@@ -846,4 +904,16 @@ fieldset h3 {
 
 .show {
 	display: inline-block !important;
+}
+
+.eventInside{
+    position:relative;
+}
+
+.timeToEvent{
+    padding:0.5em;
+    font-size:0.8em;
+    background-color: #F1F1F1;
+    color:#909090;
+    text-align: center;
 }

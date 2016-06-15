@@ -88,7 +88,7 @@ nfest.location = (function () {
             };
 
             function error() {
-                alert('Unable to retrieve your location.');
+//                alert('Unable to retrieve your location.');
             };
 
             var options = {
@@ -103,7 +103,7 @@ nfest.location = (function () {
 
     var eventDistance = function (data) {
 
-        nfest.helpers.getData("http://n-festival.werk.vanjim.nl/wp-json/wp/v2/venues", function (response) {
+        nfest.helpers.getData("https://nfest.lisaklein.nl/data", function (response) {
             var data = JSON.parse(response);
             calculateDist(data);
             setInterval(function () {

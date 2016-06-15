@@ -3,8 +3,8 @@ var router = express.Router();
 var http = require('http');
 
 var apiData,
-    venueData,
     categories,
+    venueData,
     tags,
     curators;
 
@@ -96,19 +96,28 @@ http.get({
             var date = 'date',
                 startconvert = 'starttime_converted',
                 endconvert = 'endtime_converted',
-                convertedDateStart = 'startDate_converted';
+                convertedDateStart = 'startDate_converted',
+                convertedDateEnd = 'endDate_converted';
 
-            var dayStart = event.acf.start_time.split('-');
-            var dd = dayStart[0],
-                mm = dayStart[1],
-                yy = dayStart[2];
+            var dayStart = event.acf.start_time.split('-'),
+                dayEnd = event.acf.end_time.split('-');
+            
+            var dds = dayStart[0],
+                mms = dayStart[1],
+                yys = dayStart[2];
+            
+            var dde = dayEnd[0],
+                mme = dayEnd[1],
+                yye = dayEnd[2];
 
-            var dateTime = mm + '/' + dd + '/' + yy;
+            var dateTimeS = mms + '/' + dds + '/' + yys,
+                dayTimeE = mme + '/' + dde + '/' + yye;
 
             event.acf[date] = day;
             event.acf[startconvert] = starttime;
             event.acf[endconvert] = endtime;
-            event[convertedDateStart] = dateTime;
+            event[convertedDateStart] = dateTimeS;
+            event[convertedDateEnd] = dayTimeE;
 
 
             // add address
@@ -207,6 +216,10 @@ router.get('/', function (req, res, next) {
     res.render('menu');
 });
 
+router.get('/data', function (req, res, next) {
+    res.json(venueData);
+});
+
 router.get('/program', function (req, res, next) {
     var data = {
         obj: apiData
@@ -224,11 +237,7 @@ router.get('/program', function (req, res, next) {
         });
 
     } else {
-        var array = findObject(data, ['acf', 'date'], '09-10-2016');
-
-        res.render('home', {
-            apiData: array
-        });
+        res.redirect('/day2');
     }
 });
 
@@ -277,7 +286,6 @@ router.get('/myroute', function (req, res, next) {
         apiData: dataByName
     });
 });
-
 
 router.get('/detail/:name', function (req, res, next) {
     var data = {

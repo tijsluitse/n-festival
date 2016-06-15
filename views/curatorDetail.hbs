@@ -1,18 +1,20 @@
-<section class="detailPage">
+<section class="detailPage curatorDetail">
 
     {{#curatorDetail}}
     
     <figure>
         <img src="{{acf.avatar.url}}" alt="Curator image" meta property="og:image">
     </figure>
+    <div class="detailPageInfo">
+    	<h1>{{{title.rendered}}}</h1> 
     
-    <h1>{{{title.rendered}}}</h1> 
+	    <p>{{{content.rendered}}}</p>
+	    
+	    {{/curatorDetail}} 
+	    
+	    <h2>Evenementen van deze Curator:</h2>
+    </div>
     
-    <p>{{{content.rendered}}}</p>
-    
-    {{/curatorDetail}} 
-    
-    <h1>Evenementen van deze Curator:</h1>
     
     {{>eventList}}
 
@@ -22,4 +24,3 @@
 <script src="/js/nfestHelpers.js"></script>
 <script src="/js/nfestLocation.js"></script>
 <script src="/js/nfestUx.js"></script>
-<script src="/js/nfestMap.js"></script>
