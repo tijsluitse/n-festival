@@ -156,12 +156,10 @@ nfest.map = (function () {
     }
 
     // var getLocation = function (map) {
-    //     // check if geolocation is supported
-    //     if (navigator.geolocation) {
-
+    //     if (navigator.geolocation) { // check if geolocation is supported
     //         nfest.helpers.storageCheck(function (hasStorage) {
-    //             if (hasStorage) {
-    //                 if (localStorage.getItem("userCoordinates") === null) {
+    //             if (hasStorage) { // LS supported
+    //                 if (localStorage.getItem("userCoordinates") === null) { // LS userCoordinates are empty
     //                     navigator.geolocation.getCurrentPosition(success, error);                              
 
     //                     function success(position) {
@@ -187,7 +185,7 @@ nfest.map = (function () {
     //                         map.panTo(latLng);
     //                     };     
 
-    //                 } else {                    
+    //                 } else { // get userCoordinates from LS                    
     //                     var userCoordinates = localStorage.getItem('userCoordinates'),
     //                         userC = userCoordinates.split(","),                            
     //                         userLat = parseFloat(userC[0]),
@@ -197,7 +195,7 @@ nfest.map = (function () {
     //                     nfest.map.setMarker(map, userLat, userLng);                                               
     //                 }
 
-    //             } else {
+    //             } else { // no LS support
     //                 navigator.geolocation.getCurrentPosition(success, error);                        
 
     //                 function success(position) {
@@ -207,7 +205,7 @@ nfest.map = (function () {
 
     //                     // nfest.map.setMarker(map, userLatitude, userLongitude);
     //                 };
-
+    
     //                 function error() {
     //                     console.log('Unable to get your position.');                        
     //                     var latLng = new google.maps.LatLng(52.391286, 4.917583); // set map on Amsterdam Noord                    
@@ -215,8 +213,7 @@ nfest.map = (function () {
     //                 };
     //             }
     //         });
-
-    //     } else {
+    //     } else { // no geolocation support
     //         console.log('Geolocation is turned off or not supported, we cant calculate your location.');            
     //         var latLng = new google.maps.LatLng(52.391286, 4.917583); // set map on Amsterdam Noord
     //         map.panTo(latLng);
