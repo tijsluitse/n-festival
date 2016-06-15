@@ -172,7 +172,7 @@ nfest.location = (function () {
                 }
 
                 var result = dist.toFixed(2),
-                    bikeTime = 4 * result,
+                    bikeTime = 6 * result,
                     string = '.bikeDist';
                 bikeTime = bikeTime.toFixed(0);
 
