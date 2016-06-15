@@ -13,25 +13,27 @@ nfest.ux = (function () {
         nfest.ux.resetJs();
     };
 
-    var resetJs = function() {
+    var resetJs = function () {
         var myRouteButton = document.querySelector('.topHeader .myRoute'),
             allDistances = document.querySelectorAll('.eventDistance'),
             allAddToRouteButtons = document.querySelectorAll('.addToRouteMail'),
             locationsFilter = document.getElementById('filterHolder');
 
-            if (myRouteButton) {
-                myRouteButton.classList.remove('hidden');
-            }
-            if (locationsFilter) {
-                locationsFilter.classList.remove('hide');
-            }
+        if (myRouteButton) {
+            myRouteButton.classList.remove('hidden');
+        }
+        if (locationsFilter) {
+            locationsFilter.classList.remove('hide');
+        }
 
-            allDistances.forEach(function(distance){
-                distance.classList.remove('hidden');
-            })
-            allAddToRouteButtons.forEach(function(button) {
-                button.removeAttribute('href');
-            })
+
+        Array.prototype.forEach.call(allDistances, function (distance) {
+            distance.classList.remove('hidden');
+        });
+
+        Array.prototype.forEach.call(allAddToRouteButtons, function (button) {
+            button.removeAttribute('href');
+        });
 
     };
 
@@ -60,7 +62,7 @@ nfest.ux = (function () {
             document.querySelector(".menuIcon").classList.add("hide");
             var backButton = document.querySelector(".backButton");
             backButton.classList.remove("hide");
-            backButton.onclick = function(){
+            backButton.onclick = function () {
                 window.history.back();
             }
         }
@@ -69,40 +71,40 @@ nfest.ux = (function () {
 
         }
     };
-    
-//    var detailSlide = function () {
-//        // get elements from popupDetail partial
-//        var detail = document.querySelector('.detailContainer'),
-//            detailExit = document.querySelector('.detailExit'),
-//            showDetail = document.getElementById('showDetail'),
-//            closeButton = document.querySelector('.closeDetailButton');
-//
-//        showDetail.classList.remove('hide');
-//
-//        setTimeout(function () {
-//            detail.classList.add('detailToggle');
-//            detailExit.classList.add('detailToggle');
-//        }, 20);
-//        
-//        nfest.helpers.onclick(detailExit, function(){
-//            detail.classList.remove('detailToggle');
-//            detailExit.classList.remove('detailToggle');
-//            showDetail.classList.add('hide');
-//        });
-//        
-//        nfest.helpers.onclick(closeButton, function(){
-//            detail.classList.remove('detailToggle');
-//            detailExit.classList.remove('detailToggle');
-//            showDetail.classList.add('hide');
-//        });
-//    }
+
+    //    var detailSlide = function () {
+    //        // get elements from popupDetail partial
+    //        var detail = document.querySelector('.detailContainer'),
+    //            detailExit = document.querySelector('.detailExit'),
+    //            showDetail = document.getElementById('showDetail'),
+    //            closeButton = document.querySelector('.closeDetailButton');
+    //
+    //        showDetail.classList.remove('hide');
+    //
+    //        setTimeout(function () {
+    //            detail.classList.add('detailToggle');
+    //            detailExit.classList.add('detailToggle');
+    //        }, 20);
+    //        
+    //        nfest.helpers.onclick(detailExit, function(){
+    //            detail.classList.remove('detailToggle');
+    //            detailExit.classList.remove('detailToggle');
+    //            showDetail.classList.add('hide');
+    //        });
+    //        
+    //        nfest.helpers.onclick(closeButton, function(){
+    //            detail.classList.remove('detailToggle');
+    //            detailExit.classList.remove('detailToggle');
+    //            showDetail.classList.add('hide');
+    //        });
+    //    }
 
     return {
         uxLauncher: uxLauncher,
         // menuSlide: menuSlide,
         resetJs: resetJs,
         backButton: backButton
-//        detailSlide: detailSlide
+            //        detailSlide: detailSlide
     }
 
 })();
