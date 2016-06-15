@@ -59,7 +59,7 @@ nfest.location = (function () {
         if (navigator.geolocation) {
             nfest.helpers.storageCheck(function (hasStorage) {
                 if (hasStorage) {
-                    if (localStorage.getItem("userCoordinates") === null) {
+                    if (localStorage.getItem('userCoordinates') === null) {
                         navigator.geolocation.getCurrentPosition(success, error);
 
                         function success(position) {
@@ -121,7 +121,7 @@ nfest.location = (function () {
 
     var eventDistance = function (data) {
 
-        nfest.helpers.getData("https://nfest.lisaklein.nl/data", function (response) {
+        nfest.helpers.getData('https://nfest.lisaklein.nl/data', function (response) {
             var data = JSON.parse(response);
             calculateDist(data);
             setInterval(function () {
@@ -132,7 +132,7 @@ nfest.location = (function () {
         var calculateDist = function (data) {
 
             var userCoordinates = localStorage.getItem('userCoordinates'),
-                userC = userCoordinates.split(","),
+                userC = userCoordinates.split(','),
                 eventList = document.querySelectorAll('.eventObj');
             userLat = parseFloat(userC[0]),
                 userLng = parseFloat(userC[1]),
@@ -155,7 +155,7 @@ nfest.location = (function () {
             });
 
             function distance(id, lat1, lon1, lat2, lon2, event) {
-                var unit = "K";
+                var unit = 'K';
                 var radlat1 = Math.PI * lat1 / 180
                 var radlat2 = Math.PI * lat2 / 180
                 var theta = lon1 - lon2
@@ -164,10 +164,10 @@ nfest.location = (function () {
                 dist = Math.acos(dist)
                 dist = dist * 180 / Math.PI
                 dist = dist * 60 * 1.1515
-                if (unit == "K") {
+                if (unit == 'K') {
                     dist = dist * 1.609344
                 }
-                if (unit == "N") {
+                if (unit == 'N') {
                     dist = dist * 0.8684
                 }
 
