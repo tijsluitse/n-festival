@@ -20,8 +20,7 @@ nfest.map = (function () {
         var map = new google.maps.Map(document.getElementById("locationMap"), mapOptions);
 
         nfest.map.jsActivate(map);
-        nfest.map.mapStyle(map);
-        nfest.map.getLocation(map); 
+        nfest.map.mapStyle(map);    
         nfest.map.watchLocation(map);               
         nfest.map.venueMarkers(map);
     }
@@ -155,117 +154,114 @@ nfest.map = (function () {
         map.mapTypes.set('Styled', styledMapType);
     }
 
-    var getLocation = function (map) {
-        // check if geolocation is supported
-        if (navigator.geolocation) {
+    // var getLocation = function (map) {
+    //     // check if geolocation is supported
+    //     if (navigator.geolocation) {
 
-            nfest.helpers.storageCheck(function (hasStorage) {
-                if (hasStorage) {
-                    if (localStorage.getItem("userCoordinates") === null) {
-                        navigator.geolocation.getCurrentPosition(success, error);                              
+    //         nfest.helpers.storageCheck(function (hasStorage) {
+    //             if (hasStorage) {
+    //                 if (localStorage.getItem("userCoordinates") === null) {
+    //                     navigator.geolocation.getCurrentPosition(success, error);                              
 
-                        function success(position) {
-                            var userLatitude = position.coords.latitude,
-                                userLongitude = position.coords.longitude,
-                                userCoordinates = [userLatitude, userLongitude];                
+    //                     function success(position) {
+    //                         var userLatitude = position.coords.latitude,
+    //                             userLongitude = position.coords.longitude,
+    //                             userCoordinates = [userLatitude, userLongitude];                
                             
-                            localStorage.setItem('userCoordinates', userCoordinates);
+    //                         localStorage.setItem('userCoordinates', userCoordinates);
                             
-                            var userCoordinates = localStorage.getItem('userCoordinates'),
-                                userC = userCoordinates.split(","),                            
-                                userLat = parseFloat(userC[0]),
-                                userLng = parseFloat(userC[1]);                           
+    //                         var userCoordinates = localStorage.getItem('userCoordinates'),
+    //                             userC = userCoordinates.split(","),                            
+    //                             userLat = parseFloat(userC[0]),
+    //                             userLng = parseFloat(userC[1]);                           
 
-                            nfest.map.setMarker(map, userLat, userLng);
-                        };
+    //                         // nfest.map.setMarker(map, userLat, userLng);
+    //                     };
 
-                        function error() {
-                            console.log('Unable to get your position.');
+    //                     function error() {
+    //                         console.log('Unable to get your position.');
 
-                            // set map on Amsterdam Noord
-                            var latLng = new google.maps.LatLng(52.391286, 4.917583);
-                            map.panTo(latLng);
-                        };     
+    //                         // set map on Amsterdam Noord
+    //                         var latLng = new google.maps.LatLng(52.391286, 4.917583);
+    //                         map.panTo(latLng);
+    //                     };     
 
-                    } else {                    
-                        var userCoordinates = localStorage.getItem('userCoordinates'),
-                            userC = userCoordinates.split(","),                            
-                            userLat = parseFloat(userC[0]),
-                            userLng = parseFloat(userC[1]),
-                            userPosition = new google.maps.LatLng(userLat, userLng);
+    //                 } else {                    
+    //                     var userCoordinates = localStorage.getItem('userCoordinates'),
+    //                         userC = userCoordinates.split(","),                            
+    //                         userLat = parseFloat(userC[0]),
+    //                         userLng = parseFloat(userC[1]),
+    //                         userPosition = new google.maps.LatLng(userLat, userLng);
                         
-                        nfest.map.setMarker(map, userLat, userLng);                                               
-                    }
+    //                     nfest.map.setMarker(map, userLat, userLng);                                               
+    //                 }
 
-                } else {
-                    navigator.geolocation.getCurrentPosition(success, error);                        
+    //             } else {
+    //                 navigator.geolocation.getCurrentPosition(success, error);                        
 
-                    function success(position) {
-                        var userLatitude = position.coords.latitude,
-                            userLongitude = position.coords.longitude,
-                            userPosition = new google.maps.LatLng(userLat, userLng);
+    //                 function success(position) {
+    //                     var userLatitude = position.coords.latitude,
+    //                         userLongitude = position.coords.longitude,
+    //                         userPosition = new google.maps.LatLng(userLat, userLng);
 
-                        nfest.map.setMarker(map, userLatitude, userLongitude);
-                    };
+    //                     // nfest.map.setMarker(map, userLatitude, userLongitude);
+    //                 };
 
-                    function error() {
-                        console.log('Unable to get your position.');                        
-                        var latLng = new google.maps.LatLng(52.391286, 4.917583); // set map on Amsterdam Noord                    
-                        map.panTo(latLng);
-                    };
-                }
-            });
+    //                 function error() {
+    //                     console.log('Unable to get your position.');                        
+    //                     var latLng = new google.maps.LatLng(52.391286, 4.917583); // set map on Amsterdam Noord                    
+    //                     map.panTo(latLng);
+    //                 };
+    //             }
+    //         });
 
-        } else {
-            console.log('Geolocation is turned off or not supported, we cant calculate your location.');            
-            var latLng = new google.maps.LatLng(52.391286, 4.917583); // set map on Amsterdam Noord
-            map.panTo(latLng);
-        }
-    }
+    //     } else {
+    //         console.log('Geolocation is turned off or not supported, we cant calculate your location.');            
+    //         var latLng = new google.maps.LatLng(52.391286, 4.917583); // set map on Amsterdam Noord
+    //         map.panTo(latLng);
+    //     }
+    // }
 
-    var setMarker = function (map, userLat, userLong) {
-        var marker = new google.maps.Marker({
-            map: map,
-            icon: '/img/marker.png',
-            optimized: false,
-            title: 'First Infowindow!'
-        });
+    // var setMarker = function (map, userLat, userLong) {
+    //     var marker = new google.maps.Marker({
+    //         map: map,
+    //         icon: '/img/marker.png',
+    //         optimized: false,
+    //         title: 'First Infowindow!'
+    //     });
 
-        var contentString =
-            '<div id="content">' +
-            '<p>' +
-            'Uw eigen locatie' +
-            '</p>' +
-            '</div>';
+    //     var contentString =
+    //         '<div id="content">' +
+    //         '<p>' +
+    //         'Uw eigen locatie' +
+    //         '</p>' +
+    //         '</div>';
 
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString
-        });
+    //     var infowindow = new google.maps.InfoWindow({
+    //         content: contentString
+    //     });
 
-        google.maps.event.addListener(marker, 'click', function () {
-            infowindow.setContent(contentString);
-            infowindow.open(map, marker);
-        });
+    //     google.maps.event.addListener(marker, 'click', function () {
+    //         infowindow.setContent(contentString);
+    //         infowindow.open(map, marker);
+    //     });
 
-        marker.setMap(map);
-        marker.setPosition(new google.maps.LatLng(userLat, userLong));
-        map.setCenter(marker.getPosition());
-    }
+    //     marker.setMap(map);
+    //     marker.setPosition(new google.maps.LatLng(userLat, userLong));
+    //     map.setCenter(marker.getPosition());
+    // }
 
     var updatePosition = function(marker) {
-
-        console.log(marker);
 
         function success(position) {
 
             // Get lat, lng from position
             var lat = position.coords.latitude,
                 lng = position.coords.longitude,
-                coords = [lat, lng];
+                coords = [lat, lng];                
 
-            // Update the marker with new lat and lng
-            marker.setPosition(new google.maps.LatLng(lat, lng));    
-
+            // Update the marker with new lat and lng        
+            marker.setPosition(new google.maps.LatLng(lat, lng));               
         };
 
         function error() {
@@ -318,16 +314,14 @@ nfest.map = (function () {
                     infowindow.open(map, marker);
                 });                
 
-                // nfest.map.setMarker(map, userLat, userLng);              
-                marker.setMap(map);
                 marker.setPosition(new google.maps.LatLng(userLat, userLng));
-                // map.setCenter(marker.getPosition());
+                map.setCenter(marker.getPosition());
                 updatePosition(marker);
 
             };
 
             function error() {
-                // alert('Unable to retrieve your location.');
+                console.log('Unable to retrieve your location.');
             };
 
             var options = {
@@ -417,11 +411,9 @@ nfest.map = (function () {
     return {
         mapLauncher: mapLauncher,
         jsActivate: jsActivate,
-        mapStyle: mapStyle,    
-        getLocation: getLocation,
+        mapStyle: mapStyle,            
         updatePosition: updatePosition,
-        watchLocation: watchLocation,
-        setMarker: setMarker,
+        watchLocation: watchLocation,    
         venueMarkers: venueMarkers
     }
 
