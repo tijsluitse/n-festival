@@ -1,11 +1,24 @@
 <section id="homePage" class="toggleSection">
     {{> filterBar}}
     <div class="filterSpaceBar">
-        
+
     </div>
+
+
+    <ul id="pastEvents">
+        <p class="timeToEvent hide"></p>
+    </ul>
+    <ul id="currentEvents">
+        <p class="timeToEvent hide"></p>
+    </ul>
+    <ul id="comingEvents">
+        <p class="timeToEvent hide"></p>
+    </ul>
+
+
     {{> eventList}}
 
-  
+
 </section>
 
 <script src="/js/nfestHelpers.js"></script>
@@ -17,6 +30,6 @@
 <script src="/lib/moment.min.js"></script>
 <script src="/lib/localenl.js"></script>
 <script>
-  moment.locale('nl');
+    moment.locale('nl');
 </script>
 <script src="/js/nfestTimeToEvent.js"></script>

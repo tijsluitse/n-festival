@@ -54,6 +54,11 @@
 	box-sizing: border-box;
 	font-family: 'grotesqueMedium', sans-serif;
 }
+
+.filterHide{
+    display:none;
+}
+
 /*HEADER*/
 .homePageHeading {
 	display: none;

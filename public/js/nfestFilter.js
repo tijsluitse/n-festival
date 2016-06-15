@@ -27,7 +27,7 @@ nfest.filter = (function () {
                     var theme = eventList[i].dataset.theme;
 
                     if (themeSelected === theme) {
-                        eventList[i].classList.add('hide');
+                        eventList[i].classList.add('filterHide');
                     }
                 };
             } else {
@@ -35,10 +35,14 @@ nfest.filter = (function () {
                     var theme = eventList[i].dataset.theme;
 
                     if (themeSelected === theme) {
-                        eventList[i].classList.remove('hide');
+                        eventList[i].classList.remove('filterHide');
                     }
                 };
             }
+
+            nfest.timeToEvent.pastEvents();
+            nfest.timeToEvent.currentEvents();
+            nfest.timeToEvent.comingEvents();
         });
 
         nfest.helpers.onclick(musicButton, function () {
@@ -49,7 +53,8 @@ nfest.filter = (function () {
                     var theme = eventList[i].dataset.theme;
 
                     if (themeSelected === theme) {
-                        eventList[i].classList.add('hide');
+                        eventList[i].classList.add('filterHide');
+
                     }
                 };
             } else {
@@ -57,10 +62,14 @@ nfest.filter = (function () {
                     var theme = eventList[i].dataset.theme;
 
                     if (themeSelected === theme) {
-                        eventList[i].classList.remove('hide');
+                        eventList[i].classList.remove('filterHide');
                     }
                 };
             }
+
+            nfest.timeToEvent.pastEvents();
+            nfest.timeToEvent.currentEvents();
+            nfest.timeToEvent.comingEvents();
         });
 
         nfest.helpers.onclick(foodButton, function () {
@@ -71,7 +80,7 @@ nfest.filter = (function () {
                     var theme = eventList[i].dataset.theme;
 
                     if (themeSelected === theme) {
-                        eventList[i].classList.add('hide');
+                        eventList[i].classList.add('filterHide');
                     }
                 };
             } else {
@@ -79,11 +88,17 @@ nfest.filter = (function () {
                     var theme = eventList[i].dataset.theme;
 
                     if (themeSelected === theme) {
-                        eventList[i].classList.remove('hide');
+                        eventList[i].classList.remove('filterHide');
                     }
                 };
             }
+            
+            nfest.timeToEvent.pastEvents();
+            nfest.timeToEvent.currentEvents();
+            nfest.timeToEvent.comingEvents();
+
         });
+
     }
 
     var filterDayButtons = function () {
