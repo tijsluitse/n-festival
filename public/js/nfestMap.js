@@ -23,8 +23,13 @@ nfest.map = (function () {
         nfest.map.jsActivate(map);
         nfest.map.mapStyle(map);
         nfest.map.watchLocation(map);
-        nfest.map.venueMarkers(map);
-        nfest.map.removeVenueMarker(map);
+        
+        if(window.location.pathname == '/myroute'){
+            nfest.map.venueMarkersMyRoute(map);
+        }
+        else{
+            nfest.map.venueMarkersAllLocations(map);
+        }
     }
 
     var jsActivate = function (map) {
@@ -307,7 +312,7 @@ nfest.map = (function () {
         }
     }
 
-    var venueMarkers = function (map) {
+    var venueMarkersMyRoute = function (map) {
 
         var all = document.querySelectorAll('.addedToRoute');
 
@@ -379,67 +384,60 @@ nfest.map = (function () {
 
         });
 
-        // nfest.helpers.getVenueLocations(function (mapLocations, data) {
-        //     var locationMarkers = mapLocations,
-        //         infowindow = new google.maps.InfoWindow();
+    }
+    
+    var venueMarkersAllLocations = function(map){
+          nfest.helpers.getVenueLocations(function (mapLocations, data) {
+         var locationMarkers = mapLocations,
+             infowindow = new google.maps.InfoWindow();
 
-        //     locationMarkers.forEach(function (location) {
+         locationMarkers.forEach(function (location) {
 
-        // var marker = new google.maps.Marker({
-        //     position: {
-        //         lat: parseFloat(location.lat),
-        //         lng: parseFloat(location.lng)
-        //     },
-        //     map: map,
-        //     icon: '/img/location.png',
-        //     optimized: true,
-        //     title: 'First Infowindow!'
-        // });
+             var marker = new google.maps.Marker({
+                 position: {
+                     lat: parseFloat(location.lat),
+                     lng: parseFloat(location.lng)
+                 },
+                 map: map,
+                 icon: '/img/location.png',
+                 optimized: true,
+                 title: 'First Infowindow!'
+             });
 
-        // var locationLink = location.link;
+             var locationLink = location.link;
 
-        // var link = '<a href="/location/' + locationLink + '" class="popupButton">';
-        // var routeLink = '<a href="https://maps.google.com?saddr=Current+Location&daddr=' + location.lat + ',' + location.lng + '" class="popupButton buttonRoute">';
+             var link = '<a href="/location/' + locationLink + '" class="popupButton">';
+             var routeLink = '<a href="https://maps.google.com?saddr=Current+Location&daddr=' + location.lat + ',' + location.lng + '" class="popupButton buttonRoute">';
 
-        // var contentString =
-        //     '<div id="content">' +
-        //     '<h1>' +
-        //     location.title +
-        //     '</h1>' +
-        //     '<p>' +
-        //     location.address +
-        //     '</p>' +
-        //     '<div class="popupButtons ">' +
-        //     routeLink +
-        //     'Route' +
-        //     '</a>' +
-        //     link +
-        //     'Evenementen' +
-        //     '</a>' +
-        //     '</div>' +
-        //     '</div>';
+             var contentString =
+                 '<div id="content">' +
+                 '<h1>' +
+                 location.title +
+                 '</h1>' +
+                 '<p>' +
+                 location.address +
+                 '</p>' +
+                 '<div class="popupButtons ">' +
+                 routeLink +
+                 'Route' +
+                 '</a>' +
+                 link +
+                 'Evenementen' +
+                 '</a>' +
+                 '</div>' +
+                 '</div>';
 
-        // google.maps.event.addListener(marker, 'click', function () {
-        //     infowindow.setContent(contentString);
-        //     infowindow.open(map, marker);
-        // });
+             google.maps.event.addListener(marker, 'click', function () {
+                 infowindow.setContent(contentString);
+                 infowindow.open(map, marker);
+             });
 
-        // marker.setMap(map);
+             marker.setMap(map);
 
-        //     });
-        // });
-
+         });
+     });
     }
 
-    var removeVenueMarker = function (map) {
-        // var remove = document.querySelectorAll(".addedToRoute");
-
-        // for (var i = remove.length - 1; i >= 0; i--) {
-        //     remove[i].onclick = function (evt) {
-        //         nfest.map.venueMarkers();
-        //     }
-        // }
-    }
 
     return {
         mapLauncher: mapLauncher,
@@ -447,8 +445,8 @@ nfest.map = (function () {
         mapStyle: mapStyle,
         updatePosition: updatePosition,
         watchLocation: watchLocation,
-        venueMarkers: venueMarkers,
-        removeVenueMarker: removeVenueMarker
+        venueMarkersMyRoute: venueMarkerMyRoute,
+        venueMarkersAllLocations: venueMarkersAllLocations
     }
 
 })();
