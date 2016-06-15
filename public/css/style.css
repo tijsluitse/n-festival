@@ -917,3 +917,30 @@ fieldset h3 {
     color:#909090;
     text-align: center;
 }
+
+/* Geolocation alert */
+.geolocationAlert{
+    position: fixed;
+    width:100vw;
+    z-index:10;
+    height: 60px;
+    background-color: #F1F1F1;
+    color: #909090;
+    font-size: 0.8em;
+    padding: 1em;
+    padding-right: 2em;
+}
+
+.geolocationAlert button{
+    position: absolute;
+    top:0.2em;
+    right: 0.8em;
+    font-size: 1.5em;
+    border: none;
+    background-color: inherit;
+    color: inherit;
+}
+
+.subAlert {
+	height: 60px;
+}

@@ -176,18 +176,11 @@ nfest.map = (function () {
                                 userLat = parseFloat(userC[0]),
                                 userLng = parseFloat(userC[1]);
 
-                            // map.panTo({
-                            //     lat: userLat,
-                            //     lng: userLng
-                            // });
-                            console.log("hoi");
 
                             nfest.map.setMarker(map, userLat, userLng);
                         };
 
                         function error() {
-                            console.log('Unable to get your position.');
-
                             // set map on Amsterdam Noord
                             var latLng = new google.maps.LatLng(52.391286, 4.917583);
                             map.panTo(latLng);
@@ -198,12 +191,7 @@ nfest.map = (function () {
                             userC = userCoordinates.split(","),                            
                             userLat = parseFloat(userC[0]),
                             userLng = parseFloat(userC[1]);
-                            // console.log("hoi2");
-
-                        // map.panTo({
-                        //     lat: userLat,
-                        //     lng: userLng
-                        // });
+          
 
                         var userPosition = new google.maps.LatLng(userLat, userLng);
                         nfest.map.setMarker(map, userLat, userLng);                                               
@@ -216,19 +204,13 @@ nfest.map = (function () {
                         var userLatitude = position.coords.latitude,
                             userLongitude = position.coords.longitude;
 
-                        // map.panTo({
-                        //     lat: userLatitude,
-                        //     lng: userLongitude
-                        // });
-
                         var userPosition = new google.maps.LatLng(userLat, userLng);
                         nfest.map.setMarker(map, userLatitude, userLongitude);
                     };
 
                     function error() {
-                        console.log('Unable to get your position.');
-
-                        // set map on Amsterdam Noord
+         
+                       // set map on Amsterdam Noord
                         var latLng = new google.maps.LatLng(52.391286, 4.917583);
                         map.panTo(latLng);
                     };
@@ -238,8 +220,6 @@ nfest.map = (function () {
 
 
         } else {
-            console.log('Geolocation is turned off or not supported, we cant calculate your location.');
-
             // set map on Amsterdam Noord
             var latLng = new google.maps.LatLng(52.391286, 4.917583);
             map.panTo(latLng);
