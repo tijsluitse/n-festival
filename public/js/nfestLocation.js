@@ -132,6 +132,15 @@ nfest.location = (function () {
         });
 
         var calculateDist = function (data) {
+            
+//            if(window.location.pathname === '/detail'){
+//                var distance = document.querySelector('.distanceCalc');
+//                
+//                var location = distance.dataset.location;
+//                
+//                console.log(location);
+//            }
+            
 
             var userCoordinates = localStorage.getItem('userCoordinates'),
                 userC = userCoordinates.split(','),
