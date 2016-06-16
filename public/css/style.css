@@ -281,6 +281,31 @@
 	        justify-content: center;
 	animation: menuOpacity 1s;
 }
+#menu li article {
+	text-decoration: none;
+	color: black;
+	text-transform: uppercase;
+	letter-spacing: .3em;
+	font-weight: 800;
+	display: block;
+	min-height: 4em;
+	height: 100%;
+	width: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	animation: menuOpacity 1s;
+}
+
 @keyframes menuOpacity {
 	0% {
 		opacity: 0;
@@ -1179,9 +1204,23 @@ fieldset h3 {
 	display: block;
 }
 /*ABOUT*/
-.aboutArticle {
-	margin: 1em;
+
+#aboutSection {
+	height: 90vh;
+	background-color: black;
+	position: relative;
+}
+
+.aboutArticle {	
+	position: absolute;
+	width: 90%;
+	top: 50%;
+	left: 50%;	
+	transform: translate(-50%,-50%);
 	line-height: 1.5em;
+	font-size: .9em;
+	color: white;
+	text-align: center;
 }
 .aboutHeader {
 	margin-top: 1px;

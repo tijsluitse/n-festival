@@ -11,6 +11,15 @@ nfest.ux = (function () {
         // nfest.ux.menuSlide();
         nfest.ux.backButton();
         nfest.ux.resetJs();
+        nfest.ux.menuScrollTop();
+    };
+
+    var menuScrollTop = function () {
+        var menuSection = document.getElementById('menu');
+        if (menu) {
+            // document.cookie = "username=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/";   
+            console.log("menu pagina");
+        }
     };
 
     var resetJs = function () {
@@ -103,6 +112,7 @@ nfest.ux = (function () {
         uxLauncher: uxLauncher,
         // menuSlide: menuSlide,
         resetJs: resetJs,
+        menuScrollTop: menuScrollTop, 
         backButton: backButton
             //        detailSlide: detailSlide
     }

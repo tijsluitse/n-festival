@@ -100,7 +100,7 @@ nfest.helpers = (function () {
 
     var getVenueLocations = function (cb) {
 
-        nfest.helpers.getData("https://nfest.lisaklein.nl/data", function (response) {
+        nfest.helpers.getData("https://nfest.lisaklein.nl/data", function (response) { 
             
             var data = JSON.parse(response),
                 mapLocations = [];
