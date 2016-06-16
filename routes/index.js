@@ -234,9 +234,6 @@ function findObject(data, arrayOfProps, objectToLookFor) {
 
 // Get home page
 router.get('/', function (req, res, next) {
-
-    console.log(firstItems);
-
     res.render('menu', {
         firstItems: firstItems
     });
