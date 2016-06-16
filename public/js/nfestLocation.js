@@ -18,9 +18,11 @@ nfest.location = (function () {
 
         var removeBikeDist = function () {
             if (window.location.pathname == '/program' || '/day1' || '/day2' || '/location' || '/myroute') {
-                var bikeDist = document.querySelectorAll('.bikeDist');
-
-                bikeDist.classList.add('hide');
+                var bikeDist = document.querySelectorAll('.eventDistance');
+                
+                Array.prototype.forEach.call(bikeDist, function (item) {
+                    item.classList.add('hide');
+                });
             }
         }
 

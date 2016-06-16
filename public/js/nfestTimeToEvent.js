@@ -38,7 +38,6 @@ nfest.timeToEvent = (function () {
             nfest.timeToEvent.pastEvents();
             nfest.timeToEvent.currentEvents();
             nfest.timeToEvent.comingEvents();
-
         });
     }
 
