@@ -3,14 +3,26 @@
 </section>
 
 <section id="infoText">
-	<h2>Voeg evenementen toe aan uw route zodat u deze kunt bewaren.</h2>
-	<a href="/program" class="goToProgramButton">Bekijk evenementen</a>
+    <h2>Voeg evenementen toe aan uw route zodat u deze kunt bewaren.</h2>
+    <a href="/program" class="goToProgramButton">Bekijk evenementen</a>
 </section>
 
 <section id="myTimetableList">
-	{{> eventList}}
+    {{> eventList}}
 </section>
 
+<ul id="eventsDay1">
+    <p class="timeToEvent hide"></p>
+</ul>
+<ul id="eventsDay2">
+    <p class="timeToEvent hide"></p>
+</ul>
+
+<script src="/lib/moment.min.js"></script>
+<script src="/lib/localenl.js"></script>
+<script>
+    moment.locale('nl');
+</script>
 <script src="/js/nfestAddToRoute.js"></script>
 <script src="/js/nfestMyRoute.js"></script>
 <script src="/js/nfestHelpers.js"></script>
