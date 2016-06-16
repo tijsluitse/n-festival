@@ -6,11 +6,31 @@ var apiData,
     categories,
     venueData,
     tags,
-    curators;
+    curators,
+    news,
+    firstItems;
 
 
 var getAllData = function () {
     // data requests
+
+    // news data
+    http.get({
+        host: 'n-festival.werk.vanjim.nl',
+        path: '/wp-json/wp/v2/posts'
+    }, function (response) {
+        // Continuously update stream with data
+        var body = '';
+        response.on('data', function (d) {
+            body += d;
+        });
+        response.on('end', function () {
+            news = JSON.parse(body);
+            firstItems = [];
+
+            firstItems.push(news[0], news[1], news[2]);
+        });
+    });
 
     // venue data
     http.get({
@@ -214,7 +234,12 @@ function findObject(data, arrayOfProps, objectToLookFor) {
 
 // Get home page
 router.get('/', function (req, res, next) {
-    res.render('menu');
+
+    console.log(firstItems);
+
+    res.render('menu', {
+        firstItems: firstItems
+    });
 });
 
 router.get('/data', function (req, res, next) {
