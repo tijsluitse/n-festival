@@ -8,186 +8,187 @@ var apiData,
     tags,
     curators;
 
-// data requests
 
-// venue data
-http.get({
-    host: 'n-festival.werk.vanjim.nl',
-    path: '/wp-json/wp/v2/venues'
-}, function (response) {
-    // Continuously update stream with data
-    var body = '';
-    response.on('data', function (d) {
-        body += d;
-    });
-    response.on('end', function () {
-        venueData = JSON.parse(body);
+var getAllData = function () {
+    // data requests
 
-    });
-});
-
-// theme data
-http.get({
-    host: 'n-festival.werk.vanjim.nl',
-    path: '/wp-json/wp/v2/categories'
-}, function (response) {
-    // Continuously update stream with data
-    var body = '';
-    response.on('data', function (d) {
-        body += d;
-    });
-    response.on('end', function () {
-        categories = JSON.parse(body);
-    });
-});
-
-// tags data 
-http.get({
-    host: 'n-festival.werk.vanjim.nl',
-    path: '/wp-json/wp/v2/tags'
-}, function (response) {
-    // Continuously update stream with data
-    var body = '';
-    response.on('data', function (d) {
-        body += d;
-    });
-    response.on('end', function () {
-        tags = JSON.parse(body);
-    });
-});
-
-// curator data 
-http.get({
-    host: 'n-festival.werk.vanjim.nl',
-    path: '/wp-json/wp/v2/curators'
-}, function (response) {
-    // Continuously update stream with data
-    var body = '';
-    response.on('data', function (d) {
-        body += d;
-    });
-    response.on('end', function () {
-        curators = JSON.parse(body);
-    });
-});
-
-// event data
-http.get({
-    host: 'n-festival.werk.vanjim.nl',
-    path: '/wp-json/wp/v2/events'
-}, function (response) {
-    // Continuously update stream with data
-    var body = '';
-    response.on('data', function (d) {
-        body += d;
-    });
-    response.on('end', function () {
-        apiData = JSON.parse(body);
-
-        apiData.forEach(function (event) {
-            // edit start / end times
-            var startArray = event.acf.start_time.split(' '),
-                endArray = event.acf.end_time.split(' ');
-
-            var day = startArray[0],
-                starttime = startArray[1],
-                endtime = endArray[1];
-
-            var date = 'date',
-                startconvert = 'starttime_converted',
-                endconvert = 'endtime_converted',
-                convertedDateStart = 'startDate_converted',
-                convertedDateEnd = 'endDate_converted';
-
-            var dayStart = event.acf.start_time.split('-'),
-                dayEnd = event.acf.end_time.split('-');
-            
-            var dds = dayStart[0],
-                mms = dayStart[1],
-                yys = dayStart[2];
-            
-            var dde = dayEnd[0],
-                mme = dayEnd[1],
-                yye = dayEnd[2];
-
-            var dateTimeS = mms + '/' + dds + '/' + yys,
-                dayTimeE = mme + '/' + dde + '/' + yye;
-
-            event.acf[date] = day;
-            event.acf[startconvert] = starttime;
-            event.acf[endconvert] = endtime;
-            event[convertedDateStart] = dateTimeS;
-            event[convertedDateEnd] = dayTimeE;
-
-
-            // add address
-            var venueName = event.acf.venue.post_name;
-
-            for (var i = 0; i < venueData.length; i++) {
-                var venueSlug = venueData[i].slug,
-                    venueAddress = venueData[i].acf.address,
-                    address = 'post_address';
-
-                if (venueName === venueSlug) {
-                    event.acf.venue[address] = venueAddress;
-                }
-            }
-
-            // add category names to events
-            event.categories.forEach(function (category) {
-
-                for (var i = 0; i < categories.length; i++) {
-                    var id = categories[i].id,
-                        name = categories[i].name,
-                        categoryName = 'categoryName';
-
-                    if (id === category) {
-                        event[categoryName] = name;
-                    }
-                }
-            });
-
-            // add tags to events
-            var tagArray = [],
-                tagNames = 'tagNames';
-
-            event.tags.forEach(function (tag) {
-                for (var i = 0; i < tags.length; i++) {
-                    var id = tags[i].id,
-                        name = tags[i].name;
-
-                    if (id === tag) {
-                        tagArray.push(name);
-                    }
-                }
-            });
-
-            event[tagNames] = tagArray;
-
-            // add curator photo to data
-            event.acf.curator.forEach(function (curator) {
-                var curId = curator.ID,
-                    curatorPhoto = 'curator_photo';
-
-                for (var i = 0; i < curators.length; i++) {
-                    var id = curators[i].id,
-                        photo = curators[i].acf.avatar.sizes.thumbnail;
-
-                    if (id === curId) {
-                        curator[curatorPhoto] = photo;
-                    }
-                }
-
-            });
+    // venue data
+    http.get({
+        host: 'n-festival.werk.vanjim.nl',
+        path: '/wp-json/wp/v2/venues'
+    }, function (response) {
+        // Continuously update stream with data
+        var body = '';
+        response.on('data', function (d) {
+            body += d;
+        });
+        response.on('end', function () {
+            venueData = JSON.parse(body);
 
         });
-        
-        // sort data on starttime
-        apiData.sort(function (a, b) {
-            return new Date(a.startDate_converted).getTime() - new Date(b.startDate_converted).getTime()
+    });
+
+    // theme data
+    http.get({
+        host: 'n-festival.werk.vanjim.nl',
+        path: '/wp-json/wp/v2/categories'
+    }, function (response) {
+        // Continuously update stream with data
+        var body = '';
+        response.on('data', function (d) {
+            body += d;
+        });
+        response.on('end', function () {
+            categories = JSON.parse(body);
         });
     });
-});
+
+    // tags data 
+    http.get({
+        host: 'n-festival.werk.vanjim.nl',
+        path: '/wp-json/wp/v2/tags'
+    }, function (response) {
+        // Continuously update stream with data
+        var body = '';
+        response.on('data', function (d) {
+            body += d;
+        });
+        response.on('end', function () {
+            tags = JSON.parse(body);
+        });
+    });
+
+    // curator data 
+    http.get({
+        host: 'n-festival.werk.vanjim.nl',
+        path: '/wp-json/wp/v2/curators'
+    }, function (response) {
+        // Continuously update stream with data
+        var body = '';
+        response.on('data', function (d) {
+            body += d;
+        });
+        response.on('end', function () {
+            curators = JSON.parse(body);
+        });
+    });
+
+    // event data
+    http.get({
+        host: 'n-festival.werk.vanjim.nl',
+        path: '/wp-json/wp/v2/events'
+    }, function (response) {
+        // Continuously update stream with data
+        var body = '';
+        response.on('data', function (d) {
+            body += d;
+        });
+        response.on('end', function () {
+            apiData = JSON.parse(body);
+
+            apiData.forEach(function (event) {
+                // edit start / end times
+                var startArray = event.acf.start_time.split(' '),
+                    endArray = event.acf.end_time.split(' ');
+
+                var day = startArray[0],
+                    starttime = startArray[1],
+                    endtime = endArray[1];
+
+                var date = 'date',
+                    startconvert = 'starttime_converted',
+                    endconvert = 'endtime_converted',
+                    convertedDateStart = 'startDate_converted',
+                    convertedDateEnd = 'endDate_converted';
+
+                var dayStart = event.acf.start_time.split('-'),
+                    dayEnd = event.acf.end_time.split('-');
+
+                var dds = dayStart[0],
+                    mms = dayStart[1],
+                    yys = dayStart[2];
+
+                var dde = dayEnd[0],
+                    mme = dayEnd[1],
+                    yye = dayEnd[2];
+
+                var dateTimeS = mms + '/' + dds + '/' + yys,
+                    dayTimeE = mme + '/' + dde + '/' + yye;
+
+                event.acf[date] = day;
+                event.acf[startconvert] = starttime;
+                event.acf[endconvert] = endtime;
+                event[convertedDateStart] = dateTimeS;
+                event[convertedDateEnd] = dayTimeE;
+
+
+                // add address
+                var venueName = event.acf.venue.post_name;
+
+                for (var i = 0; i < venueData.length; i++) {
+                    var venueSlug = venueData[i].slug,
+                        venueAddress = venueData[i].acf.address,
+                        address = 'post_address';
+
+                    if (venueName === venueSlug) {
+                        event.acf.venue[address] = venueAddress;
+                    }
+                }
+
+                // add category names to events
+                event.categories.forEach(function (category) {
+
+                    for (var i = 0; i < categories.length; i++) {
+                        var id = categories[i].id,
+                            name = categories[i].name,
+                            categoryName = 'categoryName';
+
+                        if (id === category) {
+                            event[categoryName] = name;
+                        }
+                    }
+                });
+
+
+                // add curator photo to data
+                if (event.acf.curator) {
+                    event.acf.curator.forEach(function (curator) {
+                        var curId = curator.ID,
+                            curatorPhoto = 'curator_photo';
+
+                        for (var i = 0; i < curators.length; i++) {
+
+                            if (curators[i].acf.avatar) {
+                                var id = curators[i].id,
+                                    photo = curators[i].acf.avatar.sizes.thumbnail;
+
+                                if (id === curId) {
+                                    curator[curatorPhoto] = photo;
+                                }
+                            }
+                        }
+                    });
+                }
+
+            });
+
+            // sort data on starttime
+            apiData.sort(function (a, b) {
+                return new Date(a.startDate_converted).getTime() - new Date(b.startDate_converted).getTime()
+            });
+        });
+    });
+
+}
+
+// interval bij real gebruik (voor demo snelle interval zodat je snel je events kan zien)
+var interval = 1000 * 60 * 10;
+
+getAllData();
+
+// set interval zodat data steeds wordt ingeladen en je events kan toevoegen.
+setInterval(getAllData, 5000);
+
 
 // helper function to match data with day,name,location etc.
 function findObject(data, arrayOfProps, objectToLookFor) {
