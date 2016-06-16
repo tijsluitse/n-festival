@@ -344,8 +344,7 @@ nfest.map = (function () {
                                         lat: parseFloat(location.lat),
                                         lng: parseFloat(location.lng)
                                     },
-                                    map: map,
-                                    animation: google.maps.Animation.DROP,
+                                    map: map,                                    
                                     icon: image,
                                     optimized: true,
                                     title: "First Infowindow!"
