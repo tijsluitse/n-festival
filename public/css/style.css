@@ -230,8 +230,8 @@
     z-index: 5;
     width: 100%;
     width: 100vw;
-    -webkit-animation: menuSlide 500ms cubic-bezier(0.712, 0.0376, 0.392, 1);
-    animation: menuSlide 500ms cubic-bezier(0.712, 0.0376, 0.392, 1);
+    // -webkit-animation: menuSlide 500ms cubic-bezier(0.712, 0.0376, 0.392, 1);
+    // animation: menuSlide 500ms cubic-bezier(0.712, 0.0376, 0.392, 1);
 }
 
 @-webkit-keyframes menuSlide {
@@ -1421,7 +1421,7 @@ fieldset h3 {
 /*CLASSES*/
 
 .hide {
-    display: none;
+    display: none !important;
 }
 
 .hidden {
