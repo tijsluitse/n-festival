@@ -318,7 +318,7 @@
     justify-content: center;
     animation: menuOpacity 1s;
 }
-<<<<<<< HEAD
+
 #menu li article {
 	text-decoration: none;
 	color: black;
@@ -343,8 +343,6 @@
 	        justify-content: center;
 	animation: menuOpacity 1s;
 }
-=======
->>>>>>> server-staging
 
 @keyframes menuOpacity {
     0% {
@@ -1356,9 +1354,8 @@ fieldset h3 {
 
 /*ABOUT*/
 
-<<<<<<< HEAD
 #aboutSection {
-	height: 91vh;
+	height: 90vh;
 	background-color: black;
 	position: relative;
 }
@@ -1373,11 +1370,6 @@ fieldset h3 {
 	font-size: .9em;
 	color: white;
 	text-align: center;
-=======
-.aboutArticle {
-    margin: 1em;
-    line-height: 1.5em;
->>>>>>> server-staging
 }
 
 .aboutHeader {
@@ -1505,6 +1497,7 @@ fieldset h3 {
     width: 100%;
     bottom: 0;
     text-align: center;
+    padding-bottom: 2em;
 }
 
 .backToMenu {
