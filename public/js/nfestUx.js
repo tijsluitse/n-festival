@@ -11,56 +11,6 @@ nfest.ux = (function () {
         // nfest.ux.menuSlide();
         nfest.ux.backButton();
         nfest.ux.resetJs();
-        nfest.ux.menuScrollTop();
-    };
-
-    var menuScrollTop = function () {
-        if (document.getElementById('menu')) {
-
-            var scrollToMenu = function() {                
-                 
-                // code by: http://jsfiddle.net/62MTU/15/
-                function scrollTo(element, to, duration) {                    
-                    var start = element.scrollTop,
-                        change = to - start,
-                        currentTime = 0,
-                        increment = 40;
-                        
-                    var animateScroll = function(){        
-                        currentTime += increment;
-                        var val = Math.easeInOutQuad(currentTime, start, change, duration);
-                        element.scrollTop = val;
-                        if(currentTime < duration) {
-                            setTimeout(animateScroll, increment);
-                        }
-                    };
-                    animateScroll();
-                }
-
-                //t = current time, b = start value, c = change in value, d = duration
-                Math.easeInOutQuad = function (t, b, c, d) {
-                    t /= d/1;
-                    if (t < 1) return c/2*t*t + b;
-                    t--;
-                    return -c/2 * (t*(t-2) - 1) + b;
-                };
-                
-                scrollTo(document.body, 1000, 1000);                
-
-            }
-
-            if (document.cookie.indexOf("visited") >= 0) {
-                // They've been here before.
-                console.log("hello again");
-                scrollToMenu();
-            }
-            else {
-                // First Time
-                document.cookie = "visited=yes; expires=Fri, 17 Jun 2016 12:00:00 UTC;";
-                scrollTo(document.body, 1000, 1000); 
-                console.log("this is your first time");                
-            }            
-        }
     };
 
     var resetJs = function () {
@@ -75,7 +25,6 @@ nfest.ux = (function () {
         if (locationsFilter) {
             locationsFilter.classList.remove('hide');
         }
-
 
         Array.prototype.forEach.call(allDistances, function (distance) {
             distance.classList.remove('hidden');
@@ -153,7 +102,6 @@ nfest.ux = (function () {
         uxLauncher: uxLauncher,
         // menuSlide: menuSlide,
         resetJs: resetJs,
-        menuScrollTop: menuScrollTop, 
         backButton: backButton
             //        detailSlide: detailSlide
     }
