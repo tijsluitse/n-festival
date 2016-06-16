@@ -286,6 +286,7 @@ nfest.map = (function () {
 
                 marker.setPosition(new google.maps.LatLng(userLat, userLng));
                 map.setCenter(marker.getPosition());
+                // map.setCenter({lat: 52.391286, lng: 4.917583});
                 updatePosition(marker);
 
             };
