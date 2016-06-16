@@ -17,7 +17,11 @@
         <li><a href="/curator">Sprekers</a></li>      
         <li>
         	<article id="newsFeed">
-				<p>Nieuws</p>
+				{{#firstItems}}
+                <section class="newsItem">
+                {{{content.rendered}}}
+                </section>
+                {{/firstItems}}
 			</article>
         </li>
     </ul>
