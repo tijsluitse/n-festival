@@ -375,13 +375,15 @@ router.get('/curator/:name', function (req, res, next) {
         var eventArray = [];
 
         obj.forEach(function (item) {
-            item.acf.curator.forEach(function (curator) {
-                x = curator.post_name;
+            if (item.acf.curator) {
+                item.acf.curator.forEach(function (curator) {
+                    x = curator.post_name;
 
-                if (x == objectToLookFor) {
-                    eventArray.push(item);
-                }
-            });
+                    if (x == objectToLookFor) {
+                        eventArray.push(item);
+                    }
+                });
+            }
         });
 
         return eventArray;
