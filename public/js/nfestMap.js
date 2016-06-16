@@ -259,7 +259,7 @@ nfest.map = (function () {
                 var userCoordinates = localStorage.getItem('userCoordinates'),
                     userC = userCoordinates.split(","),                           
                     userLat = parseFloat(userC[0]),
-                    userLng = parseFloat(userC[1]);
+                    userLng = parseFloat(userC[1]);                                
 
                 var marker = new google.maps.Marker({
                     map: map,
@@ -330,6 +330,15 @@ nfest.map = (function () {
                     items.forEach(function(item){                    
                         mapLocations.forEach(function(location){
                             if (item.dataset.location == location.link) {
+
+                                var image = {
+                                    url: '/img/location.png',
+                                    size: new google.maps.Size(25, 40),
+                                    scaledSize: new google.maps.Size(25, 40),
+                                    origin: new google.maps.Point(0, 0)
+                                    // anchor: new google.maps.Point(57, 100)
+                                };  
+
                                 var marker = new google.maps.Marker({
                                     position: {
                                         lat: parseFloat(location.lat),
@@ -337,7 +346,7 @@ nfest.map = (function () {
                                     },
                                     map: map,
                                     animation: google.maps.Animation.DROP,
-                                    icon: "/img/location.png",
+                                    icon: image,
                                     optimized: true,
                                     title: "First Infowindow!"
                                 });

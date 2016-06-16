@@ -15,10 +15,51 @@ nfest.ux = (function () {
     };
 
     var menuScrollTop = function () {
-        var menuSection = document.getElementById('menu');
-        if (menu) {
-            // document.cookie = "username=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/";   
-            console.log("menu pagina");
+        if (document.getElementById('menu')) {
+
+            var scrollToMenu = function() {                
+                 
+                // code by: http://jsfiddle.net/62MTU/15/
+                function scrollTo(element, to, duration) {                    
+                    var start = element.scrollTop,
+                        change = to - start,
+                        currentTime = 0,
+                        increment = 40;
+                        
+                    var animateScroll = function(){        
+                        currentTime += increment;
+                        var val = Math.easeInOutQuad(currentTime, start, change, duration);
+                        element.scrollTop = val;
+                        if(currentTime < duration) {
+                            setTimeout(animateScroll, increment);
+                        }
+                    };
+                    animateScroll();
+                }
+
+                //t = current time, b = start value, c = change in value, d = duration
+                Math.easeInOutQuad = function (t, b, c, d) {
+                    t /= d/1;
+                    if (t < 1) return c/2*t*t + b;
+                    t--;
+                    return -c/2 * (t*(t-2) - 1) + b;
+                };
+                
+                scrollTo(document.body, 1000, 1000);                
+
+            }
+
+            if (document.cookie.indexOf("visited") >= 0) {
+                // They've been here before.
+                console.log("hello again");
+                scrollToMenu();
+            }
+            else {
+                // First Time
+                document.cookie = "visited=yes; expires=Fri, 17 Jun 2016 12:00:00 UTC;";
+                scrollTo(document.body, 1000, 1000); 
+                console.log("this is your first time");                
+            }            
         }
     };
 
