@@ -9,8 +9,10 @@ nfest.ux = (function () {
     var uxLauncher = function () {
         // directly launch ux modules for every page
         // nfest.ux.menuSlide();
+        nfest.ux.introEnd();
         nfest.ux.backButton();
         nfest.ux.resetJs();
+        
     };
 
     var resetJs = function () {
@@ -34,6 +36,22 @@ nfest.ux = (function () {
             button.removeAttribute('href');
         });
 
+    };
+
+    var introEnd = function () {
+        var introPage = document.querySelector(".introPage");   
+        
+
+        if (localStorage.getItem("introPage") === null) {
+            introPage.classList.remove("hide");
+            introPage.addEventListener("animationend", function(){
+                introPage.classList.add("hide");
+            });
+            localStorage.setItem("introPage", "true");
+        }
+        else {
+            introPage.classList.add("hide");
+        } 
     };
 
     // var menuSlide = function () {
@@ -102,7 +120,8 @@ nfest.ux = (function () {
         uxLauncher: uxLauncher,
         // menuSlide: menuSlide,
         resetJs: resetJs,
-        backButton: backButton
+        backButton: backButton,
+        introEnd: introEnd
             //        detailSlide: detailSlide
     }
 
