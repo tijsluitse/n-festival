@@ -39,7 +39,7 @@ nfest.helpers = (function () {
         var myRouteElements = JSON.parse(localStorage.getItem('myRouteEvents')),
             counter = document.getElementById('myRouteCounter');
             
-        if (localStorage.getItem("myRouteEvents") === null) {
+        if (localStorage.getItem("myRouteEvents") === null || myRouteElements.length === 0) {
             counter.classList.add('hide');
         } else {
             counter.innerHTML = myRouteElements.length;

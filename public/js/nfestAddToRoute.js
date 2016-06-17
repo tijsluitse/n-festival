@@ -8,6 +8,7 @@ nfest.addToRoute = (function () {
 
     var buttonToggle = function () {
         var add = document.querySelectorAll(".buttonAddToRoute");
+            counter = document.getElementById('myRouteCounter');
 
         for (var i = add.length - 1; i >= 0; i--) {
             add[i].onclick = function (evt) {
@@ -20,7 +21,8 @@ nfest.addToRoute = (function () {
                 
                 evt.currentTarget.classList.toggle("addedToRoute");
                 if (nfest.helpers.hasClass(this, 'addedToRoute')) {
-                    addToMyTimetable(this);
+                    counter.classList.remove('hide');
+                    addToMyTimetable(this);                    
                 } else {                    
                     removeFromTimetable(this);
                 }
@@ -66,7 +68,12 @@ nfest.addToRoute = (function () {
             localStorage.setItem('myRouteEvents', JSON.stringify(myRouteElements));
         }
         
-        counter.innerHTML = myRouteElements.length;
+        if (localStorage.getItem("myRouteEvents") === null || myRouteElements.length === 0) {
+            counter.classList.add('hide');
+        } else {
+            counter.innerHTML = myRouteElements.length;
+        }
+        
     }
     
     return {        

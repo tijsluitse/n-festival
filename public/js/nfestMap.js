@@ -327,9 +327,13 @@ nfest.map = (function () {
                     // no items in array
                 } else {
                     var items = document.querySelectorAll('.eventObj.myRouteEvents');                                      
-                    items.forEach(function(item){                    
+                    items.forEach(function(item){   
                         mapLocations.forEach(function(location){
-                            if (item.dataset.location == location.link) {
+                            if (item.dataset.location == location.link) {                                
+                                
+                                mapLocations.forEach(function(mapLoc){
+                                    console.log(mapLoc);
+                                });
 
                                 var image = {
                                     url: '/img/location.png',
@@ -363,6 +367,11 @@ nfest.map = (function () {
                                     '<p>' +
                                     location.address +
                                     '</p>' +
+                                    // '<ul>' + 
+                                    // '<li>' +
+                                    // item.id +
+                                    // '</li>' + 
+                                    // '</ul>' +
                                     '<div class="popupButtons ">' +
                                     routeLink +
                                     'Route' +

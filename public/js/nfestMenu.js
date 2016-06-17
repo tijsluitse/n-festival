@@ -20,13 +20,13 @@ nfest.menu = (function () {
     var menuScrollTop = function () {
 
         // code by: http://jsfiddle.net/62MTU/15/
-        function scrollTo(element, to, duration, time) {                    
+        function scrollTo(element, to, duration) {                    
             var start = element.scrollTop,
                 change = to - start,
                 currentTime = 0,
                 increment = 40;
 
-                // console.log(time);
+                // console.log(time, size);                
                 
             var animateScroll = function(){        
                 currentTime += increment;
@@ -47,22 +47,30 @@ nfest.menu = (function () {
             return -c/2 * (t*(t-2) - 1) + b;
         };
 
-        if (localStorage.getItem('firstTime') === 'firstTime') {
-            console.log("vol");
-            var height = document.querySelector('#aboutSection').offsetHeight;
-            scrollTo(document.body, height, 0, "second"); 
-        }
-        
-        if (localStorage.getItem('firstTime') === null) { 
-            // console.log("leeg");
-            var height = document.querySelector('#aboutSection').offsetHeight;            
-            scrollTo(document.body, height, 1250, "first"); 
-            localStorage.setItem('firstTime', 'firstTime');
-        }
+        setTimeout(function() {
 
+            if (localStorage.getItem('firstTime') === 'firstTime') {
+                    console.log("vol");
+                    var size = document.body.offsetHeight;
+                    size = size; 
+                    console.log(size); 
+                    scrollTo(document.body, size, 1, "second"); 
+                }
+                
+                if (localStorage.getItem('firstTime') === null) { 
+                    console.log("leeg");
+                    var size = document.body.offsetHeight;
+                    size = size/2;  
+                    scrollTo(document.body, size, 1250, "first"); 
+                    localStorage.setItem('firstTime', 'firstTime');
+                }
+
+        }, 500);
+    
         nLogo.addEventListener('click', function(){
-            var height = document.querySelector('#aboutSection').offsetHeight;
-            scrollTo(document.body, -height, 1250, "click");
+            var size = document.body.offsetHeight;
+            size = size/2;            
+            scrollTo(document.body, -size, 1250, "click");
         });
     }
 
