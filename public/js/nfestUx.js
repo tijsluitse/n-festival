@@ -57,7 +57,7 @@ nfest.ux = (function () {
         eventUrl = eventUrl.split('/');
         var page = eventUrl[1];
         var detailPage = eventUrl[2];
-        if (window.location.pathname == "/" + page + "/" + detailPage) {
+        if (window.location.pathname == "/" + page + "/" + detailPage || window.location.pathname == "/myroute") {
             document.querySelector(".menuIcon").classList.add("hide");
             var backButton = document.querySelector(".backButton");
             backButton.classList.remove("hide");
