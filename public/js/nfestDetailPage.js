@@ -12,11 +12,14 @@ nfest.detail = (function () {
 
         var eventList = document.querySelectorAll('.eventObj'),
             currentEvent = document.querySelector('.eventInfo').id,
+            currentTheme = document.querySelector('.eventInfo').dataset.theme,
             eventArray = [].slice.call(document.querySelectorAll('.eventObj')),
             reload = document.querySelector('.reloadRecommendations'),
             listLength = eventList.length - 1,
             recNum = 3,
             allItems = [];
+
+        console.log(currentTheme);
 
         for (var i = 0; i < eventArray.length; i++) {
             allItems.push(eventArray[i].id);
