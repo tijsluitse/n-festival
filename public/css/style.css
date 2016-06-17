@@ -1,6 +1,6 @@
 
 /*FONT*/
-@font-face {
+/*@font-face {
     font-family: grotesqueBlack;
     src: url(/font/basis_grotesque_black.otf);
 }
@@ -8,11 +8,11 @@
     font-family: grotesqueBlackItalic;
     src: url(/font/basis_grotesque_black_italic.otf);
 }
-@font-face {
+*/@font-face {
     font-family: grotesqueBold;
     src: url(/font/basis_grotesque_bold.otf);
 }
-@font-face {
+/*@font-face {
     font-family: grotesqueBoldItalic;
     src: url(/font/basis_grotesque_bold_italic.otf);
 }
@@ -23,12 +23,12 @@
 @font-face {
     font-family: grotesqueLightItalic;
     src: url(/font/basis_grotesque_light_italic.otf);
-}
+}*/
 @font-face {
     font-family: grotesqueMedium;
     src: url(/font/basis_grotesque_medium.otf);
 }
-@font-face {
+/*@font-face {
     font-family: grotesqueMediumItalic;
     src: url(/font/basis_grotesque_medium_italic.otf);
 }
@@ -39,15 +39,15 @@
 @font-face {
     font-family: grotesqueOffWhiteItalic;
     src: url(/font/basis_grotesque_off_white_italic.otf);
-}
+}*/
 @font-face {
     font-family: grotesqueRegular;
     src: url(/font/basis_grotesque_regular.otf);
 }
-@font-face {
+/*@font-face {
     font-family: grotesqueRegularItalic;
     src: url(/font/basis_grotesque_regular_italic.otf);
-}
+}*/
 * {
 	margin: 0;
 	padding: 0;
@@ -382,9 +382,9 @@
 #menu li:nth-child(4){
 	background-color: rgba(0,0,0,.81);
 }
-#menu li:nth-child(5){
-	background-color: rgba(0,0,0,.78);
-}
+/*#menu li:nth-child(5){
+	background-color: white;
+}*/
 /*#menu li {
 	background-image: linear-gradient(to bottom, #262626, #000000 100%);
 }*/
@@ -426,11 +426,11 @@
 		opacity: 1;
 	}
 }
-#newsFeed {
+/*#newsFeed {
 	background-color: #efefef;
 	height: 8em;
 
-}
+}*/
 .displayNone {
 	display: none;
 }
@@ -440,8 +440,101 @@
 	        transform: translateX(0);
 }
 
+/*NEWSFEED*/
+#newsFeed {
+	background-color: #efefef;
+	height: 20%;
+	overflow-x: hidden;
+	width: 100%;
+	width: 100vw;
+	position: relative;
+	
+}
+.newsItem {
+	text-align: center;
+	position: absolute;
+	background-color: #ecf0f1;
+	height: 100%;	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.newsItem p {
+	width: 70%;
+	font-size: .8em;
+}
+.newsItem:nth-child(1) {
+	width: 100vw;
+	transform: translateX(-100vw);
+	animation: newSlideOne 20s infinite cubic-bezier(0,1,0,1);
+}
+.newsItem:nth-child(2) {
+	width: 100vw;
+	transform: translateX(0);
+	animation: newSlideTwo 20s infinite cubic-bezier(0,1,0,1);
+}
+.newsItem:nth-child(3) {
+	width: 100vw;
+	transform: translateX(100vw);
+	animation: newSlideThree 20s infinite cubic-bezier(0,1,0,1);
+}
+@-webkit-keyframes newSlideOne {
+	0% {
+		transform: translateX(-100vw);
+		z-index: 11;
+	}
+	33% {
+		transform: translateX(0);
+		z-index: 13;
+	}
+	66% {
+		transform: translateX(100vw);
+		z-index: 12;
+	}
+	100% {
+		transform: translateX(-100vw);
+		z-index: 11;
+	}
+}
+@-webkit-keyframes newSlideTwo {
+	0% {
+		transform: translateX(0);
+		z-index: 13;
+	}
+	33% {
+		transform: translateX(100vw);
+		z-index: 12;
+	}
+	66% {
+		transform: translateX(-100vw);
+		z-index: 11;
+	}
+	100% {
+		transform: translateX(0);
+		z-index: 13;
+	}
+}
+@-webkit-keyframes newSlideThree {
+	0% {
+		transform: translateX(100vw);
+		z-index: 11;
+	}
+	33% {
+		transform: translateX(-100vw);
+		z-index: 11;
+	}
+	66% {
+		transform: translateX(0);
+		z-index: 13;`
+	}
+	100% {
+		transform: translateX(100vw);
+		z-index: 12;
+	}
+}
+
 /*MENU ICON CLOSE ANIMATION*/
-.bar {
+/*.bar {
 	-webkit-transform: rotate(0);
 	    -ms-transform: rotate(0);
 	        transform: rotate(0);
@@ -468,7 +561,7 @@
 	-webkit-transform: translate(5px, -18px) rotate(-45deg);
 	    -ms-transform: translate(5px, -18px) rotate(-45deg);
 	        transform: translate(5px, -18px) rotate(-45deg);
-}
+}*/
 
 /*FILTER BAR*/
 .filterBar button {
@@ -1070,6 +1163,7 @@ fieldset h3 {
 .detailPage h1{
     font-size: 1.5em;
     margin-bottom: 1em;
+    padding-right: 1.5em;
 }
 
 .detailPage h2{

@@ -51,10 +51,7 @@ nfest.ux = (function () {
         }
         else {
             introPage.classList.add("hide");
-        }
-
-
-       
+        } 
     };
 
     // var menuSlide = function () {
