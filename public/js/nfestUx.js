@@ -156,7 +156,7 @@ nfest.ux = (function () {
         // menuSlide: menuSlide,
         resetJs: resetJs,
         scrollToNow: scrollToNow,
-        backButton: backButton
+        backButton: backButton,
         introEnd: introEnd
         // detailSlide: detailSlide
     }
