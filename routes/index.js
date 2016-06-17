@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var http = require('http');
+var express = require('express'),
+    router = express.Router(),
+    http = require('http');
 
 var apiData,
     categories,
@@ -10,10 +10,8 @@ var apiData,
     news,
     firstItems;
 
-
 var getAllData = function () {
     // data requests
-
     // news data
     http.get({
         host: 'n-festival.werk.vanjim.nl',
@@ -27,7 +25,6 @@ var getAllData = function () {
         response.on('end', function () {
             news = JSON.parse(body);
             firstItems = [];
-
             firstItems.push(news[0], news[1], news[2]);
         });
     });
@@ -44,7 +41,6 @@ var getAllData = function () {
         });
         response.on('end', function () {
             venueData = JSON.parse(body);
-
         });
     });
 
@@ -141,7 +137,6 @@ var getAllData = function () {
                 event[convertedDateStart] = dateTimeS;
                 event[convertedDateEnd] = dayTimeE;
 
-
                 // add address
                 var venueName = event.acf.venue.post_name;
 
@@ -157,7 +152,6 @@ var getAllData = function () {
 
                 // add category names to events
                 event.categories.forEach(function (category) {
-
                     for (var i = 0; i < categories.length; i++) {
                         var id = categories[i].id,
                             name = categories[i].name,
@@ -208,7 +202,6 @@ getAllData();
 
 // set interval zodat data steeds wordt ingeladen en je events kan toevoegen.
 setInterval(getAllData, 5000);
-
 
 // helper function to match data with day,name,location etc.
 function findObject(data, arrayOfProps, objectToLookFor) {
@@ -317,8 +310,17 @@ router.get('/detail/:name', function (req, res, next) {
 
     var item = findObject(data, ['slug'], req.params.name);
 
+    // sort by name
+    var dataByName = data.obj.slice(0);
+    dataByName.sort(function (a, b) {
+        var x = a.slug.toLowerCase();
+        var y = b.slug.toLowerCase();
+        return x < y ? -1 : x > y ? 1 : 0;
+    });
+
     res.render('detailEvents', {
-        item: item
+        item: item,
+        allItems: dataByName
     });
 });
 
@@ -333,7 +335,6 @@ router.get('/location', function (req, res, next) {
         var y = b.slug.toLowerCase();
         return x < y ? -1 : x > y ? 1 : 0;
     });
-
 
     res.render('locationList', {
         venueData: dataByName
@@ -374,7 +375,6 @@ router.get('/curator', function (req, res, next) {
         var y = b.slug.toLowerCase();
         return x < y ? -1 : x > y ? 1 : 0;
     });
-
 
     res.render('curatorList', {
         curators: dataByName
