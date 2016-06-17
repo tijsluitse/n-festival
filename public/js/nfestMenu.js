@@ -47,25 +47,44 @@ nfest.menu = (function () {
             return -c/2 * (t*(t-2) - 1) + b;
         };
 
-        setTimeout(function() {
-
+        window.onload = function () {
             if (localStorage.getItem('firstTime') === 'firstTime') {
-                    console.log("vol");
-                    var size = document.body.offsetHeight;
-                    size = size; 
-                    console.log(size); 
-                    scrollTo(document.body, size, 1, "second"); 
-                }
-                
-                if (localStorage.getItem('firstTime') === null) { 
-                    console.log("leeg");
-                    var size = document.body.offsetHeight;
-                    size = size/2;  
-                    scrollTo(document.body, size, 1250, "first"); 
-                    localStorage.setItem('firstTime', 'firstTime');
-                }
+                // console.log("vol");
+                // var size = document.body.offsetHeight;
+                // size = size; 
+                // console.log(size); 
+                // scrollTo(document.body, size, 0, "second"); 
+                // window.location.hash = '#menu';
+            }
+            
+            if (localStorage.getItem('firstTime') === null) { 
+                console.log("leeg");
+                var size = document.body.offsetHeight;
+                size = size/2;  
+                scrollTo(document.body, size, 1250, "first"); 
+                localStorage.setItem('firstTime', 'firstTime');
+            }
+        }
 
-        }, 500);
+        // setTimeout(function() {
+
+        //     if (localStorage.getItem('firstTime') === 'firstTime') {
+        //             console.log("vol");
+        //             var size = document.body.offsetHeight;
+        //             size = size; 
+        //             console.log(size); 
+        //             scrollTo(document.body, size, 1, "second"); 
+        //         }
+                
+        //         if (localStorage.getItem('firstTime') === null) { 
+        //             console.log("leeg");
+        //             var size = document.body.offsetHeight;
+        //             size = size/2;  
+        //             scrollTo(document.body, size, 1250, "first"); 
+        //             localStorage.setItem('firstTime', 'firstTime');
+        //         }
+
+        // }, 500);
     
         nLogo.addEventListener('click', function(){
             var size = document.body.offsetHeight;

@@ -8,7 +8,10 @@ nfest.location = (function () {
         nfest.location.getUserLocation();
         nfest.location.watchLocation();
 
-        if (window.location.pathname == '/program' || '/day1' || '/day2' || '/location' || '/myroute') {
+        if (window.location.pathname == '/program' || '/day1' || '/day2' || '/location' || '/myroute') {            
+            nfest.location.eventDistance();
+        }
+        if (window.location.pathname == '/detail/:id') {            
             nfest.location.eventDistance();
         }
 
@@ -17,7 +20,7 @@ nfest.location = (function () {
     var getUserLocation = function () {
 
         var removeBikeDist = function () {
-            if (window.location.pathname == '/program' || '/day1' || '/day2' || '/location' || '/myroute') {
+            if (window.location.pathname == '/program' || '/day1' || '/day2' || '/location' || '/myroute' || '/detail/:id') {
                 var bikeDist = document.querySelectorAll('.eventDistance');
                 
                 Array.prototype.forEach.call(bikeDist, function (item) {
@@ -58,16 +61,16 @@ nfest.location = (function () {
         }
 
         // check if geolocation is supported
-        if (navigator.geolocation) {
+        if (navigator.geolocation) {            
             nfest.helpers.storageCheck(function (hasStorage) {
                 if (hasStorage) {
                     if (localStorage.getItem('userCoordinates') === null) {
                         navigator.geolocation.getCurrentPosition(success, error);
 
                         function success(position) {
-                            var userLatitude = position.coords.latitude;
-                            var userLongitude = position.coords.longitude;
-                            var userCoordinates = [userLatitude, userLongitude];
+                            var userLatitude = position.coords.latitude,
+                                userLongitude = position.coords.longitude,
+                                userCoordinates = [userLatitude, userLongitude];
                             localStorage.setItem('userCoordinates', userCoordinates);
                         };
 
@@ -81,9 +84,9 @@ nfest.location = (function () {
                     navigator.geolocation.getCurrentPosition(success, error);
 
                     function success(position) {
-                        var userLatitude = position.coords.latitude;
-                        var userLongitude = position.coords.longitude;
-                        var userCoordinates = [userLatitude, userLongitude];
+                        var userLatitude = position.coords.latitude,
+                            userLongitude = position.coords.longitude,
+                            userCoordinates = [userLatitude, userLongitude];
                     };
 
                     function error() {
@@ -103,9 +106,9 @@ nfest.location = (function () {
 
         if (navigator.geolocation) {
             function success(position) {
-                var userLatitude = position.coords.latitude;
-                var userLongitude = position.coords.longitude;
-                var userCoordinates = [userLatitude, userLongitude];
+                var userLatitude = position.coords.latitude,
+                    userLongitude = position.coords.longitude,
+                    userCoordinates = [userLatitude, userLongitude];
                 localStorage.setItem('userCoordinates', userCoordinates);
             };
 
@@ -131,41 +134,39 @@ nfest.location = (function () {
             }, 10000);
         });
 
-        var calculateDist = function (data) {
+        var calculateDist = function (data) {        
 
             var userCoordinates = localStorage.getItem('userCoordinates'),
                 userC = userCoordinates.split(','),
-                eventList = document.querySelectorAll('.eventObj');
-            userLat = parseFloat(userC[0]),
+                eventList = document.querySelectorAll('#distanceCalc'),
+                userLat = parseFloat(userC[0]),
                 userLng = parseFloat(userC[1]),
                 allDistances = [];
 
             Array.prototype.forEach.call(eventList, function (event) {
                 var location = event.dataset.location;
-
-                for (var i = 0; i < data.length; i++) {
-                    var id = data[i].slug;
-                    var uLat = userLat;
-                    var uLng = userLng;
-                    var lat = data[i].acf.location.lat;
-                    var lng = data[i].acf.location.lng;
+                for (var i = 0; i < data.length; i++) { 
+                    var id = data[i].slug,
+                        uLat = userLat,
+                        uLng = userLng,
+                        lat = data[i].acf.location.lat,
+                        lng = data[i].acf.location.lng;                
                     if (location === id) {
                         distance(id, uLat, uLng, lat, lng, event);
                     }
                 }
-
             });
 
-            function distance(id, lat1, lon1, lat2, lon2, event) {
-                var unit = 'K';
-                var radlat1 = Math.PI * lat1 / 180
-                var radlat2 = Math.PI * lat2 / 180
-                var theta = lon1 - lon2
-                var radtheta = Math.PI * theta / 180
-                var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-                dist = Math.acos(dist)
-                dist = dist * 180 / Math.PI
-                dist = dist * 60 * 1.1515
+            function distance(id, lat1, lon1, lat2, lon2, event) {                
+                var unit = 'K',
+                    radlat1 = Math.PI * lat1 / 180,
+                    radlat2 = Math.PI * lat2 / 180,
+                    theta = lon1 - lon2,
+                    radtheta = Math.PI * theta / 180,
+                    dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta),
+                    dist = Math.acos(dist),
+                    dist = dist * 180 / Math.PI,
+                    dist = dist * 60 * 1.1515;
                 if (unit == 'K') {
                     dist = dist * 1.609344
                 }
@@ -176,7 +177,7 @@ nfest.location = (function () {
                 var result = dist.toFixed(2),
                     bikeTime = 6 * result,
                     string = '.bikeDist';
-                bikeTime = bikeTime.toFixed(0);
+                    bikeTime = bikeTime.toFixed(0);
 
                 allDistances.push({
                     distance: result

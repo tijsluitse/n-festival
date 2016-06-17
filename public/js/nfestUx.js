@@ -11,8 +11,8 @@ nfest.ux = (function () {
         // nfest.ux.menuSlide();
         nfest.ux.introEnd();
         nfest.ux.backButton();
+        nfest.ux.scrollToNow();
         nfest.ux.resetJs();
-        
     };
 
     var resetJs = function () {
@@ -70,6 +70,42 @@ nfest.ux = (function () {
 
     // };
 
+    var scrollToNow = function() {
+        if (window.location.pathname == "/day1" || window.location.pathname == "/day2") {
+            
+            var nowEvents = document.getElementById('comingEvents');
+            console.log(nowEvents.offsetTop);
+
+            function scrollTo(element, to, duration) {                    
+            var start = element.scrollTop,
+                change = to - start,
+                currentTime = 0,
+                increment = 40;
+
+            var animateScroll = function(){        
+                currentTime += increment;
+                var val = Math.easeInOutQuad(currentTime, start, change, duration);
+                element.scrollTop = val;
+                if(currentTime < duration) {
+                    setTimeout(animateScroll, increment);
+                }
+            };
+            animateScroll();
+        }
+
+        //t = current time, b = start value, c = change in value, d = duration
+        Math.easeInOutQuad = function (t, b, c, d) {
+            t /= d/2;
+            if (t < 1) return c/2*t*t + b;
+            t--;
+            return -c/2 * (t*(t-2) - 1) + b;
+        };
+
+        scrollTo(document.body, nowEvents.offsetTop - 25, 1250, "to now"); 
+
+        }
+    }
+
     var backButton = function () {
         var eventUrl = window.location.pathname;
         eventUrl = eventUrl.split('/');
@@ -85,7 +121,6 @@ nfest.ux = (function () {
         }
         if (window.location.pathname == "/") {
             document.querySelector(".menuIcon").classList.add("hide");
-
         }
     };
 
@@ -120,9 +155,10 @@ nfest.ux = (function () {
         uxLauncher: uxLauncher,
         // menuSlide: menuSlide,
         resetJs: resetJs,
+        scrollToNow: scrollToNow,
         backButton: backButton,
         introEnd: introEnd
-            //        detailSlide: detailSlide
+        // detailSlide: detailSlide
     }
 
 })();
