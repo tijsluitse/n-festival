@@ -54,10 +54,10 @@ nfest.detail = (function () {
         reload.addEventListener('click', function() {
             var eventList = document.querySelectorAll('.eventObj');
 
-            var reloadButton = document.querySelector(".reloadIcon");
-            reloadButton.classList.add("reloadAnimation");
-            reloadButton.addEventListener("animationend", function() {
-                reloadButton.classList.remove("reloadAnimation");
+            var reloadButton = document.querySelector('.reloadIcon');
+            reloadButton.classList.add('reloadAnimation');
+            reloadButton.addEventListener('animationend', function() {
+                reloadButton.classList.remove('reloadAnimation');
             })
                 
                 eventList.forEach(function(event){
