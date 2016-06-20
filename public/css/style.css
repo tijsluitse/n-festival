@@ -1554,3 +1554,27 @@ fieldset h3 {
 	height: 60px;
 }
 
+/* Discover events */
+
+.discoverList{
+    padding-top:20vh;
+    width:80%;
+    margin:0 auto;
+}
+
+.discoverList .eventDiscover{
+    height:30vh;
+}
+
+.discoverList li{
+    height:30vh;
+}
+
+#discoverBttn{
+    height:10vh;
+    width:30vw;
+    margin:auto;
+    display:block;
+    margin-top:10vh;
+}
+
