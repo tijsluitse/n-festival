@@ -1308,7 +1308,7 @@ fieldset h3 {
 }
 .socialMediaIcon {
 	fill: white;
-	max-height: 1em;
+	max-height: 1.5em;
 }
 .facebookIcon {
 	background-color: #3b5998;	
@@ -1319,38 +1319,46 @@ fieldset h3 {
 .whatsAppIcon {
 	background-color: #43d854;
 }
+
+/*RECOMMENDATIONS*/
 .reloadIcon {
 	max-height: 3em;
-	animation: rotateReload cubic-bezier(.47,1.93,.83,.67) 5s infinite;
+	fill: white;
+	margin: 3em;
+}
+.reloadAnimation {
+	animation: rotateReload cubic-bezier(.47,1.93,.83,.67) 1s;
 }
 @keyframes rotateReload {
-	85% {
+	0% {
 		transform: rotate(0);
 	}
 	100% {
-		transform: rotate(-360deg);
+		transform: rotate(-720deg);
 	}
 }
-
-.tag p{
-	background-color: black;
-    display: inline-block;
-    width:auto;
-    padding:0.5em;
-    color: #FFF;
-    font-size:0.8em;
-}
-.recommendations {
+.eventInfoPage {
 	background-color: white;
 }
 .reloadRecommendations {
-	background-color: transparent;
+	background-color: black;
 	border: none;
 	width: 5em;
-	margin: 0 auto;
-	padding-top: 3em;
 	cursor: pointer;
 	display: block;
+	width: 100%;
+	margin-top: 9em;
+}
+.recommendedEventAnimation {
+	animation: recommendedEventAnimation 500ms;
+}
+@-webkit-keyframes recommendedEventAnimation {
+	0% {
+		transform: translateX(-100vw);
+	}
+	100% {
+		transform: translateX(0);
+	}
 }
 
 /* DETAIL POPUP */
