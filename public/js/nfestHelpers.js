@@ -31,7 +31,7 @@ nfest.helpers = (function () {
 
             }
         };
-        xhr.open("GET", url, true);
+        xhr.open('GET', url, true);
         xhr.send();
     }
 
@@ -39,7 +39,7 @@ nfest.helpers = (function () {
         var myRouteElements = JSON.parse(localStorage.getItem('myRouteEvents')),
             counter = document.getElementById('myRouteCounter');
             
-        if (localStorage.getItem("myRouteEvents") === null || myRouteElements.length === 0) {
+        if (localStorage.getItem('myRouteEvents') === null || myRouteElements.length === 0) {
             counter.classList.add('hide');
         } else {
             counter.innerHTML = myRouteElements.length;
@@ -65,20 +65,35 @@ nfest.helpers = (function () {
 
         if (document.querySelector('body > section#homePage') || document.querySelector('section.curatorDetail') || document.querySelector('body.myTimetable') || document.querySelector('section.locationDetail')) {            
             var myRouteElements = JSON.parse(localStorage.getItem('myRouteEvents')),
-                allEvents = document.querySelectorAll('.eventObj');            
-            
-            for (var i = 0; i < allEvents.length; i++) {
-                function checkAvailability(arr, val) {                    
-                    return arr.some(function(arrVal) {
-                        return val === arrVal;
-                    });
-                } 
+                allEvents = document.querySelectorAll('.eventObj');
 
-                if (checkAvailability(myRouteElements, allEvents[i].id)) { 
-                    var string = '#' + allEvents[i].id + ' .buttonAddToRoute';                   
-                    document.querySelector(string).classList.add('addedToRoute');   
-                }
-            }        
+                // Check if there are items in My Route LS array
+                if (myRouteElements == null) {
+                    for (a = 0; a < allEvents.length; a++) {
+                        allEvents[a].classList.add('hide');
+                    }
+                } 
+                if (myRouteElements) {
+                    if (myRouteElements.length == 0) {
+                        for (a = 0; a < allEvents.length; a++) {
+                            allEvents[a].classList.add('hide');
+                        }                   
+                    } else {
+                        for (var i = 0; i < allEvents.length; i++) {
+                            function checkAvailability(arr, val) {                    
+                                return arr.some(function(arrVal) {
+                                    return val === arrVal;
+                                });
+                            } 
+
+                            if (checkAvailability(myRouteElements, allEvents[i].id)) { 
+                                var string = '#' + allEvents[i].id + ' .buttonAddToRoute';                   
+                                document.querySelector(string).classList.add('addedToRoute');   
+                            }
+                        }
+                    }
+                }         
+                    
         }
     }
 
@@ -100,12 +115,10 @@ nfest.helpers = (function () {
 
     var getVenueLocations = function (cb) {
 
-        nfest.helpers.getData("https://nfest.lisaklein.nl/data", function (response) { 
+        nfest.helpers.getData('https://nfest.lisaklein.nl/data', function (response) { 
             
             var data = JSON.parse(response),
                 mapLocations = [];
-
-            localStorage.setItem('allEventsData', JSON.stringify(data));
 
             for (var a = 0; a < data.length; a++) {
                 var locationLng = data[a].acf.location.lng,

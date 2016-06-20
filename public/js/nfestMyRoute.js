@@ -1,22 +1,19 @@
 var nfest = nfest || {};
 'use strict';
 
+/* My route page with all functionalities */
+
 nfest.myRoute = (function () {
     var dayOneArr = [],
         dayTwoArr = [];
 
     var myRouteElements = JSON.parse(localStorage.getItem('myRouteEvents')),
-        allElements = document.querySelectorAll(".eventObj"),
-        infoText = document.getElementById("infoText"),
+        allElements = document.querySelectorAll('.eventObj'),
+        infoText = document.getElementById('infoText'),
         body = document.querySelector('body'),
         myTimetableList = document.getElementById('myTimetableList');
+    
     body.classList.add('myTimetable');
-
-    if (myRouteElements.length == 0) {
-        infoText.classList.remove('hide');
-    } else {
-        infoText.classList.add('hide');
-    }
 
     var showElements = function () {
         myTimetableList.classList.remove('hide');
@@ -29,8 +26,27 @@ nfest.myRoute = (function () {
         }
     }
 
+    // Check if there are items in My Route LS array
+    if (myRouteElements == null) {
+        infoText.classList.remove('hide');
+        for (a = 0; a < allElements.length; a++) {
+            allElements[a].classList.add('hide');
+        }
+    } 
+    if (myRouteElements) {
+        if (myRouteElements.length == 0) {
+            infoText.classList.remove('hide');
+            for (a = 0; a < allElements.length; a++) {
+                allElements[a].classList.add('hide');
+            }                   
+        } else {
+            infoText.classList.add('hide');
+            showElements();
+        }
+    }
+
     var whichDay = function () {
-        var itemList = document.querySelectorAll(".eventObj:not(.hide)");
+        var itemList = document.querySelectorAll('.eventObj:not(.hide)');
         var timeTableList = document.getElementById('myTimetableList');
 
         Array.prototype.forEach.call(itemList, function (event) {
@@ -94,5 +110,5 @@ nfest.myRoute = (function () {
 
 })();
 
-nfest.myRoute.showElements();
+// nfest.myRoute.showElements();
 nfest.myRoute.whichDay();

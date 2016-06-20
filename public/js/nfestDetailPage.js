@@ -2,6 +2,8 @@
 var nfest = nfest || {};
 'use strict';
 
+/* Page for detailpage */
+
 nfest.detail = (function () {
 
     var detailLauncher = function () {
@@ -10,10 +12,10 @@ nfest.detail = (function () {
 
     var recommendations = function () {
 
-        var eventList = document.querySelectorAll('.eventObj'),
+        var eventList = document.querySelectorAll('.recObj'),
             currentEvent = document.querySelector('.eventInfo').id,
             currentTheme = document.querySelector('.eventInfo').dataset.theme,
-            eventArray = [].slice.call(document.querySelectorAll('.eventObj')),
+            eventArray = [].slice.call(document.querySelectorAll('.recObj')),
             reload = document.querySelector('.reloadRecommendations'),
             listLength = eventList.length - 1,
             recNum = 3,
@@ -52,12 +54,12 @@ nfest.detail = (function () {
         
 
         reload.addEventListener('click', function() {
-            var eventList = document.querySelectorAll('.eventObj');
+            var eventList = document.querySelectorAll('.recObj');
 
-            var reloadButton = document.querySelector(".reloadIcon");
-            reloadButton.classList.add("reloadAnimation");
-            reloadButton.addEventListener("animationend", function() {
-                reloadButton.classList.remove("reloadAnimation");
+            var reloadButton = document.querySelector('.reloadIcon');
+            reloadButton.classList.add('reloadAnimation');
+            reloadButton.addEventListener('animationend', function() {
+                reloadButton.classList.remove('reloadAnimation');
             })
                 
                 eventList.forEach(function(event){

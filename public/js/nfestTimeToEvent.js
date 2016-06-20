@@ -1,6 +1,8 @@
 var nfest = nfest || {};
 'use strict';
 
+/* Sorting data on time */
+
 nfest.timeToEvent = (function () {
     var itemList = document.querySelectorAll('.eventObj');
     var nowArr = [],
@@ -101,7 +103,7 @@ nfest.timeToEvent = (function () {
             coming.appendChild(comingArr[i]);
         }
 
-        var items = coming.querySelectorAll(".eventObj:not(.filterHide)");
+        var items = coming.querySelectorAll('.eventObj:not(.filterHide)');
 
         for (i = 0; i < items.length; i++) {
             var now = moment(),

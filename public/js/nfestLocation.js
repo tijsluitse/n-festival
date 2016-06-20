@@ -2,13 +2,15 @@
 var nfest = nfest || {};
 'use strict';
 
+/* Location functions and distance to event */
+
 nfest.location = (function () {
 
     var locationLauncher = function () {
         nfest.location.getUserLocation();
         nfest.location.watchLocation();
 
-        if (window.location.pathname == '/program' || '/day1' || '/day2' || '/location' || '/myroute') {            
+        if (window.location.pathname == '/program' || '/day1' || '/day2' || '/location' || '/myroute' || '/discover') {            
             nfest.location.eventDistance();            
         }
         if (window.location.pathname == '/detail/:id') {            
@@ -20,7 +22,7 @@ nfest.location = (function () {
     var getUserLocation = function () {
 
         var removeBikeDist = function () {
-            if (window.location.pathname == '/program' || '/day1' || '/day2' || '/location' || '/myroute' || '/detail/:id') {
+            if (window.location.pathname == '/program' || '/day1' || '/day2' || '/location' || '/myroute' || '/detail' || 'discover') {
                 var bikeDist = document.querySelectorAll('.eventDistance');
                 
                 Array.prototype.forEach.call(bikeDist, function (item) {
@@ -124,7 +126,7 @@ nfest.location = (function () {
         }
     }
 
-    var eventDistance = function (data) {
+    var eventDistance = function () {
 
         nfest.helpers.getData('https://nfest.lisaklein.nl/data', function (response) {
             var data = JSON.parse(response);
@@ -138,14 +140,13 @@ nfest.location = (function () {
 
             var userCoordinates = localStorage.getItem('userCoordinates'),
                 userC = userCoordinates.split(','),
-                eventList = document.querySelectorAll('.eventObj'),
                 userLat = parseFloat(userC[0]),
+                eventList = document.querySelectorAll('.eventObj'),
                 userLng = parseFloat(userC[1]),
-                allDistances = [];
+                allDistances = [];         
 
             Array.prototype.forEach.call(eventList, function (event) {
-                var location = event.dataset.location;
-                console.log(location)
+                var location = event.dataset.location;                
                 for (var i = 0; i < data.length; i++) { 
                     var id = data[i].slug,
                         uLat = userLat,
