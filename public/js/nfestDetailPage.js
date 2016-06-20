@@ -19,6 +19,8 @@ nfest.detail = (function () {
             recNum = 3,
             allItems = [];
 
+        console.log(currentTheme);
+
         for (var i = 0; i < eventArray.length; i++) {
             allItems.push(eventArray[i].id);
         }
@@ -43,7 +45,8 @@ nfest.detail = (function () {
                 if(!found)numbers[numbers.length] = randomnumber;            
             }
 
-            for (var i = 0; i < numbers.length; i++) {            
+            for (var i = 0; i < numbers.length; i++) {
+                console.log(allItems[numbers[i]])
                 var str = '#' + allItems[numbers[i]];
                 document.querySelector(str).classList.remove('hide');
             }  
