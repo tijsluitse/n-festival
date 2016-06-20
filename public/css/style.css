@@ -540,22 +540,45 @@
 /*NEWSFEED*/
 
 #newsFeed {
-    background-color: #efefef;
-    height: 20%;
-    overflow-x: hidden;
-    width: 100%;
-    width: 100vw;
-    position: relative;
+	background-color: #ffff64;
+	height: 20%;
+	overflow-x: hidden;
+	width: 100%;
+	width: 100vw;
+	position: relative;	
 }
 
 .newsItem {
-    text-align: center;
-    position: absolute;
-    background-color: #ecf0f1;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	text-align: center;
+	position: absolute;
+	background-color: #ffff64;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.news {
+	padding: 0 1.5em 1em 1.5em;
+}
+
+.newsItem p {
+	font-size: .7em;
+	text-align: center;
+	max-height: 40px;
+	overflow: hidden;
+}
+.newsItem h1 {
+	margin-bottom: .2em;
+	font-size: .9em;
+	text-transform: uppercase;
+}
+.newsDots {
+	position: absolute;
+	bottom: 0;
+	z-index: 20;
+	left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
 }
 
 .newsItem p {
@@ -847,13 +870,13 @@
     background-size: cover;
     background-position: center center;
 }
-
-#homePage .eventImg {
-    -webkit-filter: grayscale(100%);
-    -moz-filter: grayscale(100%);
-    -o-filter: grayscale(100%);
-    -ms-filter: grayscale(100%);
-    filter: grayscale(100%);
+#homePage .eventImg,
+.eventInside .eventImg {
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	-o-filter: grayscale(100%);
+	-ms-filter: grayscale(100%);
+	filter: grayscale(100%);
 }
 
 .imgOverlay {
@@ -1332,10 +1355,9 @@ fieldset h3 {
 }
 
 .eventInfo {
-    padding: 1em;
-    line-height: 1.5em;
-    position: relative;
-    background-color: white;
+	padding: 1em;
+	position: relative;
+	background-color: white;
 }
 
 .detailHeader {
@@ -1363,9 +1385,8 @@ fieldset h3 {
 /*DETAIL PAGE  */
 
 .detailPageInfo {
-    padding: 1em;
-    line-height: 1.5em;
-    background-color: white;
+	padding: 1em;
+	background-color: white;
 }
 
 .detailPageInfo h1 {
@@ -1379,22 +1400,36 @@ fieldset h3 {
 
 
 /*CURATOR*/
-
-.curator {
-    line-height: 2em;
-    vertical-align: middle;
+.curatorBlock {
+	margin: 1em 0;
+}
+.curatorTitle{
+	background-color: black;
+	text-transform: uppercase;
+	color: white;
+	font-size: .7em;
+	padding: .2em 0 .2em 1em;
+}
+.curator{
+    line-height:2em;
+    vertical-align:middle;  
 }
 
 .curators {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-    margin: .5em 0;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	padding: .5em;
+	background-color: rgba(0,0,0,.9);
+	color: white;
+	border-bottom: 1px solid #333333;
+	font-size: .9em;
+
 }
 
 .curatorImg {
@@ -1425,6 +1460,19 @@ fieldset h3 {
 }
 
 .detailDate {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: start;
+	-webkit-align-items: flex-start;
+	    -ms-flex-align: start;
+	        align-items: flex-start;
+
+	/*margin: 1em 0;*/
+}
+.spaceBetween {
+	justify-content: space-between;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -1751,7 +1799,7 @@ fieldset h3 {
     padding: 0.6em 0 .3em 0;
     font-size: 0.8em;
     background-color: #ecf0f1;
-    color: #b3b7ba;
+    color: black;
     text-align: center;
     font-family: "grotesqueRegular";
     letter-spacing: .1em;

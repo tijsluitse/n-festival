@@ -9,9 +9,13 @@
             <a href="/detail/{{slug}}" class="eventDetailLink">
 
                 <li class="discoverEvent {{categoryName}}">
-
+                    {{#if acf.picture.sizes.medium}} 
                     <div class="eventImg" style="background-image: url('{{acf.picture.sizes.medium}}');">
                     </div>
+                    {{else}}
+                    <div class="eventImg" style="background-image: url('/img/fallbackLocation.png');">
+                    </div>
+                    {{/if}}
                     <div class="{{categoryName}} imgOverlay"></div>
 
                     <div class="eventInformation">
@@ -27,7 +31,7 @@
                             </div>
                             <div class="eventTimeDistance">
                                 <div class="eventTime">
-                                    <svg class="eventTimeIcon eventIcon" width="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
+                                    <!-- <svg class="eventTimeIcon eventIcon" width="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
                                         <g id="XMLID_89_">
                                             <g id="XMLID_156_">
                                                 <g id="XMLID_159_">
@@ -38,7 +42,7 @@
                                                 </g>
                                             </g>
                                         </g>
-                                    </svg>
+                                    </svg> -->
                                     <p>{{acf.starttime_converted}} - {{acf.endtime_converted}}</p>
                                 </div>
 

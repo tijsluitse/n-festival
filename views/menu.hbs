@@ -19,10 +19,19 @@
     	<article id="newsFeed">
 			{{#firstItems}}
             <section class="newsItem">
-            <h1>{{{title.rendered}}}</h1>
-            <p>{{{content.rendered}}}</p>
+                <div class="news">
+                    <h1>{{{title.rendered}}}</h1>
+                    <p>{{{content.rendered}}}</p>
+                </div>
+                
             </section>
             {{/firstItems}}
+            <div class="newsDots">
+                <svg width="7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6.2 6.2"><circle cx="3.1" cy="3.1" r="3.1"/></svg>
+                <svg width="7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6.2 6.2"><circle cx="3.1" cy="3.1" r="3.1"/></svg>
+                <svg width="7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6.2 6.2"><circle cx="3.1" cy="3.1" r="3.1"/></svg>
+            </div>
+            
 		</article>
     
     </ul>
