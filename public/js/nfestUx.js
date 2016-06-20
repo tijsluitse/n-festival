@@ -40,16 +40,14 @@ nfest.ux = (function () {
 
     var introEnd = function () {
         var introPage = document.querySelector(".introPage");   
-        
 
-        if (localStorage.getItem("introPage") === null) {
+        if (!localStorage.getItem("introPage")) {
             introPage.classList.remove("hide");
             introPage.addEventListener("animationend", function(){
                 introPage.classList.add("hide");
             });
             localStorage.setItem("introPage", "true");
-        }
-        else {
+        } else {
             introPage.classList.add("hide");
         } 
     };
@@ -72,36 +70,46 @@ nfest.ux = (function () {
 
     var scrollToNow = function() {
         if (window.location.pathname == "/day1" || window.location.pathname == "/day2") {
-            
-            var nowEvents = document.getElementById('comingEvents');
-            console.log(nowEvents.offsetTop);
+            var currentEvents = document.querySelector('#currentEvents');
+setTimeout(function(){
+    if (nfest.helpers.hasClass('currentEvents', 'scrollNow')) {
+                scroll()
+            } else {
 
-            function scrollTo(element, to, duration) {                    
-            var start = element.scrollTop,
-                change = to - start,
-                currentTime = 0,
-                increment = 40;
+            }
+}, 2000)
 
-            var animateScroll = function(){        
-                currentTime += increment;
-                var val = Math.easeInOutQuad(currentTime, start, change, duration);
-                element.scrollTop = val;
-                if(currentTime < duration) {
-                    setTimeout(animateScroll, increment);
+            var scroll = function() {
+                var nowEvents = document.getElementById('comingEvents');
+                console.log(nowEvents.offsetTop);
+
+                function scrollTo(element, to, duration) {                    
+                    var start = element.scrollTop,
+                        change = to - start,
+                        currentTime = 0,
+                        increment = 40;
+
+                    var animateScroll = function(){        
+                        currentTime += increment;
+                        var val = Math.easeInOutQuad(currentTime, start, change, duration);
+                        element.scrollTop = val;
+                        if(currentTime < duration) {
+                            setTimeout(animateScroll, increment);
+                        }
+                    };
+                    animateScroll();
                 }
-            };
-            animateScroll();
-        }
 
-        //t = current time, b = start value, c = change in value, d = duration
-        Math.easeInOutQuad = function (t, b, c, d) {
-            t /= d/2;
-            if (t < 1) return c/2*t*t + b;
-            t--;
-            return -c/2 * (t*(t-2) - 1) + b;
-        };
+                //t = current time, b = start value, c = change in value, d = duration
+                Math.easeInOutQuad = function (t, b, c, d) {
+                    t /= d/2;
+                    if (t < 1) return c/2*t*t + b;
+                    t--;
+                    return -c/2 * (t*(t-2) - 1) + b;
+                };
 
-        scrollTo(document.body, nowEvents.offsetTop - 25, 1250, "to now"); 
+                scrollTo(document.body, nowEvents.offsetTop - 25, 1250, "to now"); 
+            }
 
         }
     }
