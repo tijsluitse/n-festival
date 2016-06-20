@@ -124,7 +124,7 @@ nfest.location = (function () {
         }
     }
 
-    var eventDistance = function (data) {
+    var eventDistance = function () {
 
         nfest.helpers.getData('https://nfest.lisaklein.nl/data', function (response) {
             var data = JSON.parse(response);
@@ -138,10 +138,14 @@ nfest.location = (function () {
 
             var userCoordinates = localStorage.getItem('userCoordinates'),
                 userC = userCoordinates.split(','),
-                eventList = document.querySelectorAll('.eventObj'),
                 userLat = parseFloat(userC[0]),
+                eventList = document.querySelectorAll('.eventObj'),
                 userLng = parseFloat(userC[1]),
-                allDistances = [];
+                allDistances = [];  
+
+            // if (document.querySelector('.detailEventPage')) {            
+            //     singleEvent = document.querySelectorAll('.eventInfo');  
+            // }          
 
             Array.prototype.forEach.call(eventList, function (event) {
                 var location = event.dataset.location;                
