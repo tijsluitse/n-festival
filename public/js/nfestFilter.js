@@ -13,9 +13,9 @@ nfest.filter = (function () {
     }
 
     var filterTheme = function () {
-        var innovationButton = document.getElementById("innovationFilter"),
-            musicButton = document.getElementById("musicFilter"),
-            foodButton = document.getElementById("foodFilter"),
+        var innovationButton = document.getElementById('innovationFilter'),
+            musicButton = document.getElementById('musicFilter'),
+            foodButton = document.getElementById('foodFilter'),
             eventList = document.querySelectorAll('.eventObj');
 
         nfest.helpers.onclick(innovationButton, function () {
@@ -95,19 +95,19 @@ nfest.filter = (function () {
     }
 
     var filterDayButtons = function () {
-        if (window.location.pathname == "/day1") {
-            document.getElementById("dayTwoFilter").classList.remove("filterActive");
-        } else if (window.location.pathname == "/day2") {
-            document.getElementById("dayOneFilter").classList.remove("filterActive");
+        if (window.location.pathname == '/day1') {
+            document.getElementById('dayTwoFilter').classList.remove('filterActive');
+        } else if (window.location.pathname == '/day2') {
+            document.getElementById('dayOneFilter').classList.remove('filterActive');
         } else {
-            document.getElementById("dayTwoFilter").classList.remove("filterActive");
+            document.getElementById('dayTwoFilter').classList.remove('filterActive');
         }
     };
 
     var filterThemeButtons = function () {
-        var innovationButton = document.getElementById("innovationFilter"),
-            musicButton = document.getElementById("musicFilter"),
-            foodButton = document.getElementById("foodFilter");
+        var innovationButton = document.getElementById('innovationFilter'),
+            musicButton = document.getElementById('musicFilter'),
+            foodButton = document.getElementById('foodFilter');
 
 
         innovationButton.onclick = function () {
@@ -116,13 +116,13 @@ nfest.filter = (function () {
             foodButton.classList.remove('fltrClicked');
 
             if (nfest.helpers.hasClass(innovationButton, 'fltrClicked')) {
-                innovationButton.classList.remove("filterDisable");
+                innovationButton.classList.remove('filterDisable');
 
-                musicButton.classList.add("filterDisable");
-                foodButton.classList.add("filterDisable");
+                musicButton.classList.add('filterDisable');
+                foodButton.classList.add('filterDisable');
             } else {
-                musicButton.classList.remove("filterDisable");
-                foodButton.classList.remove("filterDisable");
+                musicButton.classList.remove('filterDisable');
+                foodButton.classList.remove('filterDisable');
             }
         }
 
@@ -132,13 +132,13 @@ nfest.filter = (function () {
             foodButton.classList.remove('fltrClicked');
 
             if (nfest.helpers.hasClass(musicButton, 'fltrClicked')) {
-                musicButton.classList.remove("filterDisable");
+                musicButton.classList.remove('filterDisable');
 
-                innovationButton.classList.add("filterDisable");
-                foodButton.classList.add("filterDisable");
+                innovationButton.classList.add('filterDisable');
+                foodButton.classList.add('filterDisable');
             } else {
-                innovationButton.classList.remove("filterDisable");
-                foodButton.classList.remove("filterDisable");
+                innovationButton.classList.remove('filterDisable');
+                foodButton.classList.remove('filterDisable');
             }
 
         }
@@ -149,13 +149,13 @@ nfest.filter = (function () {
             musicButton.classList.remove('fltrClicked');
 
             if (nfest.helpers.hasClass(foodButton, 'fltrClicked')) {
-                foodButton.classList.remove("filterDisable");
+                foodButton.classList.remove('filterDisable');
 
-                innovationButton.classList.add("filterDisable");
-                musicButton.classList.add("filterDisable");
+                innovationButton.classList.add('filterDisable');
+                musicButton.classList.add('filterDisable');
             } else {
-                innovationButton.classList.remove("filterDisable");
-                musicButton.classList.remove("filterDisable");
+                innovationButton.classList.remove('filterDisable');
+                musicButton.classList.remove('filterDisable');
             }
         }
     }

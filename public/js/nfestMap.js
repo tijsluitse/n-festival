@@ -265,9 +265,16 @@ nfest.map = (function () {
                     userLat = parseFloat(userC[0]),
                     userLng = parseFloat(userC[1]);
 
+                var image = {
+                    url: '/img/marker.svg',
+                    size: new google.maps.Size(36, 57),
+                    scaledSize: new google.maps.Size(36, 57),
+                    origin: new google.maps.Point(0, 0)
+                };
+
                 var marker = new google.maps.Marker({
                     map: map,
-                    icon: '/img/marker.png',
+                    icon: image,
                     optimized: false,
                     title: 'First Infowindow!'
                 });
@@ -287,9 +294,7 @@ nfest.map = (function () {
                     infowindow.setContent(contentString);
                     infowindow.open(map, marker);
                 });
-
                 marker.setPosition(new google.maps.LatLng(userLat, userLng));
-                // map.setCenter(marker.getPosition());
                 map.setCenter({
                     lat: 52.391286,
                     lng: 4.917583
@@ -325,80 +330,78 @@ nfest.map = (function () {
             });
         });
 
-
         nfest.helpers.getVenueLocations(function (mapLocations, data) {
             var myRouteElements = JSON.parse(localStorage.getItem('myRouteEvents')),
+                infoText = document.getElementById("infoText"),
                 infowindow = new google.maps.InfoWindow();
+ 
+            if (myRouteElements == null) {
+                infoText.classList.remove('hide');
+            } 
+            if (myRouteElements) {
+                if (myRouteElements.length == 0) {
+                    infoText.classList.remove('hide');
+                } else {
+                    var items = document.querySelectorAll('.eventObj.myRouteEvents');
+                    items.forEach(function (item) {
+                        mapLocations.forEach(function (location) {
+                            if (item.dataset.location == location.link) {
 
-            if (myRouteElements.length == 0) {
-                // no items in array
-            } else {
-                var items = document.querySelectorAll('.eventObj.myRouteEvents');
-                items.forEach(function (item) {
-                    mapLocations.forEach(function (location) {
-                        if (item.dataset.location == location.link) {
+                                mapLocations.forEach(function (mapLoc) {
+                                    // console.log(mapLoc);
+                                });
 
-                            mapLocations.forEach(function (mapLoc) {
-                                console.log(mapLoc);
-                            });
+                                var image = {
+                                    url: '/img/location24x38.svg',
+                                    size: new google.maps.Size(36, 57),
+                                    scaledSize: new google.maps.Size(36, 57),
+                                    origin: new google.maps.Point(0, 0)
+                                };
 
-                            var image = {
-                                url: '/img/location.png',
-                                size: new google.maps.Size(25, 40),
-                                scaledSize: new google.maps.Size(25, 40),
-                                origin: new google.maps.Point(0, 0)
-                                    // anchor: new google.maps.Point(57, 100)
-                            };
+                                var marker = new google.maps.Marker({
+                                    position: {
+                                        lat: parseFloat(location.lat),
+                                        lng: parseFloat(location.lng)
+                                    },
+                                    map: map,
+                                    icon: image,
+                                    optimized: true,
+                                    title: "First Infowindow!"
+                                });
 
-                            var marker = new google.maps.Marker({
-                                position: {
-                                    lat: parseFloat(location.lat),
-                                    lng: parseFloat(location.lng)
-                                },
-                                map: map,
-                                icon: image,
-                                optimized: true,
-                                title: "First Infowindow!"
-                            });
+                                var locationLink = location.link;
 
-                            var locationLink = location.link;
+                                var link = '<a href="/location/' + locationLink + '" class="popupButton">';
+                                var routeLink = '<a href="https://maps.google.com?saddr=Current+Location&daddr=' + location.lat + ',' + location.lng + '" class="popupButton buttonRoute">';
 
-                            var link = '<a href="/location/' + locationLink + '" class="popupButton">';
-                            var routeLink = '<a href="https://maps.google.com?saddr=Current+Location&daddr=' + location.lat + ',' + location.lng + '" class="popupButton buttonRoute">';
+                                var contentString =
+                                    '<div id="content">' +
+                                    '<h1>' +
+                                    location.title +
+                                    '</h1>' +
+                                    '<p>' +
+                                    location.address +
+                                    '</p>' +
+                                    '<div class="popupButtons ">' +
+                                    routeLink +
+                                    'Route' +
+                                    '</a>' +
+                                    link +
+                                    'Evenementen' +
+                                    '</a>' +
+                                    '</div>' +
+                                    '</div>';
 
-                            var contentString =
-                                '<div id="content">' +
-                                '<h1>' +
-                                location.title +
-                                '</h1>' +
-                                '<p>' +
-                                location.address +
-                                '</p>' +
-                                // '<ul>' + 
-                                // '<li>' +
-                                // item.id +
-                                // '</li>' + 
-                                // '</ul>' +
-                                '<div class="popupButtons ">' +
-                                routeLink +
-                                'Route' +
-                                '</a>' +
-                                link +
-                                'Evenementen' +
-                                '</a>' +
-                                '</div>' +
-                                '</div>';
+                                google.maps.event.addListener(marker, 'click', function () {
+                                    infowindow.setContent(contentString);
+                                    infowindow.open(map, marker);
+                                });
 
-                            google.maps.event.addListener(marker, 'click', function () {
-                                infowindow.setContent(contentString);
-                                infowindow.open(map, marker);
-                            });
-
-                            marker.setMap(map);
-                        }
+                                marker.setMap(map);
+                            }
+                        });
                     });
-                });
-
+                }
             }
 
         });

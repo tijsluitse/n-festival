@@ -6,10 +6,13 @@
         <a href="/curator/{{slug}}" class="eventDetailLink">
 
             <li class="discoverEvent">  
-
+                {{#if acf.avatar.sizes.medium}}
                 <div class="eventImg curatorImg" style="background-image: url('{{acf.avatar.sizes.medium}}');">
                 </div>
-             
+                {{else}}
+                <div class="eventImg curatorImg" style="background-image: url('img/fallbackCurator.png');">
+                </div>
+                {{/if}}
                 <div class="eventInformation curatorName">
                     <div class="eventTitle">
                         <h2>{{{title.rendered}}}</h2>

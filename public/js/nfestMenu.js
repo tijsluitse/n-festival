@@ -1,8 +1,8 @@
-  /* Namespacing nfest to avoid conflicts with other code like libraries */
+/* Namespacing nfest to avoid conflicts with other code like libraries */
 var nfest = nfest || {};
 'use strict';
 
-/* Page for UX usable on most of the pages */
+/* Page for MENU usable on most of the pages */
 
 nfest.menu = (function () {
 
@@ -12,6 +12,7 @@ nfest.menu = (function () {
     }; 
 
     var nLogo = document.getElementById('nLogo');
+    var toMenu = document.querySelector('.aboutBackButton');
 
     var menuFunctions = function () {
         nLogo.removeAttribute('href');
@@ -25,9 +26,7 @@ nfest.menu = (function () {
                 change = to - start,
                 currentTime = 0,
                 increment = 40;
-
-                // console.log(time, size);                
-                
+                        
             var animateScroll = function(){        
                 currentTime += increment;
                 var val = Math.easeInOutQuad(currentTime, start, change, duration);
@@ -46,51 +45,21 @@ nfest.menu = (function () {
             t--;
             return -c/2 * (t*(t-2) - 1) + b;
         };
-
-        window.onload = function () {
-            if (localStorage.getItem('firstTime') === 'firstTime') {
-                // console.log("vol");
-                // var size = document.body.offsetHeight;
-                // size = size; 
-                // console.log(size); 
-                // scrollTo(document.body, size, 0, "second"); 
-                // window.location.hash = '#menu';
-            }
-            
-            if (localStorage.getItem('firstTime') === null) { 
-                console.log("leeg");
-                var size = document.body.offsetHeight;
-                size = size/2;  
-                scrollTo(document.body, size, 1250, "first"); 
-                localStorage.setItem('firstTime', 'firstTime');
-            }
-        }
-
-        // setTimeout(function() {
-
-        //     if (localStorage.getItem('firstTime') === 'firstTime') {
-        //             console.log("vol");
-        //             var size = document.body.offsetHeight;
-        //             size = size; 
-        //             console.log(size); 
-        //             scrollTo(document.body, size, 1, "second"); 
-        //         }
-                
-        //         if (localStorage.getItem('firstTime') === null) { 
-        //             console.log("leeg");
-        //             var size = document.body.offsetHeight;
-        //             size = size/2;  
-        //             scrollTo(document.body, size, 1250, "first"); 
-        //             localStorage.setItem('firstTime', 'firstTime');
-        //         }
-
-        // }, 500);
     
-        nLogo.addEventListener('click', function(){
-            var size = document.body.offsetHeight;
+        var size = document.body.offsetHeight,
+            aboutSection = document.querySelector('.aboutArticle'); 
+
+        nLogo.addEventListener('click', function(){           
+            aboutSection.classList.add('fadeIn');
             size = size/2;            
-            scrollTo(document.body, -size, 1250, "click");
+            scrollTo(document.body, -size, 1250, 'click');
         });
+
+        toMenu.addEventListener('click', function() {
+            size = 1250;            
+            scrollTo(document.body, size, 1250, 'click');
+        }); 
+
     }
 
     return {

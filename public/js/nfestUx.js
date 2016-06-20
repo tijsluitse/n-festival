@@ -9,7 +9,7 @@ nfest.ux = (function () {
     var uxLauncher = function () {
         // directly launch ux modules for every page
         // nfest.ux.menuSlide();
-        nfest.ux.introEnd();
+        // nfest.ux.introEnd();
         nfest.ux.backButton();
         nfest.ux.scrollToNow();
         nfest.ux.resetJs();
@@ -38,22 +38,6 @@ nfest.ux = (function () {
 
     };
 
-    var introEnd = function () {
-        var introPage = document.querySelector(".introPage");   
-        
-
-        if (localStorage.getItem("introPage") === null) {
-            introPage.classList.remove("hide");
-            introPage.addEventListener("animationend", function(){
-                introPage.classList.add("hide");
-            });
-            localStorage.setItem("introPage", "true");
-        }
-        else {
-            introPage.classList.add("hide");
-        } 
-    };
-
     // var menuSlide = function () {
     //     var menu = document.getElementById('menu'),
     //         menuButton = document.getElementById('menuButton');
@@ -71,37 +55,47 @@ nfest.ux = (function () {
     // };
 
     var scrollToNow = function() {
-        if (window.location.pathname == "/day1" || window.location.pathname == "/day2") {
-            
-            var nowEvents = document.getElementById('comingEvents');
-            console.log(nowEvents.offsetTop);
+        if (window.location.pathname == '/day1' || window.location.pathname == '/day2') {
+            var currentEvents = document.querySelector('#currentEvents');
+            setTimeout(function(){
+                if (nfest.helpers.hasClass('currentEvents', 'scrollNow')) {
+                    scroll()
+                } else {
 
-            function scrollTo(element, to, duration) {                    
-            var start = element.scrollTop,
-                change = to - start,
-                currentTime = 0,
-                increment = 40;
-
-            var animateScroll = function(){        
-                currentTime += increment;
-                var val = Math.easeInOutQuad(currentTime, start, change, duration);
-                element.scrollTop = val;
-                if(currentTime < duration) {
-                    setTimeout(animateScroll, increment);
                 }
-            };
-            animateScroll();
-        }
+            }, 2000)
 
-        //t = current time, b = start value, c = change in value, d = duration
-        Math.easeInOutQuad = function (t, b, c, d) {
-            t /= d/2;
-            if (t < 1) return c/2*t*t + b;
-            t--;
-            return -c/2 * (t*(t-2) - 1) + b;
-        };
+            var scroll = function() {
+                // var nowEvents = document.getElementById('comingEvents');
+                // console.log(nowEvents.offsetTop);
 
-        scrollTo(document.body, nowEvents.offsetTop - 25, 1250, "to now"); 
+                // function scrollTo(element, to, duration) {                    
+                //     var start = element.scrollTop,
+                //         change = to - start,
+                //         currentTime = 0,
+                //         increment = 40;
+
+                //     var animateScroll = function(){        
+                //         currentTime += increment;
+                //         var val = Math.easeInOutQuad(currentTime, start, change, duration);
+                //         element.scrollTop = val;
+                //         if(currentTime < duration) {
+                //             setTimeout(animateScroll, increment);
+                //         }
+                //     };
+                //     animateScroll();
+                // }
+
+                // //t = current time, b = start value, c = change in value, d = duration
+                // Math.easeInOutQuad = function (t, b, c, d) {
+                //     t /= d/2;
+                //     if (t < 1) return c/2*t*t + b;
+                //     t--;
+                //     return -c/2 * (t*(t-2) - 1) + b;
+                // };
+
+                // scrollTo(document.body, nowEvents.offsetTop - 25, 1250, 'to now'); 
+            }
 
         }
     }
@@ -111,16 +105,16 @@ nfest.ux = (function () {
         eventUrl = eventUrl.split('/');
         var page = eventUrl[1];
         var detailPage = eventUrl[2];
-        if (window.location.pathname == "/" + page + "/" + detailPage || window.location.pathname == "/myroute") {
-            document.querySelector(".menuIcon").classList.add("hide");
-            var backButton = document.querySelector(".backButton");
-            backButton.classList.remove("hide");
+        if (window.location.pathname == '/' + page + '/' + detailPage || window.location.pathname == '/myroute') {
+            document.querySelector('.menuIcon').classList.add('hide');
+            var backButton = document.querySelector('.backButton');
+            backButton.classList.remove('hide');
             backButton.onclick = function () {
                 window.history.back();
             }
         }
-        if (window.location.pathname == "/") {
-            document.querySelector(".menuIcon").classList.add("hide");
+        if (window.location.pathname == '/') {
+            document.querySelector('.menuIcon').classList.add('hide');
         }
     };
 
@@ -156,8 +150,7 @@ nfest.ux = (function () {
         // menuSlide: menuSlide,
         resetJs: resetJs,
         scrollToNow: scrollToNow,
-        backButton: backButton,
-        introEnd: introEnd
+        backButton: backButton
         // detailSlide: detailSlide
     }
 
