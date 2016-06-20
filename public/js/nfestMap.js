@@ -345,7 +345,7 @@ nfest.map = (function () {
                     infoText.classList.remove('hide');
                 } else {
                     var items = document.querySelectorAll('.eventObj.myRouteEvents');
-                    items.forEach(function (item) {
+                    Array.prototype.forEach.call(items, function (item) {
                         mapLocations.forEach(function (location) {
                             if (item.dataset.location == location.link) {
 

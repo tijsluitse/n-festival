@@ -966,11 +966,8 @@
 .addToRouteSvg {
     -webkit-transition: 0.3s -webkit-transform cubic-bezier(0.712, 0.0376, 0.392, 1);
     transition: 0.3s transform cubic-bezier(0.712, 0.0376, 0.392, 1);
-    ;
     -webkit-transform: rotate(45deg);
-    ;
     -ms-transform: rotate(45deg);
-    ;
     transform: rotate(45deg);
     right: -1.5em;
     top: -1.5em;
