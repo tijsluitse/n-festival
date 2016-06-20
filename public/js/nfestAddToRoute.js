@@ -2,24 +2,26 @@
 var nfest = nfest || {};
 'use strict';
 
+/* Function for adding events to "my route" */
+
 nfest.addToRoute = (function () {
 
     var allSavedEvents = [];
 
     var buttonToggle = function () {
-        var add = document.querySelectorAll(".buttonAddToRoute");
+        var add = document.querySelectorAll('.buttonAddToRoute');
             counter = document.getElementById('myRouteCounter');
 
         for (var i = add.length - 1; i >= 0; i--) {
             add[i].onclick = function (evt) {
 
-                var myRouteCounter = document.getElementById("myRouteCounter");
-                    myRouteCounter.classList.add("myRouteAdded");
-                    myRouteCounter.addEventListener("animationend", function() {
-                    myRouteCounter.classList.remove("myRouteAdded"); 
+                var myRouteCounter = document.getElementById('myRouteCounter');
+                    myRouteCounter.classList.add('myRouteAdded');
+                    myRouteCounter.addEventListener('animationend', function() {
+                    myRouteCounter.classList.remove('myRouteAdded'); 
                 });                
                 
-                evt.currentTarget.classList.toggle("addedToRoute");
+                evt.currentTarget.classList.toggle('addedToRoute');
                 if (nfest.helpers.hasClass(this, 'addedToRoute')) {
                     counter.classList.remove('hide');
                     addToMyTimetable(this);                    
@@ -68,7 +70,7 @@ nfest.addToRoute = (function () {
             localStorage.setItem('myRouteEvents', JSON.stringify(myRouteElements));
         }
         
-        if (localStorage.getItem("myRouteEvents") === null || myRouteElements.length === 0) {
+        if (localStorage.getItem('myRouteEvents') === null || myRouteElements.length === 0) {
             counter.classList.add('hide');
         } else {
             counter.innerHTML = myRouteElements.length;

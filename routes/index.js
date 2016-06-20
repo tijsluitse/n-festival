@@ -236,6 +236,12 @@ router.get('/data', function (req, res, next) {
     res.json(venueData);
 });
 
+router.get('/discover', function (req, res, next) {    
+    res.render('discover', {
+        apiData: apiData
+    });
+});
+
 router.get('/program', function (req, res, next) {
     var data = {
         obj: apiData
@@ -424,5 +430,6 @@ router.get('/curator/:name', function (req, res, next) {
 router.get('/about', function (req, res, next) {
     res.render('about');
 });
+
 
 module.exports = router;

@@ -1,8 +1,11 @@
 <section class="detailPage curatorDetail">
 
     {{#curatorDetail}}
-    
+    {{#if acf.avatar.url}}
     <div class="detailImg" style="background-image: url('{{acf.avatar.url}}');"></div>
+    {{else}}
+    <div class="detailImg" style="background-image: url('/img/fallbackCuratorLarge.png');"></div>
+    {{/if}}
     <div class="detaiImgSpace"></div>
     <div class="detailPageInfo">
     	<h1>{{{title.rendered}}}</h1> 
@@ -22,3 +25,4 @@
 <script src="/js/nfestAddToRoute.js"></script>
 <script src="/js/nfestHelpers.js"></script>
 <script src="/js/nfestUx.js"></script>
+<script src="/js/nfestLocation.js"></script>
