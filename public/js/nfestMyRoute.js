@@ -12,49 +12,52 @@ nfest.myRoute = (function () {
         infoText = document.getElementById('infoText'),
         body = document.querySelector('body'),
         myTimetableList = document.getElementById('myTimetableList');
-    
+
     body.classList.add('myTimetable');
 
     var showElements = function () {
         myTimetableList.classList.remove('hide');
+
         for (a = 0; a < allElements.length; a++) {
             allElements[a].classList.add('hide');
         }
         for (i = 0; i < myRouteElements.length; i++) {
             document.getElementById(myRouteElements[i]).classList.remove('hide');
-            document.getElementById(myRouteElements[i]).classList.add('myRouteEvents');
         }
     }
 
-    // Check if there are items in My Route LS array
-    if (myRouteElements == null) {
-        infoText.classList.remove('hide');
-        for (a = 0; a < allElements.length; a++) {
-            allElements[a].classList.add('hide');
-        }
-    } 
-    if (myRouteElements) {
-        if (myRouteElements.length == 0) {
+    var checkRouteElements = function () {
+        // Check if there are items in My Route LS array
+        if (myRouteElements == null) {
             infoText.classList.remove('hide');
             for (a = 0; a < allElements.length; a++) {
                 allElements[a].classList.add('hide');
-            }                   
-        } else {
-            infoText.classList.add('hide');
-            showElements();
+            }
+        }
+        if (myRouteElements) {
+            if (myRouteElements.length == 0) {
+                infoText.classList.remove('hide');
+                for (a = 0; a < allElements.length; a++) {
+                    allElements[a].classList.add('hide');
+                }
+            } else {
+                infoText.classList.add('hide');
+                nfest.myRoute.showElements();
+            }
         }
     }
 
     var whichDay = function () {
         var itemList = document.querySelectorAll('.eventObj:not(.hide)');
         var timeTableList = document.getElementById('myTimetableList');
+        
 
         Array.prototype.forEach.call(itemList, function (event) {
             var onDay = event.dataset.start,
                 day = moment(onDay).format('MM/DD/YY'),
-                d1 = new Date('10-08-2016'),
+                d1 = new Date('10/08/2016'),
                 day1 = moment(d1).format('MM/DD/YY'),
-                d2 = new Date('10-09-2016'),
+                d2 = new Date('10/09/2016'),
                 day2 = moment(d2).format('MM/DD/YY');
 
             if (day === day1) {
@@ -73,11 +76,13 @@ nfest.myRoute = (function () {
     }
 
     var dayOne = function () {
+         console.log(dayOneArr);
+        
         var listDayOne = document.getElementById('eventsDay1'),
             barTime = listDayOne.querySelector('.timeToEvent');
 
         barTime.classList.add('hide');
-        
+
         for (i = 0; i < dayOneArr.length; i++) {
             listDayOne.appendChild(dayOneArr[i]);
 
@@ -87,6 +92,8 @@ nfest.myRoute = (function () {
     }
 
     var dayTwo = function () {
+        console.log(dayTwoArr);
+        
         var listDayTwo = document.getElementById('eventsDay2'),
             barTime = listDayTwo.querySelector('.timeToEvent');
 
@@ -103,6 +110,7 @@ nfest.myRoute = (function () {
 
     return {
         showElements: showElements,
+        checkRouteElements: checkRouteElements,
         whichDay: whichDay,
         dayOne: dayOne,
         dayTwo: dayTwo
@@ -110,4 +118,5 @@ nfest.myRoute = (function () {
 
 })();
 
+nfest.myRoute.checkRouteElements();
 nfest.myRoute.whichDay();

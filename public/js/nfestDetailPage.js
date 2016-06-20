@@ -21,7 +21,7 @@ nfest.detail = (function () {
             recNum = 3,
             allItems = [];
 
-        console.log(currentTheme);
+//        console.log(currentTheme);
 
         for (var i = 0; i < eventArray.length; i++) {
             allItems.push(eventArray[i].id);
@@ -56,6 +56,7 @@ nfest.detail = (function () {
         }   
         
         reload.onclick = function() {
+            
             var eventList = document.querySelectorAll('.recObj'),
                 reloadButton = document.querySelector('.reloadIcon');
             reloadButton.classList.add('reloadAnimation');
@@ -63,7 +64,7 @@ nfest.detail = (function () {
                 reloadButton.classList.remove('reloadAnimation');
             })
                 
-            eventList.forEach(function(event){
+            Array.prototype.forEach.call(eventList, function (event) {
                 event.classList.add('hide');
             });
             generate();  

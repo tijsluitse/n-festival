@@ -1602,7 +1602,7 @@ fieldset h3 {
 	cursor: pointer;
 	display: block;
 	width: 100%;
-	// margin-top: 9em;
+/*	// margin-top: 9em;*/
 }
 .recommendedEventAnimation {
 	animation: recommendedEventAnimation 500ms;
