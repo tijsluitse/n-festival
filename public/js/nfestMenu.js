@@ -1,4 +1,4 @@
-  /* Namespacing nfest to avoid conflicts with other code like libraries */
+/* Namespacing nfest to avoid conflicts with other code like libraries */
 var nfest = nfest || {};
 'use strict';
 
@@ -12,6 +12,7 @@ nfest.menu = (function () {
     }; 
 
     var nLogo = document.getElementById('nLogo');
+    var toMenu = document.querySelector('.aboutBackButton');
 
     var menuFunctions = function () {
         nLogo.removeAttribute('href');
@@ -47,24 +48,24 @@ nfest.menu = (function () {
             return -c/2 * (t*(t-2) - 1) + b;
         };
 
-        window.onload = function () {
-            if (localStorage.getItem('firstTime') === 'firstTime') {
-                // console.log("vol");
-                // var size = document.body.offsetHeight;
-                // size = size; 
-                // console.log(size); 
-                // scrollTo(document.body, size, 0, "second"); 
-                // window.location.hash = '#menu';
-            }
+        // window.onload = function () {
+        //     if (localStorage.getItem('firstTime') === 'firstTime') {
+        //         // console.log("vol");
+        //         // var size = document.body.offsetHeight;
+        //         // size = size; 
+        //         // console.log(size); 
+        //         // scrollTo(document.body, size, 0, "second"); 
+        //         // window.location.hash = '#menu';
+        //     }
             
-            if (localStorage.getItem('firstTime') === null) { 
-                console.log("leeg");
-                var size = document.body.offsetHeight;
-                size = size/2;  
-                scrollTo(document.body, size, 1250, "first"); 
-                localStorage.setItem('firstTime', 'firstTime');
-            }
-        }
+        //     if (localStorage.getItem('firstTime') === null) { 
+        //         console.log("leeg");
+        //         var size = document.body.offsetHeight;
+        //         size = size/2;  
+        //         scrollTo(document.body, size, 1250, "first"); 
+        //         localStorage.setItem('firstTime', 'firstTime');
+        //     }
+        // }
 
         // setTimeout(function() {
 
@@ -86,11 +87,21 @@ nfest.menu = (function () {
 
         // }, 500);
     
-        nLogo.addEventListener('click', function(){
-            var size = document.body.offsetHeight;
+        var size = document.body.offsetHeight;
+        var aboutSection = document.querySelector('.aboutArticle'); 
+
+        nLogo.addEventListener('click', function(){           
+            aboutSection.classList.add('fadeIn');
             size = size/2;            
             scrollTo(document.body, -size, 1250, "click");
         });
+
+        toMenu.addEventListener('click', function() {
+            // aboutSection.classList.remove('fadeIn');
+            size = 1250;            
+            scrollTo(document.body, size, 1250, "click");
+        }); 
+
     }
 
     return {
