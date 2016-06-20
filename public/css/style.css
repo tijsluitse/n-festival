@@ -8,7 +8,9 @@
 @font-face {
     font-family: grotesqueBlackItalic;
     src: url(/font/basis_grotesque_black_italic.otf);
-}*/
+<<<<<<< HEAD
+}
+
 
 @font-face {
     font-family: grotesqueBold;
@@ -122,7 +124,7 @@
         fill: transparent;
         stroke-: white;
     }
-    80% {
+    80% {e
         fill: transparent;
     }
     90% {
@@ -517,13 +519,6 @@
     }
 }
 
-
-/*#newsFeed {
-	background-color: #efefef;
-	height: 8em;
-
-}*/
-
 .displayNone {
     display: none;
 }
@@ -562,7 +557,7 @@
 .newsItem p {
 	font-size: .7em;
 	text-align: center;
-	max-height: 40px;
+	max-height: 46px;
 	overflow: hidden;
 }
 .newsItem h1 {
@@ -577,11 +572,6 @@
 	left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
-}
-
-.newsItem p {
-    width: 70%;
-    font-size: .8em;
 }
 
 .newsItem:nth-child(1) {
@@ -1479,7 +1469,7 @@ fieldset h3 {
     -webkit-align-items: flex-start;
     -ms-flex-align: start;
     align-items: flex-start;
-    margin: 1em 0;
+    /*margin: 1em 0;*/
 }
 
 .detailDate a {
@@ -1600,7 +1590,7 @@ fieldset h3 {
 	cursor: pointer;
 	display: block;
 	width: 100%;
-	// margin-top: 9em;
+/*	// margin-top: 9em;*/
 }
 .recommendedEventAnimation {
 	animation: recommendedEventAnimation 500ms;
