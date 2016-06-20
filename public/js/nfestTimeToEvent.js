@@ -101,7 +101,7 @@ nfest.timeToEvent = (function () {
             coming.appendChild(comingArr[i]);
         }
 
-        var items = coming.querySelectorAll(".eventObj:not(.filterHide)");
+        var items = coming.querySelectorAll('.eventObj:not(.filterHide)');
 
         for (i = 0; i < items.length; i++) {
             var now = moment(),

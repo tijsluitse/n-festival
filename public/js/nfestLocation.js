@@ -144,8 +144,7 @@ nfest.location = (function () {
                 allDistances = [];
 
             Array.prototype.forEach.call(eventList, function (event) {
-                var location = event.dataset.location;
-                console.log(location)
+                var location = event.dataset.location;                
                 for (var i = 0; i < data.length; i++) { 
                     var id = data[i].slug,
                         uLat = userLat,
