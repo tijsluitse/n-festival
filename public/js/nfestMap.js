@@ -265,9 +265,16 @@ nfest.map = (function () {
                     userLat = parseFloat(userC[0]),
                     userLng = parseFloat(userC[1]);
 
+                var image = {
+                    url: '/img/marker.svg',
+                    size: new google.maps.Size(36, 57),
+                    scaledSize: new google.maps.Size(36, 57),
+                    origin: new google.maps.Point(0, 0)
+                };
+
                 var marker = new google.maps.Marker({
                     map: map,
-                    icon: '/img/marker.png',
+                    icon: image,
                     optimized: false,
                     title: 'First Infowindow!'
                 });
@@ -343,11 +350,10 @@ nfest.map = (function () {
                             });
 
                             var image = {
-                                url: '/img/location.png',
-                                size: new google.maps.Size(25, 40),
-                                scaledSize: new google.maps.Size(25, 40),
+                                url: '/img/location24x38.svg',
+                                size: new google.maps.Size(36, 57),
+                                scaledSize: new google.maps.Size(36, 57),
                                 origin: new google.maps.Point(0, 0)
-                                    // anchor: new google.maps.Point(57, 100)
                             };
 
                             var marker = new google.maps.Marker({
