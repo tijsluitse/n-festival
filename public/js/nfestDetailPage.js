@@ -52,21 +52,34 @@ nfest.detail = (function () {
 
         }   
         
-
-        reload.addEventListener('click', function() {
-            var eventList = document.querySelectorAll('.recObj');
-
-            var reloadButton = document.querySelector('.reloadIcon');
+        reload.onclick = function() {
+            var eventList = document.querySelectorAll('.recObj'),
+                reloadButton = document.querySelector('.reloadIcon');
             reloadButton.classList.add('reloadAnimation');
             reloadButton.addEventListener('animationend', function() {
                 reloadButton.classList.remove('reloadAnimation');
             })
                 
-                eventList.forEach(function(event){
-                    event.classList.add('hide');
-                });
-            generate();
-        }); 
+            eventList.forEach(function(event){
+                event.classList.add('hide');
+            });
+            generate();  
+        }
+
+        // reload.addEventListener('click', function() {
+        //     var eventList = document.querySelectorAll('.recObj');
+
+        //     var reloadButton = document.querySelector('.reloadIcon');
+        //     reloadButton.classList.add('reloadAnimation');
+        //     reloadButton.addEventListener('animationend', function() {
+        //         reloadButton.classList.remove('reloadAnimation');
+        //     })
+                
+        //     eventList.forEach(function(event){
+        //         event.classList.add('hide');
+        //     });
+        //     generate();
+        // }); 
 
         generate();  
 
