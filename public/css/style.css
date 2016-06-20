@@ -77,7 +77,7 @@
 }
 
 
-/*INTRO*/
+/*INTRO ANIMATION*/
 
 .introPage {
     background-color: black;
@@ -85,13 +85,15 @@
     width: 100vw;
     position: fixed;
     z-index: 20;
-    animation: introEnd 500ms;
-    animation-delay: 2.5s;
+    animation: introEnd 3.5s;
 }
 
 @-webkit-keyframes introEnd {
     0% {
         opacity: 1;
+    }
+    80% {
+    	opacity: 1;
     }
     100% {
         opacity: 0;
@@ -124,7 +126,7 @@
         fill: transparent;
         stroke-: white;
     }
-    80% {e
+    80% {
         fill: transparent;
     }
     90% {
@@ -363,25 +365,40 @@
 	top: 50%;
 	left: 50%;	
 	transform: translate(-50%,-50%);
-	line-height: 1.5em;
 	font-size: .9em;
 	color: white;
 	text-align: center;
-/*
-	// opacity: 0;
-	// transition: opacity 1s ease-in;
-	// -webkit-transition: opacity 1s ease-in;
-*/
+	line-height: 2.4em;
 }
-/*
-// .aboutArticle.fadeIn {
-// 	opacity:1;
-// }
-*/
+.aboutArticle h1 {
+	margin-bottom: 1em;
+	text-transform: uppercase;
+}
+
 .aboutHeader {
     margin-top: 1px;
 }
-
+.highlight {
+	color: black;
+	padding: 0 1em;
+	display: inline-block;
+}
+.aboutOne {
+	background-color: #ffff64;	
+	-webkit-transform: rotate(-5deg);
+    transform: rotate(-5deg);
+    
+}
+.aboutTwo {
+	background-color: #eb5250;
+	-webkit-transform: rotate(5deg);
+    transform: rotate(5deg);
+}
+.aboutThree {
+	background-color: #3131ff;
+	-webkit-transform: rotate(-5deg);
+    transform: rotate(-5deg);
+}
 
 /*MENU*/
 
@@ -766,7 +783,7 @@
     justify-content: center;
     padding: 1em 0;
     cursor: pointer;
-    color: white;
+    color: black;
     text-transform: uppercase;
     font-size: .8em;
 }
@@ -777,74 +794,25 @@
 }
 
 .innovationButton {
-    background-color: #009ba0;
+    background-color: #3131ff;
 }
 
 .musicButton {
-    background-color: #f33f26;
+    background-color: #eb5250;
 }
 
 .foodButton {
-    background-color: #fdae3a;
+    background-color: #ffff64;
 }
 
 .filterDisable {
     background-color: black;
+    color: white;
 }
 
 .themeFilterBox {
     width: 100%;
 }
-
-
-/*.filterDay {
-	display: flex;
-	align-items: center;
-
-}*/
-
-
-/*.filterBox {
-	border: 1px solid white;
-	margin-left: 1em;
-	position: relative;
-}
-*/
-
-
-/*#selectDay {
-	appearance: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	border: none;
-	padding: 1em 3em 1em 1em;
-	background-color: black;
-	color: white;
-	font-size: 1em;
-	height: 3em;
-}*/
-
-
-/*.optionsDays {
-	font-size: 1em;
-}
-.dropdownIcon {
-	fill: white;
-	position: absolute;
-	pointer-events: none;
-	right: .5em;
-	top: 1.4em;
-}
-.filterButton {
-	border: none;
-	padding: 1em;
-	background-color: white;
-	cursor: pointer;
-	font-weight: 700;
-	font-size: 1em;
-	height: 3em;
-}*/
-
 
 /*EVENTS*/
 
@@ -875,15 +843,15 @@
 }
 
 .Music {
-    background-color: rgba(243, 63, 38, .8);
+    background-color: rgba(235, 82, 80, .85);
 }
 
 .Food {
-    background-color: rgba(253, 174, 58, .8);
+    background-color: rgba(255, 255, 100, .85);
 }
 
 .Innovation {
-    background-color: rgba(0, 155, 160, .8);
+    background-color: rgba(49, 49, 255, .85);
 }
 
 .discoverEvent {
@@ -948,18 +916,18 @@
 }
 
 .buttonAddInnovation {
-    border-top: 25px solid #009ba0;
-    border-right: 25px solid #009ba0;
+    border-top: 25px solid #3131ff;
+    border-right: 25px solid #3131ff;
 }
 
 .buttonAddMusic {
-    border-top: 25px solid #f33f26;
-    border-right: 25px solid #f33f26;
+    border-top: 25px solid #eb5250;
+    border-right: 25px solid #eb5250;
 }
 
 .buttonAddFood {
-    border-top: 25px solid #fdae3a;
-    border-right: 25px solid #fdae3a;
+    border-top: 25px solid #ffff64;
+    border-right: 25px solid #ffff64;
 }
 
 .addedToRoute {
@@ -1396,7 +1364,7 @@ fieldset h3 {
 	text-transform: uppercase;
 	color: white;
 	font-size: .7em;
-	padding: .2em 0 .2em 1em;
+	padding: .3em 0 .3em 1em;
 }
 .curator{
     line-height:2em;
@@ -1563,7 +1531,7 @@ fieldset h3 {
 .reloadIcon {
 	max-height: 3em;
 	fill: white;
-	margin: 3em;
+	margin: 1.5em;
 }
 .reloadAnimation {
 	animation: rotateReload cubic-bezier(.47,1.93,.83,.67) 1s;
@@ -1582,7 +1550,7 @@ fieldset h3 {
 }
 
 .reloadRecommendations {
-	background-color: black;
+	background-color: rgba(0,0,0,.9);
     position: relative;
     z-index: 1000;
 	border: none;
@@ -1590,7 +1558,6 @@ fieldset h3 {
 	cursor: pointer;
 	display: block;
 	width: 100%;
-/*	// margin-top: 9em;*/
 }
 .recommendedEventAnimation {
 	animation: recommendedEventAnimation 500ms;
@@ -1701,19 +1668,6 @@ fieldset h3 {
     text-align: center;
     display: block;
 }
-
-
-/*ABOUT*/
-
-.aboutArticle {
-/*	// margin: 1em;*/
-	line-height: 1.5em;
-}
-
-.aboutHeader {
-    margin-top: 1px;
-}
-
 
 /*LOCATION*/
 
