@@ -81,6 +81,7 @@ nfest.timeToEvent = (function () {
                 // do nothing
             } else {
                 barTime.classList.remove('hide');
+                current.classList.add('scrollNow');
                 barTime.innerHTML = 'NOW';
             }
 
