@@ -6,9 +6,13 @@
 
             <li class="discoverEvent {{event.theme}}">  
 
-            
+                {{#if acf.picture.sizes.medium}}
                 <div class="eventImg" style="background-image: url('{{acf.picture.sizes.medium}}');">
                 </div>
+                {{else}}
+                <div class="eventImg" style="background-image: url('img/fallbackLocation.png');">
+                </div>
+                {{/if}}
                 <div class="{{event.theme}} imgOverlay"></div>
                 
                 <div class="eventInformation">
