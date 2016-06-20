@@ -110,5 +110,4 @@ nfest.myRoute = (function () {
 
 })();
 
-// nfest.myRoute.showElements();
 nfest.myRoute.whichDay();
