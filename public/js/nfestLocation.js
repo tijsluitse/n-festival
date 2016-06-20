@@ -8,7 +8,7 @@ nfest.location = (function () {
         nfest.location.getUserLocation();
         nfest.location.watchLocation();
 
-        if (window.location.pathname == '/program' || '/day1' || '/day2' || '/location' || '/myroute') {            
+        if (window.location.pathname == '/program' || '/day1' || '/day2' || '/location' || '/myroute' || '/discover') {            
             nfest.location.eventDistance();            
         }
         if (window.location.pathname == '/detail/:id') {            
@@ -20,7 +20,7 @@ nfest.location = (function () {
     var getUserLocation = function () {
 
         var removeBikeDist = function () {
-            if (window.location.pathname == '/program' || '/day1' || '/day2' || '/location' || '/myroute' || '/detail/:id') {
+            if (window.location.pathname == '/program' || '/day1' || '/day2' || '/location' || '/myroute' || '/detail' || 'discover') {
                 var bikeDist = document.querySelectorAll('.eventDistance');
                 
                 Array.prototype.forEach.call(bikeDist, function (item) {
