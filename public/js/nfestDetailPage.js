@@ -21,6 +21,8 @@ nfest.detail = (function () {
             recNum = 3,
             allItems = [];
 
+//        console.log(currentTheme);
+
         for (var i = 0; i < eventArray.length; i++) {
             allItems.push(eventArray[i].id);
         }
@@ -45,7 +47,8 @@ nfest.detail = (function () {
                 if(!found)numbers[numbers.length] = randomnumber;            
             }
 
-            for (var i = 0; i < numbers.length; i++) {            
+            for (var i = 0; i < numbers.length; i++) {
+                console.log(allItems[numbers[i]])
                 var str = '#' + allItems[numbers[i]];
                 document.querySelector(str).classList.remove('hide');
             }  
@@ -53,6 +56,7 @@ nfest.detail = (function () {
         }   
         
         reload.onclick = function() {
+            
             var eventList = document.querySelectorAll('.recObj'),
                 reloadButton = document.querySelector('.reloadIcon');
             reloadButton.classList.add('reloadAnimation');
@@ -60,7 +64,7 @@ nfest.detail = (function () {
                 reloadButton.classList.remove('reloadAnimation');
             })
                 
-            eventList.forEach(function(event){
+            Array.prototype.forEach.call(eventList, function (event) {
                 event.classList.add('hide');
             });
             generate();  
