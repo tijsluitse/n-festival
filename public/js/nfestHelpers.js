@@ -20,9 +20,7 @@ nfest.helpers = (function () {
     }    
 
     var getData = function (url, cb) {
-
         var xhr = new XMLHttpRequest();
-
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
 
@@ -67,33 +65,32 @@ nfest.helpers = (function () {
             var myRouteElements = JSON.parse(localStorage.getItem('myRouteEvents')),
                 allEvents = document.querySelectorAll('.eventObj');
 
-                // Check if there are items in My Route LS array
-                if (myRouteElements == null) {
+            // Check if there are items in My Route LS array
+            if (myRouteElements == null) {
+                for (a = 0; a < allEvents.length; a++) {
+                    allEvents[a].classList.add('hide');
+                }
+            } 
+            if (myRouteElements) {
+                if (myRouteElements.length == 0) {
                     for (a = 0; a < allEvents.length; a++) {
                         allEvents[a].classList.add('hide');
-                    }
-                } 
-                if (myRouteElements) {
-                    if (myRouteElements.length == 0) {
-                        for (a = 0; a < allEvents.length; a++) {
-                            allEvents[a].classList.add('hide');
-                        }                   
-                    } else {
-                        for (var i = 0; i < allEvents.length; i++) {
-                            function checkAvailability(arr, val) {                    
-                                return arr.some(function(arrVal) {
-                                    return val === arrVal;
-                                });
-                            } 
+                    }                   
+                } else {
+                    for (var i = 0; i < allEvents.length; i++) {
+                        function checkAvailability(arr, val) {                    
+                            return arr.some(function(arrVal) {
+                                return val === arrVal;
+                            });
+                        } 
 
-                            if (checkAvailability(myRouteElements, allEvents[i].id)) { 
-                                var string = '#' + allEvents[i].id + ' .buttonAddToRoute';                   
-                                document.querySelector(string).classList.add('addedToRoute');   
-                            }
+                        if (checkAvailability(myRouteElements, allEvents[i].id)) { 
+                            var string = '#' + allEvents[i].id + ' .buttonAddToRoute';                   
+                            document.querySelector(string).classList.add('addedToRoute');   
                         }
                     }
-                }         
-                    
+                }
+            }                
         }
     }
 
@@ -109,7 +106,6 @@ nfest.helpers = (function () {
                 return result && localStorage;
             } catch (exception) {}
         }());
-
         cb(hasStorage);
     }
 
@@ -135,7 +131,7 @@ nfest.helpers = (function () {
                     link: link
                 });
                 
-                 if (mapLocations.length == data.length) {
+                if (mapLocations.length == data.length) {
                     cb(mapLocations, data);
                 };
             }

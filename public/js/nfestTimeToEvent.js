@@ -4,8 +4,8 @@ var nfest = nfest || {};
 /* Sorting data on time */
 
 nfest.timeToEvent = (function () {
-    var itemList = document.querySelectorAll('.eventObj');
-    var nowArr = [],
+    var itemList = document.querySelectorAll('.eventObj'),
+        nowArr = [],
         historyArr = [],
         filterdArr = [],
         comingArr = [];

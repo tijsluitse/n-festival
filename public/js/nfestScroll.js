@@ -25,7 +25,7 @@ nfest.scrollToNext = (function() { // Code inspired by Rover van Nispen
             node = node.offsetParent;
             y += node.offsetTop;
         } return y;
-    }
+    };
     
     // Code in a function to create an isolate scope
     var smoothScroll = function (eID) {
@@ -50,7 +50,7 @@ nfest.scrollToNext = (function() { // Code inspired by Rover van Nispen
             setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
             leapY -= step; if (leapY < stopY) leapY = stopY; timer++;
         }
-    }
+    };
 
     var introEnd = function () {
         var introPage = document.querySelector('.introPage');   
@@ -72,13 +72,28 @@ nfest.scrollToNext = (function() { // Code inspired by Rover van Nispen
         } 
     };
 
+    var toCurrentEvents = function() {
+        var currentEvents = document.getElementById('currentEvents'),
+            hasEvents = nfest.helpers.hasClass(currentEvents, 'scrollNow');
+        if (hasEvents) {
+            nfest.scrollToNext.smoothScroll('pastEvents');
+        }
+    }
+
     return {
-        introEnd: introEnd,
         smoothScroll: smoothScroll,
         currentYPosition: currentYPosition,
-        elmYPosition: elmYPosition        
+        elmYPosition: elmYPosition,
+        introEnd: introEnd,
+        toCurrentEvents: toCurrentEvents 
     }
 
 }());
 
-nfest.scrollToNext.introEnd();
+if(window.location.pathname == '/') {
+    nfest.scrollToNext.introEnd();
+}
+
+if(window.location.pathname == '/day1' || window.location.pathname == '/day2' || window.location.pathname == '/program') {
+    nfest.scrollToNext.toCurrentEvents();
+}

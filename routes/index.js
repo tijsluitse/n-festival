@@ -15,7 +15,7 @@ var getAllData = function () {
     // news data
     http.get({
         host: 'n-festival.werk.vanjim.nl',
-        path: '/wp-json/wp/v2/posts'
+        path: '/wp-json/wp/v2/posts?per_page=100'
     }, function (response) {
         // Continuously update stream with data
         var body = '';
@@ -32,7 +32,7 @@ var getAllData = function () {
     // venue data
     http.get({
         host: 'n-festival.werk.vanjim.nl',
-        path: '/wp-json/wp/v2/venues'
+        path: '/wp-json/wp/v2/venues?per_page=100'
     }, function (response) {
         // Continuously update stream with data
         var body = '';
@@ -47,7 +47,7 @@ var getAllData = function () {
     // theme data
     http.get({
         host: 'n-festival.werk.vanjim.nl',
-        path: '/wp-json/wp/v2/categories'
+        path: '/wp-json/wp/v2/categories?per_page=100'
     }, function (response) {
         // Continuously update stream with data
         var body = '';
@@ -62,7 +62,7 @@ var getAllData = function () {
     // tags data 
     http.get({
         host: 'n-festival.werk.vanjim.nl',
-        path: '/wp-json/wp/v2/tags'
+        path: '/wp-json/wp/v2/tags?per_page=100'
     }, function (response) {
         // Continuously update stream with data
         var body = '';
@@ -77,7 +77,7 @@ var getAllData = function () {
     // curator data 
     http.get({
         host: 'n-festival.werk.vanjim.nl',
-        path: '/wp-json/wp/v2/curators'
+        path: '/wp-json/wp/v2/curators?per_page=100'
     }, function (response) {
         // Continuously update stream with data
         var body = '';
