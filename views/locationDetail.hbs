@@ -1,9 +1,13 @@
 <section class="detailPage locationDetail">
 
     {{#venueDetail}}
-    
+    {{#if acf.picture.sizes.large}}
     <div class="detailImg" style="background-image: url('{{acf.picture.sizes.large}}');"></div>
+    {{else}}
+    <div class="detailImg" style="background-image: url('/img/fallbackLocation.png');"></div>
+    {{/if}}
     <div class="detaiImgSpace"></div>
+
     <div class="detailPageInfo">
         <h1>{{title.rendered}}</h1> 
     

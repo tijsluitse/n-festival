@@ -124,6 +124,8 @@ nfest.ux = (function () {
         }
     };
 
+
+
     //    var detailSlide = function () {
     //        // get elements from popupDetail partial
     //        var detail = document.querySelector('.detailContainer'),
@@ -158,7 +160,7 @@ nfest.ux = (function () {
         scrollToNow: scrollToNow,
         backButton: backButton,
         introEnd: introEnd
-        // detailSlide: detailSlide
+                // detailSlide: detailSlide
     }
 
 })();
