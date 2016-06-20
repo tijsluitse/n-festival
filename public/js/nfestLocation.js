@@ -9,7 +9,7 @@ nfest.location = (function () {
         nfest.location.watchLocation();
 
         if (window.location.pathname == '/program' || '/day1' || '/day2' || '/location' || '/myroute') {            
-            nfest.location.eventDistance();
+            nfest.location.eventDistance();            
         }
         if (window.location.pathname == '/detail/:id') {            
             nfest.location.eventDistance();
@@ -138,13 +138,14 @@ nfest.location = (function () {
 
             var userCoordinates = localStorage.getItem('userCoordinates'),
                 userC = userCoordinates.split(','),
-                eventList = document.querySelectorAll('#distanceCalc'),
+                eventList = document.querySelectorAll('.eventObj'),
                 userLat = parseFloat(userC[0]),
                 userLng = parseFloat(userC[1]),
                 allDistances = [];
 
             Array.prototype.forEach.call(eventList, function (event) {
                 var location = event.dataset.location;
+                console.log(location)
                 for (var i = 0; i < data.length; i++) { 
                     var id = data[i].slug,
                         uLat = userLat,
