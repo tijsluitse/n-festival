@@ -737,7 +737,8 @@
 	background-position: center center;
 	
 }
-#homePage .eventImg {
+#homePage .eventImg,
+.eventInside .eventImg {
 	-webkit-filter: grayscale(100%);
 	-moz-filter: grayscale(100%);
 	-o-filter: grayscale(100%);
