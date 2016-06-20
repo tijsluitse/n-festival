@@ -2,6 +2,8 @@
 var nfest = nfest || {};
 'use strict';
 
+/* Location functions and distance to event */
+
 nfest.location = (function () {
 
     var locationLauncher = function () {

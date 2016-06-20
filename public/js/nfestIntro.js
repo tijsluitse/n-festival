@@ -2,6 +2,8 @@
 var nfest = nfest || {};
 'use strict';
 
+/* Introduction functions */
+
 nfest.scrollToNext = (function() { // Code inspired by Rover van Nispen
 
     var currentYPosition = function() {

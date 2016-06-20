@@ -2,6 +2,8 @@
 var nfest = nfest || {};
 'use strict';
 
+/* Google Maps functions */
+
 nfest.map = (function () {
 
     var mapLauncher = function () {

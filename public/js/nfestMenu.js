@@ -2,7 +2,7 @@
 var nfest = nfest || {};
 'use strict';
 
-/* Page for MENU usable on most of the pages */
+/* Page for menu usable on most of the pages */
 
 nfest.menu = (function () {
 

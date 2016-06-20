@@ -1,6 +1,8 @@
 var nfest = nfest || {};
 'use strict';
 
+/* My route page with all functionalities */
+
 nfest.myRoute = (function () {
     var dayOneArr = [],
         dayTwoArr = [];

@@ -2,6 +2,8 @@
 var nfest = nfest || {};
 'use strict';
 
+/* Function for adding events to "my route" */
+
 nfest.addToRoute = (function () {
 
     var allSavedEvents = [];

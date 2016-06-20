@@ -2,6 +2,8 @@
 var nfest = nfest || {};
 'use strict';
 
+/* Page for detailpage */
+
 nfest.detail = (function () {
 
     var detailLauncher = function () {

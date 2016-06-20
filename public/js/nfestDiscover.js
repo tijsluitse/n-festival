@@ -1,5 +1,8 @@
+/* Namespacing nfest to avoid conflicts with other code like libraries */
 var nfest = nfest || {};
 'use strict';
+
+/* Page for the discover function */
 
 nfest.discover = (function () {
     var discoverEvents = document.querySelectorAll('.eventDiscover'),
@@ -23,7 +26,7 @@ nfest.discover = (function () {
     var mouseTouchEvents = function () {
         var int = null;
 
-        //mouse events when used on desktop
+        // Mouse events when used on desktop
         discoverButton.onmousedown = function () {
             int = setInterval(function () {
                 var discoverEvents = document.querySelectorAll('.eventDiscover');
