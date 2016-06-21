@@ -15,6 +15,7 @@
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
+    "autoprefixer": "^6.3.6",
     "es6-promise": "^3.2.1",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",

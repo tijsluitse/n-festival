@@ -116,7 +116,7 @@
     stroke-width: 1;
     stroke: white;
     stroke-dashoffset: 200;
-    -webkit-animation: draw 2s linear alternate forwards;
+    animation: draw 2s linear alternate forwards;
 }
 
 @-webkit-keyframes draw {
@@ -163,7 +163,7 @@
     text-align: center;
 }
 
-@-webkit-keyframes introDate {
+@keyframes introDate {
     0% {
         opacity: 0;
     }
