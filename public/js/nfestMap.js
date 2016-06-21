@@ -6,6 +6,7 @@ var nfest = nfest || {};
 
 nfest.map = (function () {
 
+    /* Launcher function */
     var mapLauncher = function () {
         var mapOptions = {
             mapTypeControlOptions: {

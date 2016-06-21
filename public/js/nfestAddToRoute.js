@@ -6,34 +6,41 @@ var nfest = nfest || {};
 
 nfest.addToRoute = (function () {
 
+    /* Global variables */
     var allSavedEvents = [];
 
+    /* Launcher function */
+    var addToRouteLauncher = function () {
+        nfest.addToRoute.buttonToggle();
+    };
+
+    /* Add to my route button with add and remove from my route */
     var buttonToggle = function () {
         var add = document.querySelectorAll('.buttonAddToRoute');
             counter = document.getElementById('myRouteCounter');
 
         for (var i = add.length - 1; i >= 0; i--) {
             add[i].onclick = function (evt) {
-
                 var myRouteCounter = document.getElementById('myRouteCounter');
-                    myRouteCounter.classList.add('myRouteAdded');
-                    myRouteCounter.addEventListener('animationend', function() {
+                myRouteCounter.classList.add('myRouteAdded');
+                myRouteCounter.addEventListener('animationend', function() {
                     myRouteCounter.classList.remove('myRouteAdded'); 
                 });                
                 
                 evt.currentTarget.classList.toggle('addedToRoute');
                 if (nfest.helpers.hasClass(this, 'addedToRoute')) {
                     counter.classList.remove('hide');
-                    addToMyTimetable(this);                    
+                    addToMyRoute(this);                    
                 } else {                    
-                    removeFromTimetable(this);
+                    removeFromMyRoute(this);
                 }
 
             }
         }
     }
 
-    var addToMyTimetable = function(clickedObject) {
+    /* Add reference to old my route elements in Local Storage array */
+    var addToMyRoute = function(clickedObject) {
         var oldItems = JSON.parse(localStorage.getItem('myRouteEvents')) || [],
             newItem = clickedObject.id;
 
@@ -54,7 +61,8 @@ nfest.addToRoute = (function () {
             counter.innerHTML = myRouteElements.length;
     }
 
-    var removeFromTimetable = function(clickedObject) {
+    /* Search and remove my route element from Local Storage array */
+    var removeFromMyRoute = function(clickedObject) {
         var myRouteElements = JSON.parse(localStorage.getItem('myRouteEvents')),
             counter = document.getElementById('myRouteCounter'), 
             removeItem = clickedObject.id,
@@ -78,12 +86,14 @@ nfest.addToRoute = (function () {
         
     }
     
-    return {        
+    return {       
+        addToRouteLauncher: addToRouteLauncher, 
         buttonToggle: buttonToggle,
-        addToMyTimetable: addToMyTimetable,
-        removeFromTimetable: removeFromTimetable
+        addToMyRoute: addToMyRoute,
+        removeFromMyRoute: removeFromMyRoute
     }
 
 })();
 
-nfest.addToRoute.buttonToggle();
+/* Launcher */
+nfest.addToRoute.addToRouteLauncher();

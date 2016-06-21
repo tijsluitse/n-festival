@@ -6,27 +6,31 @@ var nfest = nfest || {};
 
 nfest.menu = (function () {
 
+    /* Global variables */
+    var nLogo = document.getElementById('nLogo'),
+        toMenu = document.querySelector('.aboutBackButton');
+
+    /* Launcher function */
     var menuLauncher = function () {
         nfest.menu.menuScrollTop();
         nfest.menu.menuFunctions();
     }; 
 
-    var nLogo = document.getElementById('nLogo'),
-        toMenu = document.querySelector('.aboutBackButton');
-
+    /* Remove link from logo for new eventlistener */
     var menuFunctions = function () {
         nLogo.removeAttribute('href');
     };
 
     var menuScrollTop = function () {
 
-        // code by: http://jsfiddle.net/62MTU/15/
+        /* Scroll to top with code by: http://jsfiddle.net/62MTU/15/ */
         function scrollTo(element, to, duration) {                    
             var start = element.scrollTop,
                 change = to - start,
                 currentTime = 0,
                 increment = 40;
-                        
+            
+            /* Scroll animation */            
             var animateScroll = function(){        
                 currentTime += increment;
                 var val = Math.easeInOutQuad(currentTime, start, change, duration);
@@ -35,10 +39,12 @@ nfest.menu = (function () {
                     setTimeout(animateScroll, increment);
                 }
             };
+
+            /* Launch scroll animation */
             animateScroll();
         }
 
-        //t = current time, b = start value, c = change in value, d = duration
+        /* t = current time, b = start value, c = change in value, d = duration */
         Math.easeInOutQuad = function (t, b, c, d) {
             t /= d/2;
             if (t < 1) return c/2*t*t + b;
@@ -46,15 +52,18 @@ nfest.menu = (function () {
             return -c/2 * (t*(t-2) - 1) + b;
         };
     
+        /* Body height and about section */
         var size = document.body.offsetHeight,
             aboutSection = document.querySelector('.aboutArticle'); 
 
+        /* New logo event listener to go to about */
         nLogo.addEventListener('click', function(){           
             aboutSection.classList.add('fadeIn');
             size = size/2;            
             scrollTo(document.body, -size, 1250, 'click');
         });
 
+        /* Back to menu event listener */
         toMenu.addEventListener('click', function() {
             size = 1250;            
             scrollTo(document.body, size, 1250, 'click');
@@ -70,4 +79,5 @@ nfest.menu = (function () {
 
 })();
 
+/* Launcher */
 nfest.menu.menuLauncher();
