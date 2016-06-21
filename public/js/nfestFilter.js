@@ -117,7 +117,6 @@ nfest.filter = (function () {
 
             if (nfest.helpers.hasClass(innovationButton, 'fltrClicked')) {
                 innovationButton.classList.remove('filterDisable');
-
                 musicButton.classList.add('filterDisable');
                 foodButton.classList.add('filterDisable');
             } else {
@@ -133,7 +132,6 @@ nfest.filter = (function () {
 
             if (nfest.helpers.hasClass(musicButton, 'fltrClicked')) {
                 musicButton.classList.remove('filterDisable');
-
                 innovationButton.classList.add('filterDisable');
                 foodButton.classList.add('filterDisable');
             } else {
@@ -150,7 +148,6 @@ nfest.filter = (function () {
 
             if (nfest.helpers.hasClass(foodButton, 'fltrClicked')) {
                 foodButton.classList.remove('filterDisable');
-
                 innovationButton.classList.add('filterDisable');
                 musicButton.classList.add('filterDisable');
             } else {

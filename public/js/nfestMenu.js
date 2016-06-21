@@ -11,8 +11,8 @@ nfest.menu = (function () {
         nfest.menu.menuFunctions();
     }; 
 
-    var nLogo = document.getElementById('nLogo');
-    var toMenu = document.querySelector('.aboutBackButton');
+    var nLogo = document.getElementById('nLogo'),
+        toMenu = document.querySelector('.aboutBackButton');
 
     var menuFunctions = function () {
         nLogo.removeAttribute('href');
