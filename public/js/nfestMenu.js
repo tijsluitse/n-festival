@@ -85,6 +85,16 @@ nfest.menu = (function () {
             }
         }); 
 
+        /* Fallback when user scrolls down without clicking */
+        window.onscroll = function(ev) {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                nLogo.onclick = function () { 
+                    size = size/2;            
+                    scrollTo(document.body, -size, 1250, 'click');
+                } 
+            }
+        };
+
     }
 
     return {
