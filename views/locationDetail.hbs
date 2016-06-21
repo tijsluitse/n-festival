@@ -1,31 +1,29 @@
 <section class="detailPage locationDetail">
 
     {{#venueDetail}}
-    {{#if acf.picture.sizes.large}}
-    <div class="detailImg" style="background-image: url('{{acf.picture.sizes.large}}');"></div>
-    {{else}}
-    <div class="detailImg" style="background-image: url('/img/fallbackLocation.png');"></div>
-    {{/if}}
-    <div class="detaiImgSpace"></div>
+        
+        {{#if acf.picture.sizes.large}}
+        <div class="detailImg" style="background-image: url('{{acf.picture.sizes.large}}');"></div>
+        {{else}}
+        <div class="detailImg" style="background-image: url('/img/fallbackLocation.png');"></div>
+        {{/if}}
+        <div class="detaiImgSpace"></div>
 
-    <div class="detailPageInfo">
-        <h1>{{title.rendered}}</h1> 
-    
-        <div class="detailDate">
-            <svg class="eventLocationIcon eventIcon" width="15" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12.7 17">
-                <path id="XMLID_528_" class="st0" d="M6.4 0C2.8 0 0 2.8 0 6.4S6.4 17 6.4 17s6.4-7.2 6.4-10.7S9.9 0 6.4 0zm0 9c-1.6 0-3-1.3-3-3 0-1.6 1.3-3 3-3 1.6 0 3 1.3 3 3-.1 1.6-1.4 3-3 3z" />
-            </svg>
-            <p>
-                <a href="http://maps.google.com/maps?saddr=Current%20Location&daddr={{acf.address}}">{{acf.address}}</a>
-            </p>
-        </div>
-        
-        <a href="http://maps.google.com/maps?saddr=Current%20Location&daddr={{acf.address}}" class="planRouteButton" target="blank">    Plan route
-        </a>
-        
-        {{/venueDetail}} 
-        
-    </div>
+        <div class="detailPageInfo">
+            <h1>{{title.rendered}}</h1> 
+            <div class="detailDate">
+                <svg class="eventLocationIcon eventIcon" width="15" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12.7 17">
+                    <path id="XMLID_528_" class="st0" d="M6.4 0C2.8 0 0 2.8 0 6.4S6.4 17 6.4 17s6.4-7.2 6.4-10.7S9.9 0 6.4 0zm0 9c-1.6 0-3-1.3-3-3 0-1.6 1.3-3 3-3 1.6 0 3 1.3 3 3-.1 1.6-1.4 3-3 3z" />
+                </svg>
+                <p>
+                    <a href="http://maps.google.com/maps?saddr=Current%20Location&daddr={{acf.address}}">{{acf.address}}</a>
+                </p>
+            </div>
+            <a href="http://maps.google.com/maps?saddr=Current%20Location&daddr={{acf.address}}" class="planRouteButton" target="blank">    Plan route
+            </a>
+        </div>        
+    {{/venueDetail}} 
+
     <header>
         <h3 class="curatorTitle">Evenementen op deze locatie</h3>
     </header>
@@ -34,6 +32,7 @@
 
 </section>
 
+<!-- Scripts -->
 <script src="/js/nfestHelpers.js"></script>
 <script src="/js/nfestUx.js"></script>
 <script src="/js/nfestLocation.js"></script>
