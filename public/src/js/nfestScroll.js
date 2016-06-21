@@ -4,28 +4,28 @@ var nfest = nfest || {};
 
 /* Introduction functions */
 
-nfest.scrollToNext = (function() { 
+nfest.scrollToNext = (function () {
 
     /* Launcher function */
-    var scrollLauncher = function() {
-        if(window.location.pathname == '/') {
+    var scrollLauncher = function () {
+        if (window.location.pathname == '/') {
             /* If its not the first time go to #menu */
-            if (localStorage.getItem('introPage')) {                
+            if (localStorage.getItem('introPage')) {
                 window.location = '/#menu';
-            } 
+            }
             /* If its the first time show introduction animation */
-            if (!localStorage.getItem('introPage')) {                
-                nfest.scrollToNext.introEnd(); 
+            if (!localStorage.getItem('introPage')) {
+                nfest.scrollToNext.introEnd();
             }
         }
         /* Scroll to current events on events pages */
-        if(window.location.pathname == '/day1' || window.location.pathname == '/day2' || window.location.pathname == '/program') {
+        if (window.location.pathname == '/day1' || window.location.pathname == '/day2' || window.location.pathname == '/program') {
             nfest.scrollToNext.toCurrentEvents();
         }
     };
 
     /* Get current Y position in window, code by Rover van Nispen */
-    var currentYPosition = function() {
+    var currentYPosition = function () {
         // Firefox, Chrome, Opera, Safari
         if (self.pageYOffset) return self.pageYOffset;
         // Internet Explorer 6 - standards mode
@@ -37,7 +37,7 @@ nfest.scrollToNext = (function() {
     };
 
     /* Get element Y position in window, code by Rover van Nispen */
-    var elmYPosition = function(eID) {
+    var elmYPosition = function (eID) {
         var elm = document.getElementById(eID),
             y = elm.offsetTop,
             node = elm;
@@ -45,11 +45,11 @@ nfest.scrollToNext = (function() {
         while (node.offsetParent && node.offsetParent != document.body) {
             node = node.offsetParent;
             y += node.offsetTop;
-        } 
+        }
 
         return y;
     };
-    
+
     /* Code in a function to create an isolate scope */
     var smoothScroll = function (eID) {
         var startY = currentYPosition(),
@@ -57,7 +57,8 @@ nfest.scrollToNext = (function() {
             distance = stopY > startY ? stopY - startY : startY - stopY;
 
         if (distance < 100) {
-            scrollTo(0, stopY); return;
+            scrollTo(0, stopY);
+            return;
         }
 
         var speed = Math.round(distance / 100),
@@ -67,38 +68,47 @@ nfest.scrollToNext = (function() {
             timer = 0;
 
         if (stopY > startY) {
-            for ( var i=startY; i<stopY; i+=step ) {
-                setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
-                leapY += step; if (leapY > stopY) leapY = stopY; timer++;
-            } return;
+            for (var i = startY; i < stopY; i += step) {
+                setTimeout("window.scrollTo(0, " + leapY + ")", timer * speed);
+                leapY += step;
+                if (leapY > stopY) leapY = stopY;
+                timer++;
+            }
+            return;
         }
 
-        for ( var i=startY; i>stopY; i-=step ) {
-            setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
-            leapY -= step; if (leapY < stopY) leapY = stopY; timer++;
+        for (var i = startY; i > stopY; i -= step) {
+            setTimeout("window.scrollTo(0, " + leapY + ")", timer * speed);
+            leapY -= step;
+            if (leapY < stopY) leapY = stopY;
+            timer++;
         }
     };
 
     /* If user lands for the first time, show introduction animation */
     var introEnd = function () {
-        var introPage = document.querySelector('.introPage');   
+        var introPage = document.querySelector('.introPage');
 
-        if (!localStorage.getItem('introPage')) {        
+        if (!localStorage.getItem('introPage')) {
             introPage.classList.remove('hide');
-            introPage.addEventListener('animationend', function(){
-                setTimeout(function(){ 
+            introPage.addEventListener('animationend', function () {
+                setTimeout(function () {
                     introPage.classList.add('hide');
                     localStorage.setItem('introPage', 'true');
                 }, 1000);
             });
-            setTimeout(function() {
-                nfest.scrollToNext.smoothScroll('menu');            
-            }, 4000);            
+            setTimeout(function () {
+                introPage.classList.add('hide');
+                localStorage.setItem('introPage', 'true');
+            }, 3500);
+            setTimeout(function () {
+                nfest.scrollToNext.smoothScroll('menu');
+            }, 4000);
         }
     };
 
     /* When the festival is in progress, scroll to current events */
-    var toCurrentEvents = function() {
+    var toCurrentEvents = function () {
         var currentEvents = document.getElementById('currentEvents'),
             hasEvents = nfest.helpers.hasClass(currentEvents, 'scrollNow');
         if (hasEvents) {
@@ -107,12 +117,12 @@ nfest.scrollToNext = (function() {
     }
 
     return {
-        scrollLauncher: scrollLauncher, 
+        scrollLauncher: scrollLauncher,
         smoothScroll: smoothScroll,
         currentYPosition: currentYPosition,
         elmYPosition: elmYPosition,
         introEnd: introEnd,
-        toCurrentEvents: toCurrentEvents 
+        toCurrentEvents: toCurrentEvents
     }
 
 }());
