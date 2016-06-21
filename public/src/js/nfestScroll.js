@@ -97,7 +97,8 @@ nfest.scrollToNext = (function () {
                     localStorage.setItem('introPage', 'true');
                 }, 1000);
             });
-            setTimeout(function () {
+            setTimeout(function () {  
+                introPage.style.opacity = '0';            
                 introPage.classList.add('hide');
                 localStorage.setItem('introPage', 'true');
             }, 3500);
