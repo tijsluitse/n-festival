@@ -150,6 +150,7 @@ nfest.helpers = (function () {
     }
 
     return {
+        helpersLauncher: helpersLauncher,
         hasClass: hasClass,
         onclick: onclick,
         getData: getData,

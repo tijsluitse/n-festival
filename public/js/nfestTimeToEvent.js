@@ -149,6 +149,7 @@ nfest.timeToEvent = (function () {
     }
 
     return {
+        timeToEventLauncher: timeToEventLauncher,
         sortTimeToEvent: sortTimeToEvent,
         pastEvents: pastEvents,
         currentEvents: currentEvents,
