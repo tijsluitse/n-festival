@@ -15,7 +15,7 @@ var getAllData = function () {
     // news data
     http.get({
         host: 'n-festival.werk.vanjim.nl',
-        path: '/wp-json/wp/v2/posts?per_page=100'
+        path: '/wp-json/wp/v2/posts'
     }, function (response) {
         // Continuously update stream with data
         var body = '';
