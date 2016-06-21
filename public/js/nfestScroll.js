@@ -61,7 +61,7 @@ nfest.scrollToNext = (function() { // Code inspired by Rover van Nispen
             introPage.addEventListener('animationend', function(){
                 setTimeout(function(){ 
                     introPage.classList.add('hide');
-                }, 1500);
+                }, 1000);
             });
             setTimeout(function() {
                 nfest.scrollToNext.smoothScroll('menu');

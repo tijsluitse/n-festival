@@ -352,21 +352,22 @@
 }
 
 #aboutSection {
-    height: 90vh;
+    min-height: calc(100vh - 50px);
     background-color: black;
     position: relative;
 }
 
 .aboutArticle {	
-	position: absolute;
-	width: 90%;
-	top: 50%;
+	/*position: absolute;*/
+	/*width: 90%;*/
+	/*top: 50%;
 	left: 50%;	
-	transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);*/
 	font-size: .9em;
 	color: white;
 	text-align: center;
 	line-height: 2.4em;
+	padding: 2.5em 1.5em 5em 1.5em;
 }
 .aboutArticle h1 {
 	margin-bottom: 1em;
@@ -696,6 +697,8 @@
 	    -ms-transform: translate(5px, -18px) rotate(-45deg);
 	        transform: translate(5px, -18px) rotate(-45deg);
 }*/
+
+
 
 
 /*FILTER BAR*/
@@ -1356,13 +1359,16 @@ fieldset h3 {
 /*CURATOR*/
 .curatorBlock {
 	margin: 1em 0;
+	width: 100%;
+	width: 100vw;
+    margin-left: -1em;
 }
 .curatorTitle{
 	background-color: black;
 	text-transform: uppercase;
 	color: white;
 	font-size: .7em;
-	padding: .3em 0 .3em 1em;
+	padding: .3em 0 .3em 1.5em;
 }
 .curator{
     line-height:2em;
@@ -1378,7 +1384,7 @@ fieldset h3 {
 	-webkit-align-items: center;
 	    -ms-flex-align: center;
 	        align-items: center;
-	padding: .5em;
+	padding: .5em 1em;
 	background-color: rgba(0,0,0,.9);
 	color: white;
 	border-bottom: 1px solid #333333;
@@ -1784,28 +1790,31 @@ fieldset h3 {
 
 /* Discover events */
 
-.discoverList {
-    padding-top: 20vh;
-/*
-    width: 80%;
-    margin: 0 auto;
-*/
+#discover {
+	background-color: rgba(0,0,0,0.9);
+	height: 100%;
+	min-height: calc(100vh - 50px);
+	position: relative;
 }
-
-.discoverList .eventDiscover {
-    height: 30vh;
+#discover .discoverEvent {
+	border-bottom: unset;
 }
-
-.discoverList li {
-    height: 30vh;
-}
-
 #discoverBttn {
-    height: 10vh;
-    width: 30vw;
-    margin: auto;
-    display: block;
+    height: 6em;
+    width: 6em;
+    background-color: #eb5250;
+    color: white;
     margin-top: 10vh;
+    position: absolute;
+    bottom: 15vh;
+    text-transform: uppercase;
+	font-size: 2em;
+	border: unset;
+	border-radius: 10em;
+	left: 50%;
+	right: -50%;
+	transform: translateX( -50%);
+
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
