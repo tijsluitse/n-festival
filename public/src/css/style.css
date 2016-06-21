@@ -266,7 +266,7 @@
 /*MAP*/
 
 #locationMap {
-    background-image: url('../img/amsterdamNoord.png');
+    background-image: url('../../img/amsterdamNoord.png');
     background-size: cover;
     background-position: center;
     width: 100%;

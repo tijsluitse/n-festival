@@ -3,6 +3,7 @@ var uglify = require('gulp-uglify');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var Promise = require('es6-promise').Promise;
+var cssnano = require('gulp-cssnano');
 
 gulp.task('js', function () {
     return gulp.src('public/src/js/*.js')
@@ -18,15 +19,9 @@ gulp.task('lib', function () {
 
 gulp.task('css', function () {
     return gulp.src('public/src/css/*.css')
-        .pipe(postcss([ autoprefixer({ browsers: ['> 0%'] }) ]))
+        .pipe(postcss([autoprefixer({
+            browsers: ['> 0%']
+        })]))
+        .pipe(cssnano())
         .pipe(gulp.dest('public/dist/css'));
 });
-
-//gulp.task('css', function () {
-//    return gulp.src('public/src/css/style.css')
-//        .pipe(autoprefixer({
-//            browsers: ['last 5 versions'],
-//            cascade: false
-//        }))
-//        .pipe(gulp.dest('public/dist/css'));
-//});
