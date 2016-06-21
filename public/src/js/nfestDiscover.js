@@ -5,14 +5,18 @@ var nfest = nfest || {};
 /* Page for the discover function */
 
 nfest.discover = (function () {
+
+    /* Global variables */
     var discoverEvents = document.querySelectorAll('.eventDiscover'),
         discoverButton = document.getElementById('discoverBttn');
 
+    /* Launcher function */
     var discoverLauncher = function () {
         nfest.discover.showRandomEvent();
         nfest.discover.mouseTouchEvents();
     }
 
+    /* Hide all elements and then show random element */
     var showRandomEvent = function () {
         Array.prototype.forEach.call(discoverEvents, function (event) {
             event.classList.add('hide');
@@ -23,10 +27,11 @@ nfest.discover = (function () {
         item.classList.remove('hide');
     }
 
+    /* Interval function for showing single random event when button is released */
     var mouseTouchEvents = function () {
         var int = null;
 
-        // Mouse events when used on desktop
+        /* Mouse events when used on desktop */
         discoverButton.onmousedown = function () {
             int = setInterval(function () {
                 var discoverEvents = document.querySelectorAll('.eventDiscover');
@@ -42,17 +47,19 @@ nfest.discover = (function () {
             }, 50);
         }
 
+        /* Clear interval on mouse up/leave */
         discoverButton.onmouseup = function () {
             clearInterval(int);
             int = null;
         };
 
+        /* Clear interval on mouse up/leave */
         discoverButton.onmouseleave = function () {
             clearInterval(int);
             int = null;
         };
 
-        // touch events when used on phone
+        /* Touch events when used on phone */
         discoverButton.ontouchstart = function () {
             int = setInterval(function () {
                 var discoverEvents = document.querySelectorAll('.eventDiscover');
@@ -68,6 +75,7 @@ nfest.discover = (function () {
             }, 50);
         }
 
+        /* Clear interval on touch end */
         discoverButton.ontouchend = function () {
             clearInterval(int);
             int = null;
@@ -83,4 +91,5 @@ nfest.discover = (function () {
 
 })();
 
+/* Launcher */
 nfest.discover.discoverLauncher();

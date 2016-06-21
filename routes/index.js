@@ -11,13 +11,13 @@ var apiData,
     firstItems;
 
 var getAllData = function () {
-    // data requests
-    // news data
+    /* Data requests */
+    /* News data */
     http.get({
         host: 'n-festival.werk.vanjim.nl',
         path: '/wp-json/wp/v2/posts'
     }, function (response) {
-        // Continuously update stream with data
+        /* Continuously update stream with data */
         var body = '';
         response.on('data', function (d) {
             body += d;
@@ -29,12 +29,12 @@ var getAllData = function () {
         });
     });
 
-    // venue data
+    /* Venue data */
     http.get({
         host: 'n-festival.werk.vanjim.nl',
         path: '/wp-json/wp/v2/venues?per_page=100'
     }, function (response) {
-        // Continuously update stream with data
+        /* Continuously update stream with data */
         var body = '';
         response.on('data', function (d) {
             body += d;
@@ -44,12 +44,12 @@ var getAllData = function () {
         });
     });
 
-    // theme data
+    /* Theme data */
     http.get({
         host: 'n-festival.werk.vanjim.nl',
         path: '/wp-json/wp/v2/categories?per_page=100'
     }, function (response) {
-        // Continuously update stream with data
+        /* Continuously update stream with data */
         var body = '';
         response.on('data', function (d) {
             body += d;
@@ -59,12 +59,12 @@ var getAllData = function () {
         });
     });
 
-    // tags data 
+    /* Tags data  */
     http.get({
         host: 'n-festival.werk.vanjim.nl',
         path: '/wp-json/wp/v2/tags?per_page=100'
     }, function (response) {
-        // Continuously update stream with data
+        /* Continuously update stream with data */
         var body = '';
         response.on('data', function (d) {
             body += d;
@@ -74,12 +74,12 @@ var getAllData = function () {
         });
     });
 
-    // curator data 
+    /* Curator data  */
     http.get({
         host: 'n-festival.werk.vanjim.nl',
         path: '/wp-json/wp/v2/curators?per_page=100'
     }, function (response) {
-        // Continuously update stream with data
+        /* Continuously update stream with data */
         var body = '';
         response.on('data', function (d) {
             body += d;
@@ -89,12 +89,12 @@ var getAllData = function () {
         });
     });
 
-    // event data
+    /* Event data */
     http.get({
         host: 'n-festival.werk.vanjim.nl',
         path: '/wp-json/wp/v2/events?per_page=100'
     }, function (response) {
-        // Continuously update stream with data
+        /* Continuously update stream with data */
         var body = '';
         response.on('data', function (d) {
             body += d;
@@ -103,7 +103,7 @@ var getAllData = function () {
             apiData = JSON.parse(body);
 
             apiData.forEach(function (event) {
-                // edit start / end times
+                /* Edit start/End times */
                 var startArray = event.acf.start_time.split(' '),
                     endArray = event.acf.end_time.split(' ');
 
@@ -137,7 +137,7 @@ var getAllData = function () {
                 event[convertedDateStart] = dateTimeS;
                 event[convertedDateEnd] = dayTimeE;
 
-                // add address
+                /* Add address */
                 var venueName = event.acf.venue.post_name;
 
                 for (var i = 0; i < venueData.length; i++) {
@@ -150,7 +150,7 @@ var getAllData = function () {
                     }
                 }
 
-                // add category names to events
+                /* Add category names to events */
                 event.categories.forEach(function (category) {
                     for (var i = 0; i < categories.length; i++) {
                         var id = categories[i].id,
@@ -164,7 +164,7 @@ var getAllData = function () {
                 });
 
 
-                // add curator photo to data
+                /* Add curator photo to data */
                 if (event.acf.curator) {
                     event.acf.curator.forEach(function (curator) {
                         var curId = curator.ID,
@@ -186,7 +186,7 @@ var getAllData = function () {
 
             });
 
-            // sort data on starttime
+            /* Sort data on starttime */
             apiData.sort(function (a, b) {
                 return new Date(a.startDate_converted).getTime() - new Date(b.startDate_converted).getTime()
             });
@@ -195,15 +195,15 @@ var getAllData = function () {
 
 }
 
-// interval bij real gebruik (voor demo snelle interval zodat je snel je events kan zien)
+/* Interval for "realtime" use of application (retrieves data very quick) */
 var interval = 1000 * 60 * 10;
 
 getAllData();
 
-// set interval zodat data steeds wordt ingeladen en je events kan toevoegen.
+/* Interval for retrieving new data from API */
 setInterval(getAllData, 5000);
 
-// helper function to match data with day,name,location etc.
+/* Helper function to match data with day,name,location etc. */
 function findObject(data, arrayOfProps, objectToLookFor) {
     var obj = data.obj;
 
@@ -212,7 +212,7 @@ function findObject(data, arrayOfProps, objectToLookFor) {
     obj.forEach(function (item) {
         var x = item;
 
-        // get the right item from json data (with some help from Casper)
+        /* Get the right item from json data (with some help from Casper) */
         arrayOfProps.forEach(function (prob) {
             x = x[prob];
         });
@@ -225,7 +225,7 @@ function findObject(data, arrayOfProps, objectToLookFor) {
     return eventArray;
 };
 
-// Get home page
+/* Get home page */
 router.get('/', function (req, res, next) {
     res.render('menu', {
         firstItems: firstItems
@@ -250,7 +250,7 @@ router.get('/program', function (req, res, next) {
     var now = new Date(),
         day1 = new Date('October 8, 2016 23:59:59');
 
-    // show events day 1 if it's before day one, otherwise show events day 2
+    /* Show events day 1 if it's before day one, otherwise show events day 2 */
     if (now < day1) {
         var array = findObject(data, ['acf', 'date'], '08-10-2016');
 
@@ -263,7 +263,7 @@ router.get('/program', function (req, res, next) {
     }
 });
 
-// get day 1
+/* Get day 1 */
 router.get('/day1', function (req, res, next) {
     var data = {
         obj: apiData
@@ -277,7 +277,7 @@ router.get('/day1', function (req, res, next) {
 
 });
 
-// get day 2
+/* Get day 2 */
 router.get('/day2', function (req, res, next) {
     var data = {
         obj: apiData
@@ -290,13 +290,13 @@ router.get('/day2', function (req, res, next) {
     });
 });
 
-// get timetable page
+/* Get timetable page */
 router.get('/myroute', function (req, res, next) {
     var data = {
         obj: apiData
     };
 
-    // sort by name
+    /* Sort by name */
     var dataByName = data.obj.slice(0);
     dataByName.sort(function (a, b) {
         var x = a.slug.toLowerCase();
@@ -316,7 +316,7 @@ router.get('/detail/:name', function (req, res, next) {
 
     var item = findObject(data, ['slug'], req.params.name);
 
-    // sort by name
+    /* Sort by name */
     var dataByName = data.obj.slice(0);
     dataByName.sort(function (a, b) {
         var x = a.slug.toLowerCase();
@@ -430,6 +430,5 @@ router.get('/curator/:name', function (req, res, next) {
 router.get('/about', function (req, res, next) {
     res.render('about');
 });
-
 
 module.exports = router;

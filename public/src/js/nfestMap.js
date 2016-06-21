@@ -6,38 +6,44 @@ var nfest = nfest || {};
 
 nfest.map = (function () {
 
+    /* Global variables */
+    var mapOptions = {
+        mapTypeControlOptions: {
+            mapTypeIds: ['Styled'],
+        },
+        zoom: 12,
+        scrollwheel: false,
+        navigationControl: false,
+        mapTypeControl: false,
+        disableDefaultUI: true,
+        scaleControl: false,
+        mapTypeId: 'Styled'
+    };
+
+    var map = new google.maps.Map(document.getElementById("locationMap"), mapOptions);
+
+    /* Launcher function */
     var mapLauncher = function () {
-        var mapOptions = {
-            mapTypeControlOptions: {
-                mapTypeIds: ['Styled'],
-            },
-            zoom: 12,
-            scrollwheel: false,
-            navigationControl: false,
-            mapTypeControl: false,
-            disableDefaultUI: true,
-            scaleControl: false,
-            mapTypeId: 'Styled'
-        };
-
-        var map = new google.maps.Map(document.getElementById("locationMap"), mapOptions);
-
         nfest.map.jsActivate(map);
         nfest.map.mapStyle(map);
         nfest.map.watchLocation(map);
 
         if (window.location.pathname == '/myroute') {
+            /* Show only locations that are in "My Route" */
             nfest.map.venueMarkersMyRoute(map);
         } else {
+            /* Show all location markers */
             nfest.map.venueMarkersAllLocations(map);
         }
     }
 
+    /* Show map when user has Javascript */
     var jsActivate = function (map) {
         var locationMap = document.getElementById('locationMap');
         locationMap.classList.remove('hide');
     }
 
+    /* Custom made map styles */
     var mapStyle = function (map) {
         var styles = [{
             "featureType": "water",
@@ -162,21 +168,22 @@ nfest.map = (function () {
         map.mapTypes.set('Styled', styledMapType);
     }
 
+    /* Update marker when user changes position */
     var updatePosition = function (marker) {
 
         function success(position) {
-
-            // Get lat, lng from position
+            /* Get lat, lng from position */
             var lat = position.coords.latitude,
                 lng = position.coords.longitude,
                 coords = [lat, lng];
 
-            // Update the marker with new lat and lng        
+            /* Update the marker with new lat and lng */
             marker.setPosition(new google.maps.LatLng(lat, lng));
         };
 
         function error() {
-            var latLng = new google.maps.LatLng(52.391286, 4.917583); // set map on Amsterdam Noord
+            /* Error handling. Set map to Amsterdam Noord */
+            var latLng = new google.maps.LatLng(52.391286, 4.917583); 
             map.panTo(latLng);
         };
 
@@ -187,6 +194,7 @@ nfest.map = (function () {
         navigator.geolocation.watchPosition(success, error, options);
     }
 
+    /* Watch location of user when user changes location */
     var watchLocation = function (map) {
 
         if (navigator.geolocation) {
@@ -256,7 +264,8 @@ nfest.map = (function () {
             };
 
             function error() {
-                var latLng = new google.maps.LatLng(52.391286, 4.917583); // set map on Amsterdam Noord
+                /* Error handling. Set map to Amsterdam Noord */
+                var latLng = new google.maps.LatLng(52.391286, 4.917583); 
                 map.panTo(latLng);
             };
 
@@ -267,10 +276,13 @@ nfest.map = (function () {
             navigator.geolocation.getCurrentPosition(success, error, options);
 
         } else {
-            // no geolocation
+            /* Error handling. Set map to Amsterdam Noord */
+            var latLng = new google.maps.LatLng(52.391286, 4.917583); 
+            map.panTo(latLng);
         }
     }
 
+    /* Shows all locations that are in "My Route" elements */
     var venueMarkersMyRoute = function (map) {
 
         var all = document.querySelectorAll('.addedToRoute');
@@ -281,6 +293,7 @@ nfest.map = (function () {
             });
         });
 
+        /* Get data for all venues */
         nfest.helpers.getVenueLocations(function (mapLocations, data) {
             var myRouteElements = JSON.parse(localStorage.getItem('myRouteEvents')),
                 infoText = document.getElementById("infoText"),
@@ -345,6 +358,7 @@ nfest.map = (function () {
         });
     }
 
+    /* Show all venue locations on map */
     var venueMarkersAllLocations = function (map) {
         nfest.helpers.getVenueLocations(function (mapLocations, data) {
             var locationMarkers = mapLocations,
@@ -399,4 +413,5 @@ nfest.map = (function () {
 
 })();
 
+/* Launcher */
 nfest.map.mapLauncher();

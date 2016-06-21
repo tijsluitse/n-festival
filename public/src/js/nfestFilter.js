@@ -6,23 +6,25 @@ var nfest = nfest || {};
 
 nfest.filter = (function () {
 
+    /* Launcher function */
     var filterLauncher = function () {
         nfest.filter.filterDayButtons();
         nfest.filter.filterThemeButtons();
         nfest.filter.filterTheme();
     }
 
+    /* Filter on theme function */
     var filterTheme = function () {
         var innovationButton = document.getElementById('innovationFilter'),
             musicButton = document.getElementById('musicFilter'),
             foodButton = document.getElementById('foodFilter'),
             eventList = document.querySelectorAll('.eventObj');
 
+        /* Show all Innovation elements */
         nfest.helpers.onclick(innovationButton, function () {
             var themeSelected = 'Innovation';
 
             for (i = 0; i < eventList.length; i++) {
-
                 if (nfest.helpers.hasClass(innovationButton, 'fltrClicked')) {
                     var theme = eventList[i].dataset.theme;
 
@@ -37,11 +39,13 @@ nfest.filter = (function () {
                 }
             };
 
+            /* Divide elements in past, current and coming */
             nfest.timeToEvent.pastEvents();
             nfest.timeToEvent.currentEvents();
             nfest.timeToEvent.comingEvents();
         });
 
+        /* Show all Music elements */
         nfest.helpers.onclick(musicButton, function () {
             var themeSelected = 'Music';
 
@@ -62,11 +66,13 @@ nfest.filter = (function () {
 
             };
 
+            /* Divide elements in past, current and coming */
             nfest.timeToEvent.pastEvents();
             nfest.timeToEvent.currentEvents();
             nfest.timeToEvent.comingEvents();
         });
 
+        /* Show all Food elements */
         nfest.helpers.onclick(foodButton, function () {
             var themeSelected = 'Food';
 
@@ -86,6 +92,7 @@ nfest.filter = (function () {
                 }
             };
 
+            /* Divide elements in past, current and coming */
             nfest.timeToEvent.pastEvents();
             nfest.timeToEvent.currentEvents();
             nfest.timeToEvent.comingEvents();
@@ -94,6 +101,7 @@ nfest.filter = (function () {
 
     }
 
+    /* Filter elements in days */
     var filterDayButtons = function () {
         if (window.location.pathname == '/day1') {
             document.getElementById('dayTwoFilter').classList.remove('filterActive');
@@ -104,12 +112,13 @@ nfest.filter = (function () {
         }
     };
 
+    /* Theme filter */
     var filterThemeButtons = function () {
         var innovationButton = document.getElementById('innovationFilter'),
             musicButton = document.getElementById('musicFilter'),
             foodButton = document.getElementById('foodFilter');
 
-
+        /* Innovation filter selection */
         innovationButton.onclick = function () {
             innovationButton.classList.toggle('fltrClicked');
             musicButton.classList.remove('fltrClicked');
@@ -125,6 +134,7 @@ nfest.filter = (function () {
             }
         }
 
+        /* Music filter selection */
         musicButton.onclick = function () {
             musicButton.classList.toggle('fltrClicked');
             innovationButton.classList.remove('fltrClicked');
@@ -138,9 +148,9 @@ nfest.filter = (function () {
                 innovationButton.classList.remove('filterDisable');
                 foodButton.classList.remove('filterDisable');
             }
-
         }
 
+        /* Food filter selection */
         foodButton.onclick = function () {
             foodButton.classList.toggle('fltrClicked');
             innovationButton.classList.remove('fltrClicked');
@@ -166,4 +176,5 @@ nfest.filter = (function () {
 
 })();
 
+/* Launcher */
 nfest.filter.filterLauncher();

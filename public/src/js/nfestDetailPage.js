@@ -6,10 +6,12 @@ var nfest = nfest || {};
 
 nfest.detail = (function () {
 
+    /* Launcher function */
     var detailLauncher = function () {
         nfest.detail.recommendations();
     }
 
+    /* Add 3 recommendations to detail page */
     var recommendations = function () {
 
         var eventList = document.querySelectorAll('.recObj'),
@@ -21,8 +23,6 @@ nfest.detail = (function () {
             recNum = 3,
             allItems = [];
 
-//        console.log(currentTheme);
-
         for (var i = 0; i < eventArray.length; i++) {
             allItems.push(eventArray[i].id);
         }
@@ -31,6 +31,7 @@ nfest.detail = (function () {
         
         allItems.splice(removeItem, 1);
 
+        /* Generate 3 random numbers, code by http://tinyurl.com/ztnfdje */
         var generate = function () { 
             var numbers = [];   
             
@@ -47,16 +48,15 @@ nfest.detail = (function () {
                 if(!found)numbers[numbers.length] = randomnumber;            
             }
 
-            for (var i = 0; i < numbers.length; i++) {
-                console.log(allItems[numbers[i]])
+            for (var i = 0; i < numbers.length; i++) {                
                 var str = '#' + allItems[numbers[i]];
                 document.querySelector(str).classList.remove('hide');
             }  
 
         }   
         
-        reload.onclick = function() {
-            
+        /* Reload recommendations on click function */
+        reload.onclick = function() {            
             var eventList = document.querySelectorAll('.recObj'),
                 reloadButton = document.querySelector('.reloadIcon');
             
@@ -83,4 +83,5 @@ nfest.detail = (function () {
 
 })();
 
+/* Launcher */
 nfest.detail.detailLauncher();

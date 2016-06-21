@@ -1,22 +1,26 @@
-var gulp = require('gulp');
-var uglify = require('gulp-uglify');
-var postcss = require('gulp-postcss');
-var autoprefixer = require('autoprefixer');
-var Promise = require('es6-promise').Promise;
-var cssnano = require('gulp-cssnano');
+/* Require packages */
+var gulp = require('gulp'),
+    uglify = require('gulp-uglify'),
+    postcss = require('gulp-postcss'),
+    autoprefixer = require('autoprefixer'),
+    Promise = require('es6-promise').Promise,
+    cssnano = require('gulp-cssnano');
 
+/* Uglify scripts */
 gulp.task('js', function () {
     return gulp.src('public/src/js/*.js')
         .pipe(uglify())
         .pipe(gulp.dest('public/dist/js'));
 });
 
+/* Uglify Javascript Libraries */
 gulp.task('lib', function () {
     return gulp.src('public/src/lib/*.js')
         .pipe(uglify())
         .pipe(gulp.dest('public/dist/lib'));
 });
 
+/* Prefix CSS */
 gulp.task('css', function () {
     return gulp.src('public/src/css/*.css')
         .pipe(postcss([autoprefixer({

@@ -6,11 +6,13 @@ var nfest = nfest || {};
 
 nfest.ux = (function () {
 
+    /* Launcher function */
     var uxLauncher = function () {
         nfest.ux.backButton();
         nfest.ux.resetJs();
     };
 
+    /* If user has Javascript reset HTML elements */
     var resetJs = function () {
         var myRouteButton = document.querySelector('.topHeader .myRoute'),
             allDistances = document.querySelectorAll('.eventDistance'),
@@ -34,6 +36,7 @@ nfest.ux = (function () {
 
     };
 
+    /* Dynamic back button for whole application duration */
     var backButton = function () {
         var eventUrl = window.location.pathname,
             eventUrl = eventUrl.split('/'),
@@ -61,4 +64,5 @@ nfest.ux = (function () {
 
 })();
 
+/* Launcher */
 nfest.ux.uxLauncher();

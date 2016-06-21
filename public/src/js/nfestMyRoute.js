@@ -1,9 +1,12 @@
+/* Namespacing nfest to avoid conflicts with other code like libraries */
 var nfest = nfest || {};
 'use strict';
 
 /* My route page with all functionalities */
 
 nfest.myRoute = (function () {
+
+    /* Global Variables */
     var dayOneArr = [],
         dayTwoArr = [];
 
@@ -15,20 +18,28 @@ nfest.myRoute = (function () {
 
     body.classList.add('myTimetable');
 
+    /* Launcher function */
+    var myRoutelauncher = function () {
+        nfest.myRoute.checkRouteElements();
+        nfest.myRoute.whichDay();
+    };
+
+    /* Hide all elements and show elements from my route array */
     var showElements = function () {
         myTimetableList.classList.remove('hide');
 
         for (a = 0; a < allElements.length; a++) {
             allElements[a].classList.add('hide');
         }
+
         for (i = 0; i < myRouteElements.length; i++) {
             document.getElementById(myRouteElements[i]).classList.remove('hide');
             document.getElementById(myRouteElements[i]).classList.add('myRouteEvents');
         }
     }
 
+    /* Check if there are items in my route (local storage) array */
     var checkRouteElements = function () {
-        // Check if there are items in My Route LS array
         if (myRouteElements == null) {
             infoText.classList.remove('hide');
             for (a = 0; a < allElements.length; a++) {
@@ -48,11 +59,11 @@ nfest.myRoute = (function () {
         }
     }
 
+    /* Divide my route elements into day 1 and day 2 */
     var whichDay = function () {
-        var itemList = document.querySelectorAll('.eventObj:not(.hide)');
-        var timeTableList = document.getElementById('myTimetableList');
+        var itemList = document.querySelectorAll('.eventObj:not(.hide)'),
+            timeTableList = document.getElementById('myTimetableList');
         
-
         Array.prototype.forEach.call(itemList, function (event) {
             var onDay = event.dataset.start,
                 day = moment(onDay).format('MM/DD/YY'),
@@ -76,9 +87,8 @@ nfest.myRoute = (function () {
 
     }
 
+    /* Information bar for all items in day 1 */
     var dayOne = function () {
-         console.log(dayOneArr);
-        
         var listDayOne = document.getElementById('eventsDay1'),
             barTime = listDayOne.querySelector('.timeToEvent');
 
@@ -86,15 +96,13 @@ nfest.myRoute = (function () {
 
         for (i = 0; i < dayOneArr.length; i++) {
             listDayOne.appendChild(dayOneArr[i]);
-
             barTime.classList.remove('hide');
             barTime.innerHTML = 'DAY 1';
         }
     }
 
-    var dayTwo = function () {
-        console.log(dayTwoArr);
-        
+    /* Information bar for all items in day 2 */
+    var dayTwo = function () {        
         var listDayTwo = document.getElementById('eventsDay2'),
             barTime = listDayTwo.querySelector('.timeToEvent');
 
@@ -102,7 +110,6 @@ nfest.myRoute = (function () {
 
         for (i = 0; i < dayTwoArr.length; i++) {
             listDayTwo.appendChild(dayTwoArr[i]);
-
             barTime.classList.remove('hide');
             barTime.innerHTML = 'DAY 2';
         }
@@ -110,6 +117,7 @@ nfest.myRoute = (function () {
     }
 
     return {
+        myRoutelauncher: myRoutelauncher,
         showElements: showElements,
         checkRouteElements: checkRouteElements,
         whichDay: whichDay,
@@ -119,5 +127,5 @@ nfest.myRoute = (function () {
 
 })();
 
-nfest.myRoute.checkRouteElements();
-nfest.myRoute.whichDay();
+/* Launcher */
+nfest.myRoute.myRoutelauncher();
