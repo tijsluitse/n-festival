@@ -962,11 +962,11 @@
     position: relative;
 }
 
-.eventLocation {
-    display: -webkit-box;
+.eventLocation {  
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    display: -webkit-box;
     -webkit-box-pack: start;
     -webkit-justify-content: flex-start;
     -ms-flex-pack: start;
