@@ -354,21 +354,22 @@
 }
 
 #aboutSection {
-    height: 90vh;
+    min-height: calc(100vh - 50px);
     background-color: black;
     position: relative;
 }
 
 .aboutArticle {	
-	position: absolute;
-	width: 90%;
-	top: 50%;
+	/*position: absolute;*/
+	/*width: 90%;*/
+	/*top: 50%;
 	left: 50%;	
-	transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);*/
 	font-size: .9em;
 	color: white;
 	text-align: center;
 	line-height: 2.4em;
+	padding: 2.5em 1.5em 5em 1.5em;
 }
 .aboutArticle h1 {
 	margin-bottom: 1em;
@@ -1360,13 +1361,16 @@ fieldset h3 {
 /*CURATOR*/
 .curatorBlock {
 	margin: 1em 0;
+	width: 100%;
+	width: 100vw;
+    margin-left: -1em;
 }
 .curatorTitle{
 	background-color: black;
 	text-transform: uppercase;
 	color: white;
 	font-size: .7em;
-	padding: .3em 0 .3em 1em;
+	padding: .3em 0 .3em 1.5em;
 }
 .curator{
     line-height:2em;
@@ -1382,7 +1386,7 @@ fieldset h3 {
 	-webkit-align-items: center;
 	    -ms-flex-align: center;
 	        align-items: center;
-	padding: .5em;
+	padding: .5em 1em;
 	background-color: rgba(0,0,0,.9);
 	color: white;
 	border-bottom: 1px solid #333333;
