@@ -56,19 +56,19 @@ nfest.scrollToNext = (function() { // Code inspired by Rover van Nispen
         var introPage = document.querySelector('.introPage');   
 
         if (!localStorage.getItem('introPage')) {
+            // console.log("hoi");
             introPage.classList.remove('hide');
             introPage.addEventListener('animationend', function(){
                 setTimeout(function(){ 
                     introPage.classList.add('hide');
                 }, 1500);
-                
             });
             setTimeout(function() {
                 nfest.scrollToNext.smoothScroll('menu');
             }, 4000);
             localStorage.setItem('introPage', 'true');
         } else {
-            introPage.classList.add('hide');
+            // introPage.classList.add('hide');
         } 
     };
 
