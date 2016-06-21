@@ -80,7 +80,7 @@ nfest.scrollToNext = (function() {
             introPage.addEventListener('animationend', function(){
                 setTimeout(function(){ 
                     introPage.classList.add('hide');
-                }, 1500);
+                }, 1000);
             });
             setTimeout(function() {
                 nfest.scrollToNext.smoothScroll('menu');

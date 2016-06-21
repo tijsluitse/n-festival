@@ -28,7 +28,7 @@ nfest.map = (function () {
         nfest.map.watchLocation(map);
 
         if (window.location.pathname == '/myroute') {
-            nfest.map.venueMarkersMyRoute(map);            
+            nfest.map.venueMarkersMyRoute(map);
         } else {
             nfest.map.venueMarkersAllLocations(map);
         }
@@ -163,68 +163,6 @@ nfest.map = (function () {
         map.mapTypes.set('Styled', styledMapType);
     }
 
-    // var getLocation = function (map) {
-
-    //     if (navigator.geolocation) { // check if geolocation is supported
-
-    //         nfest.helpers.storageCheck(function (hasStorage) { // check is LS is supported
-
-    //             if (hasStorage) { // LS supported
-
-    //                 if (localStorage.getItem("userCoordinates") === null) { // LS userCoordinates are empty
-
-    //                     navigator.geolocation.getCurrentPosition(success, error);                              
-
-    //                     function success(position) {
-    //                         var userLatitude = position.coords.latitude,
-    //                             userLongitude = position.coords.longitude,
-    //                             userCoordinates = [userLatitude, userLongitude];                
-
-    //                         localStorage.setItem('userCoordinates', userCoordinates);
-
-    //                         var userCoordinates = localStorage.getItem('userCoordinates'),
-    //                             userC = userCoordinates.split(","),                            
-    //                             userLat = parseFloat(userC[0]),
-    //                             userLng = parseFloat(userC[1]);                           
-    //                     };
-
-    //                     function error() {
-    //                         console.log('Unable to get your position.');                            
-    //                         var latLng = new google.maps.LatLng(52.391286, 4.917583); // set map on Amsterdam Noord            
-    //                         map.panTo(latLng);
-    //                     };     
-
-    //                 } else { // get userCoordinates from LS                    
-    //                     var userCoordinates = localStorage.getItem('userCoordinates'),
-    //                         userC = userCoordinates.split(","),                            
-    //                         userLat = parseFloat(userC[0]),
-    //                         userLng = parseFloat(userC[1]),
-    //                         userPosition = new google.maps.LatLng(userLat, userLng);                                                                                
-    //                 }
-
-    //             } else { // no LS support
-    //                 navigator.geolocation.getCurrentPosition(success, error);                        
-
-    //                 function success(position) {
-    //                     var userLatitude = position.coords.latitude,
-    //                         userLongitude = position.coords.longitude,
-    //                         userPosition = new google.maps.LatLng(userLat, userLng);
-    //                 };
-
-    //                 function error() {
-    //                     console.log('Unable to get your position.');                        
-    //                     var latLng = new google.maps.LatLng(52.391286, 4.917583); // set map on Amsterdam Noord                    
-    //                     map.panTo(latLng);
-    //                 };
-    //             }
-    //         });
-    //     } else { // no geolocation support
-    //         console.log('Geolocation is turned off or not supported, we cant calculate your location.');            
-    //         var latLng = new google.maps.LatLng(52.391286, 4.917583); // set map on Amsterdam Noord
-    //         map.panTo(latLng);
-    //     }
-    // }
-
     var updatePosition = function (marker) {
 
         function success(position) {
@@ -239,7 +177,6 @@ nfest.map = (function () {
         };
 
         function error() {
-            console.log('Unable to retrieve your location.');
             var latLng = new google.maps.LatLng(52.391286, 4.917583); // set map on Amsterdam Noord
             map.panTo(latLng);
         };
@@ -256,58 +193,70 @@ nfest.map = (function () {
         if (navigator.geolocation) {
 
             function success(position) {
+                nfest.helpers.storageCheck(function (hasStorage) { // check is LS is supported
+                    var userLat,
+                        userLng;
 
-                var userLatitude = position.coords.latitude,
-                    userLongitude = position.coords.longitude,
-                    userCoordinates = [userLatitude, userLongitude];
+                    var userLatitude = position.coords.latitude,
+                        userLongitude = position.coords.longitude,
+                        userCoordinates = [userLatitude, userLongitude];
 
-                localStorage.setItem('userCoordinates', userCoordinates);
 
-                var userCoordinates = localStorage.getItem('userCoordinates'),
-                    userC = userCoordinates.split(","),
-                    userLat = parseFloat(userC[0]),
-                    userLng = parseFloat(userC[1]);
+                    if (hasStorage) {
+                        localStorage.setItem('userCoordinates', userCoordinates);
 
-                var image = {
-                    url: '/img/marker.svg',
-                    size: new google.maps.Size(36, 57),
-                    scaledSize: new google.maps.Size(36, 57),
-                    origin: new google.maps.Point(0, 0)
-                };
+                        var userCoordinates = localStorage.getItem('userCoordinates'),
+                            userC = userCoordinates.split(",");
 
-                var marker = new google.maps.Marker({
-                    map: map,
-                    icon: image,
-                    optimized: false,
-                    title: 'Eigen locatie marker'
-                });
+                        userLat = parseFloat(userC[0]);
+                        userLng = parseFloat(userC[1]);
+                    } else {
+                        userLat = userLatitude;
+                        userLng = userLongitude;
+                    }
 
-                var contentString =
-                    '<div id="content">' +
+                    var image = {
+                        url: '/img/marker.svg',
+                        size: new google.maps.Size(36, 57),
+                        scaledSize: new google.maps.Size(36, 57),
+                        origin: new google.maps.Point(0, 0)
+                    };
+
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        icon: image,
+                        optimized: false,
+                        title: 'Eigen locatie marker'
+                    });
+
+                    var contentString =
+                        '<div id="content">' +
                         '<p>' +
-                            'Uw eigen locatie' +
+                        'Uw eigen locatie' +
                         '</p>' +
-                    '</div>';
+                        '</div>';
 
-                var infowindow = new google.maps.InfoWindow({
-                    content: contentString
-                });
+                    var infowindow = new google.maps.InfoWindow({
+                        content: contentString
+                    });
 
-                google.maps.event.addListener(marker, 'click', function () {
-                    infowindow.setContent(contentString);
-                    infowindow.open(map, marker);
+                    google.maps.event.addListener(marker, 'click', function () {
+                        infowindow.setContent(contentString);
+                        infowindow.open(map, marker);
+                    });
+
+                    marker.setPosition(new google.maps.LatLng(userLat, userLng));
+
+                    map.setCenter({
+                        lat: 52.391286,
+                        lng: 4.917583
+                    });
+                    updatePosition(marker);
                 });
-                marker.setPosition(new google.maps.LatLng(userLat, userLng));
-                map.setCenter({
-                    lat: 52.391286,
-                    lng: 4.917583
-                });
-                updatePosition(marker);
 
             };
 
             function error() {
-                console.log('Unable to retrieve your location.');
                 var latLng = new google.maps.LatLng(52.391286, 4.917583); // set map on Amsterdam Noord
                 map.panTo(latLng);
             };
@@ -319,7 +268,7 @@ nfest.map = (function () {
             navigator.geolocation.getCurrentPosition(success, error, options);
 
         } else {
-            console.log('Geolocation is turned off or not supported, we cant calculate your location.');
+            // no geolocation
         }
     }
 
@@ -337,10 +286,10 @@ nfest.map = (function () {
             var myRouteElements = JSON.parse(localStorage.getItem('myRouteEvents')),
                 infoText = document.getElementById("infoText"),
                 infowindow = new google.maps.InfoWindow();
- 
+
             if (myRouteElements == null) {
                 infoText.classList.remove('hide');
-            } 
+            }
             if (myRouteElements) {
                 if (myRouteElements.length == 0) {
                     infoText.classList.remove('hide');
@@ -351,9 +300,9 @@ nfest.map = (function () {
                             if (item.dataset.location == location.link) {
 
                                 var image = {
-                                    url: '/img/location24x38.svg',
-                                    size: new google.maps.Size(36, 57),
-                                    scaledSize: new google.maps.Size(36, 57),
+                                    url: '/img/location43x68.png',
+                                    size: new google.maps.Size(43, 68),
+                                    scaledSize: new google.maps.Size(43, 68),
                                     origin: new google.maps.Point(0, 0)
                                 };
 
@@ -371,15 +320,15 @@ nfest.map = (function () {
                                 var locationLink = location.link;
 
                                 var link = '<a href="/location/' + locationLink + '" class="popupButton">';
-                                var routeLink = '<a href="https://maps.google.com?saddr=Current+Location&daddr=' + location.lat + ',' + location.lng + '" class="popupButton buttonRoute">';
+                                var routeLink = '<a href="https://maps.google.com?saddr=Current+Location&daddr=' + location.lat + ',' + location.lng + '" class="popupButton buttonRoute" target="blank">';
 
                                 var contentString =
                                     '<div id="content">' +
-                                        '<h1>' + location.title + '</h1>' +
-                                        '<p>' + location.address + '</p>' +
-                                        '<div class="popupButtons ">' + 
-                                            routeLink + 'Route' + '</a>' + link + 'Evenementen' + '</a>' +
-                                        '</div>' +
+                                    '<h1>' + location.title + '</h1>' +
+                                    '<p>' + location.address + '</p>' +
+                                    '<div class="popupButtons ">' +
+                                    routeLink + 'Route' + '</a>' + link + 'Evenementen' + '</a>' +
+                                    '</div>' +
                                     '</div>';
 
                                 google.maps.event.addListener(marker, 'click', function () {
@@ -421,11 +370,11 @@ nfest.map = (function () {
 
                 var contentString =
                     '<div id="content">' +
-                        '<h1>' + location.title + '</h1>' +
-                        '<p>' + location.address + '</p>' +
-                        '<div class="popupButtons ">' + 
-                            routeLink + 'Route' + '</a>' + link + 'Evenementen' + '</a>' +
-                        '</div>' +
+                    '<h1>' + location.title + '</h1>' +
+                    '<p>' + location.address + '</p>' +
+                    '<div class="popupButtons ">' +
+                    routeLink + 'Route' + '</a>' + link + 'Evenementen' + '</a>' +
+                    '</div>' +
                     '</div>';
 
                 google.maps.event.addListener(marker, 'click', function () {
