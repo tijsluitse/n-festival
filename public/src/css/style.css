@@ -262,6 +262,10 @@
     transform: rotate(45deg);
 }
 
+#myRouteCounter.hide {
+    display: none;
+}
+
 
 /*MAP*/
 
