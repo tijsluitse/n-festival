@@ -9,8 +9,16 @@ nfest.scrollToNext = (function() {
     /* Launcher function */
     var scrollLauncher = function() {
         if(window.location.pathname == '/') {
-            nfest.scrollToNext.introEnd();
+            /* If its not the first time go to #menu */
+            if (localStorage.getItem('introPage')) {                
+                window.location = '/#menu';
+            } 
+            /* If its the first time show introduction animation */
+            if (!localStorage.getItem('introPage')) {                
+                nfest.scrollToNext.introEnd(); 
+            }
         }
+        /* Scroll to current events on events pages */
         if(window.location.pathname == '/day1' || window.location.pathname == '/day2' || window.location.pathname == '/program') {
             nfest.scrollToNext.toCurrentEvents();
         }
@@ -80,12 +88,12 @@ nfest.scrollToNext = (function() {
             introPage.addEventListener('animationend', function(){
                 setTimeout(function(){ 
                     introPage.classList.add('hide');
+                    localStorage.setItem('introPage', 'true');
                 }, 1000);
             });
             setTimeout(function() {
-                nfest.scrollToNext.smoothScroll('menu');
-            }, 4000);
-            localStorage.setItem('introPage', 'true');
+                nfest.scrollToNext.smoothScroll('menu');            
+            }, 4000);            
         }
     };
 
