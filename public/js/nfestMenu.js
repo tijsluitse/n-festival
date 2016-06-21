@@ -54,19 +54,35 @@ nfest.menu = (function () {
     
         /* Body height and about section */
         var size = document.body.offsetHeight,
-            aboutSection = document.querySelector('.aboutArticle'); 
+            aboutSection = document.querySelector('.aboutArticle'),
+            introPage = document.querySelector('.introPage'); 
 
         /* New logo event listener to go to about */
         nLogo.addEventListener('click', function(){           
-            aboutSection.classList.add('fadeIn');
             size = size/2;            
             scrollTo(document.body, -size, 1250, 'click');
+            /* Add click event for showing introduction animation again */
+            setTimeout(function() {
+                nLogo.onclick = function () {
+                    introPage.classList.remove('hide');
+                    introPage.addEventListener('animationend', function(){
+                        setTimeout(function(){ 
+                            introPage.classList.add('hide');
+                        }, 1500);
+                    });                   
+                }
+            }, 1250);
         });
 
         /* Back to menu event listener */
         toMenu.addEventListener('click', function() {
             size = 1250;            
             scrollTo(document.body, size, 1250, 'click');
+            /* Remove introduction animation onclick event */
+            nLogo.onclick = function () { 
+                size = size/2;            
+                scrollTo(document.body, -size, 1250, 'click');
+            }
         }); 
 
     }
