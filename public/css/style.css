@@ -1,63 +1,17 @@
 /*FONT*/
 
-
-/*@font-face {
-    font-family: grotesqueBlack;
-    src: url(/font/basis_grotesque_black.otf);
-}
-@font-face {
-    font-family: grotesqueBlackItalic;
-    src: url(/font/basis_grotesque_black_italic.otf);
-}*/
-
 @font-face {
     font-family: grotesqueBold;
     src: url(/font/basis_grotesque_bold.otf);
 }
-
-
-/*@font-face {
-    font-family: grotesqueBoldItalic;
-    src: url(/font/basis_grotesque_bold_italic.otf);
-}
-@font-face {
-    font-family: grotesqueLight;
-    src: url(/font/basis_grotesque_light.otf);
-}
-@font-face {
-    font-family: grotesqueLightItalic;
-    src: url(/font/basis_grotesque_light_italic.otf);
-}*/
-
 @font-face {
     font-family: grotesqueMedium;
     src: url(/font/basis_grotesque_medium.otf);
 }
-
-
-/*@font-face {
-    font-family: grotesqueMediumItalic;
-    src: url(/font/basis_grotesque_medium_italic.otf);
-}
-@font-face {
-    font-family: grotesqueOffWhite;
-    src: url(/font/basis_grotesque_off_white.otf);
-}
-@font-face {
-    font-family: grotesqueOffWhiteItalic;
-    src: url(/font/basis_grotesque_off_white_italic.otf);
-}*/
-
 @font-face {
     font-family: grotesqueRegular;
     src: url(/font/basis_grotesque_regular.otf);
 }
-
-
-/*@font-face {
-    font-family: grotesqueRegularItalic;
-    src: url(/font/basis_grotesque_regular_italic.otf);
-}*/
 
 * {
     margin: 0;
@@ -65,15 +19,12 @@
     box-sizing: border-box;
     font-family: 'grotesqueMedium', sans-serif;
 }
-
 :focus {
     outline-color: grey;
 }
-
 .filterHide {
     display: none;
 }
-
 
 /*INTRO ANIMATION*/
 
@@ -174,7 +125,6 @@
         opacity: 1;
     }
 }
-
 
 /*HEADER*/
 
@@ -407,57 +357,7 @@
     z-index: 5;
     width: 100%;
     width: 100vw;
-/*
-    -webkit-animation: menuSlide 500ms cubic-bezier(0.712, 0.0376, 0.392, 1);
-    animation: menuSlide 500ms cubic-bezier(0.712, 0.0376, 0.392, 1);
-*/
 }
-/*
-@-webkit-keyframes menuSlide {
-    0% {
-        -webkit-transform: translateY(-100vh);
-        transform: translateY(-100vh);
-    }
-    100% {
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
-    }
-}
-
-@keyframes menuSlide {
-    0% {
-        -webkit-transform: translateY(-100vh);
-        transform: translateY(-100vh);
-    }
-    100% {
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
-    }
-}
-	// -webkit-animation: menuSlide 500ms cubic-bezier(0.712, 0.0376, 0.392, 1);
-	//         animation: menuSlide 500ms cubic-bezier(0.712, 0.0376, 0.392, 1);
-}
-// @-webkit-keyframes menuSlide {
-// 	0% {
-// 		-webkit-transform: translateY(-100vh);
-// 		        transform: translateY(-100vh);
-// 	}
-// 	100% {
-// 		-webkit-transform: translateY(0);
-// 		        transform: translateY(0);
-// 	}
-// }
-// @keyframes menuSlide {
-// 	0% {
-// 		-webkit-transform: translateY(-100vh);
-// 		        transform: translateY(-100vh);
-// 	}
-// 	100% {
-// 		-webkit-transform: translateY(0);
-// 		        transform: translateY(0);
-// 	}
-// }
-*/
 
 #menu ul {
     height: calc(100vh - 50px);
@@ -483,16 +383,6 @@
 #menu li:nth-child(4) {
     background-color: rgba(0, 0, 0, .81);
 }
-
-
-/*#menu li:nth-child(5){
-	background-color: white;
-}*/
-
-
-/*#menu li {
-	background-image: linear-gradient(to bottom, #262626, #000000 100%);
-}*/
 
 #menu li:hover {
     background-color: black;
@@ -665,42 +555,6 @@
     }
 }
 
-
-/*MENU ICON CLOSE ANIMATION*/
-
-
-/*.bar {
-	-webkit-transform: rotate(0);
-	    -ms-transform: rotate(0);
-	        transform: rotate(0);
-	-webkit-transition: all 300ms ease-in-out;
-	        transition: all 300ms ease-in-out;
-}
-.animateBar1 {
-	-webkit-transform-origin: center center;
-	    -ms-transform-origin: center center;
-	        transform-origin: center center;
-	-webkit-transform: translate(4px,23px) rotate(45deg);
-	    -ms-transform: translate(4px,23px) rotate(45deg);
-	        transform: translate(4px,23px) rotate(45deg);
-}
-.animateBar2 {
-	-webkit-transition: 300ms ease-in-out;
-	        transition: 300ms ease-in-out;
-	display: none;	
-}
-.animateBar3 {
-	-webkit-transform-origin: center center;
-	    -ms-transform-origin: center center;
-	        transform-origin: center center;
-	-webkit-transform: translate(5px, -18px) rotate(-45deg);
-	    -ms-transform: translate(5px, -18px) rotate(-45deg);
-	        transform: translate(5px, -18px) rotate(-45deg);
-}*/
-
-
-
-
 /*FILTER BAR*/
 
 .filterBar button {
@@ -746,7 +600,6 @@
     cursor: pointer;
     background-color: black;
     padding: 1.2em 0;
-    /*border-top: #333333 solid 1px;*/
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -1262,42 +1115,6 @@ fieldset h3 {
 
 /* DETAIL PAGE */
 
-
-/*.detailEventPage {
-	-webkit-animation: slideToLeft 500ms cubic-bezier(0.712, 0.0376, 0.392, 1);
-	        animation: slideToLeft 500ms cubic-bezier(0.712, 0.0376, 0.392, 1);
-}
-@-webkit-keyframes slideToLeft {
-	0% {
-		-webkit-transform: translateX(100vh);
-		        transform: translateX(100vh);
-	}
-	100% {
-		-webkit-transform: translateX(0);
-		        transform: translateX(0);
-	X
-}
-@keyframes slideToLeft {
-	0% X
-		-webkit-transform: translateX(100vh);
-		        transform: translateX(100vh);
-	}
-	100% {
-		-webkit-transform: translateX(0);
-		        transform: translateX(0);
-	}
-}*/
-
-
-/*.detailPage {
-	border-top: 1px solid white;
-}*/
-
-
-/*.detailPage img{
-    width:100%;
-}*/
-
 .detailImg {
     background-size: cover;
     background-position: center center;
@@ -1337,9 +1154,6 @@ fieldset h3 {
     border-radius: 3em;
     margin-right: 1em;
 }
-
-
-/*DETAIL PAGE  */
 
 .detailPageInfo {
 	padding: 1em;
@@ -1389,7 +1203,6 @@ fieldset h3 {
 	color: white;
 	border-bottom: 1px solid #333333;
 	font-size: .9em;
-
 }
 
 .curatorImg {
@@ -1428,9 +1241,8 @@ fieldset h3 {
 	-webkit-align-items: flex-start;
 	    -ms-flex-align: start;
 	        align-items: flex-start;
-
-	/*margin: 1em 0;*/
 }
+
 .spaceBetween {
 	justify-content: space-between;
     display: -webkit-box;
@@ -1441,7 +1253,6 @@ fieldset h3 {
     -webkit-align-items: flex-start;
     -ms-flex-align: start;
     align-items: flex-start;
-    /*margin: 1em 0;*/
 }
 
 .detailDate a {
@@ -1575,7 +1386,6 @@ fieldset h3 {
 	}
 }
 
-
 /* DETAIL POPUP */
 
 .detailContainer {
@@ -1618,7 +1428,6 @@ fieldset h3 {
 .closeDetailButton {
     background-color: transparent;
     border: none;
-    /*padding: 1em;*/
     cursor: pointer;
     float: right;
 }
@@ -1650,7 +1459,7 @@ fieldset h3 {
 }
 
 
-/*MIJN LOCATIE*/
+/*MY LOCATION*/
 
 #infoText {
     margin: 2em;
@@ -1666,7 +1475,7 @@ fieldset h3 {
     width: 15em;
     margin: 2em auto;
     font-size: 1.4em;
-    font-family: "grotesqueBold";
+    font-family: "grotesqueBold", sans-serif;
     text-decoration: none;
     color: black;
     text-align: center;
@@ -1684,7 +1493,6 @@ fieldset h3 {
     -ms-flex-pack: end;
     justify-content: flex-end;
 }
-
 
 /*MAP*/
 
@@ -1713,31 +1521,7 @@ fieldset h3 {
     margin-bottom: .5em;
 }
 
-
-/*CLASSES*/
-
-.hide {
-    display: none !important;
-}
-
-.hidden {
-    visibility: hidden;
-}
-
-.fullscreen {
-    height: 100vh !important;
-}
-
-.noClick {
-    pointer-events: none;
-}
-
-
 /*SECTIONS*/
-
-.show {
-    display: inline-block !important;
-}
 
 .eventInside {
     position: relative;
@@ -1750,14 +1534,13 @@ fieldset h3 {
     background-color: #ecf0f1;
     color: black;
     text-align: center;
-    font-family: "grotesqueRegular";
+    font-family: "grotesqueRegular", sans-serif;
     letter-spacing: .1em;
 }
 
 .gm-style-cc {
     display: none;
 }
-
 
 /* Geolocation alert */
 
@@ -1788,7 +1571,7 @@ fieldset h3 {
 }
 
 
-/* Discover events */
+/* DISCOVER EVENTS */
 
 #discover {
 	background-color: rgba(0,0,0,0.9);
@@ -1821,4 +1604,25 @@ fieldset h3 {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+/*CLASSES*/
+
+.hide {
+    display: none;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.fullscreen {
+    height: 100vh;
+}
+
+.noClick {
+    pointer-events: none;
+}
+.show {
+    display: inline-block;
 }
