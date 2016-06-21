@@ -299,9 +299,9 @@ nfest.map = (function () {
                             if (item.dataset.location == location.link) {
 
                                 var image = {
-                                    url: '/img/location24x38.svg',
-                                    size: new google.maps.Size(36, 57),
-                                    scaledSize: new google.maps.Size(36, 57),
+                                    url: '/img/location43x68.png',
+                                    size: new google.maps.Size(43, 68),
+                                    scaledSize: new google.maps.Size(43, 68),
                                     origin: new google.maps.Point(0, 0)
                                 };
 
