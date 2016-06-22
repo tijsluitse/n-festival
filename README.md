@@ -1,5 +1,3 @@
-## N-Festival App
+#N-Festival application
 
-Live: http://37.139.25.160
-
-To use the code: Download files and run nodemon app.js in your terminal
+##Minor Everything web - Final "master" exercise
