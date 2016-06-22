@@ -373,8 +373,9 @@ nfest.map = (function () {
                     },
                     map: map,
                     icon: '/img/location43x68.png',
-                    optimized: true,
-                    title: 'First Infowindow!'
+                    size: new google.maps.Size(43, 68),
+                    scaledSize: new google.maps.Size(43, 68),
+                    origin: new google.maps.Point(0, 0)
                 });
 
                 var locationLink = location.link,
