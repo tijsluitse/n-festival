@@ -312,9 +312,9 @@ nfest.map = (function () {
                             if (item.dataset.location == location.link) {
 
                                 var image = {
-                                    url: '/img/location43x68.png',
-                                    size: new google.maps.Size(43, 68),
-                                    scaledSize: new google.maps.Size(43, 68),
+                                    url: '/img/location.png',
+                                    size: new google.maps.Size(30, 49),
+                                    scaledSize: new google.maps.Size(30, 49),
                                     origin: new google.maps.Point(0, 0)
                                 };
 
@@ -367,9 +367,9 @@ nfest.map = (function () {
             locationMarkers.forEach(function (location) {
 
                 var image = {
-                    url: '/img/location43x68.png',
-                    size: new google.maps.Size(43, 68),
-                    scaledSize: new google.maps.Size(43, 68),
+                    url: '/img/location.png',
+                    size: new google.maps.Size(30, 49),
+                    scaledSize: new google.maps.Size(30, 49),
                     origin: new google.maps.Point(0, 0)
                 };
 
