@@ -183,7 +183,7 @@ nfest.map = (function () {
 
         function error() {
             /* Error handling. Set map to Amsterdam Noord */
-            var latLng = new google.maps.LatLng(52.391286, 4.917583); 
+            var latLng = new google.maps.LatLng(52.391286, 4.917583);
             map.panTo(latLng);
         };
 
@@ -265,7 +265,7 @@ nfest.map = (function () {
 
             function error() {
                 /* Error handling. Set map to Amsterdam Noord */
-                var latLng = new google.maps.LatLng(52.391286, 4.917583); 
+                var latLng = new google.maps.LatLng(52.391286, 4.917583);
                 map.panTo(latLng);
             };
 
@@ -277,7 +277,7 @@ nfest.map = (function () {
 
         } else {
             /* Error handling. Set map to Amsterdam Noord */
-            var latLng = new google.maps.LatLng(52.391286, 4.917583); 
+            var latLng = new google.maps.LatLng(52.391286, 4.917583);
             map.panTo(latLng);
         }
     }
@@ -366,17 +366,24 @@ nfest.map = (function () {
 
             locationMarkers.forEach(function (location) {
 
+                var image = {
+                    url: '/img/location43x68.png',
+                    size: new google.maps.Size(43, 68),
+                    scaledSize: new google.maps.Size(43, 68),
+                    origin: new google.maps.Point(0, 0)
+                };
+
                 var marker = new google.maps.Marker({
                     position: {
                         lat: parseFloat(location.lat),
                         lng: parseFloat(location.lng)
                     },
                     map: map,
-                    icon: '/img/location43x68.png',
-                    size: new google.maps.Size(43, 68),
-                    scaledSize: new google.maps.Size(43, 68),
-                    origin: new google.maps.Point(0, 0)
+                    icon: image,
+                    optimized: true,
+                    title: "First Infowindow!"
                 });
+
 
                 var locationLink = location.link,
                     link = '<a href="/location/' + locationLink + '" class="popupButton">',
