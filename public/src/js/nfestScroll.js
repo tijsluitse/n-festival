@@ -91,17 +91,11 @@ nfest.scrollToNext = (function () {
 
         if (!localStorage.getItem('introPage')) {
             introPage.classList.remove('hide');
-            introPage.addEventListener('animationend', function () {
-                setTimeout(function () {
-                    introPage.classList.add('hide');
-                    localStorage.setItem('introPage', 'true');
-                }, 1000);
-            });
             setTimeout(function () {  
                 introPage.style.opacity = '0';            
                 introPage.classList.add('hide');
                 localStorage.setItem('introPage', 'true');
-            }, 3500);
+            }, 2800);
             setTimeout(function () {
                 nfest.scrollToNext.smoothScroll('menu');
             }, 4000);
