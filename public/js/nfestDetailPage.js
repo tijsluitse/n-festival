@@ -30,13 +30,13 @@ nfest.detail = (function () {
         allItems.splice(removeItem, 1);
 
         var generate = function () { 
-
             var numbers = [];   
-
+            
             while(numbers.length < recNum){
-                var randomnumber = Math.floor(Math.random() * allItems.length)
-                var found = false;
-                for(var i = 0; i < numbers.length; i++){
+                var randomnumber = Math.floor(Math.random() * allItems.length),
+                    found = false;
+
+                for (var i = 0; i < numbers.length; i++){
                     if(numbers[i] == randomnumber){                    
                         found = true;
                         break
@@ -55,6 +55,7 @@ nfest.detail = (function () {
         reload.onclick = function() {
             var eventList = document.querySelectorAll('.recObj'),
                 reloadButton = document.querySelector('.reloadIcon');
+            
             reloadButton.classList.add('reloadAnimation');
             reloadButton.addEventListener('animationend', function() {
                 reloadButton.classList.remove('reloadAnimation');
@@ -63,23 +64,9 @@ nfest.detail = (function () {
             eventList.forEach(function(event){
                 event.classList.add('hide');
             });
+
             generate();  
         }
-
-        // reload.addEventListener('click', function() {
-        //     var eventList = document.querySelectorAll('.recObj');
-
-        //     var reloadButton = document.querySelector('.reloadIcon');
-        //     reloadButton.classList.add('reloadAnimation');
-        //     reloadButton.addEventListener('animationend', function() {
-        //         reloadButton.classList.remove('reloadAnimation');
-        //     })
-                
-        //     eventList.forEach(function(event){
-        //         event.classList.add('hide');
-        //     });
-        //     generate();
-        // }); 
 
         generate();  
 

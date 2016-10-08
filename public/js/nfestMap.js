@@ -27,7 +27,7 @@ nfest.map = (function () {
         nfest.map.watchLocation(map);
 
         if (window.location.pathname == '/myroute') {
-            nfest.map.venueMarkersMyRoute(map);
+            nfest.map.venueMarkersMyRoute(map);            
         } else {
             nfest.map.venueMarkersAllLocations(map);
         }
@@ -278,14 +278,14 @@ nfest.map = (function () {
                     map: map,
                     icon: image,
                     optimized: false,
-                    title: 'First Infowindow!'
+                    title: 'Eigen locatie marker'
                 });
 
                 var contentString =
                     '<div id="content">' +
-                    '<p>' +
-                    'Uw eigen locatie' +
-                    '</p>' +
+                        '<p>' +
+                            'Uw eigen locatie' +
+                        '</p>' +
                     '</div>';
 
                 var infowindow = new google.maps.InfoWindow({
@@ -349,10 +349,6 @@ nfest.map = (function () {
                         mapLocations.forEach(function (location) {
                             if (item.dataset.location == location.link) {
 
-                                mapLocations.forEach(function (mapLoc) {
-                                    // console.log(mapLoc);
-                                });
-
                                 var image = {
                                     url: '/img/location24x38.svg',
                                     size: new google.maps.Size(36, 57),
@@ -378,20 +374,11 @@ nfest.map = (function () {
 
                                 var contentString =
                                     '<div id="content">' +
-                                    '<h1>' +
-                                    location.title +
-                                    '</h1>' +
-                                    '<p>' +
-                                    location.address +
-                                    '</p>' +
-                                    '<div class="popupButtons ">' +
-                                    routeLink +
-                                    'Route' +
-                                    '</a>' +
-                                    link +
-                                    'Evenementen' +
-                                    '</a>' +
-                                    '</div>' +
+                                        '<h1>' + location.title + '</h1>' +
+                                        '<p>' + location.address + '</p>' +
+                                        '<div class="popupButtons ">' + 
+                                            routeLink + 'Route' + '</a>' + link + 'Evenementen' + '</a>' +
+                                        '</div>' +
                                     '</div>';
 
                                 google.maps.event.addListener(marker, 'click', function () {
@@ -427,27 +414,17 @@ nfest.map = (function () {
                     title: 'First Infowindow!'
                 });
 
-                var locationLink = location.link;
-
-                var link = '<a href="/location/' + locationLink + '" class="popupButton">';
-                var routeLink = '<a href="https://maps.google.com?saddr=Current+Location&daddr=' + location.lat + ',' + location.lng + '" class="popupButton buttonRoute">';
+                var locationLink = location.link,
+                    link = '<a href="/location/' + locationLink + '" class="popupButton">',
+                    routeLink = '<a href="https://maps.google.com?saddr=Current+Location&daddr=' + location.lat + ',' + location.lng + '" class="popupButton buttonRoute">';
 
                 var contentString =
                     '<div id="content">' +
-                    '<h1>' +
-                    location.title +
-                    '</h1>' +
-                    '<p>' +
-                    location.address +
-                    '</p>' +
-                    '<div class="popupButtons ">' +
-                    routeLink +
-                    'Route' +
-                    '</a>' +
-                    link +
-                    'Evenementen' +
-                    '</a>' +
-                    '</div>' +
+                        '<h1>' + location.title + '</h1>' +
+                        '<p>' + location.address + '</p>' +
+                        '<div class="popupButtons ">' + 
+                            routeLink + 'Route' + '</a>' + link + 'Evenementen' + '</a>' +
+                        '</div>' +
                     '</div>';
 
                 google.maps.event.addListener(marker, 'click', function () {
