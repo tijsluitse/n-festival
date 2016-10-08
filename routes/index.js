@@ -92,7 +92,7 @@ var getAllData = function () {
     // event data
     http.get({
         host: 'n-festival.werk.vanjim.nl',
-        path: '/wp-json/wp/v2/events'
+        path: '/wp-json/wp/v2/events?per_page=100'
     }, function (response) {
         // Continuously update stream with data
         var body = '';

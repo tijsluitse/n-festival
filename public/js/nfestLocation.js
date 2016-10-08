@@ -178,7 +178,6 @@ nfest.location = (function () {
                     bikeTime = 6 * result,
                     string = '.bikeDist';
                     bikeTime = bikeTime.toFixed(0);
-                    
 
                 allDistances.push({
                     distance: result
