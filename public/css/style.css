@@ -853,14 +853,9 @@ fieldset h3 {
 }
 
 .timeToEvent{
-/*
-    width: 100vw;
-    position: absolute;
-*/
-    height: 1.5em;
-    background-color: #D3D3D3;
-/*
-    top: -1.5em;
-    border-bottom:1px solid black;
-*/
+    padding:0.5em;
+    font-size:0.8em;
+    background-color: #F1F1F1;
+    color:#909090;
+    text-align: center;
 }

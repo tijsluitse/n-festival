@@ -177,3 +177,5 @@ nfest.location = (function () {
     }
 
 })();
+
+nfest.location.locationLauncher();

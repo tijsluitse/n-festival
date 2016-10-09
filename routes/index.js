@@ -233,11 +233,7 @@ router.get('/program', function (req, res, next) {
         });
 
     } else {
-        var array = findObject(data, ['acf', 'date'], '09-10-2016');
-
-        res.render('home', {
-            apiData: array
-        });
+        res.redirect('/day2');
     }
 });
 
