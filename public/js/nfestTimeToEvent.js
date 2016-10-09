@@ -61,21 +61,35 @@ nfest.timeToEvent = (function () {
             barTime.innerHTML = 'AFGELOPEN';
         }
 
-        Array.prototype.forEach.call(comingArr, function (e) {
-            e.classList.remove('hide');
-            coming.appendChild(e);
 
-            var starttime = e.dataset.start;
-            var time = moment(starttime).fromNow();
+        for (i = 0; i < comingArr.length; i++) {
+            var now = moment(),
+                starttime = comingArr[i].dataset.start,
+                start = moment(starttime),
+                time = moment(starttime).fromNow();
 
-            var barTime = e.querySelector('.timeToEvent');
-            barTime.classList.remove('hide');
+            comingArr[i].classList.remove('hide');
+            coming.appendChild(comingArr[i]);
 
-            barTime.innerHTML = time.toUpperCase();
-        });
+            // check if coming events are on this day, if so show the hours per event, if not show the time for all events
+            if (now.startOf('day').isSame(start.startOf('day'))) {
+                var barTime = comingArr[i].querySelector('.timeToEvent');
+
+                barTime.classList.remove('hide');
+                barTime.innerHTML = time.toUpperCase();
+
+            } else {
+                var barTime = comingArr[0].querySelector('.timeToEvent');
+                
+                barTime.classList.remove('hide');
+                barTime.innerHTML = time.toUpperCase();
+            }
+            
+        }
+
     }
-    
-    return{
+
+    return {
         sortTimeToEvent: sortTimeToEvent
     }
 
