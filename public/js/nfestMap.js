@@ -9,7 +9,7 @@ nfest.map = (function () {
             mapTypeControlOptions: {
                 mapTypeIds: ['Styled'],
             },
-            zoom: 14,
+            zoom: 12,
             scrollwheel: false,
             navigationControl: false,
             mapTypeControl: false,
@@ -165,20 +165,22 @@ nfest.map = (function () {
                         navigator.geolocation.getCurrentPosition(success, error);                              
 
                         function success(position) {
-                            var userLatitude = position.coords.latitude;
-                            var userLongitude = position.coords.longitude;
-                            var userCoordinates = [userLatitude, userLongitude];                
-                            // localStorage.setItem('userCoordinates', userCoordinates);
+                            var userLatitude = position.coords.latitude,
+                                userLongitude = position.coords.longitude,
+                                userCoordinates = [userLatitude, userLongitude];                
                             
-                            // var userCoordinates = localStorage.getItem('userCoordinates');
-                            // var userC = userCoordinates.split(",");                            
-                            // var userLat = parseFloat(userC[0]);
-                            // var userLng = parseFloat(userC[1]);
+                            localStorage.setItem('userCoordinates', userCoordinates);
+                            
+                            var userCoordinates = localStorage.getItem('userCoordinates'),
+                                userC = userCoordinates.split(","),                            
+                                userLat = parseFloat(userC[0]),
+                                userLng = parseFloat(userC[1]);
 
-                            map.panTo({
-                                lat: userLat,
-                                lng: userLng
-                            });
+                            // map.panTo({
+                            //     lat: userLat,
+                            //     lng: userLng
+                            // });
+                            console.log("hoi");
 
                             nfest.map.setMarker(map, userLat, userLng);
                         };
@@ -192,15 +194,16 @@ nfest.map = (function () {
                         };     
 
                     } else {                    
-                        var userCoordinates = localStorage.getItem('userCoordinates');
-                        var userC = userCoordinates.split(",");                            
-                        var userLat = parseFloat(userC[0]);
-                        var userLng = parseFloat(userC[1]);
+                        var userCoordinates = localStorage.getItem('userCoordinates'),
+                            userC = userCoordinates.split(","),                            
+                            userLat = parseFloat(userC[0]),
+                            userLng = parseFloat(userC[1]);
+                            console.log("hoi2");
 
-                        map.panTo({
-                            lat: userLat,
-                            lng: userLng
-                        });
+                        // map.panTo({
+                        //     lat: userLat,
+                        //     lng: userLng
+                        // });
 
                         var userPosition = new google.maps.LatLng(userLat, userLng);
                         nfest.map.setMarker(map, userLat, userLng);                                               
@@ -210,15 +213,15 @@ nfest.map = (function () {
                     navigator.geolocation.getCurrentPosition(success, error);                        
 
                     function success(position) {
-                        var userLatitude = position.coords.latitude;
-                        var userLongitude = position.coords.longitude;
+                        var userLatitude = position.coords.latitude,
+                            userLongitude = position.coords.longitude;
 
-                        map.panTo({
-                            lat: userLatitude,
-                            lng: userLongitude
-                        });
+                        // map.panTo({
+                        //     lat: userLatitude,
+                        //     lng: userLongitude
+                        // });
 
-                        var userPosition = new google.maps.LatLng(userLatitude, userLongitude);
+                        var userPosition = new google.maps.LatLng(userLat, userLng);
                         nfest.map.setMarker(map, userLatitude, userLongitude);
                     };
 
@@ -254,7 +257,7 @@ nfest.map = (function () {
         var contentString =
             '<div id="content">' +
             '<p>' +
-            'Uw eigen locatie'
+            'Uw eigen locatie' +
             '</p>' +
             '</div>';
 
@@ -262,35 +265,68 @@ nfest.map = (function () {
             content: contentString
         });
 
-        marker.addListener('click', function () {
+        google.maps.event.addListener(marker, 'click', function () {
+            infowindow.setContent(contentString);
             infowindow.open(map, marker);
-            map.setCenter(marker.getPosition());
         });
 
         marker.setMap(map);
         marker.setPosition(new google.maps.LatLng(userLat, userLong));
-        // map.setCenter(marker.getPosition());
+        map.setCenter(marker.getPosition());
     }
 
     var watchLocation = function(map) {
 
         if(navigator.geolocation) {
             function success(position) {
-                var userLatitude = position.coords.latitude;
-                var userLongitude = position.coords.longitude;
-                var userCoordinates = [userLatitude, userLongitude];                
+                
+                var userLatitude = position.coords.latitude,
+                    userLongitude = position.coords.longitude,
+                    userCoordinates = [userLatitude, userLongitude];                
+                
                 localStorage.setItem('userCoordinates', userCoordinates);
-                var userCoordinates = localStorage.getItem('userCoordinates');
-                var userC = userCoordinates.split(",");                            
-                var userLat = parseFloat(userC[0]);
-                var userLng = parseFloat(userC[1]);
+                
+                var userCoordinates = localStorage.getItem('userCoordinates'),
+                    userC = userCoordinates.split(","),                           
+                    userLat = parseFloat(userC[0]),
+                    userLng = parseFloat(userC[1]);
 
-                map.panTo({
-                    lat: userLat,
-                    lng: userLng
+                // map.panTo({
+                //     lat: userLat,
+                //     lng: userLng
+                // });
+
+                var marker = new google.maps.Marker({
+                    map: map,
+                    icon: '/img/marker.gif',
+                    optimized: false,
+                    title: 'First Infowindow!'
                 });
 
-                nfest.map.setMarker(map, userLat, userLng);              
+                var contentString =
+                    '<div id="content">' +
+                    '<p>' +
+                    'Uw eigen locatie' +
+                    '</p>' +
+                    '</div>';
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+
+                google.maps.event.addListener(marker, 'click', function () {
+                    infowindow.setContent(contentString);
+                    infowindow.open(map, marker);
+                });
+
+                console.log("watch");
+
+                // nfest.map.setMarker(map, userLat, userLng);              
+
+                marker.setMap(map);
+                marker.setPosition(new google.maps.LatLng(userLat, userLng));
+                // map.setCenter(marker.getPosition());
+
             };
 
             function error() {
@@ -310,7 +346,8 @@ nfest.map = (function () {
     var venueMarkers = function (map) {
 
         nfest.helpers.getVenueLocations(function (mapLocations, data) {
-            var locationMarkers = mapLocations;
+            var locationMarkers = mapLocations,
+                infowindow = new google.maps.InfoWindow();
 
             locationMarkers.forEach(function (location) {
 
@@ -321,7 +358,7 @@ nfest.map = (function () {
                     },
                     map: map,
                     icon: '/img/location.png',
-                    optimized: true, 
+                    optimized: true,
                     title: 'First Infowindow!'
                 });
 
@@ -346,13 +383,9 @@ nfest.map = (function () {
                     '</a>' +
                     '</div>';
 
-                var infowindow = new google.maps.InfoWindow({
-                    content: contentString
-                });
-
-                marker.addListener('click', function () {
+                google.maps.event.addListener(marker, 'click', function () {
+                    infowindow.setContent(contentString);
                     infowindow.open(map, marker);
-                    map.setCenter(marker.getPosition());
                 });
 
                 marker.setMap(map);
