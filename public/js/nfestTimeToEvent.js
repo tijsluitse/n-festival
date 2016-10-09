@@ -31,7 +31,6 @@ nfest.timeToEvent = (function () {
                 comingArr.push(event);
             }
 
-
         });
 
         var past = document.getElementById('pastEvents'),
@@ -50,6 +49,7 @@ nfest.timeToEvent = (function () {
             barTime.classList.remove('hide');
             barTime.innerHTML = 'NOW';
         }
+        var prevTime = null;
 
         for (i = 0; i < historyArr.length; i++) {
             historyArr[i].classList.remove('hide');
@@ -60,7 +60,6 @@ nfest.timeToEvent = (function () {
             barTime.classList.remove('hide');
             barTime.innerHTML = 'AFGELOPEN';
         }
-
 
         for (i = 0; i < comingArr.length; i++) {
             var now = moment(),
@@ -75,18 +74,21 @@ nfest.timeToEvent = (function () {
             if (now.startOf('day').isSame(start.startOf('day'))) {
                 var barTime = comingArr[i].querySelector('.timeToEvent');
 
-                barTime.classList.remove('hide');
-                barTime.innerHTML = time.toUpperCase();
+                // Check if time is already in html (with some help from Leander)
+                if (prevTime != time) {
+                    barTime.classList.remove('hide');
+                    barTime.innerHTML = time.toUpperCase();
+                }
+                
+                prevTime = time;
 
             } else {
                 var barTime = comingArr[0].querySelector('.timeToEvent');
-                
+
                 barTime.classList.remove('hide');
                 barTime.innerHTML = time.toUpperCase();
             }
-            
         }
-
     }
 
     return {
